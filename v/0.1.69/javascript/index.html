@@ -9,40 +9,40 @@
 <meta name="author" content="Aaron Lademann">
 
 <title>
-    
+
         JavaScript plugins &middot; Wdesk
-    
+
 </title>
 
 <!--[if !IE]> -->
-<link href="/archives/0.1.6/assets/css/wdesk.css" rel="stylesheet" title="standard">
-<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
+<link href="../assets/css/wdesk.css" rel="stylesheet" title="standard">
+<link href="../assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
 <!-- <![endif]-->
 <!--[if IE]>
-<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="stylesheet">
+<link href="../assets/css/wdesk_ie.css" rel="stylesheet">
 <![endif]-->
 
 
 <!-- Documentation extras -->
-<link href="/archives/0.1.6/assets/css/docs.css" rel="stylesheet">
+<link href="../assets/css/docs.css" rel="stylesheet">
 
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/archives/0.1.6/assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/archives/0.1.6/assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/archives/0.1.6/assets/ico/apple-touch-icon-72-precomposed.png">
-                <link rel="apple-touch-icon-precomposed" href="/archives/0.1.6/assets/ico/apple-touch-icon-57-precomposed.png">
-                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.png">
-                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
-                                        <link rel="icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.png">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.ico" type="image/x-icon">
+                                        <link rel="icon" href="../assets/ico/favicon.ico" type="image/x-icon">
 
-<script src="/archives/0.1.6/assets/js/core/modernizr-min.js"></script>
-<script src="/archives/0.1.6/assets/js/docs-only/head.load.min.js"></script>
+<script src="../assets/js/core/modernizr-min.js"></script>
+<script src="../assets/js/docs-only/head.load.min.js"></script>
     <!-- Place anything custom after this. -->
 </head>
 <body ontouchstart class="wdesk-docs-body " data-spy="scroll" data-offset="33" data-target=".wdesk-docs-sidebar">
     <!--[if lt IE 9]>
-    <script src="/archives/0.1.6/assets/js/core/respond.min.js"></script>  
+    <script src="../assets/js/core/respond.min.js"></script>
     <![endif]-->
     <!-- Main navbar for all docs pages. -->
     <!-- Navbar
@@ -62,7 +62,7 @@
                     <div class="visible-retina"></div>
                     <div class="hidden-retina"></div>
                     <!--[if lt IE 9]>
-                        <img src="/archives/0.1.6/assets/img/brand/wdesk-logo_color.png">
+                        <img src="../assets/img/brand/wdesk-logo_color.png">
                     <![endif]-->
                 </div>
                 <!-- optional solution name -->
@@ -173,21 +173,21 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// I am an element that just started to show</span>
 <span class="lineno"> 3</span> <span class="p">})</span>
-<span class="lineno"> 4</span> 
+<span class="lineno"> 4</span>
 <span class="lineno"> 5</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;shown&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 6</span>     <span class="c1">// I am an element that is completely faded in</span>
 <span class="lineno"> 7</span> <span class="p">})</span>
-<span class="lineno"> 8</span> 
+<span class="lineno"> 8</span>
 <span class="lineno"> 9</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">10</span>     <span class="c1">// I am an element that just started to hide </span>
 <span class="lineno">11</span> <span class="p">})</span>
-<span class="lineno">12</span> 
+<span class="lineno">12</span>
 <span class="lineno">13</span> <span class="c1">// fires when element IS DONE being shown</span>
 <span class="lineno">14</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">15</span>     <span class="c1">// I am an element that is completely faded out / removed from DOM.</span>
 <span class="lineno">16</span> <span class="p">})</span></code></pre></div>
 
-                
+
             </section>
 
 
@@ -198,7 +198,7 @@
                     <h1>Transitions <small>wdesk-transition.js</small></h1>
                 </div>
                 <p class="lead">For simple transition effects, include wdesk-transition.js once alongside the other JS files.</p>
-                
+
                 <h3>Use cases</h3>
 <p>A few examples of the transition plugin:</p>
 <ul>
@@ -209,7 +209,7 @@
 </ul>
 
 <div class="alert alert-default no-shadow">
-    <p><strong>Important Note: </strong><br> 
+    <p><strong>Important Note: </strong><br>
         When using our plugins in a <em>require.js</em> style dependency block, make sure that wdesk-transition.js is brought in as a dependency for all the other wdesk plugins.  Without it, things like <code>$elem.on('hide')</code> won't trigger correctly.
     </p>
 </div>
@@ -401,20 +401,20 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// I am an element that just started to show</span>
 <span class="lineno"> 3</span> <span class="p">})</span>
-<span class="lineno"> 4</span> 
+<span class="lineno"> 4</span>
 <span class="lineno"> 5</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;shown&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 6</span>     <span class="c1">// I am an element that is completely faded in</span>
 <span class="lineno"> 7</span> <span class="p">})</span>
-<span class="lineno"> 8</span> 
+<span class="lineno"> 8</span>
 <span class="lineno"> 9</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">10</span>     <span class="c1">// I am an element that just started to hide </span>
 <span class="lineno">11</span> <span class="p">})</span>
-<span class="lineno">12</span> 
+<span class="lineno">12</span>
 <span class="lineno">13</span> <span class="c1">// fires when element IS DONE being shown</span>
 <span class="lineno">14</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">15</span>     <span class="c1">// I am an element that is completely faded out / removed from DOM.</span>
 <span class="lineno">16</span> <span class="p">})</span></code></pre></div>
-                
+
             </section>
 
 
@@ -550,7 +550,7 @@
 <h3>Methods</h3>
 <h4>$().dropdown('toggle')</h4>
 <p>A programmatic api for toggling menus for a given navbar or tabbed navigation.</p>
-                
+
             </section>
 
 
@@ -677,7 +677,7 @@
         </tr>
     </tbody>
 </table>
-                
+
             </section>
 
 
@@ -757,14 +757,14 @@
 <span class="lineno"> 4</span>     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">href=</span><span class="s">&quot;#messages&quot;</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 <span class="lineno"> 5</span>     <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">href=</span><span class="s">&quot;#settings&quot;</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 <span class="lineno"> 6</span> <span class="nt">&lt;/ul&gt;</span>
-<span class="lineno"> 7</span> 
+<span class="lineno"> 7</span>
 <span class="lineno"> 8</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-content&quot;</span><span class="nt">&gt;</span>
 <span class="lineno"> 9</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane active&quot;</span> <span class="na">id=</span><span class="s">&quot;home&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="lineno">10</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;profile&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="lineno">11</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;messages&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="lineno">12</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span> <span class="na">id=</span><span class="s">&quot;settings&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="lineno">13</span> <span class="nt">&lt;/div&gt;</span>
-<span class="lineno">14</span> 
+<span class="lineno">14</span>
 <span class="lineno">15</span> <span class="nt">&lt;script&gt;</span>
 <span class="lineno">16</span>     <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 <span class="lineno">17</span>         <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTab .hitarea:last&#39;</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">);</span>
@@ -806,7 +806,7 @@
 <span class="lineno">2</span>     <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="c1">// activated tab</span>
 <span class="lineno">3</span>     <span class="nx">e</span><span class="p">.</span><span class="nx">relatedTarget</span> <span class="c1">// previous tab</span>
 <span class="lineno">4</span> <span class="p">})</span></code></pre></div>
-                
+
             </section>
 
 
@@ -1007,20 +1007,20 @@
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#tooltip&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 2</span>     <span class="c1">// I am an element that just started to show</span>
 <span class="lineno"> 3</span> <span class="p">})</span>
-<span class="lineno"> 4</span> 
+<span class="lineno"> 4</span>
 <span class="lineno"> 5</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#tooltip&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;shown&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 6</span>     <span class="c1">// I am an element that is completely faded in</span>
 <span class="lineno"> 7</span> <span class="p">})</span>
-<span class="lineno"> 8</span> 
+<span class="lineno"> 8</span>
 <span class="lineno"> 9</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#tooltip&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hide&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">10</span>     <span class="c1">// I am an element that just started to hide </span>
 <span class="lineno">11</span> <span class="p">})</span>
-<span class="lineno">12</span> 
+<span class="lineno">12</span>
 <span class="lineno">13</span> <span class="c1">// fires when element IS DONE being shown</span>
 <span class="lineno">14</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#tooltip&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">15</span>     <span class="c1">// I am an element that is completely faded out / removed from DOM.</span>
 <span class="lineno">16</span> <span class="p">})</span></code></pre></div>
-                
+
             </section>
 
 
@@ -1222,9 +1222,9 @@
 </table>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="c1">// example angularJS variables that can be manipulated as a result of </span>
 <span class="lineno"> 2</span> <span class="c1">// our jQuery plugins&#39; published methods</span>
-<span class="lineno"> 3</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">popoverActivated</span><span class="p">,</span> 
+<span class="lineno"> 3</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">popoverActivated</span><span class="p">,</span>
 <span class="lineno"> 4</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">popoverVisible</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
+<span class="lineno"> 5</span>
 <span class="lineno"> 6</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#my-popover&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 7</span>     <span class="c1">// do something when the popover starts showing</span>
 <span class="lineno"> 8</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">popoverActivated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
@@ -1249,7 +1249,7 @@
 <span class="lineno">27</span>     <span class="c1">// make sure to include $scope.$apply() if wiring up with angular</span>
 <span class="lineno">28</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">$apply</span><span class="p">();</span>
 <span class="lineno">29</span> <span class="p">});</span></code></pre></div>
-                
+
             </section>
 
 
@@ -1311,7 +1311,7 @@
         <div class="alert-footer">
             <div class="actions pull-right">
                 <a class="btn btn-link" href="#">Cancel</a>
-                <a class="btn btn-error" href="#">Action Button</a> 
+                <a class="btn btn-error" href="#">Action Button</a>
             </div>
         </div>
     </div>
@@ -1323,7 +1323,7 @@
 <span class="lineno"> 5</span>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert-footer&quot;</span><span class="nt">&gt;</span>
 <span class="lineno"> 6</span>         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;actions pull-right&quot;</span><span class="nt">&gt;</span>
 <span class="lineno"> 7</span>             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-link&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;</span>
-<span class="lineno"> 8</span>             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-error&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action Button<span class="nt">&lt;/a&gt;</span> 
+<span class="lineno"> 8</span>             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-error&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Action Button<span class="nt">&lt;/a&gt;</span>
 <span class="lineno"> 9</span>         <span class="nt">&lt;/div&gt;</span>
 <span class="lineno">10</span>     <span class="nt">&lt;/div&gt;</span>
 <span class="lineno">11</span> <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -1396,9 +1396,9 @@
 </table>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="lineno"> 1</span> <span class="c1">// example angularJS variables that can be manipulated as a result of </span>
 <span class="lineno"> 2</span> <span class="c1">// our jQuery plugins&#39; published methods</span>
-<span class="lineno"> 3</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">alertActivated</span><span class="p">,</span> 
+<span class="lineno"> 3</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">alertActivated</span><span class="p">,</span>
 <span class="lineno"> 4</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">alertVisible</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
+<span class="lineno"> 5</span>
 <span class="lineno"> 6</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#my-alert&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 7</span>     <span class="c1">// do something when the alert starts showing</span>
 <span class="lineno"> 8</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">alertActivated</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
@@ -1423,7 +1423,7 @@
 <span class="lineno">27</span>     <span class="c1">// make sure to include $scope.$apply() if wiring up with angular</span>
 <span class="lineno">28</span>     <span class="nx">$scope</span><span class="p">.</span><span class="nx">$apply</span><span class="p">();</span>
 <span class="lineno">29</span> <span class="p">});</span></code></pre></div>
-                
+
             </section>
 
 
@@ -1434,7 +1434,7 @@
                     <h1>Buttons <small>wdesk-button.js</small></h1>
                 </div>
                 <p class="lead">Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
-                
+
                 <h4>Stateful</h4>
 <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
 <div class="wdesk-docs-example" style="padding-bottom: 24px;">
@@ -1456,7 +1456,7 @@
 </form>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn clear-search&quot;</span> <span class="na">title=</span><span class="s">&quot;Clear Search&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span></code></pre></div>
 <div class="alert alert-default alert-block no-shadow">
-    <h3 class="alert-heading">Integrating With AngularJS</h3> 
+    <h3 class="alert-heading">Integrating With AngularJS</h3>
     <p>The plugin handles the clearing of the input's value, and in an angular application - the input itself would be bound to <code>ng-model</code>, which you can update by hooking into the <a href="#clear-search-events">built-in events for clear search buttons</a></p>
 </div>
 
@@ -1569,7 +1569,7 @@
 <p>Using these events, wiring up an angular directive to our clear search button plugin is easy!</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search-box&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">2</span>     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;search-demo&quot;</span> <span class="na">class=</span><span class="s">&quot;search-text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span>
-<span class="lineno">3</span>            <span class="na">ng-model=</span><span class="s">&quot;sampleQuery&quot;</span> 
+<span class="lineno">3</span>            <span class="na">ng-model=</span><span class="s">&quot;sampleQuery&quot;</span>
 <span class="lineno">4</span>            <span class="na">ng-change=</span><span class="s">&quot;updateQuery()&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">5</span>     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn clear-search&quot;</span> <span class="na">title=</span><span class="s">&quot;Clear Search&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
 <span class="lineno">6</span> <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -1581,34 +1581,34 @@
 <span class="lineno"> 6</span>     <span class="p">],</span>
 <span class="lineno"> 7</span>     <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">angular</span><span class="p">,</span> <span class="nx">button</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 8</span>         <span class="kd">var</span> <span class="nx">SearchBoxDirective</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 9</span> 
+<span class="lineno"> 9</span>
 <span class="lineno">10</span>             <span class="kd">var</span> <span class="nx">searchLinker</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">$element</span><span class="p">,</span> <span class="nx">attrs</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span> 
+<span class="lineno">11</span>
 <span class="lineno">12</span>                 <span class="kd">var</span> <span class="nx">$searchInput</span> <span class="o">=</span> <span class="nx">$element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;input[type=&quot;search&quot;]&#39;</span><span class="p">);</span>
-<span class="lineno">13</span> 
+<span class="lineno">13</span>
 <span class="lineno">14</span>                 <span class="nx">$scope</span><span class="p">.</span><span class="nx">sampleQuery</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
 <span class="lineno">15</span>                 <span class="nx">$scope</span><span class="p">.</span><span class="nx">updateQuery</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno">16</span>                     <span class="c1">// obviously you would wire this up to something real</span>
 <span class="lineno">17</span>                     <span class="nx">searchForSomething</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">sampleQuery</span><span class="p">);</span>
 <span class="lineno">18</span>                 <span class="p">};</span>
-<span class="lineno">19</span> 
+<span class="lineno">19</span>
 <span class="lineno">20</span>                 <span class="nx">$searchInput</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">21</span>                     <span class="c1">// do something when we know that the user is actively searching for something...</span>
 <span class="lineno">22</span>                 <span class="p">});</span>
-<span class="lineno">23</span> 
+<span class="lineno">23</span>
 <span class="lineno">24</span>                 <span class="nx">$searchInput</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno">25</span>                     <span class="c1">// do something when we know that the user has cleared the search input...</span>
 <span class="lineno">26</span>                 <span class="p">});</span>
-<span class="lineno">27</span>                 
+<span class="lineno">27</span>
 <span class="lineno">28</span>             <span class="p">};</span>
 <span class="lineno">29</span>             <span class="nx">searchLinker</span><span class="p">.</span><span class="nx">$inject</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">];</span>
-<span class="lineno">30</span> 
+<span class="lineno">30</span>
 <span class="lineno">31</span>             <span class="k">return</span> <span class="p">{</span>
 <span class="lineno">32</span>                 <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="c1">// bind to the search-box class</span>
 <span class="lineno">33</span>                 <span class="nx">link</span><span class="o">:</span> <span class="nx">searchLinker</span>
 <span class="lineno">34</span>             <span class="p">};</span>
 <span class="lineno">35</span>         <span class="p">};</span>
-<span class="lineno">36</span> 
+<span class="lineno">36</span>
 <span class="lineno">37</span>         <span class="nx">SearchBoxDirective</span><span class="p">.</span><span class="nx">$inject</span> <span class="o">=</span> <span class="p">[];</span>
 <span class="lineno">38</span>         <span class="k">return</span> <span class="nx">SearchBoxDirective</span><span class="p">;</span>
 <span class="lineno">39</span>     <span class="p">}</span>
@@ -1644,10 +1644,10 @@
             </div>
             <div id="general" class="accordion-body collapse in">
                 <div class="accordion-inner">
-                    
+
                     <section>
                         <form class="form">
-                            
+
                             <div class="control-group span4">
                                 <label>Chart Type</label>
                                 <select class="chosen">
@@ -1670,7 +1670,7 @@
 
                     <section>
                         <form class="form">
-                            
+
                             <label>Value Settings</label>
 
                             <div class="checkbox">
@@ -1745,7 +1745,7 @@
 <span class="lineno">18</span>                         ...
 <span class="lineno">19</span>                     <span class="nt">&lt;/form&gt;</span>
 <span class="lineno">20</span>                 <span class="nt">&lt;/section&gt;</span>
-<span class="lineno">21</span> 
+<span class="lineno">21</span>
 <span class="lineno">22</span>             <span class="nt">&lt;/div&gt;</span>
 <span class="lineno">23</span>         <span class="nt">&lt;/div&gt;</span>
 <span class="lineno">24</span>     <span class="nt">&lt;/div&gt;</span>
@@ -1792,7 +1792,7 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-error&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#demo&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">2</span>     simple collapsible
 <span class="lineno">3</span> <span class="nt">&lt;/button&gt;</span>
-<span class="lineno">4</span> 
+<span class="lineno">4</span>
 <span class="lineno">5</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;demo&quot;</span> <span class="na">class=</span><span class="s">&quot;collapse in&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
@@ -1905,7 +1905,7 @@
 <span class="lineno"> 8</span>   <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;hidden.wdesk.collapse&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 9</span>         <span class="c1">// do something when the collapsible region is done hiding</span>
 <span class="lineno">10</span>   <span class="p">});</span></code></pre></div>
-                
+
             </section>
 
 
@@ -1940,7 +1940,7 @@
                         <option value="GIF">GIF</option>
                         <option value="DOC">DOC</option>
                     </select>
-                    
+
                 </span>
                 <span class="span3">
                     <label>Multiple Select</label>
@@ -1956,7 +1956,7 @@
                     <label>Single Select with Groups</label>
                     <select class="chosen" data-placeholder="Choose File Format">
                         <option value></option>
-                        <optgroup label="Images">   
+                        <optgroup label="Images">
                             <option value="JPEG">JPEG</option>
                             <option value="GIF">GIF</option>
                             <option value="PNG">PNG</option>
@@ -1980,7 +1980,7 @@
                     <label>Mult Select w/ Groups</label>
                     <select class="chosen" data-placeholder="Choose File Format" multiple>
                         <option value></option>
-                        <optgroup label="Images">   
+                        <optgroup label="Images">
                             <option value="JPEG">JPEG</option>
                             <option value="GIF">GIF</option>
                             <option value="PNG">PNG</option>
@@ -2035,15 +2035,15 @@
 <span class="lineno"> 3</span>                     <span class="nt">&lt;label&gt;</span>Single Select<span class="nt">&lt;/label&gt;</span>
 <span class="lineno"> 4</span>                     <span class="nt">&lt;select</span> <span class="na">data-placeholder=</span><span class="s">&quot;Choose a Doc&quot;</span><span class="nt">&gt;</span>
 <span class="lineno"> 5</span>                         <span class="c">&lt;!-- Use data-placeholder attribute to set the default text field --&gt;</span>
-<span class="lineno"> 6</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span> 
+<span class="lineno"> 6</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span>
 <span class="lineno"> 7</span>                         <span class="c">&lt;!-- Note: first option must be blank to set text field --&gt;</span>
 <span class="lineno"> 8</span>                         <span class="c">&lt;!-- more options --&gt;</span>
-<span class="lineno"> 9</span>                     <span class="nt">&lt;/select&gt;</span>   
+<span class="lineno"> 9</span>                     <span class="nt">&lt;/select&gt;</span>
 <span class="lineno">10</span>                 <span class="nt">&lt;/span&gt;</span>
 <span class="lineno">11</span>                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;span3&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">12</span>                     <span class="nt">&lt;label&gt;</span>Multiple Select<span class="nt">&lt;/label&gt;</span>
 <span class="lineno">13</span>                     <span class="nt">&lt;select</span> <span class="na">data-placeholder=</span><span class="s">&quot;Choose a Doc&quot;</span> <span class="na">multiple</span><span class="nt">&gt;</span>
-<span class="lineno">14</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span> 
+<span class="lineno">14</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span>
 <span class="lineno">15</span>                         <span class="c">&lt;!-- Boolean attribute multiple, for multiple select --&gt;</span>
 <span class="lineno">16</span>                         <span class="c">&lt;!-- more options --&gt;</span>
 <span class="lineno">17</span>                     <span class="nt">&lt;/select&gt;</span>
@@ -2052,7 +2052,7 @@
 <span class="lineno">20</span>                     <span class="nt">&lt;label&gt;</span>Single Select with Groups<span class="nt">&lt;/label&gt;</span>
 <span class="lineno">21</span>                     <span class="nt">&lt;select</span> <span class="na">data-placeholder=</span><span class="s">&quot;Choose File Format&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">22</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span>
-<span class="lineno">23</span>                         <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Images&quot;</span><span class="nt">&gt;</span>   
+<span class="lineno">23</span>                         <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Images&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">24</span>                             <span class="c">&lt;!-- To sort options into group --&gt;</span>
 <span class="lineno">25</span>                             <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;JPEG&quot;</span><span class="nt">&gt;</span>JPEG<span class="nt">&lt;/option&gt;</span>
 <span class="lineno">26</span>                             <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;GIF&quot;</span><span class="nt">&gt;</span>GIF<span class="nt">&lt;/option&gt;</span>
@@ -2071,7 +2071,7 @@
 <span class="lineno">39</span>                     <span class="nt">&lt;label&gt;</span>Multiple Select w/ Groups<span class="nt">&lt;/label&gt;</span>
 <span class="lineno">40</span>                     <span class="nt">&lt;select</span> <span class="na">data-placeholder=</span><span class="s">&quot;Choose File Format&quot;</span> <span class="na">multiple</span><span class="nt">&gt;</span>
 <span class="lineno">41</span>                         <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span>
-<span class="lineno">42</span>                         <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Images&quot;</span><span class="nt">&gt;</span>   
+<span class="lineno">42</span>                         <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Images&quot;</span><span class="nt">&gt;</span>
 <span class="lineno">43</span>                             ...
 <span class="lineno">44</span>                         <span class="nt">&lt;/optgroup&gt;</span>
 <span class="lineno">45</span>                         <span class="nt">&lt;optgroup</span> <span class="na">label=</span><span class="s">&quot;Audio&quot;</span><span class="nt">&gt;</span>
@@ -2094,7 +2094,7 @@
 <h3>Options</h3>
 <p>Chosen automatically sets its default field text by reading the <b>data-placeholder</b> value. If no value is set, chosen will default to "Select an Option" or "Select Some Options" depending on whether it's a single or multiple select.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno">1</span> <span class="nt">&lt;select</span> <span class="na">data-placeholder=</span><span class="s">&quot;Choose File Format&quot;</span><span class="nt">&gt;</span>
-<span class="lineno">2</span>     <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span> 
+<span class="lineno">2</span>     <span class="nt">&lt;option</span> <span class="na">value</span><span class="nt">&gt;&lt;/option&gt;</span>
 <span class="lineno">3</span>     <span class="c">&lt;!-- Rest of Options --&gt;</span>
 <span class="lineno">4</span> <span class="nt">&lt;/select&gt;</span></code></pre></div>
 <p>Note: On Single selects, the first option must be blank to take advantage of the default text support.</p>
@@ -2111,7 +2111,7 @@
                     <h1>Affix <small>wdesk-affix.js</small></h1>
                 </div>
                 <p class="lead">The subnavigation on the left side of this documentation is a live demo of the affix plugin.</p>
-                
+
                 <h2>Usage</h2>
 
 <h3>Via data attributes</h3>
@@ -2203,51 +2203,51 @@
 ================================================== -->
 <script>
 
-head.js({ jQuery: '/archives/0.1.6/assets/js/core/jquery.js' });
+head.js({ jQuery: '../assets/js/core/jquery.js' });
 
 head.ready('jQuery', function() {
     // head.js is much more lightweight / faster than Modernizr.load
     // for multiple requests like these.
     head.js(
-        { sniffer:      '/archives/0.1.6/assets/js/core/ua-sniffer.js'    }
-      , { placeholders: '/archives/0.1.6/assets/js/core/jquery-placeholders-min.js'   }
+        { sniffer:      '../assets/js/core/ua-sniffer.js'    }
+      , { placeholders: '../assets/js/core/jquery-placeholders-min.js'   }
       // flextext for threaded comments demo
-      , { flextext:     '/archives/0.1.6/assets/js/docs-only/jquery.flexText.min.js'   }  
-      , { transition:   '/archives/0.1.6/assets/js/wdesk-transition.js'   }
+      , { flextext:     '../assets/js/docs-only/jquery.flexText.min.js'   }
+      , { transition:   '../assets/js/wdesk-transition.js'   }
     );
 });
 
 // ua-sniffer dependencies
 head.ready('sniffer', function() {
     head.js(
-        { snifferDecorator: '/archives/0.1.6/assets/js/core/ua-sniffer-decorator.js' }
-      , { styleIE: '/archives/0.1.6/assets/js/docs-only/style-ie.js' }
+        { snifferDecorator: '../assets/js/core/ua-sniffer-decorator.js' }
+      , { styleIE: '../assets/js/docs-only/style-ie.js' }
     );
 });
 
 // wdesk-transition dependencies
 head.ready('transition', function() {
     head.js(
-        { chosen:       '/archives/0.1.6/assets/js/wdesk-chosen.js'   }
-      , { scrollspy:    '/archives/0.1.6/assets/js/wdesk-scrollspy.js'}
-      , { affix:        '/archives/0.1.6/assets/js/wdesk-affix.js'    }
-      , { alert:        '/archives/0.1.6/assets/js/wdesk-alert.js'    }
-      , { modal:        '/archives/0.1.6/assets/js/wdesk-modal.js'    }
-      , { tab:          '/archives/0.1.6/assets/js/wdesk-tab.js'      }
-      , { button:       '/archives/0.1.6/assets/js/wdesk-button.js'   }
-      , { collapse:     '/archives/0.1.6/assets/js/wdesk-collapse.js' }
-      , { tooltip:      '/archives/0.1.6/assets/js/wdesk-tooltip.js'  }
+        { chosen:       '../assets/js/wdesk-chosen.js'   }
+      , { scrollspy:    '../assets/js/wdesk-scrollspy.js'}
+      , { affix:        '../assets/js/wdesk-affix.js'    }
+      , { alert:        '../assets/js/wdesk-alert.js'    }
+      , { modal:        '../assets/js/wdesk-modal.js'    }
+      , { tab:          '../assets/js/wdesk-tab.js'      }
+      , { button:       '../assets/js/wdesk-button.js'   }
+      , { collapse:     '../assets/js/wdesk-collapse.js' }
+      , { tooltip:      '../assets/js/wdesk-tooltip.js'  }
     );
 });
 
 // wdesk-collapse dependencies
 head.ready('collapse', function() {
-    head.js({ dropdown: '/archives/0.1.6/assets/js/wdesk-dropdown.js' });
+    head.js({ dropdown: '../assets/js/wdesk-dropdown.js' });
 });
 
 // wdesk-tooltip dependencies
 head.ready('tooltip', function() {
-    head.js({ popover:  '/archives/0.1.6/assets/js/wdesk-popover.js'  });
+    head.js({ popover:  '../assets/js/wdesk-popover.js'  });
 });
 
 // wdesk documentation scripts should load only after e'thing else is done
@@ -2259,15 +2259,15 @@ var loadDocsJsAssets = function() {
     // script resources that should not be used in wdesk products
     // for documentation / examples only!
     head.js(
-        { debounce:      '/archives/0.1.6/assets/js/docs-only/smart-resize.js' }
-      , { application:   '/archives/0.1.6/assets/js/docs-only/application.js'  }
-      , { iconography:   '/archives/0.1.6/assets/js/docs-only/iconography-helpers.js'  }
+        { debounce:      '../assets/js/docs-only/smart-resize.js' }
+      , { application:   '../assets/js/docs-only/application.js'  }
+      , { iconography:   '../assets/js/docs-only/iconography-helpers.js'  }
     );
 };
 
 </script>
 
-    
+
 
 </body>
 </html>

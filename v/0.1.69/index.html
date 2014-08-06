@@ -9,40 +9,40 @@
 <meta name="author" content="Aaron Lademann">
 
 <title>
-    
+
         Wdesk
-    
+
 </title>
 
 <!--[if !IE]> -->
-<link href="/archives/0.1.6/assets/css/wdesk.css" rel="stylesheet" title="standard">
-<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
+<link href="./assets/css/wdesk.css" rel="stylesheet" title="standard">
+<link href="./assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
 <!-- <![endif]-->
 <!--[if IE]>
-<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="stylesheet">
+<link href="./assets/css/wdesk_ie.css" rel="stylesheet">
 <![endif]-->
 
 
 <!-- Documentation extras -->
-<link href="/archives/0.1.6/assets/css/docs.css" rel="stylesheet">
+<link href="./assets/css/docs.css" rel="stylesheet">
 
 
 <!-- Favicons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/archives/0.1.6/assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/archives/0.1.6/assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/archives/0.1.6/assets/ico/apple-touch-icon-72-precomposed.png">
-                <link rel="apple-touch-icon-precomposed" href="/archives/0.1.6/assets/ico/apple-touch-icon-57-precomposed.png">
-                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.png">
-                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
-                                        <link rel="icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="./assets/ico/favicon.png">
+                               <link rel="shortcut icon" href="./assets/ico/favicon.ico" type="image/x-icon">
+                                        <link rel="icon" href="./assets/ico/favicon.ico" type="image/x-icon">
 
-<script src="/archives/0.1.6/assets/js/core/modernizr-min.js"></script>
-<script src="/archives/0.1.6/assets/js/docs-only/head.load.min.js"></script>
+<script src="./assets/js/core/modernizr-min.js"></script>
+<script src="./assets/js/docs-only/head.load.min.js"></script>
     <!-- Place anything custom after this. -->
 </head>
 <body ontouchstart class="wdesk-docs-body home" data-spy="scroll" data-offset="33" data-target=".wdesk-docs-sidebar">
     <!--[if lt IE 9]>
-    <script src="/archives/0.1.6/assets/js/core/respond.min.js"></script>  
+    <script src="./assets/js/core/respond.min.js"></script>
     <![endif]-->
     <!-- Main navbar for all docs pages. -->
     <!-- Navbar
@@ -62,7 +62,7 @@
                     <div class="visible-retina"></div>
                     <div class="hidden-retina"></div>
                     <!--[if lt IE 9]>
-                        <img src="/archives/0.1.6/assets/img/brand/wdesk-logo_color.png">
+                        <img src="./assets/img/brand/wdesk-logo_color.png">
                     <![endif]-->
                 </div>
                 <!-- optional solution name -->
@@ -176,51 +176,51 @@
 ================================================== -->
 <script>
 
-head.js({ jQuery: '/archives/0.1.6/assets/js/core/jquery.js' });
+head.js({ jQuery: './assets/js/core/jquery.js' });
 
 head.ready('jQuery', function() {
     // head.js is much more lightweight / faster than Modernizr.load
     // for multiple requests like these.
     head.js(
-        { sniffer:      '/archives/0.1.6/assets/js/core/ua-sniffer.js'    }
-      , { placeholders: '/archives/0.1.6/assets/js/core/jquery-placeholders-min.js'   }
+        { sniffer:      './assets/js/core/ua-sniffer.js'    }
+      , { placeholders: './assets/js/core/jquery-placeholders-min.js'   }
       // flextext for threaded comments demo
-      , { flextext:     '/archives/0.1.6/assets/js/docs-only/jquery.flexText.min.js'   }  
-      , { transition:   '/archives/0.1.6/assets/js/wdesk-transition.js'   }
+      , { flextext:     './assets/js/docs-only/jquery.flexText.min.js'   }
+      , { transition:   './assets/js/wdesk-transition.js'   }
     );
 });
 
 // ua-sniffer dependencies
 head.ready('sniffer', function() {
     head.js(
-        { snifferDecorator: '/archives/0.1.6/assets/js/core/ua-sniffer-decorator.js' }
-      , { styleIE: '/archives/0.1.6/assets/js/docs-only/style-ie.js' }
+        { snifferDecorator: './assets/js/core/ua-sniffer-decorator.js' }
+      , { styleIE: './assets/js/docs-only/style-ie.js' }
     );
 });
 
 // wdesk-transition dependencies
 head.ready('transition', function() {
     head.js(
-        { chosen:       '/archives/0.1.6/assets/js/wdesk-chosen.js'   }
-      , { scrollspy:    '/archives/0.1.6/assets/js/wdesk-scrollspy.js'}
-      , { affix:        '/archives/0.1.6/assets/js/wdesk-affix.js'    }
-      , { alert:        '/archives/0.1.6/assets/js/wdesk-alert.js'    }
-      , { modal:        '/archives/0.1.6/assets/js/wdesk-modal.js'    }
-      , { tab:          '/archives/0.1.6/assets/js/wdesk-tab.js'      }
-      , { button:       '/archives/0.1.6/assets/js/wdesk-button.js'   }
-      , { collapse:     '/archives/0.1.6/assets/js/wdesk-collapse.js' }
-      , { tooltip:      '/archives/0.1.6/assets/js/wdesk-tooltip.js'  }
+        { chosen:       './assets/js/wdesk-chosen.js'   }
+      , { scrollspy:    './assets/js/wdesk-scrollspy.js'}
+      , { affix:        './assets/js/wdesk-affix.js'    }
+      , { alert:        './assets/js/wdesk-alert.js'    }
+      , { modal:        './assets/js/wdesk-modal.js'    }
+      , { tab:          './assets/js/wdesk-tab.js'      }
+      , { button:       './assets/js/wdesk-button.js'   }
+      , { collapse:     './assets/js/wdesk-collapse.js' }
+      , { tooltip:      './assets/js/wdesk-tooltip.js'  }
     );
 });
 
 // wdesk-collapse dependencies
 head.ready('collapse', function() {
-    head.js({ dropdown: '/archives/0.1.6/assets/js/wdesk-dropdown.js' });
+    head.js({ dropdown: './assets/js/wdesk-dropdown.js' });
 });
 
 // wdesk-tooltip dependencies
 head.ready('tooltip', function() {
-    head.js({ popover:  '/archives/0.1.6/assets/js/wdesk-popover.js'  });
+    head.js({ popover:  './assets/js/wdesk-popover.js'  });
 });
 
 // wdesk documentation scripts should load only after e'thing else is done
@@ -232,15 +232,15 @@ var loadDocsJsAssets = function() {
     // script resources that should not be used in wdesk products
     // for documentation / examples only!
     head.js(
-        { debounce:      '/archives/0.1.6/assets/js/docs-only/smart-resize.js' }
-      , { application:   '/archives/0.1.6/assets/js/docs-only/application.js'  }
-      , { iconography:   '/archives/0.1.6/assets/js/docs-only/iconography-helpers.js'  }
+        { debounce:      './assets/js/docs-only/smart-resize.js' }
+      , { application:   './assets/js/docs-only/application.js'  }
+      , { iconography:   './assets/js/docs-only/iconography-helpers.js'  }
     );
 };
 
 </script>
 
-    
+
 
 </body>
 </html>
