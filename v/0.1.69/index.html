@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Wdesk Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<title>
+    
+        Wdesk
+    
+</title>
+
+<!--[if !IE]> -->
+<link href="/archives/0.1.6/assets/css/wdesk.css" rel="stylesheet" title="standard">
+<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if IE]>
+<link href="/archives/0.1.6/assets/css/wdesk_ie.css" rel="stylesheet">
+<![endif]-->
+
+
+<!-- Documentation extras -->
+<link href="/archives/0.1.6/assets/css/docs.css" rel="stylesheet">
+
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/archives/0.1.6/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/archives/0.1.6/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/archives/0.1.6/assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="/archives/0.1.6/assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.png">
+                               <link rel="shortcut icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
+                                        <link rel="icon" href="/archives/0.1.6/assets/ico/favicon.ico" type="image/x-icon">
+
+<script src="/archives/0.1.6/assets/js/core/modernizr-min.js"></script>
+<script src="/archives/0.1.6/assets/js/docs-only/head.load.min.js"></script>
+    <!-- Place anything custom after this. -->
+</head>
+<body ontouchstart class="wdesk-docs-body home" data-spy="scroll" data-offset="33" data-target=".wdesk-docs-sidebar">
+    <!--[if lt IE 9]>
+    <script src="/archives/0.1.6/assets/js/core/respond.min.js"></script>  
+    <![endif]-->
+    <!-- Main navbar for all docs pages. -->
+    <!-- Navbar
+================================================== -->
+<div class="navbar navbar-fixed-top wdesk-docs-navbar">
+    <div class="container">
+        <ul class="nav mobile nav-blocks">
+            <li>
+                <button type="button" class="navbar-toggle hitarea no-text collapsed" data-toggle="collapse" data-target=".docs-nav-collapse">
+                    <i class="icon icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-brand">
+            <a class="brand-link" href="/archives/0.1.6/index.html">
+                <div class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]>
+                        <img src="/archives/0.1.6/assets/img/brand/wdesk-logo_color.png">
+                    <![endif]-->
+                </div>
+                <!-- optional solution name -->
+                <span class="solution-name">Style Guide</span>
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav">
+                <li class="active">
+                    <a class="hitarea" href="/archives/0.1.6/index.html">Home</a>
+                </li>
+                <!-- <li >
+                    <a href="/archives/0.1.6/getting-started/index.html">Get started</a>
+                </li> -->
+                <li >
+                    <a class="hitarea" href="/archives/0.1.6/css/index.html">CSS</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="/archives/0.1.6/components/index.html">Components</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="/archives/0.1.6/javascript/index.html">JavaScript</a>
+                </li>
+                <!-- <li >
+                    <a class="hitarea" href="/archives/0.1.6/customize/index.html">Customize</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="navbar-scroll-fade"></div>
+
+    <!-- Page content of course! -->
+    <div class="wdesk-docs-jumbotron masthead">
+    <div class="container">
+        <h1>Wdesk</h1>
+        <p class="lead">Sleek, intuitive, and powerful front-end framework <br />for faster and easier web development at WebFilings.</p>
+        <p class="callout-button">
+            <a href="mailto:aaron.lademann@webfilings.com?subject=I want to help make Wdesk great!" class="btn btn-large callout">Be a Contributor</a>
+        </p>
+        <ul class="masthead-links">
+            <li>
+                <a href="https://github.com/WebFilings/web-skin" target="_blank">GitHub project</a>
+            </li>
+            <li>
+                <a href="https://github.com/WebFilings/web-skin/blob/master/wdesk.zip" target="_blank">Download</a>
+            </li>
+            <li>Version 0.1.69</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="wdesk-docs-marketing">
+
+        <h2>Introducing Wdesk</h2>
+        <p class="marketing-byline">Need reasons to love Wdesk? Look no further.</p>
+
+        <div class="row">
+            <div class="span4">
+                <h2>By nerds, for nerds.</h2>
+                <p>Inspired by the amazing work of <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a> and ported for WebFilings by <a href="http://twitter.com/alademann" target="_blank">@alademann</a>, Wdesk utilizes <a href="http://sass-lang.com" target="_blank">Sassy CSS</a> with <a href="http://compass-style.org" target="_blank">Compass</a>, to help the <a href="https://github.com/WebFilings?tab=members" target="_blank">nerds at WebFilings</a> do awesome stuff for their customers.</p>
+            </div>
+            <div class="span4">
+                <h2>Made for everyone.</h2>
+                <p>Wdesk has been built from the ground up to push WebFilings forward. It looks and behaves great on the latest smartphones, tablets, and desktops <br />(including support for IE8+).</p>
+            </div>
+            <div class="span4">
+                <h2>Packed with features.</h2>
+                <p>A <span class="scss-output grid-columns"></span>-column responsive <a href="/archives/0.1.6/css/index.html#grid-system">grid</a>, dozens of components, <a href="/archives/0.1.6/javascript/index.html">JavaScript UI Plugins</a>, typography, form controls, and much, much more.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- Main docs footer (social buttons, copyright, etc). -->
+    <!-- Footer
+================================================== -->
+<footer class="wdesk-docs-footer">
+    <div class="container">
+
+        <div class="wdesk-docs-social">
+            <!-- <ul class="wdesk-docs-social-buttons">
+                <li>
+                    <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=WebFilings&repo=web-skin&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+                </li>
+                <li>
+                    <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=WebFilings&repo=web-skin&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="102px" height="20px"></iframe>
+                </li>
+            </ul> -->
+        </div>
+
+
+        <p>Wdesk <span class="label" title="Current Wdesk Version">0.1.69</span> was inspired by the amazing work of <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a> and ported for WebFilings by <a href="http://twitter.com/alademann" target="_blank">@alademann</a></p>
+        <ul class="footer-links">
+            <li><a href="mailto:aaron.lademann@webfilings.com?subject=I want to help make Wdesk great!">Contribute</a></li>
+            <li class="muted">&middot;</li>
+            <li><a href="https://github.com/WebFilings/web-skin/issues?state=open" target="_blank">Issues</a></li>
+            <li class="muted">&middot;</li>
+            <li><a href="https://github.com/WebFilings/web-skin/releases" target="_blank">Version History</a></li>
+        </ul>
+    </div>
+</footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Wdesk core JavaScript
+================================================== -->
+<script>
+
+head.js({ jQuery: '/archives/0.1.6/assets/js/core/jquery.js' });
+
+head.ready('jQuery', function() {
+    // head.js is much more lightweight / faster than Modernizr.load
+    // for multiple requests like these.
+    head.js(
+        { sniffer:      '/archives/0.1.6/assets/js/core/ua-sniffer.js'    }
+      , { placeholders: '/archives/0.1.6/assets/js/core/jquery-placeholders-min.js'   }
+      // flextext for threaded comments demo
+      , { flextext:     '/archives/0.1.6/assets/js/docs-only/jquery.flexText.min.js'   }  
+      , { transition:   '/archives/0.1.6/assets/js/wdesk-transition.js'   }
+    );
+});
+
+// ua-sniffer dependencies
+head.ready('sniffer', function() {
+    head.js(
+        { snifferDecorator: '/archives/0.1.6/assets/js/core/ua-sniffer-decorator.js' }
+      , { styleIE: '/archives/0.1.6/assets/js/docs-only/style-ie.js' }
+    );
+});
+
+// wdesk-transition dependencies
+head.ready('transition', function() {
+    head.js(
+        { chosen:       '/archives/0.1.6/assets/js/wdesk-chosen.js'   }
+      , { scrollspy:    '/archives/0.1.6/assets/js/wdesk-scrollspy.js'}
+      , { affix:        '/archives/0.1.6/assets/js/wdesk-affix.js'    }
+      , { alert:        '/archives/0.1.6/assets/js/wdesk-alert.js'    }
+      , { modal:        '/archives/0.1.6/assets/js/wdesk-modal.js'    }
+      , { tab:          '/archives/0.1.6/assets/js/wdesk-tab.js'      }
+      , { button:       '/archives/0.1.6/assets/js/wdesk-button.js'   }
+      , { collapse:     '/archives/0.1.6/assets/js/wdesk-collapse.js' }
+      , { tooltip:      '/archives/0.1.6/assets/js/wdesk-tooltip.js'  }
+    );
+});
+
+// wdesk-collapse dependencies
+head.ready('collapse', function() {
+    head.js({ dropdown: '/archives/0.1.6/assets/js/wdesk-dropdown.js' });
+});
+
+// wdesk-tooltip dependencies
+head.ready('tooltip', function() {
+    head.js({ popover:  '/archives/0.1.6/assets/js/wdesk-popover.js'  });
+});
+
+// wdesk documentation scripts should load only after e'thing else is done
+head.ready('popover', function() {
+    loadDocsJsAssets();
+});
+
+var loadDocsJsAssets = function() {
+    // script resources that should not be used in wdesk products
+    // for documentation / examples only!
+    head.js(
+        { debounce:      '/archives/0.1.6/assets/js/docs-only/smart-resize.js' }
+      , { application:   '/archives/0.1.6/assets/js/docs-only/application.js'  }
+      , { iconography:   '/archives/0.1.6/assets/js/docs-only/iconography-helpers.js'  }
+    );
+};
+
+</script>
+
+    
+
+</body>
+</html>

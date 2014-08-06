@@ -1,0 +1,3000 @@
+/*
+ * Wdesk Style Guide Documentation
+ * Special styles for presenting Wdesk's documentation and code examples.
+ */
+@-webkit-keyframes "rotate-counter-clockwise" {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -webkit-transform: rotate(-360deg) translateZ(0);
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+
+@-webkit-keyframes "rotate-clockwise" {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -webkit-transform: rotate(360deg) translateZ(0);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@-moz-keyframes rotate-counter-clockwise {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -moz-transform: rotate(-360deg) translateZ(0);
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+
+@-moz-keyframes rotate-clockwise {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -moz-transform: rotate(360deg) translateZ(0);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@-ms-keyframes rotate-counter-clockwise {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -ms-transform: rotate(-360deg) translateZ(0);
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+
+@-ms-keyframes rotate-clockwise {
+  /* line 400, ../../../sass/_constants/_mixins.scss */
+  to {
+    -ms-transform: rotate(360deg) translateZ(0);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+@keyframes rotate-counter-clockwise {
+  /* line 387, ../../../sass/_constants/_mixins.scss */
+  to {
+    -webkit-transform: rotate(-360deg) translateZ(0);
+    -moz-transform: rotate(-360deg) translateZ(0);
+    -ms-transform: rotate(-360deg) translateZ(0);
+    transform: rotate(-360deg) translateZ(0);
+  }
+}
+
+@keyframes rotate-clockwise {
+  /* line 387, ../../../sass/_constants/_mixins.scss */
+  to {
+    -webkit-transform: rotate(360deg) translateZ(0);
+    -moz-transform: rotate(360deg) translateZ(0);
+    -ms-transform: rotate(360deg) translateZ(0);
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* line 46, ../../../sass/_constants/_transition-reference.scss */
+.pause,
+.pause *
+.stop,
+.stop * {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+/* line 50, ../../../sass/_constants/_transition-reference.scss */
+.play,
+.play * {
+  -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
+  -ms-animation-play-state: running;
+  animation-play-state: running;
+}
+
+/* line 18, ../../../sass/_constants/_component-reference.scss */
+.text-highlighted {
+  color: #595959;
+  background-color: #fdec81;
+}
+/* line 21, ../../../sass/_constants/_component-reference.scss */
+.muted.text-highlighted, .text-highlighted .muted {
+  color: #aba26d;
+}
+
+/* Key scaffolding
+-------------------------------------------------- */
+/* line 13, ../../../sass/docs.scss */
+body {
+  padding-top: 32px;
+  position: relative;
+  /* For scrollyspy */
+}
+@media only screen and (max-width: 767px) {
+  /* line 13, ../../../sass/docs.scss */
+  body {
+    padding-top: 66px;
+  }
+  /* line 20, ../../../sass/docs.scss */
+  body .nav > li.hide-horizontal {
+    display: none;
+  }
+  /* line 21, ../../../sass/docs.scss */
+  body .navbar-scroll-fade {
+    height: 66px;
+  }
+  /* line 23, ../../../sass/docs.scss */
+  body.home {
+    padding-top: 32px;
+  }
+  /* line 25, ../../../sass/docs.scss */
+  body.home .navbar-scroll-fade {
+    display: none !important;
+  }
+}
+
+/* line 30, ../../../sass/docs.scss */
+.wdesk-docs-navbar {
+  z-index: 1031;
+}
+
+/* line 35, ../../../sass/docs.scss */
+.wdesk-docs-footer {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* line 40, ../../../sass/docs.scss */
+.tab-content {
+  padding: 2px;
+}
+
+/* Sections
+-------------------------------------------------- */
+/* Padding for in-page bookmarks */
+/* line 46, ../../../sass/docs.scss */
+section {
+  padding-top: 30px;
+}
+/* line 50, ../../../sass/docs.scss */
+.container > .row section:first-child {
+  padding-top: 0;
+}
+/* line 55, ../../../sass/docs.scss */
+.container > .row .accordion-inner section:first-child {
+  padding-top: 10px;
+}
+
+/* Few stylistic typography tweaks */
+/* line 62, ../../../sass/docs.scss */
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
+
+/* line 65, ../../../sass/docs.scss */
+section > ul li {
+  margin-bottom: 5px;
+}
+
+/* Jumbotrons
+-------------------------------------------------- */
+/* Base class */
+/* line 75, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron {
+  position: relative;
+  z-index: 1028;
+  margin-bottom: 20px;
+  padding: 30px 15px 15px;
+  color: #fff;
+  text-align: center;
+  background-color: #707070;
+  /* Link styles (used on .masthead-links as well) */
+  /* Download button */
+}
+/* line 85, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron.masthead h1 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)  \9;
+  opacity: 0 ;
+}
+/* line 88, ../../../sass/docs.scss */
+.svg .wdesk-docs-jumbotron.masthead h1 {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+  background: transparent url('../img/brand/wdesk-logo_white.svg?1399486277') center center no-repeat;
+  background-size: contain;
+  width: auto;
+  height: 60px;
+}
+/* line 98, ../../../sass/docs.scss */
+.svg .wdesk-docs-jumbotron.masthead h1, .no-svg .wdesk-docs-jumbotron.masthead h1 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)  \9;
+  opacity: 1 ;
+}
+/* line 104, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron h1 {
+  color: white;
+  font-size: 60px;
+  letter-spacing: -.1ex;
+  margin-top: 5px;
+}
+/* line 111, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron .lead {
+  color: white;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70)  \9;
+  opacity: 0.7 ;
+  margin-bottom: 10px;
+}
+/* line 118, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron a {
+  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+/* line 125, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron a:hover {
+  color: #fff;
+}
+/* line 132, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron .callout-button {
+  margin: 20px 0 40px;
+}
+/* line 135, ../../../sass/docs.scss */
+.wdesk-docs-jumbotron .btn {
+  color: #707070;
+  padding: 18px 24px !important;
+  font-size: 21px;
+}
+/* line 141, ../../../sass/docs.scss */
+.no-touch .wdesk-docs-jumbotron .btn:hover, html .wdesk-docs-jumbotron .btn:hover:active {
+  color: #707070;
+  background-color: #fff;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)  \9;
+  border-color: #fff;
+}
+
+/* Masthead (docs home)
+------------------------- */
+/* line 154, ../../../sass/docs.scss */
+.masthead h1 {
+  line-height: 1;
+}
+
+/* Textual links in masthead */
+/* line 159, ../../../sass/docs.scss */
+.masthead-links {
+  margin: 20px 0;
+  list-style: none;
+}
+
+/* line 163, ../../../sass/docs.scss */
+.masthead-links li {
+  display: inline;
+  padding: 0 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Marketing section of Overview
+-------------------------------------------------- */
+/* line 174, ../../../sass/docs.scss */
+.wdesk-docs-marketing {
+  text-align: center;
+  color: #5a5a5a;
+}
+
+/* line 178, ../../../sass/docs.scss */
+.wdesk-docs-marketing h1 {
+  margin: 60px 0 10px;
+  font-size: 50px;
+  line-height: 1;
+}
+
+/* line 183, ../../../sass/docs.scss */
+.wdesk-docs-marketing h2 {
+  margin-bottom: 5px;
+}
+
+/* line 186, ../../../sass/docs.scss */
+.wdesk-docs-marketing p {
+  line-height: 1.4;
+}
+
+/* line 189, ../../../sass/docs.scss */
+.wdesk-docs-marketing .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 21px;
+  font-family: "GibsonRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+  color: #999;
+}
+
+/* line 196, ../../../sass/docs.scss */
+.marketing-img {
+  display: block;
+  margin: 30px auto 10px;
+  max-height: 145px;
+}
+
+/* Special grid styles
+-------------------------------------------------- */
+/* line 207, ../../../sass/docs.scss */
+.show-grid {
+  margin-bottom: 15px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 212, ../../../sass/docs.scss */
+.show-grid [class^="span"] {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+}
+
+/* line 219, ../../../sass/docs.scss */
+.show-grid [class^="span"]:hover {
+  background-color: #ddd;
+}
+
+/* Sidenav
+-------------------------------------------------- */
+/* Base styles are not affixable given mobile-first */
+/* line 229, ../../../sass/docs.scss */
+.wdesk-docs-sidenav {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)  \9;
+  opacity: 0 ;
+  margin: 20px 0 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 233, ../../../sass/docs.scss */
+.wdesk-docs-sidenav.affix {
+  position: static;
+  top: 0;
+}
+/* line 240, ../../../sass/docs.scss */
+.wdesk-docs-sidenav .hitarea .icon {
+  position: absolute;
+  left: auto;
+  right: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)  \9;
+  opacity: 0.25 ;
+  color: #000;
+}
+/* line 248, ../../../sass/docs.scss */
+.no-touch .wdesk-docs-sidenav .hitarea:hover .icon {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)  \9;
+  opacity: 0.5 ;
+}
+/* line 259, ../../../sass/docs.scss */
+.wdesk-docs-sidenav .active .hitarea .icon, .no-touch .wdesk-docs-sidenav .active .hitarea:hover .icon {
+  color: #fff !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)  \9;
+  opacity: 1 ;
+}
+
+/* line 271, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container {
+  z-index: 1030;
+  position: fixed;
+  left: 0;
+  top: 32px;
+  width: 100%;
+  padding: 0;
+  background-color: white;
+  border-bottom: 1px solid #b2b2b2;
+  overflow: auto;
+}
+/* line 282, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills {
+  max-height: 50px;
+  margin-top: 0;
+  overflow: visible;
+}
+/* line 286, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li {
+  max-height: 36px;
+  overflow: hidden;
+}
+/* line 290, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li + li {
+  border-left: 1px solid #b2b2b2;
+}
+/* line 293, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea {
+  font-size: 12px;
+  line-height: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+}
+/* line 300, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea b {
+  display: none;
+}
+/* line 305, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills .hitarea .icon {
+  display: none;
+}
+/* line 311, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea {
+  background-color: #cbcbcb;
+}
+/* line 316, ../../../sass/docs.scss */
+.no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #9bd83a;
+}
+/* line 1800, ../../../sass/_constants/_mixins.scss */
+.no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover .caret {
+  border-top-color: white;
+}
+/* line 1801, ../../../sass/_constants/_mixins.scss */
+.no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover .badge {
+  color: #9bd83a;
+  background-color: white;
+}
+/* line 319, ../../../sass/docs.scss */
+html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover:active {
+  color: white;
+  background-color: #68a804;
+}
+/* line 1812, ../../../sass/_constants/_mixins.scss */
+html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover:active .caret {
+  border-top-color: white;
+}
+/* line 1813, ../../../sass/_constants/_mixins.scss */
+html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea:hover:active .badge {
+  color: #68a804;
+  background-color: white;
+}
+/* line 114, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover:active, .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover:active {
+  color: white;
+  background-color: #7bce05;
+}
+/* line 1824, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea .caret, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover .caret, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover:active .caret, .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea .caret, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover .caret, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover:active .caret {
+  border-top-color: white;
+}
+/* line 1825, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea .badge, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover .badge, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.active > .hitarea:hover:active .badge, .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea .badge, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover .badge, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.open > .hitarea:hover:active .badge {
+  color: #7bce05;
+  background-color: white;
+}
+/* line 114, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea:hover, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea:hover:active {
+  cursor: not-allowed;
+  text-decoration: none;
+  color: #afafaf !important;
+  background-color: gainsboro !important;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)  \9;
+}
+/* line 1839, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea .badge, .no-touch .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea:hover .badge, html .wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li.disabled > .hitarea:hover:active .badge {
+  color: gainsboro;
+  background-color: #afafaf;
+}
+/* line 338, ../../../sass/docs.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea[disabled] {
+  cursor: not-allowed;
+  text-decoration: none;
+  color: #afafaf !important;
+  background-color: gainsboro !important;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)  \9;
+}
+/* line 1839, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-sidebar.pill-container .wdesk-docs-sidenav.nav-pills > li > .hitarea[disabled] .badge {
+  color: gainsboro;
+  background-color: #afafaf;
+}
+
+/* Bootstrap code examples
+-------------------------------------------------- */
+/* Base class */
+/* line 353, ../../../sass/docs.scss */
+.wdesk-docs-example {
+  position: relative;
+  min-height: 100px;
+  padding: 39px 14px 14px;
+  margin-bottom: -1px;
+  border: 1px solid #ddd;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  *zoom: 1;
+}
+/* line 38, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-example:before, .wdesk-docs-example:after {
+  display: table;
+  content: "";
+}
+/* line 42, ../../../sass/_constants/_mixins.scss */
+.wdesk-docs-example:after {
+  clear: both;
+}
+/* line 363, ../../../sass/docs.scss */
+.wdesk-docs-example .navbar-fixed-top, .wdesk-docs-example .navbar-fixed-bottom {
+  position: absolute;
+  z-index: 1029;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+/* Echo out a label for the example */
+/* line 373, ../../../sass/docs.scss */
+.wdesk-docs-example:after {
+  content: "Example";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #9da0a4;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Tweak display of the examples */
+/* line 390, ../../../sass/docs.scss */
+.wdesk-docs-example + .prettyprint,
+.wdesk-docs-example + .highlight {
+  margin-top: 0;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* Tweak content of examples for optimum awesome */
+/* line 409, ../../../sass/docs.scss */
+.wdesk-docs-example > p:last-child,
+.wdesk-docs-example > ul:last-child,
+.wdesk-docs-example > ol:last-child,
+.wdesk-docs-example > blockquote:last-child,
+.wdesk-docs-example > input:last-child,
+.wdesk-docs-example > select:last-child,
+.wdesk-docs-example > textarea:last-child,
+.wdesk-docs-example > .table:last-child,
+.wdesk-docs-example > .jumbotron:last-child,
+.wdesk-docs-example > .alert:last-child {
+  margin-bottom: 0;
+}
+
+/* Tooltips */
+/* line 414, ../../../sass/docs.scss */
+.wdesk-docs-tooltip-examples {
+  text-align: center;
+  margin: 0 0 10px;
+  list-style: none;
+}
+
+/* line 419, ../../../sass/docs.scss */
+.wdesk-docs-tooltip-examples li {
+  display: inline;
+  padding: 0 10px;
+}
+
+/* Popovers */
+/* line 425, ../../../sass/docs.scss */
+.wdesk-docs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+
+/* line 429, ../../../sass/docs.scss */
+.wdesk-docs-example-popover .popover {
+  position: relative;
+  display: block;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)  \9;
+  opacity: 1 ;
+  float: left;
+  width: 230px;
+  margin: 20px;
+}
+
+/* line 439, ../../../sass/docs.scss */
+.wdesk-docs-example-comment-popover .popover,
+.wdesk-docs-example-tooltip-nav .tooltip,
+.wdesk-docs-example-comment-thread-popover .popover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)  \9;
+  opacity: 1 ;
+}
+
+/* line 442, ../../../sass/docs.scss */
+.wdesk-docs-example-comment-popover .popover {
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  top: auto;
+  left: 50%;
+  margin-left: -150px;
+}
+
+/* line 451, ../../../sass/docs.scss */
+.wdesk-docs-example-comment-thread-popover {
+  min-height: 450px;
+}
+/* line 453, ../../../sass/docs.scss */
+.wdesk-docs-example-comment-thread-popover [class^="span"] {
+  min-height: 450px;
+  position: relative;
+}
+/* line 457, ../../../sass/docs.scss */
+.wdesk-docs-example-comment-thread-popover .popover {
+  display: block;
+  position: absolute;
+  bottom: 20px;
+  top: auto;
+  left: 50%;
+  margin-left: -150px;
+}
+
+/* line 472, ../../../sass/docs.scss */
+.popover-comment .flex-text-wrap {
+  overflow: auto;
+  overflow-x: hidden;
+}
+/* line 475, ../../../sass/docs.scss */
+.popover-comment .flex-text-wrap pre {
+  display: inline-block;
+  min-height: 34px;
+  margin-bottom: 20px;
+  padding: 7px 12px 5px;
+  vertical-align: middle;
+  color: #6c6c6c;
+  border: 1px solid #e3e3e3;
+  background-color: white;
+  font-family: "GibsonRegular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  *display: inline;
+  *zoom: 1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s, color linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s, color linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s, color linear 0.2s;
+  height: 34px \9;
+  padding-top: 0 \9;
+  padding-bottom: 0 \9;
+  width: 100%;
+  height: auto;
+  padding-right: 0;
+  display: block;
+  margin: 0;
+  background: transparent;
+  border-color: transparent;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+/* line 913, ../../../sass/_constants/_mixins.scss */
+.popover-comment .flex-text-wrap pre[type="file"], .popover-comment .flex-text-wrap pre[type="button"], .popover-comment .flex-text-wrap pre[type="reset"], .popover-comment .flex-text-wrap pre[type="submit"] {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+/* line 918, ../../../sass/_constants/_mixins.scss */
+.popover-comment .flex-text-wrap pre[type="file"] {
+  border: 0 none;
+}
+/* line 490, ../../../sass/docs.scss */
+.popover-comment .flex-text-wrap textarea {
+  -webkit-transition: height 0.3s ease;
+  -moz-transition: height 0.3s ease;
+  transition: height 0.3s ease;
+}
+
+/* line 497, ../../../sass/docs.scss */
+.wdesk-docs-example-tooltip-nav .tooltip {
+  left: 10%;
+  top: 50%;
+  margin-top: -30px;
+}
+
+/* Dropdowns */
+/* line 505, ../../../sass/docs.scss */
+.wdesk-docs-example-submenus {
+  min-height: 180px;
+}
+
+/* line 508, ../../../sass/docs.scss */
+.wdesk-docs-example-submenus > .pull-left + .pull-left {
+  margin-left: 20px;
+}
+
+/* line 512, ../../../sass/docs.scss */
+.wdesk-docs-example-submenus .dropup > .dropdown-menu,
+.wdesk-docs-example-submenus .dropdown > .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 5px;
+  *width: 180px;
+}
+
+/* ChosenJS Examples */
+/* line 521, ../../../sass/docs.scss */
+.wdesk-docs-example-chosenjs .tab-content {
+  overflow: visible;
+}
+
+/* Typography */
+/* line 527, ../../../sass/docs.scss */
+.wdesk-docs-example-type .table td {
+  color: #999;
+  vertical-align: middle;
+}
+
+/* line 533, ../../../sass/docs.scss */
+.wdesk-docs-example-type .table td,
+.wdesk-docs-example-type .table th {
+  padding: 15px 0;
+  border-color: #eee;
+}
+
+/* line 538, ../../../sass/docs.scss */
+.wdesk-docs-example-type .table tr:first-child td,
+.wdesk-docs-example-type .table tr:first-child th {
+  border-top: 0;
+}
+
+/* line 546, ../../../sass/docs.scss */
+.wdesk-docs-example-type h1,
+.wdesk-docs-example-type h2,
+.wdesk-docs-example-type h3,
+.wdesk-docs-example-type h4,
+.wdesk-docs-example-type h5,
+.wdesk-docs-example-type h6 {
+  margin: 0;
+}
+
+/* Navbar examples */
+/* line 555, ../../../sass/docs.scss */
+.wdesk-docs-example .navbar .container {
+  max-width: 100%;
+}
+/* line 558, ../../../sass/docs.scss */
+.wdesk-docs-example .navbar .container .navbar-brand {
+  padding-left: 20px;
+}
+/* line 561, ../../../sass/docs.scss */
+.wdesk-docs-example .navbar .container .nav-secondary {
+  padding-right: 20px;
+}
+/* line 564, ../../../sass/docs.scss */
+.wdesk-docs-example .navbar .container .nav-blocks + .nav-secondary {
+  padding-right: 0;
+}
+@media screen and (max-width: 767px) {
+  /* line 568, ../../../sass/docs.scss */
+  .wdesk-docs-example .navbar .container .navbar-brand {
+    padding-left: 0;
+  }
+  /* line 571, ../../../sass/docs.scss */
+  .wdesk-docs-example .navbar .container .nav-secondary {
+    padding-right: 0;
+  }
+}
+/* line 580, ../../../sass/docs.scss */
+.wdesk-docs-example.responsive-navbar .nav-collapse.collapse {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 589, ../../../sass/docs.scss */
+  .wdesk-responsive-navbar-example {
+    display: none;
+  }
+
+  /* line 591, ../../../sass/docs.scss */
+  .wdesk-responsive-navbar-callout-link {
+    display: none;
+  }
+}
+/* line 595, ../../../sass/docs.scss */
+.wdesk-navbar-top-example,
+.wdesk-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  height: 90px;
+  overflow: hidden;
+  /* cut the drop shadows off */
+}
+
+/* line 602, ../../../sass/docs.scss */
+.wdesk-navbar-top-example .navbar-fixed-top,
+.wdesk-navbar-bottom-example .navbar-fixed-bottom {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 606, ../../../sass/docs.scss */
+.wdesk-navbar-top-example {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  -ms-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}
+
+/* line 609, ../../../sass/docs.scss */
+.wdesk-navbar-top-example:after {
+  top: auto;
+  bottom: -1px;
+  -webkit-border-radius: 0 4px 0 4px;
+  -moz-border-radius: 0 4px 0 4px;
+  -ms-border-radius: 0 4px 0 4px;
+  border-radius: 0 4px 0 4px;
+}
+
+/* line 614, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example {
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+
+/* line 617, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example .navbar {
+  margin-bottom: 0;
+}
+
+/* line 621, ../../../sass/docs.scss */
+.responsive-navbar {
+  min-height: 400px;
+}
+/* line 2008, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .solution-name {
+  display: none !important;
+}
+/* line 2009, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .ribbon-nav-container .nav > li > .hitarea {
+  padding: 0 9px;
+}
+/* line 2013, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .container {
+  margin: 0;
+}
+/* line 2015, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .navbar-brand .brand-link {
+  width: auto;
+  padding-left: 18px;
+}
+/* line 2024, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav.mobile {
+  display: block;
+}
+/* line 2031, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse {
+  clear: both;
+  background-color: white;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  right: 0 !important;
+}
+/* line 2038, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse.in {
+  padding-bottom: 18px;
+  border: 1px solid #b2b2b2;
+  border-top: 0 none;
+}
+/* line 2045, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav {
+  position: static !important;
+  float: none;
+  height: auto;
+  max-height: 100%;
+}
+/* line 2051, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav > li {
+  float: none;
+  clear: both;
+}
+/* line 2055, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav > li > .hitarea {
+  height: 32px;
+  padding: 0 18px;
+  font-size: 14px;
+  line-height: 32px;
+  line-height: 42px;
+}
+/* line 2064, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav > li > .hitarea .caret {
+  margin-top: 18px !important;
+}
+/* line 114, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav > li.active > .hitarea, .no-touch .responsive-navbar .navbar .nav-collapse .nav > li.active > .hitarea:hover, html .responsive-navbar .navbar .nav-collapse .nav > li.active > .hitarea:hover:active {
+  -webkit-box-shadow: inset 4px 0 0 #7bce05;
+  -moz-box-shadow: inset 4px 0 0 #7bce05;
+  box-shadow: inset 4px 0 0 #7bce05;
+}
+/* line 2080, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .nav.nav-tabs {
+  border-bottom: 0 none;
+}
+/* line 2086, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse > .nav {
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+}
+/* line 2090, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse > .nav.nav-tabs + .nav-tabs {
+  border-top: 1px solid #b2b2b2;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+/* line 2102, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .dropdown .dropdown-toggle {
+  border-width: 0 !important;
+}
+/* line 2103, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .dropdown .dropdown-menu {
+  position: relative;
+  right: 0;
+  float: none;
+  clear: both;
+  padding-right: 18px;
+  padding-left: 18px;
+  border-right: 0 none;
+  border-left: 0 none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 2116, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .dropdown .dropdown-menu,
+.responsive-navbar .navbar .nav-collapse .dropdown .dropdown-menu > li > .hitarea {
+  max-width: none;
+}
+/* line 2120, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .dropdown.open .dropdown-menu {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+/* line 2125, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .nav-collapse .dropdown.open:last-of-type .dropdown-menu {
+  border-bottom: 0 none;
+}
+/* line 2132, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar .ribbon-nav-container + .nav-collapse {
+  position: absolute !important;
+  top: 32px;
+}
+/* line 2144, ../../../sass/_constants/_mixins.scss */
+.responsive-navbar .navbar-fixed-top .nav-collapse,
+.responsive-navbar .navbar-fixed-bottom .nav-collapse,
+.responsive-navbar .navbar-static-top .nav-collapse {
+  border-right: 0 none !important;
+  border-left: 0 none !important;
+  -webkit-box-shadow: inset 0 -2px 0 white, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 -2px 0 white, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 -2px 0 white, 0 3px 5px 0 rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+}
+/* line 624, ../../../sass/docs.scss */
+.responsive-navbar .navbar-brand {
+  padding-left: 0 !important;
+}
+
+/* line 634, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example .navbar .tabbable .tab-content.subnav p,
+.wdesk-navbar-top-example .navbar .tabbable .tab-content.subnav p {
+  margin: 0;
+  padding: 0;
+}
+/* line 638, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example .navbar .tabbable .tab-content.subnav p .icon, .wdesk-navbar-bottom-example .navbar .tabbable .tab-content.subnav p .btn,
+.wdesk-navbar-top-example .navbar .tabbable .tab-content.subnav p .icon,
+.wdesk-navbar-top-example .navbar .tabbable .tab-content.subnav p .btn {
+  float: left;
+  margin-right: 20px;
+}
+/* line 643, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example .navbar .tabbable .tab-content.subnav p .icon,
+.wdesk-navbar-top-example .navbar .tabbable .tab-content.subnav p .icon {
+  position: relative;
+  top: 7px;
+  color: #b2b2b2;
+}
+/* line 647, ../../../sass/docs.scss */
+.wdesk-navbar-bottom-example .navbar .tabbable .tab-content.subnav p .icon:last-child,
+.wdesk-navbar-top-example .navbar .tabbable .tab-content.subnav p .icon:last-child {
+  margin-right: 0;
+}
+
+/* Statusbar examples */
+/* line 657, ../../../sass/docs.scss */
+.wdesk-statusbar-example {
+  padding: 0;
+}
+/* line 659, ../../../sass/docs.scss */
+.wdesk-statusbar-example .body-footer {
+  position: absolute;
+  bottom: -1px;
+}
+/* line 663, ../../../sass/docs.scss */
+.wdesk-statusbar-example .body-footer .container {
+  max-width: 98%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* line 669, ../../../sass/docs.scss */
+.wdesk-statusbar-example .body-footer .container .row,
+.wdesk-statusbar-example .body-footer .container [class^="span"] {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* line 675, ../../../sass/docs.scss */
+.wdesk-statusbar-example .body-footer .dropup {
+  position: absolute;
+}
+
+/* Example modals */
+/* line 682, ../../../sass/docs.scss */
+.wdesk-docs-example-modal {
+  max-height: 720px;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* line 687, ../../../sass/docs.scss */
+.wdesk-docs-example-modal-notifications {
+  max-height: 900px;
+}
+/* line 691, ../../../sass/docs.scss */
+.wdesk-docs-example-modal-notifications .modal.second {
+  top: 320px;
+}
+/* line 694, ../../../sass/docs.scss */
+.wdesk-docs-example-modal-notifications .modal.third {
+  top: 600px;
+}
+/* line 697, ../../../sass/docs.scss */
+.wdesk-docs-example-modal-notifications .modal.fourth {
+  top: 880px;
+}
+
+/* line 703, ../../../sass/docs.scss */
+.wdesk-docs-example-modal .modal {
+  position: absolute;
+  display: block;
+  top: 40px;
+  z-index: 3;
+}
+
+/* line 709, ../../../sass/docs.scss */
+.wdesk-docs-example-modal .modal-backdrop {
+  position: absolute;
+  z-index: 2;
+}
+
+/* line 713, ../../../sass/docs.scss */
+.wdesk-docs-example-modal .modal-dialog {
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  /* line 721, ../../../sass/docs.scss */
+  .wdesk-docs-example-modal .session-timeout-dialog .modal-dialog {
+    margin-top: -206px;
+  }
+}
+/* Example toast alerts */
+/* line 729, ../../../sass/docs.scss */
+.wdesk-docs-example-toast-alert {
+  max-height: 440px;
+  overflow: hidden;
+  background-color: white;
+}
+/* line 734, ../../../sass/docs.scss */
+.wdesk-docs-example-toast-alert .alert-toast {
+  position: absolute;
+}
+/* line 738, ../../../sass/docs.scss */
+.wdesk-docs-example-toast-alert .alert-toast.left, .wdesk-docs-example-toast-alert .alert-toast.right {
+  top: 45%;
+}
+
+/* Example dropdowns */
+/* line 745, ../../../sass/docs.scss */
+.wdesk-docs-example > .dropdown > .dropdown-menu,
+.wdesk-docs-example-submenu > .pull-left > .dropup > .dropdown-menu,
+.wdesk-docs-example-submenu > .pull-left > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* line 750, ../../../sass/docs.scss */
+.wdesk-docs-example-submenu {
+  min-height: 240px;
+}
+
+/* line 753, ../../../sass/docs.scss */
+.wdesk-docs-example-submenu > .pull-left + .pull-left {
+  margin-left: 20px;
+}
+
+/* Example tabbable tabs */
+/* line 758, ../../../sass/docs.scss */
+.wdesk-docs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+/* Example templates
+-------------------------------------------------- */
+/* line 766, ../../../sass/docs.scss */
+.wdesk-docs-examples h4 {
+  margin-bottom: 5px;
+}
+
+/* line 769, ../../../sass/docs.scss */
+.wdesk-docs-examples p {
+  margin-bottom: 20px;
+}
+
+/* line 782, ../../../sass/docs.scss */
+.wdesk-docs-example .progress-spinner,
+.wdesk-docs-example .progress-bar {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+  animation-play-state: paused;
+}
+/* line 785, ../../../sass/docs.scss */
+.wdesk-docs-example .progress-spinner.play,
+.wdesk-docs-example .progress-bar.play {
+  -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
+  -ms-animation-play-state: running;
+  animation-play-state: running;
+}
+/* line 790, ../../../sass/docs.scss */
+.wdesk-docs-example.progress-spinner-sizes {
+  float: left;
+  height: auto;
+  width: 100%;
+  background-color: white;
+}
+/* line 795, ../../../sass/docs.scss */
+.wdesk-docs-example.progress-spinner-sizes .progress-spinner {
+  display: block;
+  float: left;
+  margin-right: 35px;
+}
+/* line 799, ../../../sass/docs.scss */
+.wdesk-docs-example.progress-spinner-sizes .progress-spinner:last-child {
+  margin-right: 0;
+}
+/* line 804, ../../../sass/docs.scss */
+.wdesk-docs-example.download-spinners .btn {
+  width: 130px;
+  text-align: left;
+  position: relative;
+}
+/* line 808, ../../../sass/docs.scss */
+.wdesk-docs-example.download-spinners .btn .icon.pull-right {
+  position: absolute;
+  left: auto;
+  right: 6px;
+  top: 6px !important;
+}
+/* line 815, ../../../sass/docs.scss */
+.wdesk-docs-example.download-spinners .btn .icon.pull-right.icon-downloading {
+  top: 6px !important;
+}
+/* line 821, ../../../sass/docs.scss */
+.ua-lt-ie10 .wdesk-docs-example.download-spinners .btn .icon.pull-right {
+  top: 6px !important;
+}
+/* line 823, ../../../sass/docs.scss */
+.ua-lt-ie10 .wdesk-docs-example.download-spinners .btn .icon.pull-right.icon-downloading {
+  top: 6px !important;
+}
+
+/* Responsive docs
+-------------------------------------------------- */
+/* Related: responsive utilities tables */
+/* line 838, ../../../sass/docs.scss */
+.table code {
+  font-size: 13px;
+  font-weight: normal;
+}
+
+/* Utility classes table
+------------------------- */
+/* line 845, ../../../sass/docs.scss */
+.responsive-utilities th small {
+  display: block;
+  font-weight: normal;
+  color: #999;
+}
+
+/* line 850, ../../../sass/docs.scss */
+.responsive-utilities tbody th {
+  font-weight: normal;
+}
+
+/* line 853, ../../../sass/docs.scss */
+.responsive-utilities td {
+  text-align: center;
+}
+
+/* line 856, ../../../sass/docs.scss */
+.responsive-utilities td.is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
+
+/* line 860, ../../../sass/docs.scss */
+.responsive-utilities td.is-hidden {
+  color: #ccc;
+  background-color: #f9f9f9 !important;
+}
+
+/* Responsive tests
+------------------------- */
+/* line 867, ../../../sass/docs.scss */
+.responsive-utilities-test {
+  margin-top: 5px;
+  margin-left: 0;
+  list-style: none;
+  overflow: hidden;
+  /* clear floats */
+}
+
+/* line 873, ../../../sass/docs.scss */
+.responsive-utilities-test li {
+  position: relative;
+  float: left;
+  width: 25%;
+  height: 43px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 43px;
+  color: #999;
+  text-align: center;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 886, ../../../sass/docs.scss */
+.responsive-utilities-test li + li {
+  margin-left: 10px;
+}
+
+/* line 889, ../../../sass/docs.scss */
+.responsive-utilities-test span {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 897, ../../../sass/docs.scss */
+.responsive-utilities-test span {
+  color: #468847;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+}
+
+/* Footer
+-------------------------------------------------- */
+/* line 908, ../../../sass/docs.scss */
+.wdesk-docs-footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 100px;
+  border-top: 1px solid #e3e3e3;
+}
+
+/* line 914, ../../../sass/docs.scss */
+.wdesk-docs-footer p {
+  margin-bottom: 0;
+  color: #777;
+}
+
+/* line 918, ../../../sass/docs.scss */
+.footer-links {
+  margin: 10px 0;
+}
+
+/* line 921, ../../../sass/docs.scss */
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+
+/* line 925, ../../../sass/docs.scss */
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+/* Social proof buttons from GitHub & Twitter */
+/* line 930, ../../../sass/docs.scss */
+.wdesk-docs-social {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Quick links on Home */
+/* line 936, ../../../sass/docs.scss */
+.wdesk-docs-social-buttons {
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  list-style: none;
+}
+
+/* line 942, ../../../sass/docs.scss */
+.wdesk-docs-social-buttons li {
+  display: inline-block;
+  padding: 5px 8px;
+  line-height: 1;
+}
+
+/* line 947, ../../../sass/docs.scss */
+.wdesk-docs-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+
+/* line 950, ../../../sass/docs.scss */
+.wdesk-docs-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
+
+/* Misc docs stuff
+-------------------------------------------------- */
+/* line 960, ../../../sass/docs.scss */
+input.focused {
+  color: #595959;
+  border-color: #46b5f9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #46b5f9;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #46b5f9;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #46b5f9;
+}
+
+/* line 964, ../../../sass/docs.scss */
+input.invalid-demo:not(.valid) {
+  color: #f2200f;
+  border-color: #fdaaab;
+  background-color: #fff6f5;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* line 1551, ../../../sass/_constants/_mixins.scss */
+input.invalid-demo:not(.valid):focus, input.invalid-demo:not(.valid).focus {
+  color: #f2200f;
+  border-color: #fc797a;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #fc797a;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #fc797a;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 1px #fc797a;
+}
+/* line 1555, ../../../sass/_constants/_mixins.scss */
+input.invalid-demo:not(.valid).input-with-feedback {
+  padding-right: 24px;
+}
+
+/* Scrollspy demo on fixed height div */
+/* line 969, ../../../sass/docs.scss */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+/* CODE EXAMPLES */
+/* line 980, ../../../sass/docs.scss */
+.highlight {
+  clear: both;
+  padding: 9px 8px 9px 48px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+  -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+  box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+
+/* line 989, ../../../sass/docs.scss */
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+  white-space: nowrap;
+}
+
+/* line 997, ../../../sass/docs.scss */
+.highlight pre code {
+  font-size: inherit;
+  color: #333;
+  /* Effectively the base text color */
+}
+
+/* line 1001, ../../../sass/docs.scss */
+.highlight pre .lineno {
+  display: inline-block;
+  width: 40px;
+  padding-right: 8px;
+  margin: 0 0 0 -48px;
+  text-align: right;
+  color: #bebec5;
+}
+
+/* Docs gallery
+-------------------------------------------------- */
+/* line 1015, ../../../sass/docs.scss */
+.wdesk-docs-gallery .thumbnail {
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+/* Responsive variations
+-------------------------------------------------- */
+/* Hide code snippets on mobile devices */
+@media screen and (max-width: 480px) {
+  /* line 1026, ../../../sass/docs.scss */
+  .wdesk-docs-example {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+  }
+
+  /* line 1029, ../../../sass/docs.scss */
+  .highlight {
+    display: none;
+  }
+}
+/* Tablets and up */
+@media screen and (min-width: 768px) {
+  /* Tweak display of docs jumbotrons */
+  /* line 1038, ../../../sass/docs.scss */
+  .masthead {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  /* line 1042, ../../../sass/docs.scss */
+  .masthead h1 {
+    font-size: 100px;
+  }
+  /* line 1044, ../../../sass/docs.scss */
+  .svg .masthead h1 {
+    height: 100px !important;
+  }
+
+  /* line 1048, ../../../sass/docs.scss */
+  .masthead p {
+    font-size: 22px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  /* line 1053, ../../../sass/docs.scss */
+  .masthead p.lead {
+    margin: 30px 0;
+  }
+
+  /* line 1057, ../../../sass/docs.scss */
+  .subhead {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: left;
+  }
+
+  /* line 1062, ../../../sass/docs.scss */
+  .wdesk-docs-jumbotron .lead {
+    font-size: 23px;
+  }
+
+  /* From here, start to affix the nav because we keep columns here */
+  /* line 1067, ../../../sass/docs.scss */
+  .wdesk-docs-sidenav.affix {
+    position: fixed;
+    top: 52px;
+  }
+
+  /* line 1071, ../../../sass/docs.scss */
+  .wdesk-docs-sidenav.affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 270px;
+  }
+
+  /* line 1077, ../../../sass/docs.scss */
+  section > h2,
+  section > .h2 {
+    margin-top: 60px;
+  }
+
+  /* line 1082, ../../../sass/docs.scss */
+  section .page-header + h2,
+  section .page-header + .h2 {
+    margin-top: 20px;
+  }
+
+  /* line 1086, ../../../sass/docs.scss */
+  section > h3,
+  section > .h3 {
+    margin-top: 30px;
+  }
+
+  /* line 1091, ../../../sass/docs.scss */
+  .wdesk-docs-sidenav {
+    width: 152px;
+  }
+
+  /* line 1095, ../../../sass/docs.scss */
+  .wdesk-docs-example-modal {
+    max-height: 480px;
+  }
+
+  /* line 1098, ../../../sass/docs.scss */
+  .wdesk-docs-example-modal-notifications {
+    max-height: 1220px;
+  }
+}
+/* Tablets/desktops and up */
+@media screen and (min-width: 992px) {
+  /* Icons */
+  /* line 1108, ../../../sass/docs.scss */
+  .the-icons li {
+    width: 12.5%;
+  }
+
+  /* line 1112, ../../../sass/docs.scss */
+  .wdesk-docs-sidenav {
+    width: 198px;
+  }
+}
+/* Large desktops and up */
+@media screen and (min-width: 1200px) {
+  /* line 1119, ../../../sass/docs.scss */
+  .wdesk-docs-sidenav {
+    width: 240px;
+  }
+}
+/* line 1, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyphcount {
+  margin-left: 10px;
+}
+/* line 2, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph {
+  font-size: 16px;
+  float: left;
+  text-align: center;
+  background: #f7f7f7;
+  padding: 10px;
+  margin: 0 10px 10px 0;
+  width: 23%;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -ms-border-radius: 0.25em;
+  border-radius: 0.25em;
+  box-shadow: inset 0 0 0 1px #f8f8f8, 0 0 0 1px #e3e3e3;
+}
+@media screen and (min-width: 1200px) {
+  /* line 2, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+  .wdesk-docs-icomoon-glyphs .glyph {
+    width: 15%;
+  }
+}
+/* line 17, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph .classname {
+  line-height: normal;
+  display: block;
+  clear: both;
+  margin: 20px -10px -10px -10px;
+  padding: 5px 0 0 0;
+  min-height: 50px;
+  -moz-border-radius-bottomleft: 0.25em;
+  -webkit-border-bottom-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+  -moz-border-radius-bottomright: 0.25em;
+  -webkit-border-bottom-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+/* line 26, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph .classname, .wdesk-docs-icomoon-glyphs .glyph .classname code {
+  background-color: #eaeaea;
+}
+/* line 29, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph .classname code {
+  white-space: normal;
+}
+/* line 34, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph input,
+.wdesk-docs-icomoon-glyphs .glyph label {
+  float: left;
+  width: auto;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60)  \9;
+  opacity: 0.6 ;
+}
+/* line 39, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph label {
+  margin-right: 10px;
+  font-size: 11px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+/* line 45, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph input {
+  font-family: consolas, monospace;
+  font-size: 13px;
+  width: 60%;
+  text-align: center;
+  border: 0;
+  box-shadow: 0 0 0 1px #ccc;
+  padding: .125em;
+  margin: 0 0 7px 0;
+}
+/* line 54, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .glyph input:focus {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)  \9;
+  opacity: 1 ;
+}
+/* line 56, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .w-main {
+  width: 80%;
+}
+/* line 59, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 63, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .fs1 {
+  font-size: 48px;
+  line-height: 48px;
+  height: 60px;
+  width: 60px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+/* line 72, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .fs1:before, .wdesk-docs-icomoon-glyphs .fs1:after {
+  top: 15px;
+}
+/* line 76, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .fs1 + input {
+  margin: 0;
+}
+/* line 80, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs header {
+  margin: 2em 0;
+  padding-bottom: .5em;
+  color: #666;
+  box-shadow: 0 2px #eee;
+}
+/* line 86, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs header h1 {
+  font-size: 2em;
+  font-weight: normal;
+}
+/* line 90, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .clearfix:before, .wdesk-docs-icomoon-glyphs .clearfix:after {
+  content: "";
+  display: table;
+}
+/* line 91, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .clearfix:after, .wdesk-docs-icomoon-glyphs .clear {
+  clear: both;
+}
+/* line 92, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs footer {
+  margin-top: 2em;
+  padding: .5em 0;
+  box-shadow: 0 -2px #eee;
+}
+/* line 97, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .fs1 a, .wdesk-docs-icomoon-glyphs .fs1 a:visited {
+  color: #B35047;
+  text-decoration: none;
+}
+/* line 102, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.no-touch .wdesk-docs-icomoon-glyphs .fs1 a:hover {
+  color: #000;
+}
+/* line 106, ../../../sass/_docs-only/_icomoon-glyph-examples.scss */
+.wdesk-docs-icomoon-glyphs .box1 {
+  font-size: 16px;
+  display: inline-block;
+  width: 15em;
+  padding: .25em .5em;
+  background: #eee;
+  margin: .5em 1em .5em 0;
+}
+
+/* line 1, ../../../sass/_docs-only/_pygments-manni.scss */
+.hll {
+  background-color: #ffffcc;
+}
+
+/* line 2, ../../../sass/_docs-only/_pygments-manni.scss */
+.c {
+  color: #999;
+}
+
+/* line 3, ../../../sass/_docs-only/_pygments-manni.scss */
+.err {
+  color: #AA0000;
+  background-color: #FFAAAA;
+}
+
+/* line 4, ../../../sass/_docs-only/_pygments-manni.scss */
+.k {
+  color: #006699;
+}
+
+/* line 5, ../../../sass/_docs-only/_pygments-manni.scss */
+.o {
+  color: #555555;
+}
+
+/* line 6, ../../../sass/_docs-only/_pygments-manni.scss */
+.cm {
+  color: #0099FF;
+  font-style: italic;
+}
+
+/* line 7, ../../../sass/_docs-only/_pygments-manni.scss */
+.cp {
+  color: #009999;
+}
+
+/* line 8, ../../../sass/_docs-only/_pygments-manni.scss */
+.c1 {
+  color: #999;
+}
+
+/* line 9, ../../../sass/_docs-only/_pygments-manni.scss */
+.cs {
+  color: #999;
+}
+
+/* line 10, ../../../sass/_docs-only/_pygments-manni.scss */
+.gd {
+  background-color: #FFCCCC;
+  border: 1px solid #CC0000;
+}
+
+/* line 11, ../../../sass/_docs-only/_pygments-manni.scss */
+.ge {
+  font-style: italic;
+}
+
+/* line 12, ../../../sass/_docs-only/_pygments-manni.scss */
+.gr {
+  color: #FF0000;
+}
+
+/* line 13, ../../../sass/_docs-only/_pygments-manni.scss */
+.gh {
+  color: #003300;
+}
+
+/* line 14, ../../../sass/_docs-only/_pygments-manni.scss */
+.gi {
+  background-color: #CCFFCC;
+  border: 1px solid #00CC00;
+}
+
+/* line 15, ../../../sass/_docs-only/_pygments-manni.scss */
+.go {
+  color: #AAAAAA;
+}
+
+/* line 16, ../../../sass/_docs-only/_pygments-manni.scss */
+.gp {
+  color: #000099;
+}
+
+/* line 17, ../../../sass/_docs-only/_pygments-manni.scss */
+.gs {
+  font-style: bold;
+}
+
+/* line 18, ../../../sass/_docs-only/_pygments-manni.scss */
+.gu {
+  color: #003300;
+}
+
+/* line 19, ../../../sass/_docs-only/_pygments-manni.scss */
+.gt {
+  color: #99CC66;
+}
+
+/* line 20, ../../../sass/_docs-only/_pygments-manni.scss */
+.kc {
+  color: #006699;
+}
+
+/* line 21, ../../../sass/_docs-only/_pygments-manni.scss */
+.kd {
+  color: #006699;
+}
+
+/* line 22, ../../../sass/_docs-only/_pygments-manni.scss */
+.kn {
+  color: #006699;
+}
+
+/* line 23, ../../../sass/_docs-only/_pygments-manni.scss */
+.kp {
+  color: #006699;
+}
+
+/* line 24, ../../../sass/_docs-only/_pygments-manni.scss */
+.kr {
+  color: #006699;
+}
+
+/* line 25, ../../../sass/_docs-only/_pygments-manni.scss */
+.kt {
+  color: #007788;
+}
+
+/* line 26, ../../../sass/_docs-only/_pygments-manni.scss */
+.m {
+  color: #FF6600;
+}
+
+/* line 27, ../../../sass/_docs-only/_pygments-manni.scss */
+.s {
+  color: #d44950;
+}
+
+/* line 28, ../../../sass/_docs-only/_pygments-manni.scss */
+.na {
+  color: #4f9fcf;
+}
+
+/* line 29, ../../../sass/_docs-only/_pygments-manni.scss */
+.nb {
+  color: #336666;
+}
+
+/* line 30, ../../../sass/_docs-only/_pygments-manni.scss */
+.nc {
+  color: #00AA88;
+}
+
+/* line 31, ../../../sass/_docs-only/_pygments-manni.scss */
+.no {
+  color: #336600;
+}
+
+/* line 32, ../../../sass/_docs-only/_pygments-manni.scss */
+.nd {
+  color: #9999FF;
+}
+
+/* line 33, ../../../sass/_docs-only/_pygments-manni.scss */
+.ni {
+  color: #999999;
+}
+
+/* line 34, ../../../sass/_docs-only/_pygments-manni.scss */
+.ne {
+  color: #CC0000;
+}
+
+/* line 35, ../../../sass/_docs-only/_pygments-manni.scss */
+.nf {
+  color: #CC00FF;
+}
+
+/* line 36, ../../../sass/_docs-only/_pygments-manni.scss */
+.nl {
+  color: #9999FF;
+}
+
+/* line 37, ../../../sass/_docs-only/_pygments-manni.scss */
+.nn {
+  color: #00CCFF;
+}
+
+/* line 38, ../../../sass/_docs-only/_pygments-manni.scss */
+.nt {
+  color: #2f6f9f;
+}
+
+/* line 39, ../../../sass/_docs-only/_pygments-manni.scss */
+.nv {
+  color: #003333;
+}
+
+/* line 40, ../../../sass/_docs-only/_pygments-manni.scss */
+.ow {
+  color: #000000;
+}
+
+/* line 41, ../../../sass/_docs-only/_pygments-manni.scss */
+.w {
+  color: #bbbbbb;
+}
+
+/* line 42, ../../../sass/_docs-only/_pygments-manni.scss */
+.mf {
+  color: #FF6600;
+}
+
+/* line 43, ../../../sass/_docs-only/_pygments-manni.scss */
+.mh {
+  color: #FF6600;
+}
+
+/* line 44, ../../../sass/_docs-only/_pygments-manni.scss */
+.mi {
+  color: #FF6600;
+}
+
+/* line 45, ../../../sass/_docs-only/_pygments-manni.scss */
+.mo {
+  color: #FF6600;
+}
+
+/* line 46, ../../../sass/_docs-only/_pygments-manni.scss */
+.sb {
+  color: #CC3300;
+}
+
+/* line 47, ../../../sass/_docs-only/_pygments-manni.scss */
+.sc {
+  color: #CC3300;
+}
+
+/* line 48, ../../../sass/_docs-only/_pygments-manni.scss */
+.sd {
+  color: #CC3300;
+  font-style: italic;
+}
+
+/* line 49, ../../../sass/_docs-only/_pygments-manni.scss */
+.s2 {
+  color: #CC3300;
+}
+
+/* line 50, ../../../sass/_docs-only/_pygments-manni.scss */
+.se {
+  color: #CC3300;
+}
+
+/* line 51, ../../../sass/_docs-only/_pygments-manni.scss */
+.sh {
+  color: #CC3300;
+}
+
+/* line 52, ../../../sass/_docs-only/_pygments-manni.scss */
+.si {
+  color: #AA0000;
+}
+
+/* line 53, ../../../sass/_docs-only/_pygments-manni.scss */
+.sx {
+  color: #CC3300;
+}
+
+/* line 54, ../../../sass/_docs-only/_pygments-manni.scss */
+.sr {
+  color: #33AAAA;
+}
+
+/* line 55, ../../../sass/_docs-only/_pygments-manni.scss */
+.s1 {
+  color: #CC3300;
+}
+
+/* line 56, ../../../sass/_docs-only/_pygments-manni.scss */
+.ss {
+  color: #FFCC33;
+}
+
+/* line 57, ../../../sass/_docs-only/_pygments-manni.scss */
+.bp {
+  color: #336666;
+}
+
+/* line 58, ../../../sass/_docs-only/_pygments-manni.scss */
+.vc {
+  color: #003333;
+}
+
+/* line 59, ../../../sass/_docs-only/_pygments-manni.scss */
+.vg {
+  color: #003333;
+}
+
+/* line 60, ../../../sass/_docs-only/_pygments-manni.scss */
+.vi {
+  color: #003333;
+}
+
+/* line 61, ../../../sass/_docs-only/_pygments-manni.scss */
+.il {
+  color: #FF6600;
+}
+
+/* line 65, ../../../sass/_docs-only/_pygments-manni.scss */
+.css .o,
+.css .o + .nt,
+.css .nt + .nt {
+  color: #999;
+}
+
+/* line 5, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.grid-columns:before {
+  content: "12";
+}
+/* line 7, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.mobile-horizon:before {
+  content: "768px";
+}
+/* line 8, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.grid-container-max-width-mobile:before {
+  content: "728px";
+}
+/* line 10, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.desktop-horizon:before {
+  content: "992px";
+}
+/* line 11, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.grid-container-max-width-desktop:before {
+  content: "912px";
+}
+/* line 13, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.desktop-large-horizon:before {
+  content: "1200px";
+}
+/* line 14, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.grid-container-max-width-desktop-large:before {
+  content: "1120px";
+}
+/* line 16, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.desktop-huge-horizon:before {
+  content: "1600px";
+}
+/* line 17, ../../../sass/_docs-only/_scss-var-content.scss */
+.scss-output.grid-container-max-width-desktop-huge:before {
+  content: "1520px";
+}
+
+/* line 12, ../../../sass/_utilities.scss */
+.clip-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+/* line 16, ../../../sass/_utilities.scss */
+.flush {
+  margin: 0;
+}
+
+/* line 18, ../../../sass/_utilities.scss */
+.affix {
+  position: fixed;
+}
+
+/* line 21, ../../../sass/_utilities.scss */
+.cursor-disabled {
+  cursor: not-allowed;
+}
+
+/* line 22, ../../../sass/_utilities.scss */
+.cursor-move {
+  cursor: move;
+}
+
+/* line 23, ../../../sass/_utilities.scss */
+.cursor-default {
+  cursor: default;
+}
+
+/* line 24, ../../../sass/_utilities.scss */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* line 26, ../../../sass/_utilities.scss */
+.block-center {
+  display: block !important;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 35, ../../../sass/_utilities.scss */
+.no-text {
+  text-align: center;
+}
+/* line 37, ../../../sass/_utilities.scss */
+.no-text .icon {
+  margin-right: 0 !important;
+}
+
+/* line 40, ../../../sass/_utilities.scss */
+.text-left {
+  text-align: left;
+}
+
+/* line 41, ../../../sass/_utilities.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 42, ../../../sass/_utilities.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 44, ../../../sass/_utilities.scss */
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* line 45, ../../../sass/_utilities.scss */
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+/* line 46, ../../../sass/_utilities.scss */
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+/* line 53, ../../../sass/_utilities.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 38, ../../../sass/_constants/_mixins.scss */
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+/* line 42, ../../../sass/_constants/_mixins.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 56, ../../../sass/_utilities.scss */
+.pull-right {
+  float: right;
+}
+
+/* line 57, ../../../sass/_utilities.scss */
+.pull-left {
+  float: left;
+}
+
+/* line 64, ../../../sass/_utilities.scss */
+.hide {
+  display: none !important;
+}
+/* line 67, ../../../sass/_utilities.scss */
+.hide:before, .hide:after {
+  display: none !important;
+}
+
+/* line 71, ../../../sass/_utilities.scss */
+.show {
+  display: block !important;
+}
+/* line 74, ../../../sass/_utilities.scss */
+.show:before, .show:after {
+  display: block !important;
+}
+
+/* line 79, ../../../sass/_utilities.scss */
+.invisible,
+.hidden {
+  visibility: hidden;
+}
+
+/* line 81, ../../../sass/_utilities.scss */
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+/* line 87, ../../../sass/_utilities.scss */
+[ng-cloak],
+[data-ng-cloak],
+.ng-cloak {
+  display: none;
+}
+/* line 89, ../../../sass/_utilities.scss */
+[ng-cloak].show,
+[data-ng-cloak].show,
+.ng-cloak.show {
+  display: block !important;
+}
+
+/* line 94, ../../../sass/_utilities.scss */
+span.ng-scope:empty,
+div.ng-scope:empty {
+  display: none !important;
+}
+
+/* line 123, ../../../sass/_utilities.scss */
+.scroll-x,
+.scroll-x-force,
+.scroll-y,
+.scroll-y-force {
+  overflow: none;
+}
+
+/* line 126, ../../../sass/_utilities.scss */
+.scroll-x {
+  overflow-x: auto;
+}
+
+/* line 127, ../../../sass/_utilities.scss */
+.scroll-y {
+  overflow-y: auto;
+}
+
+/* line 128, ../../../sass/_utilities.scss */
+.scroll {
+  overflow: auto;
+}
+
+/* line 131, ../../../sass/_utilities.scss */
+.scroll-x-force {
+  overflow-x: scroll;
+}
+
+/* line 132, ../../../sass/_utilities.scss */
+.scroll-y-force {
+  overflow-y: scroll;
+}
+
+/* line 133, ../../../sass/_utilities.scss */
+.scroll-force {
+  overflow: scroll;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-default {
+  background-color: #fafafa !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-default[href]:hover, .no-touch .bg-default[wf-click]:hover {
+  background-color: #ededed !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-default, .text-default[href], .text-default[wf-click] {
+  color: #7f7f7f !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-default.muted, .text-default .muted, .text-default[href].muted, .text-default[href] .muted, .text-default[wf-click].muted, .text-default[wf-click] .muted {
+  color: #d8d8d8 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-default[href]:hover, .no-touch .text-default[wf-click]:hover {
+  color: #676767 !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-default[href]:hover.muted, .no-touch .text-default[href]:hover .muted, .no-touch .text-default[wf-click]:hover.muted, .no-touch .text-default[wf-click]:hover .muted {
+  color: #d1d1d1 !important;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-primary {
+  background-color: #fbfff5 !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-primary[href]:hover, .no-touch .bg-primary[wf-click]:hover {
+  background-color: #f0fddd !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-primary, .text-primary[href], .text-primary[wf-click] {
+  color: #5c940c !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-primary.muted, .text-primary .muted, .text-primary[href].muted, .text-primary[href] .muted, .text-primary[wf-click].muted, .text-primary[wf-click] .muted {
+  color: #cedeb6 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-primary[href]:hover, .no-touch .text-primary[wf-click]:hover {
+  color: #416908 !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-primary[href]:hover.muted, .no-touch .text-primary[href]:hover .muted, .no-touch .text-primary[wf-click]:hover.muted, .no-touch .text-primary[wf-click]:hover .muted {
+  color: #c6d2b4 !important;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-alt {
+  background-color: #f5fbff !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-alt[href]:hover, .no-touch .bg-alt[wf-click]:hover {
+  background-color: #dcf0fe !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-alt, .text-alt[href], .text-alt[wf-click] {
+  color: #0b83da !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-alt.muted, .text-alt .muted, .text-alt[href].muted, .text-alt[href] .muted, .text-alt[wf-click].muted, .text-alt[wf-click] .muted {
+  color: #b5d9f3 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-alt[href]:hover, .no-touch .text-alt[wf-click]:hover {
+  color: #0968ad !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-alt[href]:hover.muted, .no-touch .text-alt[href]:hover .muted, .no-touch .text-alt[wf-click]:hover.muted, .no-touch .text-alt[wf-click]:hover .muted {
+  color: #b5d1e6 !important;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-success {
+  background-color: #fbfff5 !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-success[href]:hover, .no-touch .bg-success[wf-click]:hover {
+  background-color: #f0fddd !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-success, .text-success[href], .text-success[wf-click] {
+  color: #5c940c !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-success.muted, .text-success .muted, .text-success[href].muted, .text-success[href] .muted, .text-success[wf-click].muted, .text-success[wf-click] .muted {
+  color: #cedeb6 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-success[href]:hover, .no-touch .text-success[wf-click]:hover {
+  color: #416908 !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-success[href]:hover.muted, .no-touch .text-success[href]:hover .muted, .no-touch .text-success[wf-click]:hover.muted, .no-touch .text-success[wf-click]:hover .muted {
+  color: #c6d2b4 !important;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-warning {
+  background-color: #fffbf5 !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-warning[href]:hover, .no-touch .bg-warning[wf-click]:hover {
+  background-color: #fef2dd !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-warning, .text-warning[href], .text-warning[wf-click] {
+  color: #d08e0f !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-warning.muted, .text-warning .muted, .text-warning[href].muted, .text-warning[href] .muted, .text-warning[wf-click].muted, .text-warning[wf-click] .muted {
+  color: #f0ddb7 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-warning[href]:hover, .no-touch .text-warning[wf-click]:hover {
+  color: #a4700c !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-warning[href]:hover.muted, .no-touch .text-warning[href]:hover .muted, .no-touch .text-warning[wf-click]:hover.muted, .no-touch .text-warning[wf-click]:hover .muted {
+  color: #e3d4b6 !important;
+}
+
+/* line 145, ../../../sass/_utilities.scss */
+.bg-error {
+  background-color: #fff6f5 !important;
+}
+/* line 149, ../../../sass/_utilities.scss */
+.no-touch .bg-error[href]:hover, .no-touch .bg-error[wf-click]:hover {
+  background-color: #fedfdc !important;
+}
+
+/* line 161, ../../../sass/_utilities.scss */
+.text-error, .text-error[href], .text-error[wf-click] {
+  color: #f2200f !important;
+}
+/* line 164, ../../../sass/_utilities.scss */
+.text-error.muted, .text-error .muted, .text-error[href].muted, .text-error[href] .muted, .text-error[wf-click].muted, .text-error[wf-click] .muted {
+  color: #fbbcb7 !important;
+}
+/* line 169, ../../../sass/_utilities.scss */
+.no-touch .text-error[href]:hover, .no-touch .text-error[wf-click]:hover {
+  color: #c7190b !important;
+}
+/* line 173, ../../../sass/_utilities.scss */
+.no-touch .text-error[href]:hover.muted, .no-touch .text-error[href]:hover .muted, .no-touch .text-error[wf-click]:hover.muted, .no-touch .text-error[wf-click]:hover .muted {
+  color: #eebab5 !important;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-greenAlt2 {
+  color: #0f7f40;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-greenAlt1 {
+  color: #42ad48;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-green {
+  color: #7bce05;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-blue {
+  color: #0094ff;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-orange {
+  color: #fbad17;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-red {
+  color: #ff2c1c;
+}
+
+/* line 183, ../../../sass/_utilities.scss */
+.text-gray {
+  color: #595959;
+}
+
+/* line 192, ../../../sass/_utilities.scss */
+strong.text-highlighted {
+  font-weight: normal;
+}
+
+/* line 117, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-print {
+  display: none !important;
+}
+
+@media print {
+  /* line 121, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-print {
+    display: inherit !important;
+  }
+
+  /* line 122, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-print {
+    display: inline !important;
+  }
+
+  /* line 123, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-print {
+    display: none !important;
+  }
+}
+/* line 127, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-phone {
+  display: none !important;
+}
+
+/* line 128, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-tablet {
+  display: none !important;
+}
+
+/* line 132, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.hidden-desktop {
+  display: none !important;
+}
+
+/* line 135, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-touch {
+  display: none !important;
+}
+
+/* line 136, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-density {
+  display: none !important;
+}
+
+/* line 137, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-mdpi {
+  display: none !important;
+}
+
+/* line 138, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-hdpi {
+  display: none !important;
+}
+
+/* line 139, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-retina {
+  display: none !important;
+}
+
+/* line 140, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-landscape {
+  display: none !important;
+}
+
+/* line 141, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-portrait {
+  display: none !important;
+}
+
+/* line 142, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.visible-tablet7 {
+  display: none !important;
+}
+
+/* line 147, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+.hidden-retina {
+  display: inherit !important;
+}
+
+/* line 148, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+span.hidden-retina {
+  display: inline !important;
+}
+
+/* line 155, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+html.touch .visible-touch {
+  display: inherit !important;
+}
+/* line 156, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+html.touch span.visible-touch {
+  display: inline !important;
+}
+/* line 157, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+html.touch .hidden-touch {
+  display: none !important;
+}
+
+@media only screen and (orientation: landscape) {
+  /* line 79, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-landscape {
+    display: none !important;
+  }
+
+  /* line 80, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-landscape {
+    display: inherit !important;
+  }
+
+  /* line 81, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-landscape {
+    display: inline !important;
+  }
+}
+@media only screen and (orientation: portrait) {
+  /* line 74, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-portrait {
+    display: none !important;
+  }
+
+  /* line 75, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-portrait {
+    display: inherit !important;
+  }
+
+  /* line 76, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-portrait {
+    display: inline !important;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 2), all and (-o-min-device-pixel-ratio: 4 / 2), all and (min--moz-device-pixel-ratio: 2), all and (min-device-pixel-ratio: 2), all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5), all and (-webkit-min-device-pixel-ratio: 1.325000048), all and (-o-min-device-pixel-ratio: 2.650000095 / 2), all and (min--moz-device-pixel-ratio: 1.325000048), all and (min-device-pixel-ratio: 1.325000048) {
+  /* line 84, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-density {
+    display: inherit !important;
+  }
+
+  /* line 85, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-density {
+    display: inline !important;
+  }
+
+  /* line 86, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-density {
+    display: none !important;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.325000048), all and (-o-min-device-pixel-ratio: 2.650000095 / 2), all and (min--moz-device-pixel-ratio: 1.325000048), all and (min-device-pixel-ratio: 1.325000048) {
+  /* line 89, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-mdpi {
+    display: inherit !important;
+  }
+
+  /* line 90, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-mdpi {
+    display: inherit !important;
+  }
+
+  /* line 91, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-mdpi {
+    display: none !important;
+  }
+
+  /* line 93, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-hdpi, .visible-retina {
+    display: none !important;
+  }
+
+  /* line 94, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-hdpi, .hidden-retina {
+    display: inherit !important;
+  }
+
+  /* line 95, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.hidden-hdpi, span.hidden-retina {
+    display: inline !important;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
+  /* line 98, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-hdpi {
+    display: inherit !important;
+  }
+
+  /* line 99, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-hdpi {
+    display: inline !important;
+  }
+
+  /* line 100, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-hdpi {
+    display: none !important;
+  }
+
+  /* line 102, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-mdpi, .visible-retina {
+    display: none !important;
+  }
+
+  /* line 103, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-mdpi, .hidden-retina {
+    display: inherit !important;
+  }
+
+  /* line 104, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.hidden-mdpi, span.hidden-retina {
+    display: inline !important;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 2), all and (-o-min-device-pixel-ratio: 4 / 2), all and (min--moz-device-pixel-ratio: 2), all and (min-device-pixel-ratio: 2) {
+  /* line 107, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-retina {
+    display: inherit !important;
+  }
+
+  /* line 108, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-retina {
+    display: inline !important;
+  }
+
+  /* line 109, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-retina {
+    display: none !important;
+  }
+
+  /* line 111, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-hdpi, .visible-mdpi {
+    display: none !important;
+  }
+
+  /* line 112, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-hdpi, .hidden-mdpi {
+    display: inherit !important;
+  }
+
+  /* line 113, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.hidden-hdpi, span.hidden-mdpi {
+    display: inline !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /* line 68, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-phone {
+    display: inherit !important;
+  }
+  /* line 69, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.visible-phone {
+    display: inline !important;
+  }
+  /* line 70, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-phone {
+    display: none !important;
+  }
+
+  /* line 41, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-desktop {
+    display: inherit !important;
+  }
+  /* line 42, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.hidden-desktop {
+    display: inline !important;
+  }
+  /* line 43, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-desktop {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  /* line 68, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-phone {
+    display: inherit !important;
+  }
+  /* line 69, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.visible-phone {
+    display: inline !important;
+  }
+  /* line 70, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-phone {
+    display: none !important;
+  }
+
+  /* line 41, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-desktop {
+    display: inherit !important;
+  }
+  /* line 42, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.hidden-desktop {
+    display: inline !important;
+  }
+  /* line 43, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-desktop {
+    display: none !important;
+  }
+}
+@media only screen and (max-device-width: 320px) {
+  /* line 68, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-phone {
+    display: inherit !important;
+  }
+  /* line 69, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.visible-phone {
+    display: inline !important;
+  }
+  /* line 70, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-phone {
+    display: none !important;
+  }
+
+  /* line 41, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-desktop {
+    display: inherit !important;
+  }
+  /* line 42, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.hidden-desktop {
+    display: inline !important;
+  }
+  /* line 43, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-desktop {
+    display: none !important;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 54, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-tablet {
+    display: inherit !important;
+  }
+  /* line 55, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.visible-tablet {
+    display: inline !important;
+  }
+  /* line 56, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-tablet {
+    display: none !important;
+  }
+
+  /* line 41, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .hidden-desktop {
+    display: inherit !important;
+  }
+  /* line 42, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch span.hidden-desktop {
+    display: inline !important;
+  }
+  /* line 43, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  html.touch .visible-desktop {
+    display: none !important;
+  }
+}
+@media (min-width: 1025px) {
+  /* line 48, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-desktop {
+    display: none !important;
+  }
+
+  /* line 49, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-desktop {
+    display: inherit !important;
+  }
+
+  /* line 50, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-desktop {
+    display: inline !important;
+  }
+}
+@media (min-width: 1824px) {
+  /* line 48, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .hidden-desktop {
+    display: none !important;
+  }
+
+  /* line 49, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  .visible-desktop {
+    display: inherit !important;
+  }
+
+  /* line 50, ../../../sass/_constants/_ua-media/_responsive-device-helpers.scss */
+  span.visible-desktop {
+    display: inline !important;
+  }
+}
+/* line 216, ../../../sass/_utilities.scss */
+.touch html {
+  position: fixed;
+  width: 100%;
+}
+
+/* line 224, ../../../sass/_utilities.scss */
+.novideo .video-help {
+  display: none;
+}
+
+/* line 227, ../../../sass/_utilities.scss */
+input.placeholder {
+  color: #b2b2b2 !important;
+}
+
+/* line 241, ../../../sass/_utilities.scss */
+.desktop_laptop [href^="tel"] {
+  cursor: default;
+  text-decoration: none;
+  color: inherit !important;
+}
+
+/* line 12, ../../../sass/_utilities-touch-xy.scss */
+.annotation-origin,
+.new-annotation-origin {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+/* line 21, ../../../sass/_utilities-touch-xy.scss */
+.annotation-origin > .hitarea {
+  position: absolute;
+  left: -25%;
+  top: -25%;
+  bottom: -25%;
+  right: -25%;
+}
+
+/* line 31, ../../../sass/_utilities-touch-xy.scss */
+.note-origin .note-icon:before, .note-origin .note-icon:after {
+  line-height: 28px;
+}
+/* line 36, ../../../sass/_utilities-touch-xy.scss */
+.note-origin.dragging .note-icon {
+  position: absolute;
+  height: 72px;
+  width: 72px;
+  left: -24px;
+  top: -24px;
+  font-size: 64px;
+}
+/* line 43, ../../../sass/_utilities-touch-xy.scss */
+.note-origin.dragging .note-icon:before, .note-origin.dragging .note-icon:after {
+  line-height: 76px;
+}
+
+/* line 50, ../../../sass/_utilities-touch-xy.scss */
+.highlight-origin .highlight-icon {
+  background-color: #f9d805;
+  opacity: .8;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  left: 2px;
+  top: 2px;
+  position: absolute;
+}
+/* line 62, ../../../sass/_utilities-touch-xy.scss */
+.highlight-origin.dragging .highlight-icon {
+  height: 64px;
+  width: 64px;
+  left: -20px;
+  top: -20px;
+  border-radius: 32px;
+}
+
+/* line 1136, ../../../sass/docs.scss */
+.ua-lt-ie9 .hidden-lt-ie9 {
+  display: none !important;
+}
