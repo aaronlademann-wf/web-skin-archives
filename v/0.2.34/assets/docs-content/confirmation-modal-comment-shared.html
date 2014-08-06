@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+    <div class="modal-header">
+        <h4 class="modal-title text-center">
+            Discard Commment?
+        </h4>
+    </div>
+    <div class="modal-body top">
+        Your comment has not yet been posted.
+    </div>
+    <div class="modal-actions modal-footer">
+        <div class="nav-tooltip">
+            <ul class="nav nav-pills nav-justified halve">
+                <li>
+                    <button class="hitarea" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </li>
+                <li>
+                    <button class="hitarea delete" {%if include.showConfModal%}id="delete-btn-auto"{%endif%}>
+                        Discard
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

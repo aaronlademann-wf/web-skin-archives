@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Web Skin Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+
+<title>
+    
+        Web Skin Style Guide
+    
+</title>
+
+<!--[if !IE]> -->
+<link href="./assets/css/wdesk.css" rel="stylesheet" title="standard">
+<link href="./assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if IE]>
+<link href="./assets/css/wdesk_ie.css" rel="stylesheet">
+<![endif]-->
+<link href="./assets/css/docs.css" rel="stylesheet">
+
+<!-- Splash Screens -->
+<link href="./assets/img/splash/ios/Default.png?0.2.34" media="(device-width: 320px)" rel="apple-touch-startup-image">
+<link href="./assets/img/splash/ios/Default@2x.png?0.2.34" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="./assets/img/splash/ios/Default-Portrait~ipad.png?0.2.34" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+<link href="./assets/img/splash/ios/Default-Landscape~ipad.png?0.2.34" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+<link href="./assets/img/splash/ios/Default-Portrait@2x~ipad.png?0.2.34" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="./assets/img/splash/ios/Default-Landscape@2x~ipad.png?0.2.34" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="./assets/ico/apple-touch-icon-152-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="./assets/ico/apple-touch-icon-120-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="./assets/ico/apple-touch-icon-72-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="./assets/ico/apple-touch-icon-57-precomposed.png?0.2.34">
+                               <link rel="shortcut icon" href="./assets/ico/favicon.png">
+
+<script src="./assets/js/core/jquery/jquery.min.js?0.2.34"></script>
+<script src="./assets/js/docs-only/holder.js?0.2.34"></script>
+<script src="./assets/js/core/libs_ie.min.js?0.2.34"></script>
+<script>
+
+    var toTitleCase = function(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+
+    // custom pageview so we can track landing pages where folks are permalinking # locations within a page
+    var hash = location.hash.replace('#', ''); // remove #
+    var hashTitle = hash.replace(/-/g, ' '); // replace dashes with spaces
+
+    var fullLocation = location.pathname + location.search + hash;
+    var gaPage = fullLocation.replace('/index.html', '/'); // remove potential index.html
+    var fullLocation = window.location.protocol + '//' + window.location.hostname + gaPage; // set location
+
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17703918-45', 'webfilings.com');
+
+    // custom parameters
+    if(hash.length) {
+        ga('set', 'title', toTitleCase(hashTitle) + ' · ' + document.title);
+    } else {
+        ga('set', 'title', document.title);
+    }
+    ga('set', 'location', fullLocation);
+    // ----------------
+
+    ga('send', 'pageview');
+
+</script>  
+    <!-- Place anything custom after this. -->
+</head>
+<body class="wdesk-docs-body home">
+    <!-- Main navbar for all docs pages. -->
+    <!-- Navbar
+================================================== -->
+<nav role="navigation" class="navbar navbar-fixed-top wdesk-docs-navbar">
+    <div class="container">
+        <ul class="nav mobile nav-blocks">
+            <li>
+                <button type="button" class="navbar-toggle hitarea no-text collapsed" data-toggle="collapse" data-target=".docs-nav-collapse">
+                    <i class="icon icon-md icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-header navbar-brand">
+            <a class="brand-link" href="./">
+                <div role="img" class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]>
+                        <img src="./assets/img/brand/wdesk-logo_white.png">
+                    <![endif]-->
+                </div>
+                Web Skin
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav">
+                <li >
+                    <a class="hitarea" href="./getting-started/">Getting Started</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./css/">CSS</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./components/">Components</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./javascript/">JavaScript</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="wdesk-docs-header wdesk-docs-masthead" role="main">
+    <div class="container">
+        <h1>Web Skin</h1>
+        <p class="lead">Sleek, intuitive, and powerful front-end framework for faster and easier web development at WebFilings.</p>
+        <p>
+            <a href="https://github.com/WebFilings/web-skin/archive/0.2.34.zip" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron Actions', 'Download', 'Download 0.2.34');">Download Web Skin</a>
+        </p>
+        <ul class="masthead-links">
+            <li class="current-version">
+                Currently <a href="https://github.com/WebFilings/web-skin/releases/tag/0.2.34" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Version link', 'Version 0.2.34');">v0.2.34</a>
+            </li>
+            <li class="current-version">
+                <a href="./archives/0.1.6/" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6', 'Homepage');">Web Skin 0.1.6 docs</a>
+            </li>
+            <li>
+                <a href="https://github.com/WebFilings/web-skin" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Repo', 'Github repo');">GitHub project</a>
+            </li>
+            <li>
+                <a href="https://github.com/WebFilings/web-skin/blob/master/CONTRIBUTING.md" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Contribute', 'Contribute');">Contribute</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    <!-- JS and analytics only. -->
+    <!-- Web Skin core JavaScript
+================================================== -->
+<script src="./assets/js/web-skin.min.js?0.2.34"></script>
+<script src="./assets/js/docs-only/docs.min.js?0.2.34"></script>
+
+    
+    
+    
+
+</body>
+</html>

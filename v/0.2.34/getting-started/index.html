@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Web Skin Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+
+<title>
+    
+        Getting started &middot; Web Skin Style Guide
+    
+</title>
+
+<!--[if !IE]> -->
+<link href="../assets/css/wdesk.css" rel="stylesheet" title="standard">
+<link href="../assets/css/wdesk_ie.css" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if IE]>
+<link href="../assets/css/wdesk_ie.css" rel="stylesheet">
+<![endif]-->
+<link href="../assets/css/docs.css" rel="stylesheet">
+
+<!-- Splash Screens -->
+<link href="../assets/img/splash/ios/Default.png?0.2.34" media="(device-width: 320px)" rel="apple-touch-startup-image">
+<link href="../assets/img/splash/ios/Default@2x.png?0.2.34" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="../assets/img/splash/ios/Default-Portrait~ipad.png?0.2.34" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+<link href="../assets/img/splash/ios/Default-Landscape~ipad.png?0.2.34" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+<link href="../assets/img/splash/ios/Default-Portrait@2x~ipad.png?0.2.34" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="../assets/img/splash/ios/Default-Landscape@2x~ipad.png?0.2.34" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/ico/apple-touch-icon-152-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/ico/apple-touch-icon-120-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="../assets/ico/apple-touch-icon-72-precomposed.png?0.2.34">
+<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="../assets/ico/apple-touch-icon-57-precomposed.png?0.2.34">
+                               <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+<script src="../assets/js/core/jquery/jquery.min.js?0.2.34"></script>
+<script src="../assets/js/docs-only/holder.js?0.2.34"></script>
+<script src="../assets/js/core/libs_ie.min.js?0.2.34"></script>
+<script>
+
+    var toTitleCase = function(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+
+    // custom pageview so we can track landing pages where folks are permalinking # locations within a page
+    var hash = location.hash.replace('#', ''); // remove #
+    var hashTitle = hash.replace(/-/g, ' '); // replace dashes with spaces
+
+    var fullLocation = location.pathname + location.search + hash;
+    var gaPage = fullLocation.replace('/index.html', '/'); // remove potential index.html
+    var fullLocation = window.location.protocol + '//' + window.location.hostname + gaPage; // set location
+
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17703918-45', 'webfilings.com');
+
+    // custom parameters
+    if(hash.length) {
+        ga('set', 'title', toTitleCase(hashTitle) + ' · ' + document.title);
+    } else {
+        ga('set', 'title', document.title);
+    }
+    ga('set', 'location', fullLocation);
+    // ----------------
+
+    ga('send', 'pageview');
+
+</script>  
+    <!-- Place anything custom after this. -->
+</head>
+<body class="wdesk-docs-body">
+    <!-- Main navbar for all docs pages. -->
+    <!-- Navbar
+================================================== -->
+<nav role="navigation" class="navbar navbar-fixed-top wdesk-docs-navbar">
+    <div class="container">
+        <ul class="nav mobile nav-blocks">
+            <li>
+                <button type="button" class="navbar-toggle hitarea no-text collapsed" data-toggle="collapse" data-target=".docs-nav-collapse">
+                    <i class="icon icon-md icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-header navbar-brand">
+            <a class="brand-link" href="../">
+                <div role="img" class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]>
+                        <img src="../assets/img/brand/wdesk-logo_white.png">
+                    <![endif]-->
+                </div>
+                Web Skin
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav">
+                <li class="active">
+                    <a class="hitarea" href="../getting-started/">Getting Started</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../css/">CSS</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../components/">Components</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../javascript/">JavaScript</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="wdesk-docs-header">
+        <div class="container">
+            <h1>Getting started</h1>
+            <p class="lead">Overview of Web Skin, its contents, and how to get started using it's resources.</p>
+        </div>
+    </header>
+
+    <!-- Callout for the old docs link -->
+    
+        <div class="wdesk-archived-docs">
+    <div class="container">
+        <strong>
+          <a href="../archives/0.1.6/" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6 ', 'Section Header');">Looking for the Web Skin 0.1.6 docs?</a>
+        </strong>
+        &nbsp;&nbsp;We&rsquo;ve moved them to a new home while we push forward with Web Skin 0.2.34
+    </div>
+</div>
+
+    
+
+    <div class="container wdesk-docs-container">
+        <div class="row">
+            <div class="col-md-3 wdesk-docs-sidebar">
+                <ul role="menu" class="nav wdesk-docs-sidenav fade">
+                
+                    <li>
+    <a class="hitarea" href="#download">Download Web Skin</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#download-compiled">Compiled CSS, JS, and fonts</a></li>
+        <li><a class="hitarea" href="#download-additional">Additional downloads</a></li>
+        <li><a class="hitarea" href="#download-bower-package">Bower package</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#whats-included">What's included</a>
+</li>
+<li>
+    <a class="hitarea" href="#template">Basic template</a>
+</li>
+<li>
+    <a class="hitarea" href="#extending-with-sass">Extending with Sass</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#sass-color-palette">Color Palette</a></li>
+        <li><a class="hitarea" href="#sass-variables">Variables</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#migration">Migrating from 0.1.x to 0.2.x</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#migration-classes">Major class changes</a></li>
+        <li><a class="hitarea" href="#migration-new">What's new</a></li>
+        <li><a class="hitarea" href="#migration-dropped">What's removed</a></li>
+        <li><a class="hitarea" href="#migration-notes">Additional notes</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#browsers">Browser support</a>
+</li>
+<li>
+    <a class="hitarea" href="#disable-responsive">Disabling responsiveness</a>
+</li>
+<li>
+    <a class="hitarea" href="#accessibility">Accessibility</a>
+</li>
+                
+                </ul>
+            </div>
+            <div class="col-md-9" role="main">
+                <!-- Getting started
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="download">Download Web Skin</h1>
+    </div>
+    <p class="lead">Web Skin has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+
+        <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
+    <p>The fastest way to get Web Skin is to download the compiled and minified versions of our CSS and JavaScript, along with the included fonts. No documentation or original source files are included.</p>
+    <p><a class="btn btn-lg btn-primary" href="https://github.com/WebFilings/web-skin/raw/0.2.34/wdesk.zip" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');" role="button">Download compiled Web Skin</a></p>
+
+    <h3 id="download-additional">Additional downloads</h3>
+    <div class="wdesk-docs-dl-options">
+        <h4>Download source code</h4>
+        <p><a href="https://github.com/WebFilings/web-skin/archive/0.2.34.zip" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Get the original files</a> for all CSS and JavaScript by downloading the full release directly from GitHub.</p>
+        
+        <h4>Clone or fork via GitHub</h4>
+        <p><a href="https://github.com/WebFilings/web-skin" onclick="ga('send', 'event', 'Getting started', 'Download', 'GitHub repo');">Clone the entire project or fork</a> your own version of web-skin to make it your own by visiting us on GitHub.</p>
+    </div>
+
+    <h3 id="download-bower-package">Install with Bower</h3>
+    <p>Install and manage Web Skin via the web-skin platform using <a href="http://bower.io" target="_blank">Bower</a>.</p>
+    <p>First, install Bower.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo npm install bower -g</code></pre></div>
+
+    <p>To define web-skin as a dependency for your application, Add a bower.json file to the root of your project like so:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your App Name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;your.app.version&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;web-skin&quot;</span><span class="p">:</span> <span class="s2">&quot;git+ssh://git@github.com/WebFilings/web-skin.git#0.2.34&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>Then as part of your build setup / grunt targets, run the following command in bash:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install</code></pre></div>
+
+    <p>All of the package resources will be pulled into the root of your project/app in a folder named <code>bower_components/web-skin/</code></p>
+</section>
+
+
+<!-- File structure
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="whats-included">What's included</h1>
+    </div>
+    <p class="lead">Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
+
+        <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) Web Skin. You'll see something like this:</p>
+    
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Web Skin_0.2.34/
+│
+├── design-resources/
+│   └── icons/
+│       ├── wf_icons/
+│       │   └── <span class="o">{</span> svg icon images <span class="o">}</span>
+│       ├── wf_icons_color/
+│       │   └── <span class="o">{</span> svg icon images <span class="o">}</span>
+│       └── wf_sec_doc_icons/
+│           └── <span class="o">{</span> svg icon images <span class="o">}</span>
+│
+└── style-guide/
+    └── <span class="o">{</span> dev resources and contents of static html platform docs <span class="o">}</span></code></pre></div>
+
+    <p>This is the most basic form of Web Skin: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS.</p>
+    <div class="wdesk-callout wdesk-callout-danger">
+        <h4>Core Lib JS Required</h4>
+        <p>Please note that Web Skin was designed under the assumption that its consumer applications would be including the JavaScript assets in <strong>libs.js</strong> and <strong>libs_ie.js</strong> in their project(s). See the basic template section below for how these should be included in your HTML.</p>
+    </div>
+
+</section>
+
+
+<!-- Basic template
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="template">Basic template</h1>
+    </div>
+    <p class="lead">Start with this basic HTML template, and adapt it to suit your needs.</p>
+
+    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Wdesk Template Using Web Skin<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
+
+        <span class="c">&lt;!-- </span>
+<span class="c">            NOTE: CONDITIONAL COMMENTS ARE NOT SUPPORTED IN MSIE 10 </span>
+<span class="c">            SERVER-SIDE MSIE DETECTION IS REQUIRED (not shown here)</span>
+<span class="c">        --&gt;</span>
+        <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;css/wdesk.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/libs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+        <span class="c">&lt;!--[if IE]&gt;</span>
+<span class="c">        &lt;link href=&quot;css/wdesk_ie.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">        &lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">        &lt;script src=&quot;js/libs_ie.min.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Hello, WebFilers!<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="c">&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;js/web-skin.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+</section>
+
+
+<!-- Extending with Sass
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="extending-with-sass">Extending with Sass</h1>
+    </div>
+    <p class="lead">Make building your app's SCSS easier by extending Web Skin's build-in SCSS variables, mixins, functions and more.</p>
+
+        <p>Once downloaded or installed via Bower, set up your app's Compass / SCSS accordingly.  The following example assumes the following file structure</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">your_app/
+│
+├── bower_components/
+│   └── web-skin/
+│
+├── sass/
+│   └── app.scss
+│
+└── config.rb</code></pre></div>
+
+    <p>The first thing you need to do is make sure your Compass configuration file knows where to find the web-skin Sass files. Add the following line to your <code>config.rb</code> file.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">additional_import_paths</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;bower_components/web-skin/sass&quot;</span><span class="o">]</span></code></pre></div>
+
+    <p>Once you've added this, you can import the web-skin Sass constants so they can be referenced throughout your app styles, and your app will update any time the values change in web-skin.</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">//---------------------------------------</span>
+<span class="c1">//  constants</span>
+<span class="c1">//---------------------------------------</span>
+<span class="k">@import</span> <span class="s2">&quot;_constants/_support.scss&quot;</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">&quot;_constants/_wdesk-manifest.scss&quot;</span><span class="p">;</span>
+
+<span class="c1">// Now you can write some responsive styles using the same settings </span>
+<span class="c1">// as the global packages uses so you&#39;re always in lock-step!</span>
+<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenTablet</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenTabletMax</span><span class="o">)</span> <span class="p">{</span>
+    <span class="c1">// mobile styles here</span>
+<span class="p">}</span>
+
+<span class="c1">// Or make an element in your app be &quot;Web Skin&quot; Green</span>
+<span class="nc">.my-element</span> <span class="p">{</span>
+    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$wf_green</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+    <h2 id="sass-color-palette">Color Palette</h2>
+    <p>The palette shown below displays the Sass <code>$variable</code> name that can be used to extend into your app, the HEX color value for designers, and a sample swatch for reference.</p>
+    
+    <div class="row">
+    
+    <div class="col-sm-6">
+
+        <!-- GREEN -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Primary Greens */</span>
+<span class="nv">$wf_green_alt2:</span>      <span class="swatch scss-output wf_green_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_alt:</span>       <span class="swatch scss-output wf_green_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green:</span>           <span class="swatch scss-output wf_green"></span><span class="nv">;</span>
+<span class="cm">/* WF Darker Greens */</span>
+<span class="nv">$wf_green_dk_alt2:</span>   <span class="swatch scss-output wf_green_dk_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_dk_alt:</span>    <span class="swatch scss-output wf_green_dk_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_dk:</span>        <span class="swatch scss-output wf_green_dk"></span><span class="nv">;</span>
+<span class="cm">/* WF Lighter Greens */</span>
+<span class="nv">$wf_green_lt_alt2:</span>   <span class="swatch scss-output wf_green_lt_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_lt_alt:</span>    <span class="swatch scss-output wf_green_lt_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_lt:</span>        <span class="swatch scss-output wf_green_lt"></span><span class="nv">;</span>
+<span class="cm">/* WF Pastel Greens */</span>
+<span class="nv">$wf_green_ps1_alt2:</span>  <span class="swatch scss-output wf_green_ps1_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps1_alt:</span>   <span class="swatch scss-output wf_green_ps1_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps1:</span>       <span class="swatch scss-output wf_green_ps1"></span><span class="nv">;</span>
+<span class="cm">/* WF Pastel Greens 2 */</span>
+<span class="nv">$wf_green_ps2_alt2:</span>  <span class="swatch scss-output wf_green_ps2_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps2_alt:</span>   <span class="swatch scss-output wf_green_ps2_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps2:</span>       <span class="swatch scss-output wf_green_ps2"></span><span class="nv">;</span>
+        </code></pre></div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <!-- BLUE -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Blue */</span>
+<span class="nv">$wf_blue_dk:</span>           <span class="swatch scss-output wf_blue_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_blue:</span>              <span class="swatch scss-output wf_blue"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_lt:</span>           <span class="swatch scss-output wf_blue_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_ps1:</span>          <span class="swatch scss-output wf_blue_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_ps2:</span>          <span class="swatch scss-output wf_blue_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- ORANGE -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Orange */</span>
+<span class="nv">$wf_orange_dk:</span>         <span class="swatch scss-output wf_orange_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_orange:</span>            <span class="swatch scss-output wf_orange"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_lt:</span>         <span class="swatch scss-output wf_orange_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_ps1:</span>        <span class="swatch scss-output wf_orange_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_ps2:</span>        <span class="swatch scss-output wf_orange_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- RED -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Red */</span>
+<span class="nv">$wf_red_dk:</span>            <span class="swatch scss-output wf_red_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_red:</span>               <span class="swatch scss-output wf_red"></span><span class="nv">;</span>
+<span class="nv">$wf_red_lt:</span>            <span class="swatch scss-output wf_red_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_red_ps1:</span>           <span class="swatch scss-output wf_red_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_red_ps2:</span>           <span class="swatch scss-output wf_red_ps2"></span><span class="nv">;</span></code></pre></div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <!-- GRAY -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Grays */</span>
+<span class="nv">$wf_gray_dk:</span>         <span class="swatch scss-output wf_gray_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_gray:</span>            <span class="swatch scss-output wf_gray"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt:</span>         <span class="swatch scss-output wf_gray_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt2:</span>        <span class="swatch scss-output wf_gray_lt2"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt3:</span>        <span class="swatch scss-output wf_gray_lt3"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_ps1:</span>        <span class="swatch scss-output wf_gray_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt4:</span>        <span class="swatch scss-output wf_gray_lt4"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt5:</span>        <span class="swatch scss-output wf_gray_lt5"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_ps2:</span>        <span class="swatch scss-output wf_gray_ps2"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt6:</span>        <span class="swatch scss-output wf_gray_lt6"></span><span class="nv">;</span>
+        </code></pre></div>
+        
+    </div>
+
+    <div class="col-sm-6">
+
+        <!-- GRAY -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Misc */</span>
+<span class="nv">$wf_blue_select:</span>       <span class="swatch scss-output wf_blue_select"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectHover:</span>  <span class="swatch scss-output wf_blue_selectHover"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectActive:</span> <span class="swatch scss-output wf_blue_selectActive"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectText:</span>   <span class="swatch scss-output wf_blue_selectText"></span><span class="nv">;</span>
+
+<span class="nv">$wf_yellow_highlight:</span>  <span class="swatch scss-output wf_yellow_highlight"></span><span class="nv">;</span>
+
+
+
+
+        </code></pre></div>
+        
+    </div>
+
+</div>
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Additional Zesty Crayon Color Palette Info</h4>
+    <p>For more information about the &ldquo;Zesty Crayon&rdquo; color palette provided by Web Skin, check out the <a href="../css/#color-palette">CSS Color Palette Section</a> of the docs.</p>
+</div>
+
+    
+    <hr>
+    
+    <h2 id="sass-variables">Useful Sass Variables</h2>
+    <p>Below is just a sample of the Sass variables available with Web Skin.  For a full list, check out <a href="https://github.com/WebFilings/web-skin/blob/master/sass/_constants/_variables.scss" onclick="ga('send', 'event', 'Getting started', 'Sass Variables', '_variables.scss');">_variables.scss</a> and <a href="https://github.com/WebFilings/web-skin/blob/master/sass/_constants/_variables.scss" onclick="ga('send', 'event', 'Getting started', 'Sass Variables', '_defaults.scss');">_defaults.scss</a> source files in the Web Skin Git repo.</p>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a class="hitarea" href="#sass-typography" data-toggle="tab">Typography</a></li>
+            <li><a class="hitarea" href="#sass-scaffolding" data-toggle="tab">Scaffolding</a></li>
+            <li><a class="hitarea" href="#sass-component-sizes" data-toggle="tab">Component Sizes</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="sass-typography">
+                <div class="row">
+    <div class="col-lg-5">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* TEXT SIZING */</span>
+<span class="nv">$fontSizeBase</span><span class="o">:</span>   <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeLarge</span><span class="o">:</span>  <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeMedium</span><span class="o">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeSmall</span><span class="o">:</span>  <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeXsmall</span><span class="o">:</span> <span class="mi">11</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="nv">$lineHeightBase</span><span class="o">:</span>   <span class="mi">1</span><span class="mf">.428571429</span><span class="p">;</span>
+<span class="nv">$lineHeightBasePx</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span> 
+<span class="nv">$lineHeightLarge</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.33333</span><span class="p">;</span>
+<span class="nv">$lineHeightSmall</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.5</span><span class="p">;</span></code></pre></div>
+    </div>
+    <div class="col-lg-7">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* FONT FAMILIES */</span>
+<span class="nv">$fontFamilyBase</span><span class="o">:</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="no">sans-serif</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerif</span><span class="o">:</span> <span class="s2">&quot;GibsonRegular&quot;</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerifSemiBold</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifSemiBoldItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerifLight</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifLightItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.my-app-text</span> <span class="p">{</span> 
+    <span class="na">font-family</span><span class="o">:</span> <span class="nv">$fontFamilyBase</span><span class="p">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$lineHeightBasePx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.my-app-special-header</span> <span class="p">{</span>
+    <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerif</span><span class="p">;</span>
+
+    <span class="nt">strong</span> <span class="p">{</span>
+        <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerifSemiBold</span><span class="p">;</span>
+        <span class="na">font-weight</span><span class="o">:</span> <span class="no">normal</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">em</span> <span class="p">{</span>
+        <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerifItalic</span><span class="p">;</span>
+        <span class="na">font-style</span><span class="o">:</span> <span class="no">normal</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.custom-leading</span> <span class="p">{</span>
+    <span class="c1">// use variables to ensure your custom font-size </span>
+    <span class="c1">// has the appropriate amount of line-height</span>
+    <span class="nv">$myCustomFontSize</span><span class="o">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+    <span class="nv">$myCustomLineHeight</span><span class="o">:</span> <span class="nf">ceil</span><span class="p">(</span><span class="nv">$myCustomFontSize</span> <span class="o">*</span> <span class="nv">$lineHeightBase</span><span class="p">);</span>
+    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$myCustomFontSize</span><span class="p">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$myCustomLineHeight</span><span class="p">;</span>
+    <span class="na">margin-bottom</span><span class="o">:</span> <span class="nf">round</span><span class="p">(</span><span class="nv">$myCustomLineHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+            </div>
+            <div class="tab-pane" id="sass-scaffolding">
+                <div class="row">
+    <div class="col-md-12">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$paddingBaseVertical</span><span class="o">:</span>    <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingBaseHorizontal</span><span class="o">:</span>  <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingBase</span><span class="o">:</span>            <span class="nv">$paddingBaseVertical</span> <span class="nv">$paddingBaseHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingLargeVertical</span><span class="o">:</span>   <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingLargeHorizontal</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingLarge</span><span class="o">:</span>           <span class="nv">$paddingLargeVertical</span> <span class="nv">$paddingLargeHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingSmallVertical</span><span class="o">:</span>   <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingSmallHorizontal</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingSmall</span><span class="o">:</span>           <span class="nv">$paddingSmallVertical</span> <span class="nv">$paddingSmallHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingXsmallVertical</span><span class="o">:</span>    <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingXsmallHorizontal</span><span class="o">:</span>  <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingXsmall</span><span class="o">:</span>            <span class="nv">$paddingXsmallVertical</span> <span class="nv">$paddingXsmallHorizontal</span><span class="p">;</span>
+
+<span class="nv">$borderRadiusBase</span><span class="o">:</span>       <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$borderRadiusLarge</span><span class="o">:</span>      <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$borderRadiusSmall</span><span class="o">:</span>      <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="nv">$spacingBase</span><span class="o">:</span>            <span class="nv">$lineHeightBasePx</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nv">$spacingLarge</span><span class="o">:</span>           <span class="nv">$spacingBase</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$spacingSmall</span><span class="o">:</span>           <span class="nv">$spacingBase</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nv">$screenPhone</span><span class="o">:</span>            <span class="mi">480</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenTablet</span><span class="o">:</span>           <span class="mi">768</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktop</span><span class="o">:</span>          <span class="mi">992</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktopLarge</span><span class="o">:</span>     <span class="mi">1200</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktopHuge</span><span class="o">:</span>      <span class="mi">1600</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="c1">// So media queries don&#39;t overlap when required, provide a maximum</span>
+<span class="nv">$screenPhoneMax</span><span class="o">:</span>         <span class="nv">$screenPhone</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenTabletMax</span><span class="o">:</span>        <span class="nv">$screenDesktop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenDesktopMax</span><span class="o">:</span>       <span class="nv">$screenDesktopLarge</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenDesktopLargeMax</span><span class="o">:</span>  <span class="nv">$screenDesktopHuge</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.my-custom-button</span> <span class="p">{</span> 
+    <span class="na">padding</span><span class="o">:</span> <span class="nv">$paddingBase</span><span class="p">;</span>
+    <span class="na">border-radius</span><span class="o">:</span> <span class="nv">$borderRadiusBase</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenPhone</span><span class="o">)</span> <span class="p">{</span>
+    <span class="c1">// styling that should only be present on a small device</span>
+    <span class="nc">.only-desktop</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+            </div>
+            <div class="tab-pane" id="sass-component-sizes">
+                <div class="row">
+    <div class="col-lg-6">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* ICON SIZES */</span>
+<span class="nv">$baseIconSize</span><span class="o">:</span>          <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconSmallSize</span><span class="o">:</span>         <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconMediumSize</span><span class="o">:</span>        <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconLargeSize</span><span class="o">:</span>         <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconHugeSize</span><span class="o">:</span>          <span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconGiganticSize</span><span class="o">:</span>      <span class="mi">96</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* PROGRESS SPINNER SIZES */</span>
+<span class="nv">$baseSpinnerSize</span><span class="o">:</span>       <span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerSmallSize</span><span class="o">:</span>      <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerMediumSize</span><span class="o">:</span>     <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerLargeSize</span><span class="o">:</span>      <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerHugeSize</span><span class="o">:</span>       <span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerGiganticSize</span><span class="o">:</span>   <span class="mi">96</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* DIALOG SIZES */</span>
+<span class="nv">$menuVMaxWidth</span><span class="o">:</span>         <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$popoverMaxWidth</span><span class="o">:</span>       <span class="mi">300</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$popoverMinWidth</span><span class="o">:</span>       <span class="mi">170</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$dialogHeaderMinHeight</span><span class="o">:</span> <span class="mi">52</span><span class="kt">px</span><span class="p">;</span></code></pre></div>
+    </div>
+    <div class="col-lg-6">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* BUTTON SIZES */</span>
+<span class="nv">$btnHeight</span><span class="o">:</span>                <span class="mi">34</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightLarge</span><span class="o">:</span>           <span class="mi">45</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightSmall</span><span class="o">:</span>           <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightXsmall</span><span class="o">:</span>          <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* FORM INPUT SIZES */</span>
+<span class="nv">$inputHeightBase</span><span class="o">:</span>          <span class="mi">34</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$inputHeightLarge</span><span class="o">:</span>         <span class="mi">45</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$inputHeightSmall</span><span class="o">:</span>         <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* TABLE SIZES */</span>
+<span class="nv">$tableCellHeight</span><span class="o">:</span>          <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableCellHeightCnd</span><span class="o">:</span>       <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableHeaderCellHeight</span><span class="o">:</span>    <span class="mi">33</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableHeaderCellHeightCnd</span><span class="o">:</span> <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* NAV SIZES */</span>
+<span class="nv">$navbarHeight</span><span class="o">:</span>             <span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$navRibbonMinHeight</span><span class="o">:</span>       <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$globalStatusBarHeight</span><span class="o">:</span>    <span class="mi">24</span><span class="kt">px</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.centered-icon-text</span> <span class="p">{</span> 
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$spinnerMediumSize</span><span class="p">;</span>
+    <span class="na">vertical-align</span><span class="o">:</span> <span class="no">middle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.table</span> <span class="nt">tbody</span> <span class="nt">td</span> <span class="p">{</span>
+    <span class="nc">.valign-xs-button</span> <span class="p">{</span>
+        <span class="na">margin-top</span><span class="o">:</span> <span class="nf">round</span><span class="p">((</span><span class="nv">$tableCellHeight</span> <span class="o">-</span> <span class="nv">$btnHeightXsmall</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+</section>
+
+
+<!-- Migration
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="migration">Migrating from 0.1.x to 0.2.x</h1>
+    </div>
+    <p class="lead">Web Skin's web-skin <code>0.2.x</code> is not backwards compatible with <code>0.1.x</code>. Folks looking to upgrade to <code>0.2.x</code> should use this section as a general upgrade guide. We've outlined some of the major changes and provided tables that highlight key changes.</p>
+
+        <h2 id="migration-classes">Major class changes</h2>
+    <p>Reference table for classes that have changed between <code>0.1.x</code> and <code>0.2.x</code>.</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>web-skin 0.1.x</th>
+                    <th>web-skin 0.2.x</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.span*</code></td>
+                    <td><code>.col-md-*</code></td>
+                </tr>
+                <tr>
+                    <td><code>.offset*</code></td>
+                    <td><code>.col-md-offset-*</code></td>
+                </tr>
+                <tr>
+                    <td><code>.*-mini</code></td>
+                    <td><code>.*-xs</code></td>
+                </tr>
+                <tr>
+                    <td><code>.*-small</code></td>
+                    <td><code>.*-sm</code></td>
+                </tr>
+                <tr>
+                    <td><code>.*-large</code></td>
+                    <td><code>.*-lg</code></td>
+                </tr>
+                <tr>
+                    <td><code>.btn-invisible</code></td>
+                    <td><code>.btn-vanilla</code></td>
+                </tr>
+                <tr>
+                    <td><code>.callout</code></td>
+                    <td><code>.btn-callout</code></td>
+                </tr>
+                <tr>
+                    <td><code>.vanilla</code></td>
+                    <td><code>.input-vanilla</code></td>
+                </tr>
+                <tr>
+                    <td><code>.control-group</code></td>
+                    <td><code>.form-group</code></td>
+                </tr>
+                <tr>
+                    <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
+                    <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
+                </tr>
+                <tr>
+                    <td><code>.input-prepend</code> <code>.input-append</code></td>
+                    <td><code>.input-group</code></td>
+                </tr>
+                <tr>
+                    <td><code>.add-on</code></td>
+                    <td><code>.input-group-addon</code></td>
+                </tr>
+                <tr>
+                    <td><code>.muted</code></td>
+                    <td><code>.text-muted</code></td>
+                </tr>
+                <tr>
+                    <td><code>ul.unstyled</code></td>
+                    <td><code>.list-unstyled</code></td>
+                </tr>
+                <tr>
+                    <td><code>ul.inline</code></td>
+                    <td><code>.list-inline</code></td>
+                </tr>
+                <tr>
+                    <td><code>.dropdown-menu .nav-header</code></td>
+                    <td><code>.dropdown-menu .dropdown-header</code></td>
+                </tr>
+                <tr>
+                    <td><code>.visible-phone</code></td>
+                    <td><code>.visible-xs</code></td>
+                </tr>
+                <tr>
+                    <td><code>.visible-tablet</code></td>
+                    <td><code>.visible-sm</code></td>
+                </tr>
+                <tr>
+                    <td><code>.visible-desktop</code></td>
+                    <td><code>.visible-md</code></td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-phone</code></td>
+                    <td><code>.hidden-xs</code></td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-tablet</code></td>
+                    <td><code>.hidden-sm</code></td>
+                </tr>
+                <tr>
+                    <td><code>.hidden-desktop</code></td>
+                    <td><code>.hidden-md</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+
+
+    <h2 id="migration-new">What's new</h2>
+    <p>We've added a few new elements and changed some existing ones. Here's their new or updated classes.</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Panels</td>
+                    <td><code>.panel .panel-default</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td>
+                </tr>
+                <tr>
+                    <td>List groups</td>
+                    <td><code>.list-group</code> <code>.list-group-item</code> <code>.list-group-item-text</code> <code>.list-group-item-heading</code></td>
+                </tr>
+                <tr>
+                    <td>Extra small grid (&lt;<span class="scss-output screen-tablet"></span>)</td>
+                    <td><code>.col-xs-*</code></td>
+                </tr>
+                <tr>
+                    <td>Small grid (&ge;<span class="scss-output screen-tablet"></span>)</td>
+                    <td><code>.col-sm-*</code></td>
+                </tr>
+                <tr>
+                    <td>Medium grid (&ge;<span class="scss-output screen-desktop"></span>)</td>
+                    <td><code>.col-md-*</code></td>
+                </tr>
+                <tr>
+                    <td>Large grid (&ge;<span class="scss-output screen-desktop-lg"></span>)</td>
+                    <td><code>.col-lg-*</code></td>
+                </tr>
+                <tr>
+                    <td>Grid Offsets</td>
+                    <td><code>.col-sm-offset-*</code> <code>.col-md-offset-*</code> <code>.col-lg-offset-*</code></td>
+                </tr>
+                <tr>
+                    <td>Grid Push</td>
+                    <td><code>.col-sm-push-*</code> <code>.col-md-push-*</code> <code>.col-lg-push-*</code></td>
+                </tr>
+                <tr>
+                    <td>Grid Pull</td>
+                    <td><code>.col-sm-pull-*</code> <code>.col-md-pull-*</code> <code>.col-lg-pull-*</code></td>
+                </tr>
+                <tr>
+                    <td>Responsive utility classes (&ge;<span class="scss-output screen-desktop-lg"></span>)</td>
+                    <td><code>.visible-lg</code> <code>.hidden-lg</code></td>
+                </tr>
+                <tr>
+                    <td>Input groups</td>
+                    <td><code>.input-group</code> <code>.input-group-addon</code> <code>.input-group-btn</code></td>
+                </tr>
+                <tr>
+                    <td>Form controls</td>
+                    <td><code>.form-control</code> <code>.form-group</code></td>
+                </tr>
+                <tr>
+                    <td>Modal</td>
+                    <td><code>.modal-dialog</code> <code>.modal-content</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+
+
+    <h2 id="migration-dropped">What's removed</h2>
+    <p>The following elements have been dropped in v0.2.x</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Element</th>
+                    <th>Removed from 0.1.x</th>
+                    <th>0.2.x Equivalent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lined lists</td>
+                    <td><code>.list-lined</code></td>
+                    <td><code>.list-group</code></td>
+                </tr>
+                <tr>
+                    <td>Accordions</td>
+                    <td><code>.accordion</code> <code>.accordion-*</code></td>
+                    <td><code>.panel</code> <code>.panel-*</code></td>
+                </tr>
+                <tr>
+                    <td>Dropdown submenus</td>
+                    <td><code>.dropdown-submenu</code></td>
+                    <td class="text-muted">N/A</td>
+                </tr>
+                <tr>
+                    <td>Search form</td>
+                    <td><code>.form-search</code></td>
+                    <td class="text-muted">N/A</td>
+                </tr>
+                <tr>
+                    <td>Navbar inner</td>
+                    <td><code>.navbar-inner</code></td>
+                    <td class="text-muted">N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+
+
+    <h2 id="migration-notes">Additional notes</h2>
+    <p>We've made many underlying changes in 0.2.x that are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our mobile first approach.</p>
+
+    <h4>Navs</h4>
+    <ul class="list-wordy">
+        <li>You can no longer add "disabled" appearance to a nav link/button by using the parent <code>&lt;li class="disabled"&gt;</code> element.  Instead, add the disabled class to an <code>&lt;a&gt;</code> element, or add the disabled attribute to a <code>&lt;button&gt;</code> element.</li>
+    </ul>
+
+    <h4>Forms</h4>
+    <ul class="list-wordy">
+        <li>Text-based form controls no longer receive styling without adding the <code>.form-control</code> class.</li>
+        <li>Text-based form controls are now 100% wide, and cannot have grid classes applied directly to them. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
+        <li><code>.form-horizontal</code> control groups no longer receive default widths.  Use <code>.form-group</code> elems as grid rows, and wrap your inputs in grid spans to enforce a specific width as shown in <a href="../css/#forms-horizontal">this form-horizontal example</a>.</li>
+    </ul>
+
+    <h4>Modals</h4>
+    <ul class="list-wordy">
+        <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections now get wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for improved mobile styling and behavior.</li>
+    </ul>
+
+    <h4>Accordions</h4>
+    <ul class="list-wordy">
+        <li>The accordion element classes shown in the <a href="../archives/0.1.6/javascript/#collapse" target="webskin_archives">Collapse Plugin JavaScript Docs of v0.1.x</a> are no longer in-use. Instead, use the new <a href="../components/#panels-accordion">Panels</a> component to build accordions.</li>
+    </ul>
+
+    <h4>Javascript</h4>
+    <ul class="list-wordy">
+        <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.wdesk.modal'</code>. For tabs "shown" use <code>'shown.wdesk.tab'</code>, etc.</li>
+    </ul>
+
+    <hr>
+    <p><strong>For more information on upgrading</strong>, give us a shout or <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', '0.2.x Migration');">open an issue</a>.</p>
+
+</section>
+
+
+<!-- Browser support
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="browsers">Browser support</h1>
+    </div>
+    <p class="lead">Web Skin is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional versions of certain components.</p>
+
+        <h3>Supported browsers</h3>
+    <p>Specifically, we support the latest versions of the following:</p>
+    <ul>
+        <li>Chrome <span class="scss-output min-chrome-supported"></span>+</li>
+        <li>Safari <span class="scss-output min-safari-supported"></span>+</li>
+        <li>Firefox <span class="scss-output min-mozilla-supported"></span>+</li>
+        <li><abbr title="Microsoft Internet Explorer" class="initialism">MSIE</abbr> <span class="scss-output min-ie-supported"></span>+</li>
+    </ul>
+
+    <h3>Internet Explorer 7, 8 and 9</h3>
+    <p>Internet Explorer 7, 8 and 9 are <em>supported</em>, however, please be aware that many CSS3 properties—e.g., rounded corners and shadows—are not supported by IE7 or IE8. The <code>placeholder</code> attribute is also not supported in either of these versions.</p>
+    <p>In addition, <strong>Internet Explorer 7 and 8 requires the use of <a href="https://github.com/scottjehl/Respond" target="_blank">respond.js</a> to enable media query support.</strong></p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-md-3">Feature</th>
+                    <th scope="col" class="col-md-3">MSIE 7</th>
+                    <th scope="col" class="col-md-3">MSIE 8</th>
+                    <th scope="col" class="col-md-3">MSIE 9</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code>border-radius</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>box-shadow</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>transform</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported, with <code>-ms</code> prefix</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>transition</code></th>
+                    <td colspan="3" class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>placeholder</code></th>
+                    <td colspan="3" class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Visit <a href="http://caniuse.com/" target="_blank">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
+
+    <h3>IE Compatibility modes</h3>
+    <p>Web Skin is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your pages:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+    <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge" target="_blank">this StackOverflow question</a> for more information.</p>
+
+    <h3>Windows Phone 8 and Internet Explorer 10</h3>
+    <p>Internet Explorer 10 doesn't differentiate device width from viewport width, and thus doesn't properly apply the media queries in Web Skin's CSS. To address this, you can optionally JavaScript to work alongside the CSS that is included with Web Skin until Microsoft issues a fix.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Add this to work alongside Web Skin&#39;s CSS</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/IEMobile\/10\.0/</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">msViewportStyle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;style&quot;</span><span class="p">)</span>
+    <span class="nx">msViewportStyle</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span>
+            <span class="s2">&quot;@-ms-viewport{width:auto!important}&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">msViewportStyle</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* This comes with wdesk_ie.css */</span> 
+<span class="k">@-ms-viewport</span> <span class="p">{</span> 
+    <span class="nt">width</span><span class="o">:</span> <span class="nt">device-width</span><span class="o">;</span> 
+<span class="p">}</span>
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
+    <span class="k">@-ms-viewport</span><span class="p">{</span>
+        <span class="nt">width</span><span class="o">:</span> <span class="nt">320px</span><span class="o">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/" target="_blank">Windows Phone 8 and Device-Width</a>.</p>
+
+    <h3>Modals and mobile devices</h3>
+    <h4>Overflow and scrolling</h4>
+    <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
+    <h4>Virtual keyboards</h4>
+    <p>Also, note that if you're using inputs in your modal – iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few work arounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Web Skin, so it is up to you to decide which solution is best for your application.</p>
+
+    <h3>Browser zooming</h3>
+    <p>Page zooming inevitably presents rendering artifacts in some components, both in Web Skin and the rest of the web. Depending on the issue, we may be able to fix it <em>(search first and then <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', 'Browser zooming issue');">open an issue if need be</a>)</em>. However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
+</section>
+
+
+<!-- Disabling responsiveness
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="disable-responsive">Disabling responsiveness</h1>
+    </div>
+    <p class="lead">Don't want your application to be scaled on different devices? With a little bit of work, you can disable the responsive features of Web Skin so that mobile users see your full desktop-version site.</p>
+
+        <h3>Steps to disable responsive views</h3>
+    <ol>
+        <li>Remove (or just don't add) the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
+        <li>Remove the <code>max-width</code> on the <code>.container</code> for all grid tiers with <code>max-width: none !important;</code> and set a regular width. Be sure that this comes after the default Web Skin CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
+        <li>If using navbars, undo all the navbar collapsing and expanding behavior.</li>
+        <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don't worry, the extra-small device grid scales up to all resolutions, so you're set there.</li>
+    </ol>
+    <p>You'll still need respond.js for MSIE8 (since our media queries are still there and need to be picked up).</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Reset the container</span>
+<span class="nc">.container</span> <span class="p">{</span>
+    <span class="na">max-width</span><span class="o">:</span> <span class="no">none</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">width</span><span class="o">:</span> <span class="nv">$screenDesktop</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.container</span> <span class="nc">.navbar-header</span><span class="o">,</span>
+<span class="nc">.container</span> <span class="nc">.navbar-collapse</span> <span class="p">{</span>
+    <span class="na">margin-right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="na">margin-left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Always float the navbar header</span>
+<span class="nc">.navbar-header</span> <span class="p">{</span> <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">// Undo the collapsing navbar</span>
+<span class="nc">.navbar-collapse</span> <span class="p">{</span>
+    <span class="na">display</span><span class="o">:</span> <span class="no">block</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">height</span><span class="o">:</span> <span class="no">auto</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">padding-bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="na">overflow</span><span class="o">:</span> <span class="no">visible</span> <span class="nv">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.navbar-toggle</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.navbar-brand</span> <span class="p">{</span> <span class="na">margin-left</span><span class="o">:</span> <span class="o">-</span><span class="si">#{</span><span class="nv">$gridGutterWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">// Always apply the floated nav</span>
+<span class="nc">.navbar</span> <span class="nc">.nav</span> <span class="p">{</span>
+    <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span> 
+        <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span> 
+        <span class="o">&gt;</span> <span class="nc">.hitarea</span> <span class="p">{</span>
+            <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nf">nth</span><span class="p">(</span><span class="nv">$navbarPadding</span><span class="o">,</span> <span class="mi">2</span><span class="p">);</span>    
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Redeclare since we override the float above</span>
+<span class="nc">.navbar</span> <span class="nc">.nav.navbar-right</span> <span class="p">{</span> <span class="na">float</span><span class="o">:</span> <span class="no">right</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
+
+</section>
+
+
+<!-- Accessibility
+================================================== -->
+<section class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="accessibility">Accessibility</h1>
+    </div>
+    <p class="lead">Web Skin follows common web standards, and with minimal extra effort, can be used to create sites that are accessibile to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.</p>
+
+        <h3>Skip navigation</h3>
+    <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. <a href="http://a11yproject.com/posts/skip-nav-links/" target="_blank">(read why)</a></p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Skip to content<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+        The main page content.
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+    <h3>Nested headings</h3>
+    <p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
+    <p>Learn more at <a href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/" target="_blank">HTML CodeSniffer</a> and <a href="http://accessibility.psu.edu/headings" target="_blank">Penn State's AccessAbility</a>.</p>
+
+    <h3>Additional resources</h3>
+    <ul>
+        <li><a href="https://github.com/squizlabs/HTML_CodeSniffer" target="_blank">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
+        <li><a href="http://a11yproject.com/" target="_blank">The A11Y Project</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Accessibility" target="_blank">MDN accessibility documentation</a></li>
+    </ul>
+</section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main docs footer (social buttons, copyright, etc). -->
+    <!-- Footer
+================================================== -->
+<footer class="wdesk-docs-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>The Web Skin Style Guide was hand made with love by <a href="https://github.com/aaronlademann-wf" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Web Skin Team', 'Aaron Lademann');">Aaron Lademann</a> and the <a href="https://github.com/WebFilings/web-skin/graphs/contributors" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Web Skin Team', 'Web Skin Team');">Web Skin Team</a>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-links">
+                    <li>Currently <a href="https://github.com/WebFilings/web-skin/releases/tag/0.2.34" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Version link', 'Version 0.2.34');">v0.2.34</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/releases" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Releases', 'Releases');">Releases</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/blob/master/CONTRIBUTING.md" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Contribute', 'Contribute');">Contribute</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/issues?state=open" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Issues', 'Issues');">Issues</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Issues', 'Report an Issue');">Report an Issue</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- JS and analytics only. -->
+    <!-- Web Skin core JavaScript
+================================================== -->
+<script src="../assets/js/web-skin.min.js?0.2.34"></script>
+<script src="../assets/js/docs-only/docs.min.js?0.2.34"></script>
+
+    
+    
+    
+
+</body>
+</html>
