@@ -15,7 +15,7 @@ module.exports = function(grunt) {
                 recursive: true
             },
             addSpecialArchiveCSS: {
-                pattern: /(docs\.css\?*(.*)\" rel=\"stylesheet\"\>)/g,
+                pattern: /(docs\.css\?*(.*)\" rel=\"stylesheet\"\>(?!\n\<style\>))/g,
                 replacement: '$1\n<style>\n' + specialArchiveCSS + '\n</style>',
                 recursive: true
             }
