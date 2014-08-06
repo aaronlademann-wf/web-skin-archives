@@ -9,12 +9,12 @@
 <meta name="author" content="Aaron Lademann">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <title>
-    
+
         JavaScript &middot; Web Skin Style Guide
-    
+
 </title>
 
 <!--[if !IE]> -->
@@ -79,7 +79,7 @@
 
     ga('send', 'pageview');
 
-</script>  
+</script>
     <!-- Place anything custom after this. -->
 </head>
 <body class="wdesk-docs-body">
@@ -134,23 +134,23 @@
     </header>
 
     <!-- Callout for the old docs link -->
-    
+
         <div class="wdesk-archived-docs">
     <div class="container">
         <strong>
-          <a href="../archives/0.1.6/javascript" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6 javascript', 'Section Header');">Looking for the Web Skin 0.1.6 docs?</a>
+          <a href="../../0.1.6/javascript" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6 javascript', 'Section Header');">Looking for the Web Skin 0.1.6 docs?</a>
         </strong>
         &nbsp;&nbsp;We&rsquo;ve moved them to a new home while we push forward with Web Skin 0.2.34
     </div>
 </div>
 
-    
+
 
     <div class="container wdesk-docs-container">
         <div class="row">
             <div class="col-md-3 wdesk-docs-sidebar">
                 <ul role="menu" class="nav wdesk-docs-sidenav fade">
-                
+
                     <li>
     <a class="hitarea" href="#js-overview">Overview</a>
     <ul class="nav">
@@ -268,7 +268,7 @@
     <a class="hitarea" href="#affix">Affix</a>
 </li>
 
-                
+
                 </ul>
             </div>
             <div class="col-md-9" role="main">
@@ -320,12 +320,12 @@
 <p>Web Skin provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
 <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myModal&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;show.wdesk.modal&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span> <span class="c1">// stops modal from being shown</span>
     <span class="p">}</span>
 <span class="p">});</span></code></pre></div>
 
-    
+
 </section>
 
 
@@ -336,7 +336,7 @@
         <h1 id="transitions">Transitions <small>wdesk-transition.js</small></h1>
     </div>
     <p class="lead">For simple transition effects, include wdesk-transition.js once alongside the other JS files.</p>
-    
+
     <h3>About transitions</h3>
 <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
 
@@ -457,10 +457,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <div class="modal-body">
                 <div class="body-content">
                     <h3>Heading</h3>
-                    <p>Paragraph contents of a Dialog. Ut enim ad minim 
-                    veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute 
-                    irure dolor in reprehenderit in voluptate velit 
+                    <p>Paragraph contents of a Dialog. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div class="modal-actions">
@@ -472,8 +472,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
                 <div class="body-content">
-                    <p>Another Paragraph contents of a Dialog. Ut enim ad 
-                    minim veniam, quis nostrud exercitation ullamco laboris 
+                    <p>Another Paragraph contents of a Dialog. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>
@@ -485,7 +485,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div><!-- /.modal-dalog -->
 </div><!-- /.modal -->
 <div class="modal-backdrop fade in"></div>
-    
+
 </div><!-- /example -->
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal fade in&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">role=</span><span class="s">&quot;dialog&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;myModalLabel&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-dialog&quot;</span><span class="nt">&gt;</span>
@@ -497,10 +497,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;body-content&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;h3&gt;</span>Heading<span class="nt">&lt;/h3&gt;</span>
-                    <span class="nt">&lt;p&gt;</span>Paragraph contents of a Dialog. Ut enim ad minim 
-                    veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute 
-                    irure dolor in reprehenderit in voluptate velit 
+                    <span class="nt">&lt;p&gt;</span>Paragraph contents of a Dialog. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur.<span class="nt">&lt;/p&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-actions&quot;</span><span class="nt">&gt;</span>
@@ -512,8 +512,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;body-content&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;p&gt;</span>Another Paragraph contents of a Dialog. Ut enim ad 
-                    minim veniam, quis nostrud exercitation ullamco laboris 
+                    <span class="nt">&lt;p&gt;</span>Another Paragraph contents of a Dialog. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat.<span class="nt">&lt;/p&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
@@ -529,9 +529,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <h3>Live demo</h3>
 <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
 
-<div id="myModal2" class="modal fade slide live-demo-modal" tabindex="-1" 
-     role="dialog" 
-     aria-labelledby="myModalLabel2" 
+<div id="myModal2" class="modal fade slide live-demo-modal" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel2"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -820,7 +820,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -928,8 +928,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <h3>Via data attributes</h3>
 <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;dLabel&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle hitarea&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> 
-       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> 
+    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;dLabel&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle hitarea&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span>
+       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span>
        <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
        Dropdown trigger <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/a&gt;</span>
@@ -943,9 +943,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <p>To keep URLs intact, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;dLabel2&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle hitarea&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> 
-       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> 
-       <span class="na">data-target=</span><span class="s">&quot;#dd2&quot;</span> 
+    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;dLabel2&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle hitarea&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span>
+       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span>
+       <span class="na">data-target=</span><span class="s">&quot;#dd2&quot;</span>
        <span class="na">href=</span><span class="s">&quot;/page.html&quot;</span><span class="nt">&gt;</span>
         Dropdown <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
     <span class="nt">&lt;/a&gt;</span>
@@ -1052,7 +1052,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -1118,7 +1118,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <h2 id="scrollspy-usage">Usage</h2>
 
 <h3>Via data attributes</h3>
-<p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on <em>(most typically this would be the body)</em> and <code>data-target=".navbar"</code> to select which nav to use.</p> 
+<p>To easily add scrollspy behavior to your topbar navigation, just add <code>data-spy="scroll"</code> to the element you want to spy on <em>(most typically this would be the body)</em> and <code>data-target=".navbar"</code> to select which nav to use.</p>
 <p>You'll want to use scrollspy with a <code>.nav</code> component of some kind.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">data-spy=</span><span class="s">&quot;scroll&quot;</span> <span class="na">data-target=</span><span class="s">&quot;.navbar&quot;</span><span class="nt">&gt;</span>
     ...
@@ -1210,7 +1210,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -1363,7 +1363,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -1484,7 +1484,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <td>
                     Delay showing and hiding the tooltip (ms) <br>
                     <i class="text-muted">does not apply to manual trigger type</i><br><br>
-                    
+
                     <strong>Number:</strong> Delay is applied to both hide and show methods<br><br>
                     <strong>Object:</strong> <code>delay: { show: 500, hide: 100 }</code>
                 </td>
@@ -1640,7 +1640,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -1857,7 +1857,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <td>
                     Delay showing and hiding the popover (ms) <br>
                     <i class="text-muted">does not apply to manual trigger type</i><br><br>
-                    
+
                     <strong>Number:</strong> Delay is applied to both hide and show methods<br><br>
                     <strong>Object:</strong> <code>delay: { show: 500, hide: 100 }</code>
                 </td>
@@ -2012,7 +2012,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -2070,7 +2070,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
         <div class="alert-footer pull-right">
             <a class="btn btn-link" href="#" data-dismiss="alert">Cancel</a>
-            <a class="btn btn-error" href="#">Take Action</a> 
+            <a class="btn btn-error" href="#">Take Action</a>
         </div>
     </div>
 </div><!-- /example -->
@@ -2080,7 +2080,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <span class="nt">&lt;p&gt;</span>...<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;alert-footer pull-right&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-link&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Cancel<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-error&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Take Action<span class="nt">&lt;/a&gt;</span> 
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;btn btn-error&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Take Action<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -2205,7 +2205,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -2216,7 +2216,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <h1 id="buttons" class="js-buttons">Buttons <small>wdesk-button.js</small></h1>
     </div>
     <p class="lead">Do more with buttons. Control button states or create groups of buttons for more components like toolbars.</p>
-    
+
     <h2 id="buttons-examples">Examples</h2>
 
 
@@ -2250,7 +2250,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn clear-search&quot;</span> <span class="na">title=</span><span class="s">&quot;Clear Search&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <div class="wdesk-callout wdesk-callout-info">
-    <h4>Integrating with AngularJS</h4> 
+    <h4>Integrating with AngularJS</h4>
     <p>The buttons plugin handles the clearing of the input's value, and in an AngularJS application - the input itself would be bound to <code>ng-model</code>, which you can update by hooking into the <a href="#clear-search-events">built-in events for clear search buttons</a></p>
 </div>
 
@@ -2451,7 +2451,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <p>Using the <a href="#clear-search-events">clearSearch events</a>, wiring up an Angular directive to our clear search button plugin is easy!</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;search-box&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;search-demo&quot;</span> <span class="na">class=</span><span class="s">&quot;search-text&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;Search&quot;</span>
-           <span class="na">data-ng-model=</span><span class="s">&quot;sampleQuery&quot;</span> 
+           <span class="na">data-ng-model=</span><span class="s">&quot;sampleQuery&quot;</span>
            <span class="na">data-ng-change=</span><span class="s">&quot;updateQuery()&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn clear-search&quot;</span> <span class="na">title=</span><span class="s">&quot;Clear Search&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -2481,7 +2481,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <span class="nx">$searchInput</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
                     <span class="c1">// do something when we know that the user has cleared the search input...</span>
                 <span class="p">});</span>
-                
+
             <span class="p">};</span>
             <span class="nx">searchLinker</span><span class="p">.</span><span class="nx">$inject</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">];</span>
 
@@ -2598,7 +2598,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div><!-- /example -->
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-group&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading open&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading open&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#general&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>General<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -2610,7 +2610,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#legend&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>Legend<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -2622,7 +2622,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#axis&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>Axis<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -2781,7 +2781,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </tbody>
     </table>
 </div>
-    
+
 </section>
 
 
@@ -2828,7 +2828,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <div class="col-md-3">
                         <label for="single-select-groups-chosen">Single Select <br>(groups)</label>
                         <select id="single-select-groups-chosen" class="chosen form-control" data-placeholder="Choose a Doctype">
-                            <optgroup label="Images">   
+                            <optgroup label="Images">
                                 <option value="JPEG">JPEG</option>
                                 <option value="GIF">GIF</option>
                                 <option value="PNG">PNG</option>
@@ -2851,7 +2851,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <div class="col-md-3">
                         <label for="multi-select-groups-chosen">Multi-Select <br>(groups)</label>
                         <select id="multi-select-groups-chosen" class="chosen form-control" data-placeholder="Choose Doctypes" multiple>
-                            <optgroup label="Images">   
+                            <optgroup label="Images">
                                 <option value="JPEG">JPEG</option>
                                 <option value="GIF">GIF</option>
                                 <option value="PNG">PNG</option>
@@ -2898,7 +2898,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <div class="col-md-3">
                         <label for="single-select-groups">Single Select <br>(groups)</label>
                         <select class="form-control" id="single-select-groups" data-placeholder="Choose a Doctype">
-                            <optgroup label="Images">   
+                            <optgroup label="Images">
                                 <option value="JPEG">JPEG</option>
                                 <option value="GIF">GIF</option>
                                 <option value="PNG">PNG</option>
@@ -2921,7 +2921,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <div class="col-md-3">
                         <label for="multi-select-groups">Multi-Select <br>(groups)</label>
                         <select class="form-control" id="multi-select-groups" data-placeholder="Choose Doctypes" multiple>
-                            <optgroup label="Images">   
+                            <optgroup label="Images">
                                 <option value="JPEG">JPEG</option>
                                 <option value="GIF">GIF</option>
                                 <option value="PNG">PNG</option>
@@ -3038,7 +3038,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <th>no_results_text</th>
                 <td>string</td>
                 <td>'No results match'</td>
-                <td>The text to be displayed when no matching results are found. The current search is shown at the end of the text (e.g. 
+                <td>The text to be displayed when no matching results are found. The current search is shown at the end of the text (e.g.
            No reults match "Bad Search").</td>
             </tr>
             <tr>
@@ -3089,7 +3089,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <strong>UX NOTE: This is not recommended.</strong>
                 </td>
             </tr>
-            
+
         </tbody>
     </table>
 </div>
@@ -3207,7 +3207,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <h1 id="affix">Affix <small>wdesk-affix.js</small></h1>
     </div>
     <p class="lead">The subnavigation on the left side of this documentation is a live demo of the affix plugin.</p>
-    
+
     <h2 id="affix-usage">Usage</h2>
 
 <h3>Via data attributes</h3>
@@ -3297,9 +3297,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <script src="../assets/js/web-skin.min.js?0.2.34"></script>
 <script src="../assets/js/docs-only/docs.min.js?0.2.34"></script>
 
-    
-    
-    
+
+
+
 
 </body>
 </html>

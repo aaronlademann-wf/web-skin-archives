@@ -9,12 +9,12 @@
 <meta name="author" content="Aaron Lademann">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <title>
-    
+
         Components &middot; Web Skin Style Guide
-    
+
 </title>
 
 <!--[if !IE]> -->
@@ -79,7 +79,7 @@
 
     ga('send', 'pageview');
 
-</script>  
+</script>
     <!-- Place anything custom after this. -->
 </head>
 <body class="wdesk-docs-body">
@@ -134,23 +134,23 @@
     </header>
 
     <!-- Callout for the old docs link -->
-    
+
         <div class="wdesk-archived-docs">
     <div class="container">
         <strong>
-          <a href="../archives/0.1.6/components" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6 components', 'Section Header');">Looking for the Web Skin 0.1.6 docs?</a>
+          <a href="../../0.1.6/components" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.1.6 components', 'Section Header');">Looking for the Web Skin 0.1.6 docs?</a>
         </strong>
         &nbsp;&nbsp;We&rsquo;ve moved them to a new home while we push forward with Web Skin 0.2.34
     </div>
 </div>
 
-    
+
 
     <div class="container wdesk-docs-container">
         <div class="row">
             <div class="col-md-3 wdesk-docs-sidebar">
                 <ul role="menu" class="nav wdesk-docs-sidenav fade">
-                
+
                     <li>
     <a class="hitarea" href="#dropdowns">Dropdowns</a>
     <ul class="nav">
@@ -232,7 +232,7 @@
                 <li><a class="hitarea" href="#navbar-fixed-bottom">Fixed bottom navbar</a></li>
             </ul>
         </li>
-        
+
         <li><a class="hitarea" href="#statusbar">Statusbar</a></li>
         <li><a class="hitarea" href="#navbar-wizards">Directional wizard navbar</a></li>
     </ul>
@@ -350,7 +350,7 @@
 </li>
 <li><a class="hitarea" href="#wells">Wells</a></li>
 
-                
+
                 </ul>
             </div>
             <div class="col-md-9" role="main">
@@ -1522,15 +1522,15 @@
 <p>In a typical Wdesk solution, there will be primary links that navigate the user through the primary functions of that solution, and secondary links that navigate the user through Wdesk admin / Help / etc...</p>
 <p>Below is the correct way to implement the "two-headed" navigation approach within our HTML products using Django templates.</p>
 
-<div id="wdesk-navbar-top-example1" 
+<div id="wdesk-navbar-top-example1"
      class="wdesk-docs-example wdesk-navbar-top-example">
     <nav role="navigation" class="navbar navbar-fixed-top" style="position: absolute;">
         <div class="container">
             <ul role="menu" class="nav mobile nav-blocks">
                 <li role="presentation">
                     <button id="secondary-menu-toggle"
-                            class="navbar-toggle hitarea no-text collapsed" 
-                            data-toggle="collapse" 
+                            class="navbar-toggle hitarea no-text collapsed"
+                            data-toggle="collapse"
                             data-target=".secondary-nav-collapse">
                         <i class="icon icon-menu-list"></i>
                     </button>
@@ -1548,43 +1548,43 @@
                     </div>
                 </a>
             </div>
-            <div id="primary-menu" 
+            <div id="primary-menu"
      class="ribbon-menu-tabs">
     <ul id="solution-menu" role="tablist" class="nav">
         <li role="presentation" class="active">
-            <button role="tab" 
+            <button role="tab"
                     id="fileTabToggle"
-                    class="hitarea" 
-                    data-target="#fileTab" 
+                    class="hitarea"
+                    data-target="#fileTab"
                     data-toggle="tab">
                 File
             </button>
         </li>
         <li role="presentation">
-            <button role="tab" 
+            <button role="tab"
                     id="bookTabToggle"
-                    class="hitarea" 
-                    data-target="#bookTab" 
+                    class="hitarea"
+                    data-target="#bookTab"
                     data-toggle="tab">
                 Books
             </button>
         </li>
     </ul>
 </div>
-            <div id="secondary-menu" 
-                 class="secondary-nav-collapse nav-collapse collapse" 
+            <div id="secondary-menu"
+                 class="secondary-nav-collapse nav-collapse collapse"
                  aria-labelledby="secondary-menu-toggle">
                 <ul role="menu" id="global-menu" class="nav nav-tabs nav-secondary pull-right">
                     <li role="presentation" class="dropdown">
-                        <a role="button" 
-                           id="global-profile-tab" 
-                           class="hitarea dropdown-toggle" 
-                           data-toggle="dropdown" 
+                        <a role="button"
+                           id="global-profile-tab"
+                           class="hitarea dropdown-toggle"
+                           data-toggle="dropdown"
                            href="#">
                             Roger Dodger
                             <i class="caret"></i>
                         </a>
-                        <ul role="menu" class="dropdown-menu flush" 
+                        <ul role="menu" class="dropdown-menu flush"
                             aria-labelledby="global-profile-tab">
                             <li role="presentation">
                                 <a role="menuitem" class="hitarea" tabindex="-1" href="#" target="_self">
@@ -1597,7 +1597,7 @@
                                 </a>
                             </li>
                             <li role="presentation">
-                                <a role="menuitem" class="hitarea" tabindex="-1" 
+                                <a role="menuitem" class="hitarea" tabindex="-1"
                                    href="#" target="_self">
                                     Switch Account
                                 </a>
@@ -1611,10 +1611,10 @@
                     </li>
                     <li role="presentation" class="dropdown">
                         <a id="global-admin-tab" role="button" class="hitarea dropdown-toggle" data-toggle="dropdown" href="#">
-                            Admin 
+                            Admin
                             <i class="caret"></i>
                         </a>
-                        <ul role="menu" class="dropdown-menu flush" 
+                        <ul role="menu" class="dropdown-menu flush"
                             aria-labelledby="global-admin-tab">
                             <li role="presentation">
                                 <a role="menuitem" class="hitarea" tabindex="-1" href="#" target="admin">
@@ -1652,12 +1652,12 @@
             </div>
             <ul role="menu" id="global-help-menu" class="nav nav-blocks global-help-menu">
                 <li role="presentation" class="global-community">
-                    <button id="global-help-tab" class="hitarea no-text global-help-tab" 
+                    <button id="global-help-tab" class="hitarea no-text global-help-tab"
                             data-ng-class="{'active': isGlobalHelpPopoverOpen}"
-                            data-toggle="popover" 
+                            data-toggle="popover"
                             data-placement="bottom"
                             data-content-container="temporary"
-                            data-content="#global-help-popover-content" 
+                            data-content="#global-help-popover-content"
                             data-target="global-help-popover"
                             data-modal="true">
                         <span class="sr-only">Support</span>
@@ -1696,8 +1696,8 @@
         <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;nav mobile nav-blocks&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;secondary-menu-toggle&quot;</span>
-                        <span class="na">class=</span><span class="s">&quot;navbar-toggle hitarea no-text collapsed&quot;</span> 
-                        <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+                        <span class="na">class=</span><span class="s">&quot;navbar-toggle hitarea no-text collapsed&quot;</span>
+                        <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
                         <span class="na">data-target=</span><span class="s">&quot;.secondary-nav-collapse&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-menu-list&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                 <span class="nt">&lt;/button&gt;</span>
@@ -1723,55 +1723,55 @@
         <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;solution-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span>
-                        <span class="na">id=</span><span class="s">&quot;fileTabToggle&quot;</span> 
-                        <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                        <span class="na">data-target=</span><span class="s">&quot;#fileTab&quot;</span> 
+                        <span class="na">id=</span><span class="s">&quot;fileTabToggle&quot;</span>
+                        <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                        <span class="na">data-target=</span><span class="s">&quot;#fileTab&quot;</span>
                         <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span><span class="nt">&gt;</span>
                     File
                 <span class="nt">&lt;/button&gt;</span>
             <span class="nt">&lt;/li&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span>
-                        <span class="na">id=</span><span class="s">&quot;bookTabToggle&quot;</span> 
-                        <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                        <span class="na">data-target=</span><span class="s">&quot;#bookTab&quot;</span> 
+                        <span class="na">id=</span><span class="s">&quot;bookTabToggle&quot;</span>
+                        <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                        <span class="na">data-target=</span><span class="s">&quot;#bookTab&quot;</span>
                         <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span><span class="nt">&gt;</span>
                     Books
                 <span class="nt">&lt;/button&gt;</span>
             <span class="nt">&lt;/li&gt;</span>
         <span class="nt">&lt;/ul&gt;</span>
 
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;secondary-menu&quot;</span> 
-             <span class="na">class=</span><span class="s">&quot;secondary-nav-collapse nav-collapse collapse in&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;secondary-menu&quot;</span>
+             <span class="na">class=</span><span class="s">&quot;secondary-nav-collapse nav-collapse collapse in&quot;</span>
              <span class="na">aria-labelledby=</span><span class="s">&quot;secondary-menu-toggle&quot;</span><span class="nt">&gt;</span>
           {% load tt_web %}
-            <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> 
+            <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span>
                 <span class="na">id=</span><span class="s">&quot;global-menu&quot;</span>
                 <span class="na">class=</span><span class="s">&quot;nav nav-tabs nav-secondary pull-right&quot;</span><span class="nt">&gt;</span>
               {% if show_profile %}
                 <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> 
+                    <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span>
                        <span class="na">id=</span><span class="s">&quot;global-profile-tab&quot;</span>
-                       <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle&quot;</span> 
-                       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> 
+                       <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle&quot;</span>
+                       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span>
                        <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
                         {{ profile_text }}
                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                     <span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu flush&quot;</span> 
+                    <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu flush&quot;</span>
                         <span class="na">aria-labelledby=</span><span class="s">&quot;global-profile-tab&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-                               <span class="na">href=</span><span class="s">&quot;{% url profile_details %}&quot;</span> 
+                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+                               <span class="na">href=</span><span class="s">&quot;{% url profile_details %}&quot;</span>
                                <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>
                                 My Profile
                             <span class="nt">&lt;/a&gt;</span>
                         <span class="nt">&lt;/li&gt;</span>
                         <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-                               <span class="na">href=</span><span class="s">&quot;{% url auth_solutions %}&quot;</span> 
+                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+                               <span class="na">href=</span><span class="s">&quot;{% url auth_solutions %}&quot;</span>
                                <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>
                                 My Solutions
                             <span class="nt">&lt;/a&gt;</span>
@@ -1779,18 +1779,18 @@
                       {% if show_switch %}
                       {% url auth_membership_select as membership_select %}
                         <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-                               <span class="na">href=</span><span class="s">&quot;{% if membership_select != meta.url %}?next_url={% endif %}&quot;</span> 
+                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+                               <span class="na">href=</span><span class="s">&quot;{% if membership_select != meta.url %}?next_url={% endif %}&quot;</span>
                                <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>
                                 Switch Account
                             <span class="nt">&lt;/a&gt;</span>
                         <span class="nt">&lt;/li&gt;</span>
                       {% endif %}
                         <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea signout-link&quot;</span> 
-                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-                               <span class="na">href=</span><span class="s">&quot;{% url auth_logout %}&quot;</span> 
+                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea signout-link&quot;</span>
+                               <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+                               <span class="na">href=</span><span class="s">&quot;{% url auth_logout %}&quot;</span>
                                <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;</span>
                                 Sign Out
                             <span class="nt">&lt;/a&gt;</span>
@@ -1802,9 +1802,9 @@
               {% if single_admin %}
               {% for item in admin_items %}
                 <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;link&quot;</span> 
-                       <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                       <span class="na">href=</span><span class="s">&quot;{{ item.url|safe }}&quot;</span> 
+                    <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;link&quot;</span>
+                       <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                       <span class="na">href=</span><span class="s">&quot;{{ item.url|safe }}&quot;</span>
                        <span class="na">target=</span><span class="s">&quot;admin&quot;</span><span class="nt">&gt;</span>
                         {{ item.text }}
                     <span class="nt">&lt;/a&gt;</span>
@@ -1812,19 +1812,19 @@
               {% endfor %}
               {% else %}
                 <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;global-admin-tab&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> 
-                       <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle&quot;</span> 
-                       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span> 
+                    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;global-admin-tab&quot;</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span>
+                       <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle&quot;</span>
+                       <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span>
                        <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-                        Admin 
+                        Admin
                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                     <span class="nt">&lt;/a&gt;</span>
-                    <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu flush&quot;</span> 
+                    <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu flush&quot;</span>
                         <span class="na">aria-labelledby=</span><span class="s">&quot;global-admin-tab&quot;</span><span class="nt">&gt;</span>
                       {% for item in admin_items %}
                         <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;link&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-                               <span class="na">href=</span><span class="s">&quot;&quot;</span> 
+                            <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;link&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+                               <span class="na">href=</span><span class="s">&quot;&quot;</span>
                                <span class="na">target=</span><span class="s">&quot;admin&quot;</span><span class="nt">&gt;</span>
                                 {{ item.text }}
                             <span class="nt">&lt;/a&gt;</span>
@@ -1838,14 +1838,14 @@
         <span class="nt">&lt;/div&gt;</span>
 
         <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span>
-            <span class="na">id=</span><span class="s">&quot;global-help-menu&quot;</span> 
+            <span class="na">id=</span><span class="s">&quot;global-help-menu&quot;</span>
             <span class="na">class=</span><span class="s">&quot;nav nav-blocks pull-right global-help-menu&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;global-community&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;global-help-tab&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea no-text global-help-tab&quot;</span> 
+                <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;global-help-tab&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea no-text global-help-tab&quot;</span>
                         <span class="na">data-ng-class=</span><span class="s">&quot;{&#39;active&#39;: isGlobalHelpPopoverOpen}&quot;</span>
                         <span class="na">data-toggle=</span><span class="s">&quot;popover&quot;</span>
                         <span class="na">data-placement=</span><span class="s">&quot;bottom&quot;</span>
-                        <span class="na">data-content=</span><span class="s">&quot;#global-help-popover-content&quot;</span> 
+                        <span class="na">data-content=</span><span class="s">&quot;#global-help-popover-content&quot;</span>
                         <span class="na">data-target=</span><span class="s">&quot;global-help-popover&quot;</span>
                         <span class="na">data-modal=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Support<span class="nt">&lt;/span&gt;</span>
@@ -1854,27 +1854,27 @@
                 <span class="c">&lt;!-- this content will be placed within a popover --&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hide&quot;</span> <span class="na">id=</span><span class="s">&quot;global-help-popover-content&quot;</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content flush&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;nav nav-list&quot;</span> 
+                        <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;nav nav-list&quot;</span>
                             <span class="na">aria-labelledby=</span><span class="s">&quot;global-help-tab&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ base_help|safe }}&quot;</span> 
-                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
+                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ base_help|safe }}&quot;</span>
+                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
                                    <span class="na">target=</span><span class="s">&quot;help&quot;</span><span class="nt">&gt;</span>
                                     Help
                                 <span class="nt">&lt;/a&gt;</span>
                             <span class="nt">&lt;/li&gt;</span>
                           {% if show_community %}
                             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{% url community %}&quot;</span> 
-                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
+                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{% url community %}&quot;</span>
+                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
                                    <span class="na">target=</span><span class="s">&quot;community&quot;</span><span class="nt">&gt;</span>
                                     Community
                                 <span class="nt">&lt;/a&gt;</span>
                             <span class="nt">&lt;/li&gt;</span>
                           {% endif %}
                             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ base_university|safe }}&quot;</span> 
-                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
+                                <span class="nt">&lt;a</span> <span class="na">role=</span><span class="s">&quot;menuitem&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ base_university|safe }}&quot;</span>
+                                   <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
                                    <span class="na">target=</span><span class="s">&quot;university&quot;</span><span class="nt">&gt;</span>
                                     University
                                 <span class="nt">&lt;/a&gt;</span>
@@ -1922,23 +1922,23 @@
                     </div>
                 </a>
             </div>
-            <div id="primary-menu3" 
+            <div id="primary-menu3"
      class="ribbon-menu-tabs">
     <ul id="solution-menu3" role="tablist" class="nav">
         <li role="presentation" class="active">
-            <button role="tab" 
+            <button role="tab"
                     id="fileTabToggle3"
-                    class="hitarea" 
-                    data-target="#fileTab3" 
+                    class="hitarea"
+                    data-target="#fileTab3"
                     data-toggle="tab">
                 File
             </button>
         </li>
         <li role="presentation">
-            <button role="tab" 
+            <button role="tab"
                     id="bookTabToggle3"
-                    class="hitarea" 
-                    data-target="#bookTab3" 
+                    class="hitarea"
+                    data-target="#bookTab3"
                     data-toggle="tab">
                 Books
             </button>
@@ -1950,8 +1950,8 @@
             <div role="presentation" class="tabbable ribbon-nav nav">
     <div role="presentation" class="subnav tab-content">
         <!-- FILE RIBBON MENU -->
-        <div role="tabpanel" 
-             id="fileTab3" 
+        <div role="tabpanel"
+             id="fileTab3"
              class="tab-pane active"
              aria-labelledby="fileTabToggle3">
             <div role="menubar" class="btn-toolbar btn-toolbar-condensed">
@@ -1981,8 +1981,8 @@
                         <small>Save</small>
                     </button>
                     <div role="presentation" class="dropdown">
-                        <button id="saveAsToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="saveAsToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-save-as"></i>
                             <small>Save As&hellip;</small>
@@ -2002,8 +2002,8 @@
                         </ul>
                     </div>
                     <div role="presentation" class="dropdown">
-                        <button id="importToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="importToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-import"></i>
                             <small>Import</small>
@@ -2030,8 +2030,8 @@
                         <small>Export</small>
                     </button>
                     <div role="presentation" class="dropdown">
-                        <button id="newFileToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="newFileToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-new"></i>
                             <small>New</small>
@@ -2051,8 +2051,8 @@
                 <!-- -->
                 <div role="menu" class="btn-group">
                     <div role="presentation" class="dropdown">
-                        <button id="validateFileToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="validateFileToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-validate"></i>
                             <small>Validate</small>
@@ -2076,8 +2076,8 @@
                         <small>Paginate</small>
                     </button>
                     <div role="presentation" class="dropdown">
-                        <button id="previewFileToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="previewFileToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-preview"></i>
                             <small>Preview</small>
@@ -2097,8 +2097,8 @@
                         </ul>
                     </div>
                     <div role="presentation" class="dropdown">
-                        <button id="filePropertiesToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="filePropertiesToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-properties"></i>
                             <small>Properties</small>
@@ -2121,8 +2121,8 @@
                         </ul>
                     </div>
                     <div role="presentation" role="presentation" class="dropdown">
-                        <button id="fileControlToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="fileControlToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-control"></i>
                             <small>Control</small>
@@ -2158,8 +2158,8 @@
         </div>
 
         <!-- BOOK RIBBON MENU -->
-        <div role="tabpanel" 
-             id="bookTab3" 
+        <div role="tabpanel"
+             id="bookTab3"
              class="tab-pane"
              aria-labelledby="bookTabToggle3">
             <div role="menubar" class="btn-toolbar">
@@ -2183,8 +2183,8 @@
                 <!-- -->
                 <div role="menu" class="btn-group">
                     <div role="presentation" class="dropdown">
-                        <button id="addBookContentToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="addBookContentToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 title="Add content to your book"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-new"></i>
@@ -2210,8 +2210,8 @@
                         <small>Permissions</small>
                     </button>
                     <div role="presentation" class="dropdown">
-                        <button id="viewBookToggle3" 
-                                class="btn btn-vanilla btn-vertical dropdown-toggle" 
+                        <button id="viewBookToggle3"
+                                class="btn btn-vanilla btn-vertical dropdown-toggle"
                                 title="View your book"
                                 data-toggle="dropdown">
                             <i class="icon icon-md icon-two-color icon-file-preview"></i>
@@ -2258,23 +2258,23 @@
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span><span class="nt">&gt;</span>
             ...
         <span class="nt">&lt;/div&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;primary-menu&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;primary-menu&quot;</span>
              <span class="na">class=</span><span class="s">&quot;ribbon-menu-tabs&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;solution-menu&quot;</span> <span class="na">role=</span><span class="s">&quot;tablist&quot;</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> 
+                    <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span>
                             <span class="na">id=</span><span class="s">&quot;fileTabToggle&quot;</span>
-                            <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                            <span class="na">data-target=</span><span class="s">&quot;#fileTab&quot;</span> 
+                            <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                            <span class="na">data-target=</span><span class="s">&quot;#fileTab&quot;</span>
                             <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span><span class="nt">&gt;</span>
                         File
                     <span class="nt">&lt;/button&gt;</span>
                 <span class="nt">&lt;/li&gt;</span>
                 <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span> 
+                    <span class="nt">&lt;button</span> <span class="na">role=</span><span class="s">&quot;tab&quot;</span>
                             <span class="na">id=</span><span class="s">&quot;bookTabToggle&quot;</span>
-                            <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                            <span class="na">data-target=</span><span class="s">&quot;#bookTab&quot;</span> 
+                            <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                            <span class="na">data-target=</span><span class="s">&quot;#bookTab&quot;</span>
                             <span class="na">data-toggle=</span><span class="s">&quot;tab&quot;</span><span class="nt">&gt;</span>
                         Books
                     <span class="nt">&lt;/button&gt;</span>
@@ -2288,8 +2288,8 @@
             <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;tabbable ribbon-nav nav&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;subnav tab-content&quot;</span><span class="nt">&gt;</span>
                     <span class="c">&lt;!-- FILE RIBBON MENU --&gt;</span>
-                    <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> 
-                         <span class="na">id=</span><span class="s">&quot;fileTab&quot;</span> 
+                    <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span>
+                         <span class="na">id=</span><span class="s">&quot;fileTab&quot;</span>
                          <span class="na">class=</span><span class="s">&quot;tab-pane active&quot;</span>
                          <span class="na">aria-labelledby=</span><span class="s">&quot;fileTabToggle&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menubar&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-toolbar btn-toolbar-condensed&quot;</span><span class="nt">&gt;</span>
@@ -2298,12 +2298,12 @@
                                     Share
                                 <span class="nt">&lt;/button&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-sm btn-vanilla no-text&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-sm btn-vanilla no-text&quot;</span>
                                             <span class="na">title=</span><span class="s">&quot;undo&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>undo<span class="nt">&lt;/span&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-undo text-orange&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;/button&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-sm btn-vanilla no-text&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-sm btn-vanilla no-text&quot;</span>
                                             <span class="na">title=</span><span class="s">&quot;redo&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>redo<span class="nt">&lt;/span&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-redo text-blue&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
@@ -2321,8 +2321,8 @@
                                     <span class="nt">&lt;small&gt;</span>Save<span class="nt">&lt;/small&gt;</span>
                                 <span class="nt">&lt;/button&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;saveAsToggle&quot;</span> 
-                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;saveAsToggle&quot;</span>
+                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span>
                                             <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-save-as&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                         <span class="nt">&lt;small&gt;</span>Save As<span class="ni">&amp;hellip;</span><span class="nt">&lt;/small&gt;</span>
@@ -2334,8 +2334,8 @@
                                     <span class="nt">&lt;/ul&gt;</span>
                                 <span class="nt">&lt;/div&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;importToggle&quot;</span> 
-                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;importToggle&quot;</span>
+                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span>
                                             <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-import&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                         <span class="nt">&lt;small&gt;</span>Import<span class="nt">&lt;/small&gt;</span>
@@ -2351,8 +2351,8 @@
                                     <span class="nt">&lt;small&gt;</span>Export<span class="nt">&lt;/small&gt;</span>
                                 <span class="nt">&lt;/button&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;newFileToggle&quot;</span> 
-                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;newFileToggle&quot;</span>
+                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span>
                                             <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-new&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                         <span class="nt">&lt;small&gt;</span>New<span class="nt">&lt;/small&gt;</span>
@@ -2376,8 +2376,8 @@
                     <span class="nt">&lt;/div&gt;</span>
 
                     <span class="c">&lt;!-- BOOK RIBBON MENU --&gt;</span>
-                    <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span> 
-                         <span class="na">id=</span><span class="s">&quot;bookTab&quot;</span> 
+                    <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;tabpanel&quot;</span>
+                         <span class="na">id=</span><span class="s">&quot;bookTab&quot;</span>
                          <span class="na">class=</span><span class="s">&quot;tab-pane&quot;</span>
                          <span class="na">aria-labelledby=</span><span class="s">&quot;bookTabToggle&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menubar&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-toolbar&quot;</span><span class="nt">&gt;</span>
@@ -2389,12 +2389,12 @@
                             <span class="nt">&lt;/div&gt;</span>
                             <span class="c">&lt;!-- DIVIDER --&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span>
                                         <span class="na">title=</span><span class="s">&quot;Create a new book&quot;</span><span class="nt">&gt;</span>
                                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-book-binder&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;small&gt;</span>New<span class="nt">&lt;/small&gt;</span>
                                 <span class="nt">&lt;/button&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span>
                                         <span class="na">title=</span><span class="s">&quot;Export your book as a PDF&quot;</span><span class="nt">&gt;</span>
                                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-pdf&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;small&gt;</span>Export PDF<span class="nt">&lt;/small&gt;</span>
@@ -2403,8 +2403,8 @@
                             <span class="c">&lt;!-- DIVIDER --&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;addBookContentToggle&quot;</span> 
-                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;addBookContentToggle&quot;</span>
+                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span>
                                             <span class="na">title=</span><span class="s">&quot;Add content to your book&quot;</span>
                                             <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-new&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
@@ -2416,19 +2416,19 @@
                                         ...
                                     <span class="nt">&lt;/ul&gt;</span>
                                 <span class="nt">&lt;/div&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span>
                                         <span class="na">title=</span><span class="s">&quot;Edit book properties&quot;</span><span class="nt">&gt;</span>
                                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-properties&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;small&gt;</span>Properties<span class="nt">&lt;/small&gt;</span>
                                 <span class="nt">&lt;/button&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span>
                                         <span class="na">title=</span><span class="s">&quot;Edit book permissions&quot;</span><span class="nt">&gt;</span>
                                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-control&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;small&gt;</span>Permissions<span class="nt">&lt;/small&gt;</span>
                                 <span class="nt">&lt;/button&gt;</span>
                                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
-                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;viewBookToggle&quot;</span> 
-                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span> 
+                                    <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;viewBookToggle&quot;</span>
+                                            <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical dropdown-toggle&quot;</span>
                                             <span class="na">title=</span><span class="s">&quot;View your book&quot;</span>
                                             <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                                         <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-two-color icon-file-preview&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
@@ -2443,7 +2443,7 @@
                             <span class="nt">&lt;/div&gt;</span>
                             <span class="c">&lt;!-- DIVIDER --&gt;</span>
                             <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;btn-group&quot;</span><span class="nt">&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn btn-vanilla btn-vertical&quot;</span>
                                         <span class="na">title=</span><span class="s">&quot;Delete this book&quot;</span><span class="nt">&gt;</span>
                                     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md icon-trash text-orange&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                                     <span class="nt">&lt;small&gt;</span>Delete<span class="nt">&lt;/small&gt;</span>
@@ -2690,7 +2690,7 @@
                 <li><button type="button" class="hitarea" disabled>Disabled button</button></li>
             </ul>
             <p class="navbar-text pull-right">Signed in as <a href="#" class="navbar-link">Abraham Lincoln</a></p>
-        </div>  
+        </div>
     </nav>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;navbar&quot;</span> <span class="na">role=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
@@ -2831,7 +2831,7 @@
                 </div>
                 <div class="col-xs-4 statusbar-right">
                     <div class="global-jobs-list dropdown dropup pull-right">
-                        <button id="globalJobsDdBtn" class="global-jobs-badge dropdown-toggle btn btn-sm" 
+                        <button id="globalJobsDdBtn" class="global-jobs-badge dropdown-toggle btn btn-sm"
                                 data-toggle="dropdown">
                             <span class="badge">3</span>
                             <strong>Jobs</strong>
@@ -2891,7 +2891,7 @@
                 <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-xs-4 statusbar-right&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;global-jobs-list dropdown dropup pull-right&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;globalJobsDdBtn&quot;</span> <span class="na">class=</span><span class="s">&quot;global-jobs-badge dropdown-toggle btn btn-sm&quot;</span> 
+                        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;globalJobsDdBtn&quot;</span> <span class="na">class=</span><span class="s">&quot;global-jobs-badge dropdown-toggle btn btn-sm&quot;</span>
                                 <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;badge&quot;</span><span class="nt">&gt;</span>3<span class="nt">&lt;/span&gt;</span>
                             <span class="nt">&lt;strong&gt;</span>Jobs<span class="nt">&lt;/strong&gt;</span>
@@ -3426,7 +3426,7 @@
     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    
+
     <div class="tooltip top nav-tooltip dialog-gray">
         <div class="arrow"></div>
         <div class="inner">
@@ -3434,7 +3434,7 @@
                 <li>
                     <button class="hitarea" id="highlightButton">
                         <i class="icon icon-md icon-highlighter"></i>
-                        Highlight    
+                        Highlight
                     </button>
                 </li>
                 <li>
@@ -3579,25 +3579,25 @@
     <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;nav nav-list&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;popTitle&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;li&gt;</span>
             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-pencil&quot;</span><span class="nt">&gt;&lt;/i&gt;</span> 
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-pencil&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                 Edit
             <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
         <span class="nt">&lt;li&gt;</span>
             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-trash&quot;</span><span class="nt">&gt;&lt;/i&gt;</span> 
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-trash&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                 Delete
             <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
         <span class="nt">&lt;li&gt;</span>
             <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-blocked&quot;</span><span class="nt">&gt;&lt;/i&gt;</span> 
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-blocked&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                 Ban
             <span class="nt">&lt;/a&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
         <span class="nt">&lt;li&gt;</span>
             <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-key2&quot;</span><span class="nt">&gt;&lt;/i&gt;</span> 
+                <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-key2&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                 Make admin
             <span class="nt">&lt;/button&gt;</span>
         <span class="nt">&lt;/li&gt;</span>
@@ -3610,12 +3610,12 @@
 <h3 id="popovers-comments-private">Private Comment</h3>
 <div class="wdesk-docs-example wdesk-docs-example-comment-popover" style="min-height: 240px;">
 
-    
 
 
 
 
-    
+
+
 
 <!-- -->
 
@@ -3626,48 +3626,48 @@
     <div class="inner">
         <div class="navbar title comment-header">
             <h3 class="comment-title">
-                <i class="icon icon-md icon-comment-private-note"></i> 
+                <i class="icon icon-md icon-comment-private-note"></i>
                 Johnny Appleseed
             </h3>
             <div class="comment-meta pull-right">
-                <!-- 
+                <!--
                     This toggle would show only if the thread
                     was just now being created (no posted comments)
                 -->
                 <div class="comment-type-toggle hide show">
                     <div class="checkbox-switch checkbox-switch-xs checkbox-switch-alt">
                         <input type="checkbox" id="private-comment-toggle-1"
-                               
+
                                data-ng-model="isSharedComment">
                         <label for="private-comment-toggle-1"></label>
                     </div>
                 </div>
-                <!-- 
-                    This meta content would only show if it was not a new comment thread, 
-                    the state of the thread, etc... 
+                <!--
+                    This meta content would only show if it was not a new comment thread,
+                    the state of the thread, etc...
                 -->
                 <small class="comment-timestamp text-sm hide">
                     4 days ago
                 </small>
-                
+
             </div>
         </div><!-- END .comment-header -->
 
-        
 
 
 
 
 
 
-    
 
 
 
 
 
-    
-    
+
+
+
+
 
 
 <div class="comments">
@@ -3675,31 +3675,31 @@
     <div id="thread1-comment1" class="comment new-comment comment-editing comment-last"
           data-ng-switch="editingComment">
         <div class="cblock comment-body">
-            <!-- 
-                The label and textarea placeholder text here 
-                would need to be dynamic based on the type of comment, etc... 
+            <!--
+                The label and textarea placeholder text here
+                would need to be dynamic based on the type of comment, etc...
                 ("Enter a private comment..." / "Make a shared comment...")
             -->
             <label class="sr-only" for="thread1-comment1-text">
                 Enter a private comment...
             </label>
-            <textarea id="thread1-comment1-text" 
-                      class="form-control " 
+            <textarea id="thread1-comment1-text"
+                      class="form-control "
                       placeholder="Enter a private comment..."
                       ></textarea>
         </div>
-        <!-- 
-            The .comment-reply block would only be present 
-            in the :last .comment elem within .inner in a 
-            thread that had at least one comment 
+        <!--
+            The .comment-reply block would only be present
+            in the :last .comment elem within .inner in a
+            thread that had at least one comment
 
             Also, this block wouldn't exist at all if it was a private comment
         -->
         <div class="cblock comment-reply comment-reply-empty hide ">
             <textarea class="form-control" placeholder="Reply to this comment"></textarea>
 
-            <!-- 
-                Another confirmation modal would need to 
+            <!--
+                Another confirmation modal would need to
                 be injected here for discarding reply confirmation
             -->
         </div>
@@ -3708,34 +3708,34 @@
             <div class="nav-tooltip">
                 <ul class="nav nav-pills nav-justified halve">
                     <li>
-                        <button class="hitarea delete-hover" 
+                        <button class="hitarea delete-hover"
                                 data-toggle="modal"
                                 data-parent-container=".popover-comment"
                                 data-container=".comment"
                                 data-href="../assets/docs-content/confirmation-modal-comment.html"
                                 data-target="#comment-confirmation-container-1">
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Delete / Discard)
                             -->
-                            
+
                             Delete
-                            
+
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="hitarea" 
+                        <button type="submit" class="hitarea"
                                 data-enabled-textarea="thread1-comment1-text"
                                 disabled>
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Save / Post)
                             -->
-                            
+
                             Save
-                            
+
                         </button>
                     </li>
                 </ul>
@@ -3752,12 +3752,12 @@
         <div id="comment-confirmation-container-1" class="modal fade confirmation-modal"></div>
     </div><!-- END .comment -->
 
-    
+
 
 </div><!-- END .comments (thread) -->
 <div class="backdrop thread-overlay">
     <div class="thread-status">
-        
+
     </div>
 </div>
 
@@ -3771,15 +3771,15 @@
 <div class="wdesk-docs-example wdesk-docs-example-comment-thread-popover wdesk-docs-grid">
     <div class="row">
         <div class="col-md-6">
-            
 
 
 
 
-    
-    
-        
-    
+
+
+
+
+
 
 <!-- -->
 
@@ -3790,39 +3790,39 @@
     <div class="inner">
         <div class="navbar title comment-header">
             <h3 class="comment-title">
-                <i class="icon icon-md icon-comment-alt"></i> 
+                <i class="icon icon-md icon-comment-alt"></i>
                 Johnny Appleseed
             </h3>
             <div class="comment-meta pull-right">
-                <!-- 
+                <!--
                     This toggle would show only if the thread
                     was just now being created (no posted comments)
                 -->
                 <div class="comment-type-toggle hide show">
                     <div class="checkbox-switch checkbox-switch-xs checkbox-switch-alt">
                         <input type="checkbox" id="private-comment-toggle-3"
-                               
+
                                checked
-                               
+
                                data-ng-model="isSharedComment">
                         <label for="private-comment-toggle-3"></label>
                     </div>
                 </div>
-                <!-- 
-                    This meta content would only show if it was not a new comment thread, 
-                    the state of the thread, etc... 
+                <!--
+                    This meta content would only show if it was not a new comment thread,
+                    the state of the thread, etc...
                 -->
                 <small class="comment-timestamp text-sm hide">
                     4 days ago
                 </small>
-                
-                <!-- 
-                    This menu would show only if the thread had 
+
+                <!--
+                    This menu would show only if the thread had
                     at least one comment already posted ("isNewComment")
                 -->
                 <div role="menu" class="dropdown pull-right hide">
-                    <button id="thread3-options-btn" 
-                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text" 
+                    <button id="thread3-options-btn"
+                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text"
                             data-toggle="dropdown">
                         <i class="caret"></i>
                     </button>
@@ -3831,7 +3831,7 @@
                         aria-labelledby="thread3-options-btn">
                         <li role="presentation">
                             <button id="thread3-delete-btn" class="hitarea"
-                                    data-toggle="modal" 
+                                    data-toggle="modal"
                                     data-parent-container=".popover-comment"
                                     data-container=".comments"
                                     data-href="../assets/docs-content/confirmation-modal-saved-comment.html"
@@ -3855,28 +3855,28 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div><!-- END .comment-header -->
 
-        
 
 
 
 
 
 
-    
-        
-    
 
 
 
 
 
-    
-    
-    
+
+
+
+
+
+
+
 
 
 <div class="comments">
@@ -3884,31 +3884,31 @@
     <div id="thread3-comment3" class="comment new-comment comment-editing comment-last"
           data-ng-switch="editingComment">
         <div class="cblock comment-body">
-            <!-- 
-                The label and textarea placeholder text here 
-                would need to be dynamic based on the type of comment, etc... 
+            <!--
+                The label and textarea placeholder text here
+                would need to be dynamic based on the type of comment, etc...
                 ("Enter a private comment..." / "Make a shared comment...")
             -->
             <label class="sr-only" for="thread3-comment3-text">
                 Make a shared comment...
             </label>
-            <textarea id="thread3-comment3-text" 
-                      class="form-control " 
+            <textarea id="thread3-comment3-text"
+                      class="form-control "
                       placeholder="Make a shared comment..."
                       ></textarea>
         </div>
-        <!-- 
-            The .comment-reply block would only be present 
-            in the :last .comment elem within .inner in a 
-            thread that had at least one comment 
+        <!--
+            The .comment-reply block would only be present
+            in the :last .comment elem within .inner in a
+            thread that had at least one comment
 
             Also, this block wouldn't exist at all if it was a private comment
         -->
         <div class="cblock comment-reply comment-reply-empty hide ">
             <textarea class="form-control" placeholder="Reply to this comment"></textarea>
 
-            <!-- 
-                Another confirmation modal would need to 
+            <!--
+                Another confirmation modal would need to
                 be injected here for discarding reply confirmation
             -->
         </div>
@@ -3917,34 +3917,34 @@
             <div class="nav-tooltip">
                 <ul class="nav nav-pills nav-justified halve">
                     <li>
-                        <button class="hitarea delete-hover" 
+                        <button class="hitarea delete-hover"
                                 data-toggle="modal"
                                 data-parent-container=".popover-comment"
                                 data-container=".comment"
                                 data-href="../assets/docs-content/confirmation-modal-comment-shared.html"
                                 data-target="#comment-confirmation-container-3">
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Delete / Discard)
                             -->
-                            
+
                             Discard
-                            
+
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="hitarea" 
+                        <button type="submit" class="hitarea"
                                 data-enabled-textarea="thread3-comment3-text"
                                 disabled>
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Save / Post)
                             -->
-                            
+
                             Post
-                            
+
                         </button>
                     </li>
                 </ul>
@@ -3961,12 +3961,12 @@
         <div id="comment-confirmation-container-3" class="modal fade confirmation-modal"></div>
     </div><!-- END .comment -->
 
-    
+
 
 </div><!-- END .comments (thread) -->
 <div class="backdrop thread-overlay">
     <div class="thread-status">
-        
+
     </div>
 </div>
 
@@ -3974,15 +3974,15 @@
 </div>
         </div>
         <div class="col-md-6">
-            
 
 
 
 
-    
-    
-        
-    
+
+
+
+
+
 
 <!-- -->
 
@@ -3993,39 +3993,39 @@
     <div class="inner">
         <div class="navbar title comment-header">
             <h3 class="comment-title">
-                <i class="icon icon-md icon-comment-alt"></i> 
+                <i class="icon icon-md icon-comment-alt"></i>
                 Johnny Appleseed
             </h3>
             <div class="comment-meta pull-right">
-                <!-- 
+                <!--
                     This toggle would show only if the thread
                     was just now being created (no posted comments)
                 -->
                 <div class="comment-type-toggle hide ">
                     <div class="checkbox-switch checkbox-switch-xs checkbox-switch-alt">
                         <input type="checkbox" id="private-comment-toggle-4"
-                               
+
                                checked
-                               
+
                                data-ng-model="isSharedComment">
                         <label for="private-comment-toggle-4"></label>
                     </div>
                 </div>
-                <!-- 
-                    This meta content would only show if it was not a new comment thread, 
-                    the state of the thread, etc... 
+                <!--
+                    This meta content would only show if it was not a new comment thread,
+                    the state of the thread, etc...
                 -->
                 <small class="comment-timestamp text-sm ">
                     4 days ago
                 </small>
-                
-                <!-- 
-                    This menu would show only if the thread had 
+
+                <!--
+                    This menu would show only if the thread had
                     at least one comment already posted ("isNewComment")
                 -->
                 <div role="menu" class="dropdown pull-right ">
-                    <button id="thread4-options-btn" 
-                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text" 
+                    <button id="thread4-options-btn"
+                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text"
                             data-toggle="dropdown">
                         <i class="caret"></i>
                     </button>
@@ -4034,7 +4034,7 @@
                         aria-labelledby="thread4-options-btn">
                         <li role="presentation">
                             <button id="thread4-delete-btn" class="hitarea"
-                                    data-toggle="modal" 
+                                    data-toggle="modal"
                                     data-parent-container=".popover-comment"
                                     data-container=".comments"
                                     data-href="../assets/docs-content/confirmation-modal-saved-comment-thread.html"
@@ -4058,28 +4058,28 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div><!-- END .comment-header -->
 
-        
 
 
 
 
 
 
-    
-        
-    
 
 
 
 
 
-    
-    
-    
+
+
+
+
+
+
+
 
 
 <div class="comments">
@@ -4087,31 +4087,31 @@
     <div id="thread4-comment4" class="comment  comment-readonly"
           data-ng-switch="editingComment">
         <div class="cblock comment-body">
-            <!-- 
-                The label and textarea placeholder text here 
-                would need to be dynamic based on the type of comment, etc... 
+            <!--
+                The label and textarea placeholder text here
+                would need to be dynamic based on the type of comment, etc...
                 ("Enter a private comment..." / "Make a shared comment...")
             -->
             <label class="sr-only" for="thread4-comment4-text">
                 Make a shared comment...
             </label>
-            <textarea id="thread4-comment4-text" 
-                      class="form-control input-vanilla" 
+            <textarea id="thread4-comment4-text"
+                      class="form-control input-vanilla"
                       placeholder="Make a shared comment..."
                       readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
         </div>
-        <!-- 
-            The .comment-reply block would only be present 
-            in the :last .comment elem within .inner in a 
-            thread that had at least one comment 
+        <!--
+            The .comment-reply block would only be present
+            in the :last .comment elem within .inner in a
+            thread that had at least one comment
 
             Also, this block wouldn't exist at all if it was a private comment
         -->
         <div class="cblock comment-reply comment-reply-empty hide ">
             <textarea class="form-control" placeholder="Reply to this comment"></textarea>
 
-            <!-- 
-                Another confirmation modal would need to 
+            <!--
+                Another confirmation modal would need to
                 be injected here for discarding reply confirmation
             -->
         </div>
@@ -4120,34 +4120,34 @@
             <div class="nav-tooltip">
                 <ul class="nav nav-pills nav-justified halve">
                     <li>
-                        <button class="hitarea delete-hover" 
+                        <button class="hitarea delete-hover"
                                 data-toggle="modal"
                                 data-parent-container=".popover-comment"
                                 data-container=".comment"
                                 data-href="../assets/docs-content/confirmation-modal-comment-shared.html"
                                 data-target="#comment-confirmation-container-4">
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Delete / Discard)
                             -->
-                            
+
                             Discard
-                            
+
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="hitarea" 
+                        <button type="submit" class="hitarea"
                                 data-enabled-textarea="thread4-comment4-text"
                                 disabled>
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Save / Post)
                             -->
-                            
+
                             Post
-                            
+
                         </button>
                     </li>
                 </ul>
@@ -4164,7 +4164,7 @@
         <div id="comment-confirmation-container-4" class="modal fade confirmation-modal"></div>
     </div><!-- END .comment -->
 
-    
+
         <div id="thread4-comment5" class="comment comment-readonly">
             <div class="cblock comment-meta hide show">
                 <strong class="comment-author pull-left">Jason Moore</strong>
@@ -4174,8 +4174,8 @@
                 <label class="sr-only" for="thread4-comment5-text">
                     Make a shared comment...
                 </label>
-                <textarea id="thread4-comment5-text" 
-                          class="form-control input-vanilla" 
+                <textarea id="thread4-comment5-text"
+                          class="form-control input-vanilla"
                           placeholder="Make a shared comment..."
                           readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
             </div>
@@ -4199,8 +4199,8 @@
                 <label class="sr-only" for="thread4-comment5-text">
                     Make a shared comment...
                 </label>
-                <textarea id="thread4-comment5-text" 
-                          class="form-control input-vanilla" 
+                <textarea id="thread4-comment5-text"
+                          class="form-control input-vanilla"
                           placeholder="Make a shared comment..."
                           readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
             </div>
@@ -4224,8 +4224,8 @@
             <div class="cblock comment-reply">
                 <textarea id="thread4-comment7-text" class="form-control" placeholder="Reply to this comment"></textarea>
 
-                <!-- 
-                    Another confirmation modal would need to 
+                <!--
+                    Another confirmation modal would need to
                     be injected here for discarding reply confirmation
                 -->
             </div>
@@ -4234,7 +4234,7 @@
                 <div class="nav-tooltip">
                     <ul class="nav nav-pills nav-justified halve">
                         <li>
-                            <button class="hitarea delete-hover" 
+                            <button class="hitarea delete-hover"
                                     data-toggle="modal"
                                     data-parent-container=".comment"
                                     data-container=".comment"
@@ -4244,7 +4244,7 @@
                             </button>
                         </li>
                         <li>
-                            <button type="submit" class="hitarea" 
+                            <button type="submit" class="hitarea"
                                     data-enabled-textarea="thread4-comment7-text"
                                     disabled>
                                 Reply
@@ -4265,12 +4265,12 @@
         </div><!-- END .comment -->
 
         <div id="thread-confirmation-container-4" class="modal fade confirmation-modal"></div>
-    
+
 
 </div><!-- END .comments (thread) -->
 <div class="backdrop thread-overlay">
     <div class="thread-status">
-        
+
     </div>
 </div>
 
@@ -4286,19 +4286,19 @@
 <div class="wdesk-docs-example wdesk-docs-example-comment-thread-popover wdesk-docs-grid">
     <div class="row">
         <div class="col-md-12">
-            
 
 
 
 
-    
-    
-        
-    
+
+
+
+
+
 
 <!-- -->
 
-    
+
 
 
 
@@ -4307,39 +4307,39 @@
     <div class="inner">
         <div class="navbar title comment-header">
             <h3 class="comment-title">
-                <i class="icon icon-md icon-comment-outlined"></i> 
+                <i class="icon icon-md icon-comment-outlined"></i>
                 Johnny Appleseed
             </h3>
             <div class="comment-meta pull-right">
-                <!-- 
+                <!--
                     This toggle would show only if the thread
                     was just now being created (no posted comments)
                 -->
                 <div class="comment-type-toggle hide ">
                     <div class="checkbox-switch checkbox-switch-xs checkbox-switch-alt">
                         <input type="checkbox" id="private-comment-toggle-5"
-                               
+
                                checked
-                               
+
                                data-ng-model="isSharedComment">
                         <label for="private-comment-toggle-5"></label>
                     </div>
                 </div>
-                <!-- 
-                    This meta content would only show if it was not a new comment thread, 
-                    the state of the thread, etc... 
+                <!--
+                    This meta content would only show if it was not a new comment thread,
+                    the state of the thread, etc...
                 -->
                 <small class="comment-timestamp text-sm ">
                     4 days ago
                 </small>
-                
-                <!-- 
-                    This menu would show only if the thread had 
+
+                <!--
+                    This menu would show only if the thread had
                     at least one comment already posted ("isNewComment")
                 -->
                 <div role="menu" class="dropdown pull-right ">
-                    <button id="thread5-options-btn" 
-                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text" 
+                    <button id="thread5-options-btn"
+                            class="hitarea btn btn-xs btn-vanilla dropdown-toggle no-text"
                             data-toggle="dropdown">
                         <i class="caret"></i>
                     </button>
@@ -4348,7 +4348,7 @@
                         aria-labelledby="thread5-options-btn">
                         <li role="presentation">
                             <button id="thread5-delete-btn" class="hitarea"
-                                    data-toggle="modal" 
+                                    data-toggle="modal"
                                     data-parent-container=".popover-comment"
                                     data-container=".comments"
                                     data-href="../assets/docs-content/confirmation-modal-saved-comment-thread.html"
@@ -4372,28 +4372,28 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div><!-- END .comment-header -->
 
-        
 
 
 
 
 
 
-    
-        
-    
 
 
 
 
 
-    
-    
-    
+
+
+
+
+
+
+
 
 
 <div class="comments">
@@ -4401,31 +4401,31 @@
     <div id="thread5-comment5" class="comment  comment-readonly"
           data-ng-switch="editingComment">
         <div class="cblock comment-body">
-            <!-- 
-                The label and textarea placeholder text here 
-                would need to be dynamic based on the type of comment, etc... 
+            <!--
+                The label and textarea placeholder text here
+                would need to be dynamic based on the type of comment, etc...
                 ("Enter a private comment..." / "Make a shared comment...")
             -->
             <label class="sr-only" for="thread5-comment5-text">
                 Make a shared comment...
             </label>
-            <textarea id="thread5-comment5-text" 
-                      class="form-control input-vanilla" 
+            <textarea id="thread5-comment5-text"
+                      class="form-control input-vanilla"
                       placeholder="Make a shared comment..."
                       readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
         </div>
-        <!-- 
-            The .comment-reply block would only be present 
-            in the :last .comment elem within .inner in a 
-            thread that had at least one comment 
+        <!--
+            The .comment-reply block would only be present
+            in the :last .comment elem within .inner in a
+            thread that had at least one comment
 
             Also, this block wouldn't exist at all if it was a private comment
         -->
         <div class="cblock comment-reply comment-reply-empty hide ">
             <textarea class="form-control" placeholder="Reply to this comment"></textarea>
 
-            <!-- 
-                Another confirmation modal would need to 
+            <!--
+                Another confirmation modal would need to
                 be injected here for discarding reply confirmation
             -->
         </div>
@@ -4434,34 +4434,34 @@
             <div class="nav-tooltip">
                 <ul class="nav nav-pills nav-justified halve">
                     <li>
-                        <button class="hitarea delete-hover" 
+                        <button class="hitarea delete-hover"
                                 data-toggle="modal"
                                 data-parent-container=".popover-comment"
                                 data-container=".comment"
                                 data-href="../assets/docs-content/confirmation-modal-comment-shared.html"
                                 data-target="#comment-confirmation-container-5">
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Delete / Discard)
                             -->
-                            
+
                             Discard
-                            
+
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="hitarea" 
+                        <button type="submit" class="hitarea"
                                 data-enabled-textarea="thread5-comment5-text"
                                 disabled>
-                            <!-- 
+                            <!--
                                 The text here would be dependent
-                                on the type of comment, etc... 
+                                on the type of comment, etc...
                                 (Save / Post)
                             -->
-                            
+
                             Post
-                            
+
                         </button>
                     </li>
                 </ul>
@@ -4478,7 +4478,7 @@
         <div id="comment-confirmation-container-5" class="modal fade confirmation-modal"></div>
     </div><!-- END .comment -->
 
-    
+
         <div id="thread5-comment6" class="comment comment-readonly">
             <div class="cblock comment-meta hide show">
                 <strong class="comment-author pull-left">Jason Moore</strong>
@@ -4488,8 +4488,8 @@
                 <label class="sr-only" for="thread5-comment6-text">
                     Make a shared comment...
                 </label>
-                <textarea id="thread5-comment6-text" 
-                          class="form-control input-vanilla" 
+                <textarea id="thread5-comment6-text"
+                          class="form-control input-vanilla"
                           placeholder="Make a shared comment..."
                           readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
             </div>
@@ -4513,8 +4513,8 @@
                 <label class="sr-only" for="thread5-comment6-text">
                     Make a shared comment...
                 </label>
-                <textarea id="thread5-comment6-text" 
-                          class="form-control input-vanilla" 
+                <textarea id="thread5-comment6-text"
+                          class="form-control input-vanilla"
                           placeholder="Make a shared comment..."
                           readonly>Praesent non mi non mauris posuere bibendizzle. Aliquizzle get down get down lectizzle. Mah nizzle izzle things dizzle you son of a bizzle sodales the bizzle</textarea>
             </div>
@@ -4538,8 +4538,8 @@
             <div class="cblock comment-reply">
                 <textarea id="thread5-comment8-text" class="form-control" placeholder="Reply to this comment"></textarea>
 
-                <!-- 
-                    Another confirmation modal would need to 
+                <!--
+                    Another confirmation modal would need to
                     be injected here for discarding reply confirmation
                 -->
             </div>
@@ -4548,7 +4548,7 @@
                 <div class="nav-tooltip">
                     <ul class="nav nav-pills nav-justified halve">
                         <li>
-                            <button class="hitarea delete-hover" 
+                            <button class="hitarea delete-hover"
                                     data-toggle="modal"
                                     data-parent-container=".comment"
                                     data-container=".comment"
@@ -4558,7 +4558,7 @@
                             </button>
                         </li>
                         <li>
-                            <button type="submit" class="hitarea" 
+                            <button type="submit" class="hitarea"
                                     data-enabled-textarea="thread5-comment8-text"
                                     disabled>
                                 Reply
@@ -4579,7 +4579,7 @@
         </div><!-- END .comment -->
 
         <div id="thread-confirmation-container-5" class="modal fade confirmation-modal"></div>
-    
+
 
 </div><!-- END .comments (thread) -->
 <div class="backdrop thread-overlay">
@@ -4604,18 +4604,18 @@
 <span class="s">                     &#39;modal-open&#39;: isModalConfirmationVisible}&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;arrow&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;inner&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar title comment-header&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar title comment-header&quot;</span>
              <span class="na">data-ng-switch=</span><span class="s">&quot;isNewComment&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;comment-title&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;icon icon-md&quot;</span>
                    <span class="na">data-ng-class=</span><span class="s">&quot;{&#39;icon-comment-private-note&#39;: ! isSharedComment</span>
 <span class="s">                                   &#39;icon-comment-alt&#39;: isSharedComment</span>
 <span class="s">                                   &#39;icon-comment-outlined&#39;: isThreadClosed}&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;/i&gt;</span> 
+                <span class="nt">&lt;/i&gt;</span>
                 {{ commentAuthorName }}
             <span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;comment-meta pull-right&quot;</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;comment-type-toggle&quot;</span> 
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;comment-type-toggle&quot;</span>
                      <span class="na">data-on=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;checkbox-switch checkbox-switch-xs checkbox-switch-alt&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">id=</span><span class="s">&quot;private-comment-toggle-{{comment.id}}&quot;</span>
@@ -4630,8 +4630,8 @@
                 <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown pull-right&quot;</span>
                     <span class="na">data-on=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown pull-right&quot;</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;thread-options-btn&quot;</span> 
-                                <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle no-text&quot;</span> 
+                        <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;thread-options-btn&quot;</span>
+                                <span class="na">class=</span><span class="s">&quot;hitarea dropdown-toggle no-text&quot;</span>
                                 <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/i&gt;</span>
                         <span class="nt">&lt;/button&gt;</span>
@@ -4640,7 +4640,7 @@
                             <span class="na">aria-labelledby=</span><span class="s">&quot;thread-options-btn&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
                                 <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;thread-delete-btn&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
-                                        <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span> 
+                                        <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span>
                                         <span class="na">data-parent-container=</span><span class="s">&quot;.popover-comment&quot;</span>
                                         <span class="na">data-container=</span><span class="s">&quot;.comments&quot;</span>
                                         <span class="na">data-target=</span><span class="s">&quot;#thread-modal-confirmation&quot;</span><span class="nt">&gt;</span>
@@ -4677,7 +4677,7 @@
 <span class="s">                                  &#39;comment-last&#39;: isLastOrOnlyThreadComment()}&quot;</span>
                   <span class="na">data-ng-switch=</span><span class="s">&quot;editingComment&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;cblock comment-meta&quot;</span>
-                     <span class="na">data-ng-class=</span><span class="s">&quot;{&#39;hide&#39;: isFirstOrOnlyComment}&quot;</span> 
+                     <span class="na">data-ng-class=</span><span class="s">&quot;{&#39;hide&#39;: isFirstOrOnlyComment}&quot;</span>
                      <span class="na">data-on=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;strong</span> <span class="na">class=</span><span class="s">&quot;comment-author text-sm pull-left&quot;</span><span class="nt">&gt;</span>
                         {{ commentAuthorName }}
@@ -4690,8 +4690,8 @@
                     <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span> <span class="na">for=</span><span class="s">&quot;thread-comment{{comment.id}}-text&quot;</span><span class="nt">&gt;</span>
                         {{ getCommentLabel(comment.type) }}
                     <span class="nt">&lt;/label&gt;</span>
-                    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;thread-comment{{comment.id}}-text&quot;</span> 
-                              <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> 
+                    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;thread-comment{{comment.id}}-text&quot;</span>
+                              <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>
                               <span class="na">placeholder=</span><span class="s">&quot;{{ getCommentLabel(comment.type) }}&quot;</span>
                               <span class="na">data-ng-class=</span><span class="s">&quot;{&#39;input-vanilla&#39;: !editingComment}&quot;</span>
                               <span class="na">data-ng-readonly=</span><span class="s">&quot;!editingComment&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
@@ -4703,10 +4703,10 @@
 
 <span class="c">                    Also, this block wouldn&#39;t exist at all if it was a private comment</span>
 <span class="c">                --&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;cblock comment-reply comment-reply-empty hide&quot;</span> 
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;cblock comment-reply comment-reply-empty hide&quot;</span>
                      <span class="na">data-ng-class=</span><span class="s">&quot;{ &#39;show&#39;: comments.length &gt; 0 &amp;&amp; thisIsTheLastComment() &amp;&amp; confirmationModalIsNotOpen() </span>
 <span class="s">                                      &#39;comment-reply-empty&#39;: replyTextareaIsEmpty() }&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;thread-comment{{comment.id}}-reply&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span> 
+                    <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">&quot;thread-comment{{comment.id}}-reply&quot;</span> <span class="na">class=</span><span class="s">&quot;form-control&quot;</span>
                               <span class="na">placeholder=</span><span class="s">&quot;Reply to this comment&quot;</span><span class="nt">&gt;&lt;/textarea&gt;</span>
 
                     <span class="c">&lt;!-- </span>
@@ -4719,8 +4719,8 @@
                     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav-tooltip&quot;</span><span class="nt">&gt;</span>
                         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav nav-pills nav-justified halve&quot;</span><span class="nt">&gt;</span>
                             <span class="nt">&lt;li&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;hitarea delete-hover&quot;</span> 
-                                        <span class="na">data-ng-disabled=</span><span class="s">&quot;isEmptyComment(&#39;#thread-comment{{comment.id}}-{{text||reply}}&#39;)&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;hitarea delete-hover&quot;</span>
+                                        <span class="na">data-ng-disabled=</span><span class="s">&quot;isEmptyComment(&#39;#thread-comment{{comment.id}}-{{text||reply}}&#39;)&quot;</span>
                                         <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span>
                                         <span class="na">data-parent-container=</span><span class="s">&quot;.popover-comment&quot;</span>
                                         <span class="na">data-container=</span><span class="s">&quot;.comment&quot;</span>
@@ -4729,8 +4729,8 @@
                                 <span class="nt">&lt;/button&gt;</span>
                             <span class="nt">&lt;/li&gt;</span>
                             <span class="nt">&lt;li&gt;</span>
-                                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span> 
-                                        <span class="na">data-ng-disabled=</span><span class="s">&quot;isEmptyComment(&#39;#thread-comment{{comment.id}}-{{text||reply}}&#39;)&quot;</span> 
+                                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">class=</span><span class="s">&quot;hitarea&quot;</span>
+                                        <span class="na">data-ng-disabled=</span><span class="s">&quot;isEmptyComment(&#39;#thread-comment{{comment.id}}-{{text||reply}}&#39;)&quot;</span>
                                         <span class="na">disabled</span><span class="nt">&gt;</span>
                                     {{ savePostBtnText }}
                                 <span class="nt">&lt;/button&gt;</span>
@@ -4842,9 +4842,9 @@
 </div>
 
     <div class="toasts">
-        
+
     </div>
-    
+
 </div><!-- /example -->
 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- will slide in from the top of the page --&gt;</span>
@@ -5041,10 +5041,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <div class="modal-body">
                 <div class="body-content">
                     <h3>Heading</h3>
-                    <p>Paragraph contents of a Dialog. Ut enim ad minim 
-                    veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute 
-                    irure dolor in reprehenderit in voluptate velit 
+                    <p>Paragraph contents of a Dialog. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div class="modal-actions">
@@ -5056,8 +5056,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
                 <div class="body-content">
-                    <p>Another Paragraph contents of a Dialog. Ut enim ad 
-                    minim veniam, quis nostrud exercitation ullamco laboris 
+                    <p>Another Paragraph contents of a Dialog. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>
@@ -5069,7 +5069,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div><!-- /.modal-dalog -->
 </div><!-- /.modal -->
 <div class="modal-backdrop fade in"></div>
-    
+
 </div><!-- /example -->
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal fade in&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> <span class="na">role=</span><span class="s">&quot;dialog&quot;</span> <span class="na">aria-labelledby=</span><span class="s">&quot;myModalLabel&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-dialog&quot;</span><span class="nt">&gt;</span>
@@ -5081,10 +5081,10 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;body-content&quot;</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;h3&gt;</span>Heading<span class="nt">&lt;/h3&gt;</span>
-                    <span class="nt">&lt;p&gt;</span>Paragraph contents of a Dialog. Ut enim ad minim 
-                    veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute 
-                    irure dolor in reprehenderit in voluptate velit 
+                    <span class="nt">&lt;p&gt;</span>Paragraph contents of a Dialog. Ut enim ad minim
+                    veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur.<span class="nt">&lt;/p&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-actions&quot;</span><span class="nt">&gt;</span>
@@ -5096,8 +5096,8 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
                 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;body-content&quot;</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;p&gt;</span>Another Paragraph contents of a Dialog. Ut enim ad 
-                    minim veniam, quis nostrud exercitation ullamco laboris 
+                    <span class="nt">&lt;p&gt;</span>Another Paragraph contents of a Dialog. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat.<span class="nt">&lt;/p&gt;</span>
                 <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
@@ -5251,9 +5251,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <h3 id="modals-example">Example</h3>
 <p>Toggle a modal via JavaScript by clicking the button below. It will fade into view.</p>
 
-<div id="myModal2" class="modal fade slide live-demo-modal" tabindex="-1" 
-     role="dialog" 
-     aria-labelledby="myModalLabel2" 
+<div id="myModal2" class="modal fade slide live-demo-modal" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel2"
      aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -5302,9 +5302,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#myModal2&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary btn-lg&quot;</span><span class="nt">&gt;</span>Launch demo modal<span class="nt">&lt;/button&gt;</span>
 
 <span class="c">&lt;!-- Modal --&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;myModal2&quot;</span> <span class="na">class=</span><span class="s">&quot;modal fade slide&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span> 
-     <span class="na">role=</span><span class="s">&quot;dialog&quot;</span> 
-     <span class="na">aria-labelledby=</span><span class="s">&quot;myModalLabel2&quot;</span> 
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;myModal2&quot;</span> <span class="na">class=</span><span class="s">&quot;modal fade slide&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;-1&quot;</span>
+     <span class="na">role=</span><span class="s">&quot;dialog&quot;</span>
+     <span class="na">aria-labelledby=</span><span class="s">&quot;myModalLabel2&quot;</span>
      <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
     ...
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -5395,8 +5395,8 @@ consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <div id="sessionTimeoutDialog" class="modal session-timeout-dialog" tabindex="-1" 
-         role="dialog" 
+    <div id="sessionTimeoutDialog" class="modal session-timeout-dialog" tabindex="-1"
+         role="dialog"
          aria-labelledby="sessionTimeoutLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -5571,9 +5571,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <div class="modal-body">
                     <div class="body-content">
                         <p>Remainder of dialog contents. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu 
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
                         fugiat nulla pariatur.</p>
                     </div>
                 </div>
@@ -5852,7 +5852,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <div class="wdesk-docs-example download-spinners">
 
-    <button id="download-demo" type="button" class="btn" 
+    <button id="download-demo" type="button" class="btn"
             data-downloading-text="Downloading"
             data-complete-text="View File">
         <span class="btn-text">Download</span>
@@ -6499,7 +6499,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-group&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading open&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading open&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#general&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>General<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -6511,7 +6511,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#legend&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>Legend<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -6523,7 +6523,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel panel-default&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> 
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;panel-heading&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span>
              <span class="na">data-target=</span><span class="s">&quot;#axis&quot;</span><span class="nt">&gt;</span>
             <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">&quot;panel-title&quot;</span><span class="nt">&gt;</span>Axis<span class="nt">&lt;/h3&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -6613,9 +6613,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <script src="../assets/js/web-skin.min.js?0.2.34"></script>
 <script src="../assets/js/docs-only/docs.min.js?0.2.34"></script>
 
-    
-    
-    
+
+
+
 
 </body>
 </html>
