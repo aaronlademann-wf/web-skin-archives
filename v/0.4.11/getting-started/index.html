@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,
+                               initial-scale=1.0,
+                               maximum-scale=1.0,
+                               target-densityDpi=device-dpi">
+<meta name="description" content="Web Skin Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>
+    
+        Getting started &middot; Web Skin Style Guide
+    
+</title>
+
+<!--
+    STYLES
+-->
+<!--[if !IE]> -->
+<link href="../assets/css/wdesk.css?0.4.11" rel="stylesheet" title="standard">
+<link href="../assets/css/wdesk_ie.css?0.4.11" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if gte IE 9]>
+<link href="../assets/css/wdesk_ie.css?0.4.11" rel="stylesheet">
+<![endif]-->
+<!--[if lte IE 8]>
+<link href="../assets/css/wdesk_ie-lt9.css?0.4.11" rel="stylesheet">
+<![endif]-->
+
+<link href="../assets/css/docs.css?0.4.11" rel="stylesheet">
+
+
+
+
+<!--
+    SCRIPTS
+-->
+<script src="../assets/js/docs-only/holder.js?0.4.11"></script>
+<script src="../assets/js/core/wf-js-vendor/dist/wf-vendor.min.js?0.4.11"></script>
+<!--[if lte IE 9]>
+<script src="../assets/js/core/libs_ie.min.js?0.4.11"></script>
+<![endif]-->
+<!--[if !IE]> -->
+<script src="../assets/js/core/libs.min.js?0.4.11"></script>
+<!-- <![endif]-->
+<script>
+
+    var toTitleCase = function(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+
+    // custom pageview so we can track landing pages where folks are permalinking # locations within a page
+    var hash = location.hash.replace('#', ''); // remove #
+    var hashTitle = hash.replace(/-/g, ' '); // replace dashes with spaces
+
+    var fullLocation = location.pathname + location.search + hash;
+    var gaPage = fullLocation.replace('/index.html', '/'); // remove potential index.html
+    var fullLocation = window.location.protocol + '//' + window.location.hostname + gaPage; // set location
+
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17703918-45', 'webfilings.com');
+
+    // custom parameters
+    if(hash.length) {
+        ga('set', 'title', toTitleCase(hashTitle) + ' · ' + document.title);
+    } else {
+        ga('set', 'title', document.title);
+    }
+    ga('set', 'location', fullLocation);
+    // ----------------
+
+    ga('send', 'pageview');
+
+    function a11yClick(event) {
+        if (event) {
+            if (event.target) {
+                var linkText = $(event.target);
+
+                try {
+                    ga("send", "event", "A11y Resources", linkText);
+                } catch(err) {
+
+                }
+            }
+        }
+    }
+
+</script>
+
+
+<!--
+    IMAGE LINKS
+    (FAVICONS / APP ICONS / SPLASH SCREENS, ETC)
+-->
+
+
+
+
+
+
+<!--
+    Google TV
+-->
+<link rel="icon" type="image/png" href="../assets/ico/favicon-196x196.png0.4.11" sizes="196x196">
+
+<!--
+    Modern Browser Bookmark "Favicons"
+-->
+<link rel="icon" type="image/png" href="../assets/ico/favicon-160x160.png0.4.11" sizes="160x160">
+<link rel="icon" type="image/png" href="../assets/ico/favicon-96x96.png0.4.11" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/ico/favicon-16x16.png0.4.11" sizes="16x16">
+<link rel="icon" type="image/png" href="../assets/ico/favicon-32x32.png0.4.11" sizes="32x32">
+
+<!--
+    Standard Browser Bookmark "Favicon"
+-->
+<link rel="shortcut icon" type="image/x-icon" href="../assets/ico/favicon.ico?0.4.11">
+
+<!--
+    App Icons (Android / iOS)
+-->
+<!-- For iPad w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="152x152" href="../assets/ico/apple-touch-icon-152.png?0.4.11">
+<!-- For iPad w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="144x144" href="../assets/ico/apple-touch-icon-144.png?0.4.11">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="120x120" href="../assets/ico/apple-touch-icon-120.png?0.4.11">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="114x114" href="../assets/ico/apple-touch-icon-114.png?0.4.11">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="76x76"   href="../assets/ico/apple-touch-icon-76.png?0.4.11">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="72x72"   href="../assets/ico/apple-touch-icon-72.png?0.4.11">
+<!-- For non-Retina iPhone, iPod Touch, & Android 2.1+ devices: -->
+<link rel="apple-touch-icon" href="../assets/ico/apple-touch-icon-57.png?0.4.11">
+
+<!--
+    Win8 tiles
+-->
+<meta name="msapplication-TileImage" content="../assets/ico/mstile-144x144.png?0.4.11">
+<meta name="msapplication-TileColor" content="#66CC00">
+<meta name="application-name"        content="Web Skin">
+
+<!--
+    IE11 tiles
+-->
+<meta name="msapplication-square70x70logo"   content="../assets/ico/mstile-70x70.png?0.4.11">
+<meta name="msapplication-square150x150logo" content="../assets/ico/mstile-150x150.png?0.4.11">
+<meta name="msapplication-square310x310logo" content="../assets/ico/mstile-310x310.png?0.4.11">
+<meta name="msapplication-wide310x150logo"   content="../assets/ico/mstile-310x150.png?0.4.11">
+    <!-- Place anything custom after this. -->
+</head>
+<body class="wdesk-docs-body page-getting-started">
+    <a href="#main-content" class="sr-only sr-only-focusable">Skip to content</a>
+
+    <!-- Main navbar for all docs pages. -->
+    <!-- Navbar
+================================================== -->
+<div role="navigation" class="navbar navbar-fixed-top wdesk-docs-navbar">
+    <div role="presentation" class="container">
+        <ul role="presentation" class="nav navbar-nav mobile nav-blocks">
+            <li role="presentation">
+                <button type="button" class="navbar-toggle hitarea no-text collapsed"
+                        aria-expanded="false"
+                        data-toggle="collapse"
+                        data-target=".docs-nav-collapse">
+                    <!-- TODO: fix accessibility of this nav system -->
+                    <i class="icon icon-md icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-header navbar-brand">
+            <a class="brand-link" href="../">
+                <div role="img" class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]>
+                        <img src="../assets/img/brand/wdesk-logo_white.png">
+                    <![endif]-->
+                </div>
+                Web Skin
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a class="hitarea" href="../getting-started/">Getting Started</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../css/">CSS</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../components/">Components</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="../javascript/">JavaScript</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="nav navbar-nav nav-blocks docs-options-nav pull-right">
+            <li>
+                <button type="button" class="hitarea no-text"
+                        title="Documentation Options"
+                        data-toggle="options"
+                        data-target="#docs-options">
+                    <i class="icon icon-md icon-cog"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="docs-options-backdrop" class="docs-options-backdrop backdrop hide"></div>
+<div id="docs-options" class="navbar navbar-fixed-top wdesk-docs-navbar docs-options slide fixed-top down" role="dialog" tabindex="-1">
+    <div class="container">
+        <form class="form-inline">
+
+            <!--
+                NOTE: If you add an option here,
+                      you MUST add it to the Analytics Property as well
+                      using the `data-option-key` attr.
+            -->
+
+            <div class="tabbable">
+                <div class="nav-stripe"></div>
+                <ul role="tablist" class="nav nav-pills">
+                    <li role="presentation" class="active">
+                        <button role="tab" type="button" class="hitarea"
+                                data-toggle="tab"
+                                data-target="#docs-options-basic">
+                            Basic
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button role="tab" type="button" class="hitarea"
+                                data-toggle="tab"
+                                data-target="#docs-options-advanced">
+                            Advanced
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="docs-options-basic">
+
+                        <fieldset id="option-groups" class="block-center valign-middle">
+                            <div class="doc-option-container flush-right">
+                                <label class="doc-option-label" for="opt-user-type">I am a</label>
+                                <select id="opt-user-type" class="chosen form-control dev-design-container"
+                                        data-option-group-controller="true"
+                                        data-option-key="user-type">
+                                    <option value="" disabled selected>-- Pick One --</option>
+                                    <option value="dev">Developer</option>
+                                    <option value="design">Designer</option>
+                                </select>
+                            </div>
+                            <div class="doc-option-container">
+                                <label class="doc-option-label" for="opt-device-type"><i data-option-related-text-key="user-type" data-lbl-dev="developing" data-lbl-design="designing">building</i> a Web Skin app for </label>
+                                <select id="opt-device-type" class="chosen form-control"
+                                        data-option-group-controller="true"
+                                        data-option-key="device-type">
+                                    <option value="" disabled selected>-- Pick One --</option>
+                                    <option value="desktop">Desktop</option>
+                                    <option value="mobile">Mobile</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                    </div> <!-- END BASIC -->
+                    <div role="tabpanel" class="tab-pane" id="docs-options-advanced">
+
+                        <fieldset class="row" id="device-options">
+                            <legend class="col-xs-2">Target Device</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-device-touch" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-device-touch"
+                                                   data-option-key="device-touch"
+                                                   data-option-group="mobile">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Touch Enabled
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-device-mouse" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-device-mouse"
+                                                   data-option-key="device-mouse"
+                                                   data-option-group="desktop">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Mouse Enabled
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="row" id="design-options">
+                            <legend class="col-xs-2">Designers</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-design-assets" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-design-assets"
+                                                   data-option-key="design-assets"
+                                                   data-option-group="design">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Design Assets
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-design-notes" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-design-notes"
+                                                   data-option-key="design-notes"
+                                                   data-option-group="design">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Design Notes
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="row" id="dev-options">
+                            <legend class="col-xs-2">Developers</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-examples" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-examples"
+                                                   data-option-key="code"
+                                                   data-option-related-off="code-snippets"
+                                                   data-option-group="dev"
+                                                   checked>
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Code Examples
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-dev-notes" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-dev-notes"
+                                                   data-option-key="dev-notes"
+                                                   data-option-group="dev"
+                                                   checked>
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Dev Notes
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-snippets" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-snippets"
+                                                   data-option-key="code-snippets"
+                                                   data-option-related-on="code">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Code Snippets
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-angularjs" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-angularjs"
+                                                   data-option-key="code-angularjs">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        AngularJS Help
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div> <!-- END ADVANCED -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div class="wdesk-docs-header">
+        <div class="container">
+            <h1>Getting started</h1>
+            <p class="lead">Overview of Web Skin, its contents, and how to get started using it&rsquo;s resources.</p>
+        </div>
+    </div>
+
+    <!-- Callout for the old docs link -->
+    
+        <div class="wdesk-archived-docs">
+    <div class="container">
+        <strong>
+          <a href="../../0.2.34/" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.2.34 ', 'Section Header');">Looking for the Web Skin 0.2.34 docs?</a>
+        </strong>
+        &nbsp;&nbsp;We&rsquo;ve moved them to a new home while we push forward with Web Skin 0.4.11
+    </div>
+</div>
+
+    
+
+    <div class="container wdesk-docs-container">
+        <div class="row">
+            <div class="col-md-3 wdesk-docs-sidebar">
+                <ul role="menu" class="nav wdesk-docs-sidenav fade">
+                
+                    <li>
+    <a class="hitarea" href="#download">Download Web Skin</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#download-compiled">Compiled CSS, JS, and fonts</a></li>
+        <li><a class="hitarea" href="#download-additional">Additional downloads</a></li>
+        <li><a class="hitarea" href="#download-bower-package">Bower package</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#whats-included">What&rsquo;s included</a>
+</li>
+<li>
+    <a class="hitarea" href="#template">Basic template</a>
+</li>
+<li>
+    <a class="hitarea" href="#branding">Branding</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#branding-downloads">Downloads</a></li>
+        <li><a class="hitarea" href="#branding-html-markup">HTML Markup</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#extending-with-sass">Extending with Sass</a>
+    <ul class="nav">
+        <li>
+            <a class="hitarea" href="#extending-with-sass-app-setup">App Setup</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#extending-with-sass-bower-install">1. Bower Install</a></li>
+                <li><a class="hitarea" href="#extending-with-sass-ruby-bundle">2. Bundle Ruby Gems</a></li>
+                <li><a class="hitarea" href="#extending-with-sass-ruby-config">3. Compass Config</a></li>
+                <li><a class="hitarea" href="#extending-with-sass-js-build-config">4. Gulp / Grunt Task</a></li>
+                <li><a class="hitarea" href="#extending-with-sass-import-config">5. Import Sass</a></li>
+            </ul>
+        </li>
+        <li><a class="hitarea" href="#sass-color-palette">Color Palette</a></li>
+        <li><a class="hitarea" href="#sass-variables">Variables</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#migration">Migrating between versions</a>
+    <ul class="nav">
+        <li>
+            <a class="hitarea" href="#migration-o-two-o">0.2.x migration</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#migration-classes">Major class changes</a></li>
+                <li><a class="hitarea" href="#migration-new">What&rsquo;s new</a></li>
+                <li><a class="hitarea" href="#migration-dropped">What&rsquo;s removed</a></li>
+                <li><a class="hitarea" href="#migration-notes">Additional notes</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hitarea" href="#migration-o-three-o">0.3.x migration</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#migration-o-three-o-classes">Major class changes</a></li>
+                <li><a class="hitarea" href="#migration-o-three-o-notes">Additional notes</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="hitarea" href="#migration-o-four-o">0.4.x migration</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#migration-o-four-o-tooltip-containers">Tooltip Containers</a></li>
+                <li><a class="hitarea" href="#migration-o-four-o-ie7">MSIE 7 support</a></li>
+                <li><a class="hitarea" href="#migration-o-four-o-icons">Icon set changes</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#browsers">Browser support</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#browsers-supported">Overview</a></li>
+        <li><a class="hitarea" href="#browsers-legacy-msie">Legacy MSIE</a></li>
+        <li><a class="hitarea" href="#browsers-legacy-msie-compatibility-mode">MSIE compatibility mode</a></li>
+        <li><a class="hitarea" href="#browsers-msie-device-width">MSIE Device Width</a></li>
+        <li>
+            <a class="hitarea" href="#browsers-zoom">Browser zooming</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#browsers-zoom-touch-disable">Disable touch device zoom</a></li>
+            </ul>
+        </li>
+        <li><a class="hitarea" href="#browsers-mobile-modals">Mobile modals</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#disable-responsive">Disabling responsiveness</a>
+</li>
+<li>
+    <a class="hitarea" href="#accessibility">Accessibility</a>
+    <ul class="nav">
+        <li><a class="hitarea" href="#accessibility-why">Why?</a></li>
+        <li class="visible-dev-notes"><a class="hitarea" href="#accessibility-components">Accessibile <i class="sr-only">Web Skin</i> Components</a></li>
+        <li><a class="hitarea" href="#accessibility-best-practices">Best Practices</a></li>
+        <li><a class="hitarea" href="#accessibility-resources">Resources</a></li>
+    </ul>
+</li>
+<li>
+    <a class="hitarea" href="#dev-resources">Dev Resources</a>
+    <ul class="nav">
+        <li>
+            <a class="hitarea" href="#dev-resources-code-snippets">Code Snippets</a>
+            <ul class="nav">
+                <li><a class="hitarea" href="#dev-resources-code-snippets-st">SublimeText</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+                
+                </ul>
+            </div>
+            <div role="main" id="main-content" class="col-md-9">
+                <!-- Getting started
+================================================== -->
+<div id="download-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="download">Download Web Skin</h1>
+    </div>
+    <p class="lead">Web Skin has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+
+        <h3 id="download-compiled">Compiled CSS, JS, and fonts</h3>
+    <p>The fastest way to get Web Skin is to download the compiled and minified versions of our CSS and JavaScript, along with the included fonts. No documentation or original source files are included.</p>
+    <p><a class="btn btn-lg btn-alt" href="https://github.com/WebFilings/web-skin/archive/0.4.11.zip" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');" role="button">Download Web Skin</a></p>
+
+    <h3 id="download-additional">Additional downloads</h3>
+    <div class="wdesk-docs-dl-options">
+        <h4>Download source code</h4>
+        <p><a href="https://github.com/WebFilings/web-skin/archive/0.4.11.zip" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Get the original files</a> for all CSS and JavaScript by downloading the full release directly from GitHub.</p>
+
+        <h4>Clone or fork via GitHub</h4>
+        <p><a href="https://github.com/WebFilings/web-skin" onclick="ga('send', 'event', 'Getting started', 'Download', 'GitHub repo');">Clone the entire project or fork</a> your own version of web-skin to make it your own by visiting us on GitHub.</p>
+    </div>
+
+    <h3 id="download-bower-package">Install with Bower</h3>
+    <p>Install and manage Web Skin via the web-skin platform using <a href="http://bower.io" target="_blank">Bower</a>.</p>
+    <p>First, install Bower.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo npm install bower -g</code></pre></div>
+
+    <p>To define web-skin as a dependency for your application, Add a bower.json file to the root of your project like so:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your App Name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;your.app.version&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dependencies&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;web-skin&quot;</span><span class="p">:</span> <span class="s2">&quot;git+ssh://git@github.com/Workiva/web-skin.git#0.4.11&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>Then as part of your build setup / grunt targets, run the following command in bash:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bower install</code></pre></div>
+
+    <p>All of the package resources will be pulled into the root of your project/app in a folder named <code>bower_components/web-skin/</code></p>
+</div>
+
+
+<!-- File structure
+================================================== -->
+<div id="whats-included-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="whats-included">What&rsquo;s included</h1>
+    </div>
+    <p class="lead">Within <a href="https://github.com/WebFilings/web-skin/archive/0.4.11.zip" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">the download</a> you&rsquo;ll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.</p>
+
+    <p>Once downloaded, unzip the compressed folder to see the structure of Web Skin. You'll see something like this:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dist/
+│
+├── css/
+├── fonts/
+├── ico/
+├── img/
+├── js/
+├── cachebuster.txt
+├── shasum.txt
+└── version.txt</code></pre></div>
+
+<p>This is the most basic form of Web Skin: compiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS.</p>
+<div class="wdesk-callout wdesk-callout-danger">
+    <h4>Core Lib JS Required</h4>
+    <p>Please note that Web Skin was designed under the assumption that its consumer applications would be including the JavaScript assets in <strong>wf-vendor.js</strong> and <strong>libs.js</strong>/<strong>libs_ie.js</strong> in their project(s). See the <a href="#template">basic template section</a> below for how these should be included in your HTML.</p>
+</div>
+
+</div>
+
+
+<!-- Basic template
+================================================== -->
+<div id="template-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="template">Basic template</h1>
+    </div>
+    <p class="lead">Start with this basic HTML template, and adapt it to suit your needs and Internet Explorer Support Levels.</p>
+
+    <div class="wdesk-callout wdesk-callout-warning">
+        <h4>Relative Asset URLs</h4>
+        <p>Note that the HTML shown below assumes that you have downloaded these resources into the appropriate directory relative to the HTML in your site / application.</p>
+        <p>That location is referenced as <code>{{ baseurl }}</code> for example only.</p>
+    </div>
+
+    <div class="tabbable example-tab-content example-tab-content-code">
+        <ul role="tablist" class="nav nav-tabs">
+            <li role="presentation" class="active">
+                <a role="tab" id="msie9template-tab" class="hitarea" tabindex="0"
+                   href="#msie9template"
+                   aria-controls="msie9template"
+                   aria-selected="true"
+                   data-toggle="tab">
+                    Supports <abbr title="Microsoft Internet Explorer">MSIE</abbr> 9+
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="tab" id="msie7-8template-tab" class="hitarea" tabindex="0"
+                   href="#msie7-8template"
+                   aria-controls="msie7-8template"
+                   aria-selected="false"
+                   data-toggle="tab">
+                    Supports <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7/8+
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" id="msie9template" class="tab-pane active" tabindex="0"
+                 aria-hidden="false"
+                 aria-labelledby="msie9template-tab">
+                <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Wdesk Template Using Web Skin for <span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Microsoft Internet Explorer&quot;</span><span class="nt">&gt;</span>MSIE<span class="nt">&lt;/abbr&gt;</span> 9+<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--</span>
+<span class="c">            STYLESHEET(S) (always before scripts)</span>
+<span class="c">        --&gt;</span>
+
+        <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+        <span class="c">&lt;!--[if IE]&gt;</span>
+<span class="c">        &lt;link href=&quot;{{ baseurl }}/css/wdesk_ie.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+
+        <span class="c">&lt;!--</span>
+<span class="c">            CORE JAVASCRIPT</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/wf-vendor.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+        <span class="c">&lt;!--[if IE]&gt;</span>
+<span class="c">        &lt;script src=&quot;{{ baseurl }}/js/core/libs_ie.min.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Hello, WebFilers!<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="c">&lt;!--</span>
+<span class="c">            PLUGIN JAVASCRIPT</span>
+<span class="c">            Include all compiled plugins (shown below)</span>
+<span class="c">            or include individual files as needed</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/web-skin.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<div class="wdesk-callout wdesk-callout-danger visible-dev-notes">
+    <h4><abbr title="Microsoft Internet Explorer">MSIE</abbr> Conditional Comment Support</h4>
+<p><abbr title="Microsoft Internet Explorer">MSIE</abbr> discontinued support of HTML conditional comments (<code>&lt;!--[if IE]&gt;</code>, etc&hellip;) with the release of <abbr title="Microsoft Internet Explorer">MSIE</abbr> 10.</p>
+<!-- TODO: update this code example to point to Web Bones' Jinja / Python approach -->
+<p>In order to conditionally include assets for <abbr title="Microsoft Internet Explorer">MSIE</abbr>, we recommend implementing a server-side solution that detects the browser - similar to the <a href="https://github.com/WebFilings/books/blob/master/wf/apps/books/views/app.py" target="_blank">django/python approach coded here</a>, with a sample implementation demonstrated below.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">{% if use_ie_css %}
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk_ie.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs_ie.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+{% else %}
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+{% endif %}</code></pre></div>
+</div>
+            </div>
+            <div role="tabpanel" id="msie7-8template" class="tab-pane" tabindex="-1"
+                 aria-hidden="true"
+                 aria-labelledby="msie7-8template-tab">
+                <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Wdesk Template Using Web Skin for <span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;Microsoft Internet Explorer&quot;</span><span class="nt">&gt;</span>MSIE<span class="nt">&lt;/abbr&gt;</span> 7/8+<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--</span>
+<span class="c">            STYLESHEET(S) (always before scripts)</span>
+<span class="c">        --&gt;</span>
+
+        <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+        <span class="c">&lt;!--[if gte IE 9]&gt;</span>
+<span class="c">        &lt;link href=&quot;{{ baseurl }}/css/wdesk_ie.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+
+        <span class="c">&lt;!-- FOR MSIE 7/8 SUPPORT --&gt;</span>
+        <span class="c">&lt;!--[if lte IE 8]&gt;</span>
+<span class="c">        &lt;link href=&quot;{{ baseurl }}/css/wdesk_ie-lt9.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+
+        <span class="c">&lt;!--</span>
+<span class="c">            CORE JAVASCRIPT</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/wf-vendor.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+        <span class="c">&lt;!--[if IE]&gt;</span>
+<span class="c">        &lt;script src=&quot;{{ baseurl }}/js/core/libs_ie.min.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">        &lt;![endif]--&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Hello, WebFilers!<span class="nt">&lt;/h1&gt;</span>
+
+        <span class="c">&lt;!--</span>
+<span class="c">            PLUGIN JAVASCRIPT</span>
+<span class="c">            Include all compiled plugins (shown below)</span>
+<span class="c">            or include individual files as needed</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/web-skin.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+
+<div class="wdesk-callout wdesk-callout-danger visible-dev-notes">
+    <h4><abbr title="Microsoft Internet Explorer">MSIE</abbr> Conditional Comment Support</h4>
+<p><abbr title="Microsoft Internet Explorer">MSIE</abbr> discontinued support of HTML conditional comments (<code>&lt;!--[if IE]&gt;</code>, etc&hellip;) with the release of <abbr title="Microsoft Internet Explorer">MSIE</abbr> 10.</p>
+<!-- TODO: update this code example to point to Web Bones' Jinja / Python approach -->
+<p>In order to conditionally include assets for <abbr title="Microsoft Internet Explorer">MSIE</abbr>, we recommend implementing a server-side solution that detects the browser - similar to the <a href="https://github.com/WebFilings/books/blob/master/wf/apps/books/views/app.py" target="_blank">django/python approach coded here</a>, with a sample implementation demonstrated below.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html">{% if use_ie_css %}
+
+    <span class="c">&lt;!-- *** MSIE 7/8 SUPPORT (IF YOU NEED IT) *** --&gt;</span>
+    <span class="c">&lt;!--[if lte IE 8]&gt;</span>
+<span class="c">        &lt;link href=&quot;{{ baseurl }}/css/wdesk_ie-lt9.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">    &lt;![endif]--&gt;</span>
+
+
+    <span class="c">&lt;!-- *** MSIE 9 SUPPORT *** --&gt;</span>
+    <span class="c">&lt;!--[if gte IE 9]&gt;</span>
+<span class="c">        &lt;link href=&quot;{{ baseurl }}/css/wdesk_ie.min.css&quot; rel=&quot;stylesheet&quot; media=&quot;screen&quot;&gt;</span>
+<span class="c">    &lt;![endif]--&gt;</span>
+
+    <span class="c">&lt;!-- *** MSIE 10+ SUPPORT *** --&gt;</span>
+    <span class="c">&lt;!--[if !IE]&gt; --&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk_ie.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- &lt;![endif]--&gt;</span>
+
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs_ie.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+{% else %}
+
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/css/wdesk.min.css&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;{{ baseurl }}/js/core/libs.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+{% endif %}</code></pre></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Branding
+================================================== -->
+<div id="branding-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="branding">Branding</h1>
+    </div>
+    <p class="lead">Use the icon resources provided by Web Skin to ensure a consistent brand experience for all Wdesk users.</p>
+
+    <div class="page-header-hero-img brand-consistency-frame">
+    <img src="../assets/img/docs/wdesk-brand-consistency-mockup.jpg"
+         alt="Wdesk brand displayed consistently across various devices like a Windows 8 PC, a Mac OSX Laptop, an Apple iPad, a Galaxy S5 running Android, and a Microsoft Surface Tablet." class="img-responsive img-base">
+    <img src="../assets/img/docs/wdesk-brand-consistency-mockup-hover.jpg"
+         alt="Wdesk brand emphasized amongst the various devices previously mentioned."
+         aria-hidden="true"
+         class="img-responsive img-reveal-on-hover">
+    <img src="../assets/img/docs/wdesk-brand-consistency-mockup-favicon-hover.jpg"
+         alt="Wdesk brand emphasizing browser favicons."
+         aria-hidden="true"
+         data-reveal-on="favicons"
+         class="img-responsive img-reveal-on-dl-row-hover">
+    <img src="../assets/img/docs/wdesk-brand-consistency-mockup-appicon-hover.jpg"
+         alt="Wdesk brand emphasizing mobile app icons."
+         aria-hidden="true"
+         data-reveal-on="appicons"
+         class="img-responsive img-reveal-on-dl-row-hover">
+    <img src="../assets/img/docs/wdesk-brand-consistency-mockup-mstile-hover.jpg"
+         alt="Wdesk brand emphasizing Windows 8 live tiles."
+         aria-hidden="true"
+         data-reveal-on="mstiles"
+         class="img-responsive img-reveal-on-dl-row-hover">
+</div>
+
+<h2 id="branding-downloads">Downloads</h2>
+<p>Use the links provided below to download the brand assets shown in the above image, and referenced in <a href="#branding-html-markup">the HTML markup</a> shown below.</p>
+
+
+<div class="table-responsive">
+    <table id="branding-downloads-table" class="table table-hover branding-downloads-table">
+        <caption class="sr-only">
+            This table displays a list of the different types of brand asset downloads that can be used to provide a consistent user experience across multiple devices / operating systems. The first column describes the brand asset download. The last column provides a link you can click to download the brand assets described.
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Target OS / Device</th>
+                <th scope="col" class="text-center" style="width: 100px">Example</th>
+                <th scope="col" class="text-center">Sizes</th>
+                <th scope="col" class="text-right">Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="asset-download-row" data-download="favicons">
+                <th scope="row">Desktop Favicon <br><small class="text-muted">(Browser tabs, Bookmarks, etc.)</small></th>
+                <td>
+                    <img src="../assets/ico/favicon-160x160.png?0.4.11" alt="Wdesk favicon example" style="width: 80px; height: 80px;">
+                </td>
+                <td class="sizes">
+                    <ol class="list-unstyled text-small">
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="160" data-img-height="160" target="_blank" href="../assets/ico/favicon-160x160.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'favicon-160x160.png');">160 &times; 160</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="96"  data-img-height="96"  target="_blank" href="../assets/ico/favicon-96x96.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'favicon-96x96.png');">96 &times; 96</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="48"  data-img-height="48"  target="_blank" href="../assets/ico/favicon-96x96.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'favicon-48x48.png');">48 &times; 48</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="32"  data-img-height="32"  target="_blank" href="../assets/ico/favicon-32x32.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'favicon-32x32.png');">32 &times; 32</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="16"  data-img-height="16"  target="_blank" href="../assets/ico/favicon-16x16.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'favicon-16x16.png');">16 &times; 16</a>
+                        </li>
+                    </ol>
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-alt" target="_blank" href="../assets/ico/wdesk-brand-ico_favicons.zip"
+                       onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'wdesk-brand-ico_favicons.zip');"
+                       title="Click to download the Wdesk favicon set.">Download</a>
+                </td>
+            </tr>
+            <tr class="asset-download-row" data-download="mstiles">
+                <th scope="row">Windows 8 Tile <br><small class="text-muted">(Pin to Start)</small></th>
+                <td>
+                    <div class="mock-mstile">
+                        <img src="../assets/ico/mstile-150x150.png?0.4.11" alt="Wdesk Windows 8 live tile example">
+                    </div>
+                </td>
+                <td class="sizes">
+                    <ol class="list-unstyled text-small">
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="310" data-img-height="150" target="_blank" href="../assets/ico/mstile-310x150.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'mstile-310x150.png');">310 &times; 150</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="310" data-img-height="310" target="_blank" href="../assets/ico/mstile-310x310.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'mstile-310x310.png');">310 &times; 310</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="150" data-img-height="150" target="_blank" href="../assets/ico/mstile-150x150.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'mstile-150x150.png');">150 &times; 150</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="144" data-img-height="144" target="_blank" href="../assets/ico/mstile-144x144.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'mstile-144x144.png');">144 &times; 144</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="70" data-img-height="70" target="_blank" href="../assets/ico/mstile-70x70.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'mstile-70x70.png');">70 &times; 70</a>
+                        </li>
+                    </ol>
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-alt" target="_blank" href="../assets/ico/wdesk-brand-ico_win8tiles.zip"
+                       onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'wdesk-brand-ico_win8tiles.zip');"
+                       title="Click to download the Wdesk Windows 8 live tile set.">Download</a>
+                </td>
+            </tr>
+            <tr class="asset-download-row" data-download="appicons">
+                <th scope="row">Mobile App Icon <br><small class="text-muted">(iOS / Android)</small></th>
+                <td>
+                    <img src="../assets/ico/apple-touch-icon-144-precomposed.png?0.4.11" alt="Wdesk mobile app icon example" style="width: 72px; height: 72px;">
+                </td>
+                <td class="sizes">
+                    <ol class="list-unstyled text-small">
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="152" data-img-height="152" target="_blank" href="../assets/ico/apple-touch-icon-152-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-152-precomposed.png');">152 &times; 152</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="144" data-img-height="144" target="_blank" href="../assets/ico/apple-touch-icon-144-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-144-precomposed.png');">144 &times; 144</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="120" data-img-height="120" target="_blank" href="../assets/ico/apple-touch-icon-120-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-120-precomposed.png');">120 &times; 120</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="114" data-img-height="114" target="_blank" href="../assets/ico/apple-touch-icon-114-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-114-precomposed.png');">114 &times; 114</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="76" data-img-height="76" target="_blank" href="../assets/ico/apple-touch-icon-76-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-76-precomposed.png');">76 &times; 76</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="72" data-img-height="72" target="_blank" href="../assets/ico/apple-touch-icon-72-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-72-precomposed.png');">72 &times; 72</a>
+                        </li>
+                        <li>
+                            <a class="label" rel="tooltip" data-img-width="57" data-img-height="57" target="_blank" href="../assets/ico/apple-touch-icon-57-precomposed.png"
+                               onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'apple-touch-icon-57-precomposed.png');">57 &times; 57</a>
+                        </li>
+                    </ol>
+                </td>
+                <td class="text-right">
+                    <a class="btn btn-alt" target="_blank" href="../assets/ico/wdesk-brand-ico_appIcons.zip"
+                       onclick="ga('send', 'event', 'Getting Started', 'Brand Asset Download', 'wdesk-brand-ico_appIcons.zip');"
+                       title="Click to download the Wdesk mobile app icon set.">Download</a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr><td colspan="4"></td></tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<h2 id="branding-html-markup">HTML Template Markup</h2>
+<p>In order to provide brand icons for the various operating systems and devices at all screen resolutions, use the markup in the example below within the <code>&lt;head&gt;</code> of your page.</p>
+
+<div class="wdesk-callout wdesk-callout-warning">
+    <h4>Relative Asset URLs</h4>
+    <p>Note that the HTML shown below assumes that you have downloaded these resources into the appropriate directory relative to the HTML in your site / application.</p>
+    <p>That location is referenced as <code>{{ baseurl }}</code> for example only.</p>
+</div>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+  <span class="c">&lt;!--</span>
+<span class="c">    Google TV</span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/png&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon-196x196.png&quot;</span> <span class="na">sizes=</span><span class="s">&quot;196x196&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!--</span>
+<span class="c">    Modern Browser Bookmark &quot;Favicons&quot;</span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/png&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon-160x160.png&quot;</span> <span class="na">sizes=</span><span class="s">&quot;160x160&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/png&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon-96x96.png&quot;</span> <span class="na">sizes=</span><span class="s">&quot;96x96&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/png&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon-16x16.png&quot;</span> <span class="na">sizes=</span><span class="s">&quot;16x16&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/png&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon-32x32.png&quot;</span> <span class="na">sizes=</span><span class="s">&quot;32x32&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!--</span>
+<span class="c">    Standard Browser Bookmark &quot;Favicon&quot;</span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;shortcut icon&quot;</span> <span class="na">type=</span><span class="s">&quot;image/x-icon&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/favicon.ico&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!--</span>
+<span class="c">    App Icons (Android / iOS)</span>
+<span class="c">  --&gt;</span>
+  <span class="c">&lt;!-- For iPad w/ high-resolution Retina display on iOS ≥ 7: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;152x152&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-152.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For iPad w/ high-resolution Retina display on iOS ≤ 6: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;144x144&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-144.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For iPhone w/ high-resolution Retina display on iOS ≥ 7: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;120x120&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-120.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For iPhone w/ high-resolution Retina display on iOS ≤ 6: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;114x114&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-114.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For the iPad mini &amp; the first/second-generation iPad on iOS ≥ 7: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;76x76&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-76.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For the iPad mini &amp; the first/second-generation iPad on iOS ≤ 6: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">sizes=</span><span class="s">&quot;72x72&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-72.png&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- For non-Retina iPhone, iPod Touch, &amp; Android 2.1+ devices: --&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;apple-touch-icon&quot;</span> <span class="na">href=</span><span class="s">&quot;{{ baseurl }}/ico/apple-touch-icon-57.png&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!--</span>
+<span class="c">    Win8 tiles</span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-TileImage&quot;</span> <span class="na">content=</span><span class="s">&quot;{{ baseurl }}/ico/mstile-144x144.png&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-TileColor&quot;</span> <span class="na">content=</span><span class="s">&quot;#66CC00&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;application-name&quot;</span>        <span class="na">content=</span><span class="s">&quot;{{ site_or_app_name }}&quot;</span><span class="nt">&gt;</span>
+
+  <span class="c">&lt;!--</span>
+<span class="c">    IE11 tiles</span>
+<span class="c">  --&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-square70x70logo&quot;</span>   <span class="na">content=</span><span class="s">&quot;{{ baseurl }}/ico/mstile-70x70.png&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-square150x150logo&quot;</span> <span class="na">content=</span><span class="s">&quot;{{ baseurl }}/ico/mstile-150x150.png&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-square310x310logo&quot;</span> <span class="na">content=</span><span class="s">&quot;{{ baseurl }}/ico/mstile-310x310.png&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;msapplication-wide310x150logo&quot;</span>   <span class="na">content=</span><span class="s">&quot;{{ baseurl }}/ico/mstile-310x150.png&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+</div>
+
+
+<!-- Extending with Sass
+================================================== -->
+<div id="extending-with-sass-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="extending-with-sass">Extending with Sass</h1>
+    </div>
+    <p class="lead">Make building your app&rsquo;s Sass easier by extending Web Skin&rsquo;s built-in Sass variables, mixins, functions and more.</p>
+
+    <h2 id="extending-with-sass-app-setup">Set up your app to compile Sassy CSS</h2>
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Need help extending Web Skin Sass into your app?</h4>
+    <p>If you need help or some clarification on how to proceed with the steps provided below, please give us a shout on <a onclick="return false;" href="#" data-toggle="tooltip" data-html="true" title="Room name is &lt;strong&gt;&ldquo;Web Skin - Dev&rdquo;&lt;/strong&gt;">HipChat</a> or <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', 'Extending Sass');">open an issue</a>.</p>
+</div>
+
+
+<h3 id="extending-with-sass-bower-install">1. Install Web Skin with Bower</h3>
+<p>After you <a href="#download-bower-package">install Web Skin using Bower</a>, you&rsquo;re ready to set up your app&rsquo;s Sass using the steps provided below.</p>
+
+
+<h3 id="extending-with-sass-ruby-bundle">2. Add the Ruby Gems you&rsquo;ll need</h3>
+<p>There are many ways to install Ruby Gems. However, we highly recommend addign a <code>Gemfile</code> to your app so that you can declare/bundle your app&rsquo;s dependencies - and use the <code>bundle exec</code> option when running your build in a CI environment.</p>
+
+<h4>Create your Gemfile</h4>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s1">&#39;https://rubygems.org&#39;</span>
+
+<span class="n">gem</span> <span class="s1">&#39;json&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;compass&#39;</span><span class="p">,</span> <span class="s1">&#39;0.12.2&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;3.2.12&#39;</span></code></pre></div>
+
+<h4>Bundle your dependencies</h4>
+
+<p><strong>Local Dev Machine:</strong></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bundle</code></pre></div>
+
+<p><strong>Smithy CI:</strong></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">bundle config --local PATH ./.rubygems
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:./.rubygems/bin
+bundle</code></pre></div>
+
+
+<h3 id="extending-with-sass-ruby-config">3. Set up your Compass config</h3>
+<p>Now that you have Sass and Compass installed, the next thing you need to do is make sure your Compass configuration file knows where to find the Web Skin Sass files. Add the following line to your <code>config.rb</code> file.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">additional_import_paths</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;bower_components/web-skin/sass&quot;</span><span class="o">]</span></code></pre></div>
+
+
+<h3 id="extending-with-sass-js-build-config">4. Set up your Gulp/Grunt Compass task</h3>
+<p>Next, you need to require a file containing some custom Ruby functions that help Web Skin scale.</p>
+
+<h4>Using Grunt</h4>
+<p>We recommend using the <strong>grunt-contrib-compass</strong> plugin to handle Sass compilation in a Grunt build setup. Below is an example showing the recommended Grunt config options for your app.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="nx">compass</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">app</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                <span class="cm">/*</span>
+<span class="cm">                    highly recommend using `bundleExec` to keep control</span>
+<span class="cm">                    of Ruby Gems in the hands of your team...</span>
+<span class="cm">                    not the hands of CI server maintainers.</span>
+<span class="cm">                */</span>
+                <span class="nx">bundleExec</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nx">config</span><span class="o">:</span> <span class="s1">&#39;./config.rb&#39;</span><span class="p">,</span>
+                <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;./bower_components/web-skin/lib/ruby/sass-functions.rb&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-compass&#39;</span><span class="p">);</span></code></pre></div>
+
+<h4>Using Gulp</h4>
+<p>We recommend using the <strong>gulp-compass</strong> plugin to handle Sass compilation in a Gulp build setup. Below is an example showing the recommended Gulp config options for your app.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">compass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-compass&#39;</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;compass&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./&#39;</span> <span class="o">+</span> <span class="nx">sassSourceFileDir</span> <span class="o">+</span> <span class="s1">&#39;/*.scss&#39;</span><span class="p">);</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">compass</span><span class="p">({</span>
+        <span class="cm">/*</span>
+<span class="cm">            highly recommend using `bundle_exec` to keep control</span>
+<span class="cm">            of Ruby Gems in the hands of your team...</span>
+<span class="cm">            not the hands of CI server maintainers.</span>
+<span class="cm">        */</span>
+        <span class="nx">bundle_exec</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">config_file</span><span class="o">:</span> <span class="s1">&#39;./config.rb&#39;</span><span class="p">,</span>
+        <span class="nx">require</span><span class="o">:</span> <span class="s1">&#39;./bower_components/web-skin/lib/ruby/sass-functions.rb&#39;</span><span class="p">,</span>
+        <span class="nx">css</span><span class="o">:</span> <span class="nx">cssOutputFileDir</span><span class="p">,</span>
+        <span class="nx">sass</span><span class="o">:</span> <span class="nx">sassSourceFileDir</span>
+    <span class="p">}));</span>
+<span class="p">});</span></code></pre></div>
+
+
+<h3 id="extending-with-sass-import-config">5. Import Web Skin Sass</h3>
+<p>Once you&rsquo;ve added the import paths to your Compass config, and required the custom Sass functions required for Web Skin, you can import the Web Skin Sass constants in your Sass file so they can be referenced throughout your app&rsquo;s Sass files, and your app will update any time the values change in Web Skin.</p>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">//</span>
+<span class="c1">// Any default Web Skin values you want</span>
+<span class="c1">// to override should be placed BEFORE</span>
+<span class="c1">// the import of the Web Skin manifest</span>
+<span class="c1">//</span>
+<span class="c1">// For example, if you do not want your stylesheet</span>
+<span class="c1">// to have MSIE specific hacks/support...</span>
+<span class="c1">//</span>
+<span class="nv">$ie-support</span><span class="o">:</span> <span class="n-Pseudo">false</span><span class="p">;</span>
+
+<span class="c1">//</span>
+<span class="c1">// Web Skin Constants</span>
+<span class="c1">//</span>
+<span class="k">@import</span> <span class="s2">&quot;_constants/_wdesk-manifest.scss&quot;</span><span class="p">;</span>
+
+<span class="c1">// Now you can write some responsive styles using the same settings</span>
+<span class="c1">// as the global packages uses so you&#39;re always in lock-step!</span>
+<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenTablet</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenTabletMax</span><span class="o">)</span> <span class="p">{</span>
+    <span class="c1">// mobile styles here</span>
+<span class="p">}</span>
+
+<span class="c1">// Or make an element in your app be &quot;Wdesk&quot; Green</span>
+<span class="nc">.my-element</span> <span class="p">{</span>
+    <span class="na">background-color</span><span class="o">:</span> <span class="nv">$wf_green</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+<h2 id="sass-color-palette">Color Palette</h2>
+<p>The palette shown below displays the Sass <code>$variable</code> name that can be used to extend into your app, the HEX color value for designers, and a sample swatch for reference.</p>
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <!-- GREEN -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Primary Greens */</span>
+<span class="nv">$wf_green_alt2:</span>      <span class="swatch scss-output wf_green_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_alt:</span>       <span class="swatch scss-output wf_green_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green:</span>           <span class="swatch scss-output wf_green"></span><span class="nv">;</span>
+<span class="cm">/* WF Darker Greens */</span>
+<span class="nv">$wf_green_dk_alt2:</span>   <span class="swatch scss-output wf_green_dk_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_dk_alt:</span>    <span class="swatch scss-output wf_green_dk_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_dk:</span>        <span class="swatch scss-output wf_green_dk"></span><span class="nv">;</span>
+<span class="cm">/* WF Lighter Greens */</span>
+<span class="nv">$wf_green_lt_alt2:</span>   <span class="swatch scss-output wf_green_lt_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_lt_alt:</span>    <span class="swatch scss-output wf_green_lt_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_lt:</span>        <span class="swatch scss-output wf_green_lt"></span><span class="nv">;</span>
+<span class="cm">/* WF Pastel Greens */</span>
+<span class="nv">$wf_green_ps1_alt2:</span>  <span class="swatch scss-output wf_green_ps1_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps1_alt:</span>   <span class="swatch scss-output wf_green_ps1_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps1:</span>       <span class="swatch scss-output wf_green_ps1"></span><span class="nv">;</span>
+<span class="cm">/* WF Pastel Greens 2 */</span>
+<span class="nv">$wf_green_ps2_alt2:</span>  <span class="swatch scss-output wf_green_ps2_alt2"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps2_alt:</span>   <span class="swatch scss-output wf_green_ps2_alt"></span><span class="nv">;</span>
+<span class="nv">$wf_green_ps2:</span>       <span class="swatch scss-output wf_green_ps2"></span><span class="nv">;</span>
+        </code></pre></div>
+
+        <!-- GRAY -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Grays */</span>
+<span class="nv">$wf_gray_dk:</span>         <span class="swatch scss-output wf_gray_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_gray:</span>            <span class="swatch scss-output wf_gray"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt:</span>         <span class="swatch scss-output wf_gray_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt2:</span>        <span class="swatch scss-output wf_gray_lt2"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt3:</span>        <span class="swatch scss-output wf_gray_lt3"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_ps1:</span>        <span class="swatch scss-output wf_gray_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt4:</span>        <span class="swatch scss-output wf_gray_lt4"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt5:</span>        <span class="swatch scss-output wf_gray_lt5"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_ps2:</span>        <span class="swatch scss-output wf_gray_ps2"></span><span class="nv">;</span>
+<span class="nv">$wf_gray_lt6:</span>        <span class="swatch scss-output wf_gray_lt6"></span><span class="nv">;</span>
+        </code></pre></div>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <!-- BLUE -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Blue */</span>
+<span class="nv">$wf_blue_dk:</span>           <span class="swatch scss-output wf_blue_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_blue:</span>              <span class="swatch scss-output wf_blue"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_lt:</span>           <span class="swatch scss-output wf_blue_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_ps1:</span>          <span class="swatch scss-output wf_blue_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_ps2:</span>          <span class="swatch scss-output wf_blue_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- ORANGE -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Orange */</span>
+<span class="nv">$wf_orange_dk:</span>         <span class="swatch scss-output wf_orange_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_orange:</span>            <span class="swatch scss-output wf_orange"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_lt:</span>         <span class="swatch scss-output wf_orange_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_ps1:</span>        <span class="swatch scss-output wf_orange_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_orange_ps2:</span>        <span class="swatch scss-output wf_orange_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- PURPLE -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Purple */</span>
+<span class="nv">$wf_purple_dk:</span>            <span class="swatch scss-output wf_purple_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_purple:</span>               <span class="swatch scss-output wf_purple"></span><span class="nv">;</span>
+<span class="nv">$wf_purple_lt:</span>            <span class="swatch scss-output wf_purple_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_purple_ps1:</span>           <span class="swatch scss-output wf_purple_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_purple_ps2:</span>           <span class="swatch scss-output wf_purple_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- RED -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Red */</span>
+<span class="nv">$wf_red_dk:</span>            <span class="swatch scss-output wf_red_dk"></span><span class="nv">;</span>
+<span class="nv">$wf_red:</span>               <span class="swatch scss-output wf_red"></span><span class="nv">;</span>
+<span class="nv">$wf_red_lt:</span>            <span class="swatch scss-output wf_red_lt"></span><span class="nv">;</span>
+<span class="nv">$wf_red_ps1:</span>           <span class="swatch scss-output wf_red_ps1"></span><span class="nv">;</span>
+<span class="nv">$wf_red_ps2:</span>           <span class="swatch scss-output wf_red_ps2"></span><span class="nv">;</span></code></pre></div>
+
+        <!-- MISC -->
+        <div class="highlight swatches scss"><pre><code class="scss"><span class="cm">/* WF Misc */</span>
+<span class="nv">$wf_blue_selectBgHover:</span>   <span class="swatch scss-output wf_blue_selectBgHover"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectBgPress:</span>   <span class="swatch scss-output wf_blue_selectBgPress"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectBgActive:</span>  <span class="swatch scss-output wf_blue_selectBgActive"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectTextHover:</span> <span class="swatch scss-output wf_blue_selectTextHover"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectTextPress:</span> <span class="swatch scss-output wf_blue_selectTextPress"></span><span class="nv">;</span>
+<span class="nv">$wf_blue_selectTextActive:</span><span class="swatch scss-output wf_blue_selectTextActive"></span><span class="nv">;</span>
+
+<span class="nv">$wf_yellow_highlight:</span>     <span class="swatch scss-output wf_yellow_highlight"></span><span class="nv">;</span></code></pre></div>
+
+    </div>
+
+</div>
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Additional Zesty Crayon Color Palette Info</h4>
+    <p>For more information about the &ldquo;Zesty Crayon&rdquo; color palette provided by Web Skin, check out the <a href="../css/#color-palette">CSS Color Palette Section</a> of the docs.</p>
+</div>
+
+
+
+<h2 id="sass-variables">Useful Sass Variables</h2>
+<p>Below is just a sample of the Sass variables available with Web Skin.  For a full list, check out <a href="https://github.com/WebFilings/web-skin/blob/master/sass/_constants/_variables.scss" onclick="ga('send', 'event', 'Getting started', 'Sass Variables', '_variables.scss');">_variables.scss</a> and <a href="https://github.com/WebFilings/web-skin/blob/master/sass/_constants/_variables.scss" onclick="ga('send', 'event', 'Getting started', 'Sass Variables', '_defaults.scss');">_defaults.scss</a> source files in the Web Skin Git repo.</p>
+<div class="tabbable">
+    <ul role="tablist" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a role="tab" id="sass-typography-tab" class="hitarea" tabindex="0"
+               href="#sass-typography"
+               aria-controls="sass-typography"
+               aria-selected="true"
+               data-toggle="tab">Typography</a>
+        </li>
+        <li role="presentation">
+            <a role="tab" id="sass-scaffolding-tab" class="hitarea" tabindex="-1"
+               href="#sass-scaffolding"
+               aria-controls="sass-scaffolding"
+               aria-selected="false"
+               data-toggle="tab">Scaffolding</a>
+        </li>
+        <li role="presentation">
+            <a role="tab" id="sass-component-sizes-tab" class="hitarea" tabindex="-1"
+               href="#sass-component-sizes"
+               aria-controls="sass-component-sizes"
+               aria-selected="false"
+               data-toggle="tab">Component Sizes</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" id="sass-typography" class="tab-pane active" tabindex="0"
+             aria-hidden="false"
+             aria-labelledby="sass-typography-tab">
+            <div class="row">
+    <div class="col-lg-5">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* TEXT SIZING */</span>
+<span class="nv">$fontSizeBase</span><span class="o">:</span>   <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeLarge</span><span class="o">:</span>  <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeMedium</span><span class="o">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeSmall</span><span class="o">:</span>  <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$fontSizeXsmall</span><span class="o">:</span> <span class="mi">11</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="nv">$lineHeightBase</span><span class="o">:</span>   <span class="mi">1</span><span class="mf">.428571429</span><span class="p">;</span>
+<span class="nv">$lineHeightBasePx</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$lineHeightLarge</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.33333</span><span class="p">;</span>
+<span class="nv">$lineHeightSmall</span><span class="o">:</span>  <span class="mi">1</span><span class="mf">.5</span><span class="p">;</span></code></pre></div>
+    </div>
+    <div class="col-lg-7">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* FONT FAMILIES */</span>
+<span class="nv">$fontFamilyBase</span><span class="o">:</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="no">sans-serif</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerif</span><span class="o">:</span> <span class="s2">&quot;GibsonRegular&quot;</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerifSemiBold</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifSemiBoldItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+
+<span class="nv">$webfontFamilySansSerifLight</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span>
+<span class="nv">$webfontFamilySansSerifLightItalic</span><span class="o">:</span> <span class="o">...</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.my-app-text</span> <span class="p">{</span>
+    <span class="na">font-family</span><span class="o">:</span> <span class="nv">$fontFamilyBase</span><span class="p">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$lineHeightBasePx</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.my-app-special-header</span> <span class="p">{</span>
+    <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerif</span><span class="p">;</span>
+
+    <span class="nt">strong</span> <span class="p">{</span>
+        <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerifSemiBold</span><span class="p">;</span>
+        <span class="na">font-weight</span><span class="o">:</span> <span class="no">normal</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">em</span> <span class="p">{</span>
+        <span class="na">font-family</span><span class="o">:</span> <span class="nv">$webfontFamilySansSerifItalic</span><span class="p">;</span>
+        <span class="na">font-style</span><span class="o">:</span> <span class="no">normal</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nc">.custom-leading</span> <span class="p">{</span>
+    <span class="c1">// use variables to ensure your custom font-size</span>
+    <span class="c1">// has the appropriate amount of line-height</span>
+    <span class="nv">$myCustomFontSize</span><span class="o">:</span> <span class="mi">17</span><span class="kt">px</span><span class="p">;</span>
+    <span class="nv">$myCustomLineHeight</span><span class="o">:</span> <span class="nf">ceil</span><span class="p">(</span><span class="nv">$myCustomFontSize</span> <span class="o">*</span> <span class="nv">$lineHeightBase</span><span class="p">);</span>
+    <span class="na">font-size</span><span class="o">:</span> <span class="nv">$myCustomFontSize</span><span class="p">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$myCustomLineHeight</span><span class="p">;</span>
+    <span class="na">margin-bottom</span><span class="o">:</span> <span class="nf">round</span><span class="p">(</span><span class="nv">$myCustomLineHeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+        </div>
+        <div role="tabpanel" id="sass-scaffolding" class="tab-pane" tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="sass-scaffolding-tab">
+            <div class="row">
+    <div class="col-md-12">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$paddingBaseVertical</span><span class="o">:</span>    <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingBaseHorizontal</span><span class="o">:</span>  <span class="mi">12</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingBase</span><span class="o">:</span>            <span class="nv">$paddingBaseVertical</span> <span class="nv">$paddingBaseHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingLargeVertical</span><span class="o">:</span>   <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingLargeHorizontal</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingLarge</span><span class="o">:</span>           <span class="nv">$paddingLargeVertical</span> <span class="nv">$paddingLargeHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingSmallVertical</span><span class="o">:</span>   <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingSmallHorizontal</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingSmall</span><span class="o">:</span>           <span class="nv">$paddingSmallVertical</span> <span class="nv">$paddingSmallHorizontal</span><span class="p">;</span>
+
+<span class="nv">$paddingXsmallVertical</span><span class="o">:</span>    <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingXsmallHorizontal</span><span class="o">:</span>  <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$paddingXsmall</span><span class="o">:</span>            <span class="nv">$paddingXsmallVertical</span> <span class="nv">$paddingXsmallHorizontal</span><span class="p">;</span>
+
+<span class="nv">$borderRadiusBase</span><span class="o">:</span>       <span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$borderRadiusLarge</span><span class="o">:</span>      <span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$borderRadiusSmall</span><span class="o">:</span>      <span class="mi">3</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="nv">$spacingBase</span><span class="o">:</span>            <span class="nv">$lineHeightBasePx</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nv">$spacingLarge</span><span class="o">:</span>           <span class="nv">$spacingBase</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$spacingSmall</span><span class="o">:</span>           <span class="nv">$spacingBase</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="nv">$screenPhone</span><span class="o">:</span>            <span class="mi">480</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenTablet</span><span class="o">:</span>           <span class="mi">768</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktop</span><span class="o">:</span>          <span class="mi">992</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktopLarge</span><span class="o">:</span>     <span class="mi">1200</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$screenDesktopHuge</span><span class="o">:</span>      <span class="mi">1600</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="c1">// So media queries don&#39;t overlap when required, provide a maximum</span>
+<span class="nv">$screenPhoneMax</span><span class="o">:</span>         <span class="nv">$screenPhone</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenTabletMax</span><span class="o">:</span>        <span class="nv">$screenDesktop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenDesktopMax</span><span class="o">:</span>       <span class="nv">$screenDesktopLarge</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$screenDesktopLargeMax</span><span class="o">:</span>  <span class="nv">$screenDesktopHuge</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.my-custom-button</span> <span class="p">{</span>
+    <span class="na">padding</span><span class="o">:</span> <span class="nv">$paddingBase</span><span class="p">;</span>
+    <span class="na">border-radius</span><span class="o">:</span> <span class="nv">$borderRadiusBase</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="err">$</span><span class="nt">screenPhone</span><span class="o">)</span> <span class="p">{</span>
+    <span class="c1">// styling that should only be present on a small device</span>
+    <span class="nc">.only-desktop</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+        </div>
+        <div role="tabpanel" id="sass-component-sizes" class="tab-pane" tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="sass-component-sizes-tab">
+            <div class="row">
+    <div class="col-lg-6">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* ICON SIZES */</span>
+<span class="nv">$baseIconSize</span><span class="o">:</span>          <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconSmallSize</span><span class="o">:</span>         <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconMediumSize</span><span class="o">:</span>        <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconLargeSize</span><span class="o">:</span>         <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconHugeSize</span><span class="o">:</span>          <span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$iconGiganticSize</span><span class="o">:</span>      <span class="mi">96</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* PROGRESS SPINNER SIZES */</span>
+<span class="nv">$baseSpinnerSize</span><span class="o">:</span>       <span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerSmallSize</span><span class="o">:</span>      <span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerMediumSize</span><span class="o">:</span>     <span class="mi">24</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerLargeSize</span><span class="o">:</span>      <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerHugeSize</span><span class="o">:</span>       <span class="mi">48</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$spinnerGiganticSize</span><span class="o">:</span>   <span class="mi">96</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* DIALOG SIZES */</span>
+<span class="nv">$menuVMaxWidth</span><span class="o">:</span>         <span class="mi">500</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$popoverMaxWidth</span><span class="o">:</span>       <span class="mi">300</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$popoverMinWidth</span><span class="o">:</span>       <span class="mi">170</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$dialogHeaderMinHeight</span><span class="o">:</span> <span class="mi">52</span><span class="kt">px</span><span class="p">;</span></code></pre></div>
+    </div>
+    <div class="col-lg-6">
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* BUTTON SIZES */</span>
+<span class="nv">$btnHeight</span><span class="o">:</span>                <span class="mi">34</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightLarge</span><span class="o">:</span>           <span class="mi">45</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightSmall</span><span class="o">:</span>           <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$btnHeightXsmall</span><span class="o">:</span>          <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* FORM INPUT SIZES */</span>
+<span class="nv">$inputHeightBase</span><span class="o">:</span>          <span class="mi">34</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$inputHeightLarge</span><span class="o">:</span>         <span class="mi">45</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$inputHeightSmall</span><span class="o">:</span>         <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* TABLE SIZES */</span>
+<span class="nv">$tableCellHeight</span><span class="o">:</span>          <span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableCellHeightCnd</span><span class="o">:</span>       <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableHeaderCellHeight</span><span class="o">:</span>    <span class="mi">33</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$tableHeaderCellHeightCnd</span><span class="o">:</span> <span class="mi">26</span><span class="kt">px</span><span class="p">;</span>
+
+<span class="cm">/* NAV SIZES */</span>
+<span class="nv">$navbarHeight</span><span class="o">:</span>             <span class="mi">32</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$navRibbonMinHeight</span><span class="o">:</span>       <span class="mi">60</span><span class="kt">px</span><span class="p">;</span>
+<span class="nv">$globalStatusBarHeight</span><span class="o">:</span>    <span class="mi">24</span><span class="kt">px</span><span class="p">;</span></code></pre></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Example Usage</h3>
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.centered-icon-text</span> <span class="p">{</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="nv">$spinnerMediumSize</span><span class="p">;</span>
+    <span class="na">vertical-align</span><span class="o">:</span> <span class="no">middle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.table</span> <span class="nt">tbody</span> <span class="nt">td</span> <span class="p">{</span>
+    <span class="nc">.valign-xs-button</span> <span class="p">{</span>
+        <span class="na">margin-top</span><span class="o">:</span> <span class="nf">round</span><span class="p">((</span><span class="nv">$tableCellHeight</span> <span class="o">-</span> <span class="nv">$btnHeightXsmall</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <hr>
+</div>
+</div>
+
+
+<!-- Migration
+================================================== -->
+<div id="migration-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="migration">Migrating between versions</h1>
+    </div>
+    <p class="lead">When we release a version of Web Skin that is not completely backwards-compatible with the previous release, we&rsquo;ll add a section here to help guide you through the migration process.
+
+    <h2 id="migration-o-two-o">Migrating to 0.2.x</h2>
+
+<h3 id="migration-classes">Major class changes</h3>
+<p>Reference table for classes that have changed between <code>0.1.x</code> and <code>0.2.x</code>.</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>web-skin 0.1.x</th>
+                <th>web-skin 0.2.x</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.span*</code></td>
+                <td><code>.col-md-*</code></td>
+            </tr>
+            <tr>
+                <td><code>.offset*</code></td>
+                <td><code>.col-md-offset-*</code></td>
+            </tr>
+            <tr>
+                <td><code>.*-mini</code></td>
+                <td><code>.*-xs</code></td>
+            </tr>
+            <tr>
+                <td><code>.*-small</code></td>
+                <td><code>.*-sm</code></td>
+            </tr>
+            <tr>
+                <td><code>.*-large</code></td>
+                <td><code>.*-lg</code></td>
+            </tr>
+            <tr>
+                <td><code>.btn-invisible</code></td>
+                <td><code>.btn-vanilla</code></td>
+            </tr>
+            <tr>
+                <td><code>.callout</code></td>
+                <td><code>.btn-callout</code></td>
+            </tr>
+            <tr>
+                <td><code>.vanilla</code></td>
+                <td><code>.input-vanilla</code></td>
+            </tr>
+            <tr>
+                <td><code>.control-group</code></td>
+                <td><code>.form-group</code></td>
+            </tr>
+            <tr>
+                <td><code>.checkbox.inline</code> <code>.radio.inline</code></td>
+                <td><code>.checkbox-inline</code> <code>.radio-inline</code></td>
+            </tr>
+            <tr>
+                <td><code>.input-prepend</code> <code>.input-append</code></td>
+                <td><code>.input-group</code></td>
+            </tr>
+            <tr>
+                <td><code>.add-on</code></td>
+                <td><code>.input-group-addon</code></td>
+            </tr>
+            <tr>
+                <td><code>.muted</code></td>
+                <td><code>.text-muted</code></td>
+            </tr>
+            <tr>
+                <td><code>ul.unstyled</code></td>
+                <td><code>.list-unstyled</code></td>
+            </tr>
+            <tr>
+                <td><code>ul.inline</code></td>
+                <td><code>.list-inline</code></td>
+            </tr>
+            <tr>
+                <td><code>.dropdown-menu .nav-header</code></td>
+                <td><code>.dropdown-menu .dropdown-header</code></td>
+            </tr>
+            <tr>
+                <td><code>.visible-phone</code></td>
+                <td><code>.visible-xs</code></td>
+            </tr>
+            <tr>
+                <td><code>.visible-tablet</code></td>
+                <td><code>.visible-sm</code></td>
+            </tr>
+            <tr>
+                <td><code>.visible-desktop</code></td>
+                <td><code>.visible-md</code></td>
+            </tr>
+            <tr>
+                <td><code>.hidden-phone</code></td>
+                <td><code>.hidden-xs</code></td>
+            </tr>
+            <tr>
+                <td><code>.hidden-tablet</code></td>
+                <td><code>.hidden-sm</code></td>
+            </tr>
+            <tr>
+                <td><code>.hidden-desktop</code></td>
+                <td><code>.hidden-md</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+<h3 id="migration-new">What&rsquo;s new</h3>
+<p>We&rsquo;ve added a few new elements and changed some existing ones. Here&rsquo;s their new or updated classes.</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Panels</td>
+                <td><code>.panel .panel-default</code> <code>.panel-body</code> <code>.panel-title</code> <code>.panel-heading</code> <code>.panel-footer</code> <code>.panel-collapse</code></td>
+            </tr>
+            <tr>
+                <td>List groups</td>
+                <td><code>.list-group</code> <code>.list-group-item</code> <code>.list-group-item-text</code> <code>.list-group-item-heading</code></td>
+            </tr>
+            <tr>
+                <td>Extra small grid (&lt;<span class="scss-output screen-tablet"></span>)</td>
+                <td><code>.col-xs-*</code></td>
+            </tr>
+            <tr>
+                <td>Small grid (&ge;<span class="scss-output screen-tablet"></span>)</td>
+                <td><code>.col-sm-*</code></td>
+            </tr>
+            <tr>
+                <td>Medium grid (&ge;<span class="scss-output screen-desktop"></span>)</td>
+                <td><code>.col-md-*</code></td>
+            </tr>
+            <tr>
+                <td>Large grid (&ge;<span class="scss-output screen-desktop-lg"></span>)</td>
+                <td><code>.col-lg-*</code></td>
+            </tr>
+            <tr>
+                <td>Grid Offsets</td>
+                <td><code>.col-sm-offset-*</code> <code>.col-md-offset-*</code> <code>.col-lg-offset-*</code></td>
+            </tr>
+            <tr>
+                <td>Grid Push</td>
+                <td><code>.col-sm-push-*</code> <code>.col-md-push-*</code> <code>.col-lg-push-*</code></td>
+            </tr>
+            <tr>
+                <td>Grid Pull</td>
+                <td><code>.col-sm-pull-*</code> <code>.col-md-pull-*</code> <code>.col-lg-pull-*</code></td>
+            </tr>
+            <tr>
+                <td>Responsive utility classes (&ge;<span class="scss-output screen-desktop-lg"></span>)</td>
+                <td><code>.visible-lg</code> <code>.hidden-lg</code></td>
+            </tr>
+            <tr>
+                <td>Input groups</td>
+                <td><code>.input-group</code> <code>.input-group-addon</code> <code>.input-group-btn</code></td>
+            </tr>
+            <tr>
+                <td>Form controls</td>
+                <td><code>.form-control</code> <code>.form-group</code></td>
+            </tr>
+            <tr>
+                <td>Modal</td>
+                <td><code>.modal-dialog</code> <code>.modal-content</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+<h3 id="migration-dropped">What&rsquo;s removed</h3>
+<p>The following elements have been dropped in v0.2.x. <strong>Rows highlighed in red</strong> signify that the component has been completely removed with no viable equivalent.</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Removed from 0.1.x</th>
+                <th>0.2.x Equivalent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lined lists</td>
+                <td><code>.list-lined</code></td>
+                <td><code>.list-group</code></td>
+            </tr>
+            <tr>
+                <td>Accordions</td>
+                <td><code>.accordion</code> <code>.accordion-*</code></td>
+                <td><code>.panel</code> <code>.panel-*</code></td>
+            </tr>
+            <tr class="error">
+                <td>Dropdown submenus</td>
+                <td><code>.dropdown-submenu</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td>Search form</td>
+                <td><code>.form-search</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td>Navbar inner</td>
+                <td><code>.navbar-inner</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+<h3 id="migration-notes">Additional notes</h3>
+<p>We&rsquo;ve made many underlying changes in 0.2.x that are not immediately apparent. Base classes, key styles, and behaviors have been adjusted for flexibility and our mobile first approach.</p>
+
+<h4>Navs</h4>
+<ul class="list-wordy">
+    <li>You can no longer add "disabled" appearance to a nav link/button by using the parent <code>&lt;li class="disabled"&gt;</code> element.  Instead, add the disabled class to an <code>&lt;a&gt;</code> element, or add the disabled attribute to a <code>&lt;button&gt;</code> element.</li>
+</ul>
+
+<h4>Forms</h4>
+<ul class="list-wordy">
+    <li>Text-based form controls no longer receive styling without adding the <code>.form-control</code> class.</li>
+    <li>Text-based form controls are now 100% wide, and cannot have grid classes applied directly to them. Wrap inputs inside <code>&lt;div class="col-*"&gt;&lt;/div&gt;</code> to control input widths.</li>
+    <li><code>.form-horizontal</code> control groups no longer receive default widths.  Use <code>.form-group</code> elems as grid rows, and wrap your inputs in grid spans to enforce a specific width as shown in <a href="../css/#forms-horizontal">this form-horizontal example</a>.</li>
+</ul>
+
+<h4>Modals</h4>
+<ul class="list-wordy">
+    <li>Modal markup has changed significantly. The <code>.modal-header</code>, <code>.modal-body</code>, and <code>.modal-footer</code> sections now get wrapped in <code>.modal-content</code> and <code>.modal-dialog</code> for improved mobile styling and behavior.</li>
+</ul>
+
+<h4>Accordions</h4>
+<ul class="list-wordy">
+    <li>The accordion element classes shown in the <a href="../../0.2.34/javascript/#collapse" target="webskin_archives">Collapse Plugin JavaScript Docs of v0.1.x</a> are no longer in-use. Instead, use the new <a href="../components/#panels-accordion">Panels</a> component to build accordions.</li>
+</ul>
+
+<h4>Javascript</h4>
+<ul class="list-wordy">
+    <li>JavaScript events are namespaced. For example, to handle the modal "show" event, use <code>'show.wdesk.modal'</code>. For tabs "shown" use <code>'shown.wdesk.tab'</code>, etc.</li>
+</ul>
+
+<hr>
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Need 0.2.x migration assistance?</h4>
+    <p><strong>For more information, or assistance upgrading</strong> to 0.2.x, give us a shout on <a onclick="return false;" href="#" data-toggle="tooltip" data-html="true" title="Room name is &lt;strong&gt;&ldquo;Web Skin - Dev&rdquo;&lt;/strong&gt;">HipChat</a> or <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', '0.2.x Migration');">open an issue</a>.</p>
+</div>
+<h2 id="migration-o-three-o">Migrating to 0.3.x</h2>
+<p>Some minor CSS deprecations took place in the <code>0.3.0</code> release.  They certainly don&rsquo;t compare to the significance of the <code>0.2.0</code> release, but they&rsquo;re worth taking note of as you continue to build apps using the Web Skin platform.</p>
+
+
+<h3 id="migration-o-three-o-classes">Major class changes</h3>
+<p>Reference table for classes that have changed between <code>0.2.x</code> and <code>0.3.x</code>.</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>web-skin 0.2.x</th>
+                <th>web-skin 0.3.x</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.alert</code></td>
+                <td><code>.alert .alert-alt</code></td>
+            </tr>
+            <tr>
+                <td><code>.progress-bar-default</code></td>
+                <td><code>.progress-bar</code></td>
+            </tr>
+            <tr>
+                <td><code>.progress-bar-primary</code></td>
+                <td><code>.progress-bar-success</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;span claass="hidden-*"&gt;</code></td>
+                <td><code>&lt;span claass="inline hidden-*"&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;tr wf-click&gt;</code>, <code>&lt;tr ng-click&gt;</code></td>
+                <td><code>&lt;tr wf-click class="clickable"&gt;</code>, <code>&lt;tr ng-click class="clickable"&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+<h3 id="migration-o-three-o-notes">Additional notes</h3>
+
+<h4>Global statusbar</h4>
+<ul class="list-wordy">
+    <li>The <code>.statusbar-left</code>, <code>.statusbar-middle</code> and <code>.statusbar-right</code> elements within the <a href="../components/#statusbar">global statusbar component</a> should use <code>.col-xs-*</code> grid columns so that they never "collapse" no matter the screen size.  See <a href="https://github.com/WebFilings/web-skin/commit/82e8ae03504ba8d57268fa1660d792dce6422ef8" target="_blank">this commit</a> or <a href="https://github.com/WebFilings/web-skin/issues/358" target="_blank">Issue #358</a> to reference the changes you&rsquo;ll need to make in your app&rsquo;s component.</li>
+</ul>
+
+<h4>Paring down CSS selectors</h4>
+<p>To continue providing a single CSS file for all Web Skin components, <strong>some CSS selector bloat had to be removed</strong> (thanks to MSIE&rsquo;s wonderful <a href="http://blogs.msdn.com/b/ieinternals/archive/2011/05/14/10164546.aspx" target="_blank">4095 selector limit</a>). In order to accomplish this, the following changes have been made:</p>
+<ul class="list-wordy">
+    <li><strong>Alert elements are no longer blue by default</strong>.  Use the <code>.alert-alt</code> CSS class to colorize alerts in that manner.</li>
+    <li><strong>Using <code>&lt;fieldset disabled&gt;</code> is no longer supported</strong>.  Disable individual form controls within a fieldset to disable them.</li>
+    <li><strong>Using <code>&lt;td&gt;</code> elements within <code>&lt;thead&gt;</code> elements is no longer supported</strong>. Using <code>&lt;th&gt;</code> is more semantically correct, anyway.</li>
+    <li><strong><a href="../css/#tables-row-selectable">Selectable table rows</a> with <code>ng-click</code> or <code>wf-click</code> attributes</strong> will no longer inherit the "pointer" mouse cursor appearance.  Use the <code>.clickable</code> CSS class on those elems instead.</li>
+    <li><strong>Using <a href="../css/#responsive-utilities-classes">responsive visibility classes</a> on inline elements</strong> now requires the use of the <code>.inline</code> CSS class.</li>
+    <li><strong>Form controls and progress bars no longer have <code>*-default</code> or <code>*-primary</code> state classes</strong>.  To get the green color of <code>*-primary</code>, use <code>*-success</code> instead.</li>
+</ul>
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Need 0.3.x migration assistance?</h4>
+    <p><strong>For more information, or assistance upgrading</strong> to 0.3.x, give us a shout on <a onclick="return false;" href="#" data-toggle="tooltip" data-html="true" title="Room name is &lt;strong&gt;&ldquo;Web Skin - Dev&rdquo;&lt;/strong&gt;">HipChat</a> or <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', '0.3.x Migration');">open an issue</a>.</p>
+</div>
+<h2 id="migration-o-four-o">Migrating to 0.4.x</h2>
+<p>Some minor CSS deprecations took place in the <code>0.4.0</code> release, mainly dealing with our icon sets.  They certainly don&rsquo;t compare to the significance of the <code>0.2.0</code> release, but they&rsquo;re worth taking note of as you continue to build apps using the Web Skin platform.</p>
+
+<h3 id="migration-o-four-o-tooltip-containers">Default Tooltip Container</h3>
+<p>In order to <a href="https://github.com/WebFilings/web-skin/pull/456" target="_blank">support tooltips within modals</a>, the <code>container</code> option default for the tooltip plugin was changed from <code>body</code> to <code>false</code>.</p>
+<p><strong>If you are currently using the tooltip or popover plugin in your app</strong> with the assumption that they will be inserted into the <code>&lt;body&gt;</code>, you'll need to do one of two things when migrating to <code>0.4.x</code>:</p>
+<ol>
+    <li><strong>Initialize via JS:</strong>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#myTooltip&#39;</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span>
+   <span class="nx">container</span><span class="o">:</span> <span class="s1">&#39;body&#39;</span>
+<span class="p">});</span></code></pre></div>
+    </li>
+    <li><strong>Initialize via data-attribute:</strong>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;tooltip&quot;</span> <span class="na">data-container=</span><span class="s">&quot;body&quot;</span><span class="nt">&gt;</span>My Tooltip<span class="nt">&lt;/a&gt;</span></code></pre></div>
+    </li>
+</ol>
+
+<h3 id="migration-o-four-o-ie7">Internet Explorer 7 Support</h3>
+<p>In order to add support for icons in <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7, an extra CSS selector had to be added for each glyph. As a result, we have decided to compile a separate <code>wdesk_ie7.css</code> file that is now included in the pre-compiled distributed assets.</p>
+<p><strong>If your app needs to support <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7</strong> - follow the <a href="../#template">basic template example within the tab labelled <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7+</a> to make sure you are loading the necessary resources for <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7 to work.</p>
+
+<h3 id="migration-o-four-o-icons">Icon set changes</h3>
+<p>The following icons changes have been made in <code>0.4.x</code>.  <strong>Rows highlighed in red</strong> signify that the icon has been completely removed with no viable equivalent. If you are missing an icon that you need for your Wdesk app, please <a href="https://github.com/WebFilings/web-skin/issues/new" onclick="ga('send', 'event', 'Body Actions', 'Issues', 'Request a new icon');" target="_blank">submit an issue</a>.</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Icon Class</th>
+                <th>0.4.x Equivalent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.icon-envelope-alt</code></td>
+                <td><code>.icon-envelope</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-sec-*</code></td>
+                <td><code>.icon-file-sec</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-sec-PRESENTATION</code></td>
+                <td><code>.icon-file-presentation</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-sec-WORKBOOK</code></td>
+                <td><code>.icon-file-workbook</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-airplane</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-sm-down</code></td>
+                <td><code>.caret</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-sm-left</code></td>
+                <td><code>.caret.caret-left</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-sm-right</code></td>
+                <td><code>.caret.caret-right</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-sm-up</code></td>
+                <td><code>.caret.caret-up</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-up-circle</code></td>
+                <td><code>.icon-upload</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-arrow-down-circle</code></td>
+                <td><code>.icon-downloaded</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-barcode</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-camera</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-cart</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-checkbox-checked</code></td>
+                <td><code>&lt;input type="checkbox" checked&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-checkbox-partial</code></td>
+                <td><code>&lt;input type="checkbox"&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-checkbox-unchecked</code></td>
+                <td><code>&lt;input type="checkbox"&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-cogs</code></td>
+                <td><code>.icon-cog</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-contrast</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-download-alt2</code></td>
+                <td><code>.icon-download-available</code> /<br><code>.icon-downloaded</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-download</code></td>
+                <td><code>.icon-download-available</code> /<br><code>.icon-downloaded</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-fire</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-gift</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-headphones</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-heart</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-heart2</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-hr-sketch</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-arrow-sketch</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-arrow-sketch-short</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-leaf</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-lightbulb-off</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-lightbulb-on</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-loading-hourglass</code></td>
+                <td><code>.progress-spinner</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-magnet</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-map-folded</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-mirror-horizontal</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-mirror-vertical</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-mouse-wheel</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-music</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-new-indicator</code></td>
+                <td><code>&lt;span class="label"&gt;NEW&lt;/span&gt;</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-qrcode</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-radio-checked</code></td>
+                <td><code>&lt;input type="radio" checked&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>.icon-radio-unchecked</code></td>
+                <td><code>&lt;input type="radio"&gt;</code></td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-road</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-shuffle</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-star</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-star2</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-star3</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-thumbs-up</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr class="error">
+                <td><code>.icon-thumbs-up2</code></td>
+                <td class="text-muted">N/A</td>
+            </tr>
+            <tr>
+                <td><code>.icon-upload-alt2</code></td>
+                <td><code>.icon-upload</code></td>
+            </tr>
+        </tbody>
+    </table>
+</div><!-- /.table-responsive -->
+
+
+
+<div class="wdesk-callout wdesk-callout-info">
+    <h4>Need 0.4.x migration assistance?</h4>
+    <p><strong>For more information, or assistance upgrading</strong> to 0.4.x, give us a shout on <a onclick="return false;" href="#" data-toggle="tooltip" data-html="true" title="Room name is &lt;strong&gt;&ldquo;Web Skin - Dev&rdquo;&lt;/strong&gt;">HipChat</a> or <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', '0.4.x Migration');">open an issue</a>.</p>
+</div>
+
+</div>
+
+
+<!-- Browser support
+================================================== -->
+<div id="browsers-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="browsers">Browser support</h1>
+    </div>
+    <p class="lead">Web Skin is built to work best in the latest desktop and mobile browsers, meaning older and less advanced browsers might receive a less stylized, though fully functional versions of certain components.</p>
+
+        <h3 id="browsers-supported">Supported browsers</h3>
+    <p>Specifically, we support the latest versions of the following:</p>
+    <ul>
+        <li>Chrome <span class="scss-output min-chrome-supported"></span>+</li>
+        <li>Safari <span class="scss-output min-safari-supported"></span>+</li>
+        <li>Firefox <span class="scss-output min-mozilla-supported"></span>+</li>
+        <li><abbr title="Microsoft Internet Explorer" class="initialism">MSIE</abbr> <span class="scss-output min-ie-supported"></span>+</li>
+    </ul>
+
+    <div class="wdesk-callout wdesk-callout-info">
+        <h4>Official Wdesk &ldquo;Unsupported Browser&rdquo; Page</h4>
+        <p>Web Skin distributes a CSS stylesheet called <code>wdesk_browser-upgrade.css</code> in order to allow Wdesk apps to display a &ldquo;unsupported browser&rdquo; screen to their users.</p>
+        <p><strong>Check out the <a href="../examples/browser-upgrade-screen" target="_blank">Unsupported Browser Screen Example</a></strong> - and use that source code as the basis for implementing this screen in your app!</p>
+    </div>
+
+
+    <!-- TODO: update this in 0.5.0 when the wdesk_lt-ie9.css stylesheet takes over for the currently-ie7-only one. -->
+    <h3 id="browsers-legacy-msie">Internet Explorer 7, 8 and 9</h3>
+    <p><abbr title="Microsoft Internet Explorer">MSIE</abbr> 8 and 9 are <em>supported</em> when your HTML page loads <code>wdesk_ie.css</code> and <abbr title="Microsoft Internet Explorer">MSIE</abbr> 7 is <em>supported</em> when your HTML page loads <code>wdesk_ie7.css</code>.</p>
+    <p>However, please be aware that many CSS3 properties &mdash; <em>e.g. rounded corners and shadows</em> &mdash; are not supported by <abbr title="Microsoft Internet Explorer">MSIE</abbr> 8 and lower.</p>
+    <p>To provide support for CSS media queries, input <code>placeholder</code> attributes and more, be sure your HTML page loads <code>libs_ie.js</code>.</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-md-3">Feature</th>
+                    <th scope="col" class="col-md-3"><abbr title="Microsoft Internet Explorer">MSIE</abbr> 7</th>
+                    <th scope="col" class="col-md-3"><abbr title="Microsoft Internet Explorer">MSIE</abbr> 8</th>
+                    <th scope="col" class="col-md-3"><abbr title="Microsoft Internet Explorer">MSIE</abbr> 9</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><code>box-sizing</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>border-radius</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>box-shadow</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>transform</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported, with <code>-ms</code> prefix</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>transition</code></th>
+                    <td colspan="3" class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>placeholder</code></th>
+                    <td colspan="3" class="text-warning"><i class="icon icon-warning-sign"></i> Requires <code>libs_ie.js</code></td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>@media</code></th>
+                    <td class="text-warning"><i class="icon icon-warning-sign"></i> Requires <code>libs_ie.js</code></td>
+                    <td class="text-warning"><i class="icon icon-warning-sign"></i> Requires <code>libs_ie.js</code></td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>.icon</code></th>
+                    <td class="text-warning"><i class="icon icon-warning-sign"></i> Requires <code>wdesk_ie7.css</code></td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>.icon-two-color</code></th>
+                    <td class="text-error"><i class="icon icon-close"></i> Not supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                    <td class="text-success"><i class="icon icon-checkmark"></i> Supported</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Visit <a href="http://caniuse.com/" target="_blank">Can I use&hellip;</a> for details on browser support of CSS3 and HTML5 features.</p>
+
+
+    <h3 id="browsers-legacy-msie-compatibility-mode"><abbr title="Microsoft Internet Explorer">MSIE</abbr> Compatibility modes</h3>
+    <p>Web Skin does not support any styling your customer <em class="text-muted">(or your team&rsquo;s dev QA)</em> sees when viewing a Wdesk app in Internet Explorer compatibility modes. To be sure you&rsquo;re using the latest rendering mode for IE, consider including the appropriate <code>&lt;meta&gt;</code> tag in your app/page:</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- MUST BE THE FIRST META TAG WITHIN &lt;HEAD&gt; --&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=edge&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+    <p>See <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge" target="_blank">this StackOverflow question</a> for more information.</p>
+
+
+    <h3 id="browsers-msie-device-width">Windows Phone 8 and <abbr title="Microsoft Internet Explorer">MSIE</abbr> 10+</h3>
+    <p>Internet Explorer 10+ doesn&rsquo;t differentiate <code>device-width</code> from <code>viewport-width</code>, and thus doesn&rsquo;t properly apply the media queries in Web Skin&rsquo;s CSS. To address this, you can add the following JavaScript to work alongside the CSS that is included with Web Skin until Microsoft issues a fix <em class="text-muted">(don&rsquo;t hold your breath)</em>.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/**</span>
+<span class="cm"> *  Add this to work alongside Web Skin&amp;rsquo;s CSS</span>
+<span class="cm"> */</span>
+<span class="k">if</span> <span class="p">(</span><span class="s2">&quot;-ms-user-select&quot;</span> <span class="k">in</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">style</span> <span class="o">&amp;&amp;</span>
+ <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/IEMobile/</span> <span class="o">||</span>
+ <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/ZuneWP7/</span><span class="p">)</span> <span class="o">||</span>
+ <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/WPDesktop/</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">msViewportStyle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;style&quot;</span><span class="p">);</span>
+    <span class="nx">msViewportStyle</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span>
+            <span class="s2">&quot;@-ms-viewport { width: auto !important; }&quot;</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;head&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span>
+        <span class="nx">appendChild</span><span class="p">(</span><span class="nx">msViewportStyle</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/**</span>
+<span class="c"> *  This comes with wdesk_ie.css</span>
+<span class="c"> */</span>
+<span class="k">@-ms-viewport</span> <span class="p">{</span>
+    <span class="nt">width</span><span class="o">:</span> <span class="nt">device-width</span><span class="o">;</span>
+<span class="p">}</span></code></pre></div>
+
+    <p>For more information and usage guidelines, read <a href="http://bit.ly/1oOEpc9" target="_blank">Windows Phone 8 and Device-Width</a>.</p>
+
+
+    <h3 id="browsers-zoom">Browser zooming</h3>
+    <p>Page zooming inevitably presents rendering artifacts in some components, both in Web Skin and the rest of the web. Depending on the issue, we may be able to fix it <em>(search first and then <a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Getting Started', 'Issues', 'Browser zooming issue');">open an issue if need be</a>)</em>.</p>
+    <p>However, we tend to ignore these as they often have no direct solution other than hacky workarounds. The zoom-related suggestions we can make are listed below.</p>
+
+    <h4 id="browsers-zoom-touch-disable">Disable touch device zoom</h4>
+    <p>In order to completely disable zoom capabilities on a touch device, place the following code in the <code>&lt;head&gt;</code> of your document:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width,</span>
+<span class="s">                               initial-scale=1.0,</span>
+<span class="s">                               maximum-scale=1.0,</span>
+<span class="s">                               target-densityDpi=device-dpi&quot;</span><span class="nt">&gt;</span></code></pre></div>
+
+    <div id="browsers-zoom-touch-disable-msie" class="wdesk-callout wdesk-callout-danger visible-dev-notes">
+        <h4><abbr title="Microsoft Internet Explorer">MSIE</abbr> 11 touch device zoom</h4>
+        <p>All other browsers conveniently control the zoom capabilities of a page via the <code>&lt;meta name="viewport"&gt;</code> method <a href="#browsers-zoom-touch-disable">described above</a>. However, <abbr title="Microsoft Internet Explorer">MSIE</abbr> 11 is special <em>(and always has been&hellip; &ldquo;special&rdquo;)</em>.</p>
+
+        <h5>Disabling zoom <u>via a user&rsquo;s &ldquo;double-tap&rdquo; gesture</u>:</h5>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+    <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="n">touch</span><span class="o">-</span><span class="n">action</span><span class="o">:</span> <span class="n">manipulation</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+        <h5>Disabling <u>all zoom capabilities</u>:</h5>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+    <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="k">content</span><span class="o">-</span><span class="n">zooming</span><span class="o">:</span> <span class="k">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+    </div>
+
+
+    <h3 id="browsers-mobile-modals">Modals and mobile devices</h3>
+
+    <h4>Overflow and scrolling</h4>
+    <p>Support for <code>overflow: hidden</code> on the <code>&lt;body&gt;</code> element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices&rsquo; browsers, the <code>&lt;body&gt;</code> content will begin to scroll.</p>
+
+    <h4>Virtual keyboards</h4>
+    <p>Also, note that if you&rsquo;re using inputs in your modal – iOS has a rendering bug that doesn&rsquo;t update the position of fixed elements when the virtual keyboard is triggered. A few work arounds for this include transforming your elements to <code>position: absolute</code> or invoking a timer on focus to try to correct the positioning manually. This is not handled by Web Skin, so it is up to you to decide which solution is best for your application.</p>
+
+    <p><strong>Related:</strong> <a href="../components/#fixed-navbar-ios-virtual-keyboard">Fixed Navbar &amp; iOS Virtual Keyboard</a></p>
+
+</div>
+
+
+<!-- Disabling responsiveness
+================================================== -->
+<div id="disable-responsive-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="disable-responsive">Disabling responsiveness</h1>
+    </div>
+    <p class="lead">Don&rsquo;t want your application to be scaled on different devices? With a little bit of work, you can disable the responsive features of Web Skin so that mobile users see your full desktop-version site.</p>
+
+        <h3>Steps to disable responsive views</h3>
+    <ol>
+        <li>Remove (or just don&rsquo;t add) the viewport <code>&lt;meta&gt;</code> mentioned in <a href="../css/#overview-mobile">the CSS docs</a></li>
+        <li>Remove the <code>max-width</code> on the <code>.container</code> for all grid tiers with <code>max-width: none !important;</code> and set a regular width. Be sure that this comes after the default Web Skin CSS. You can optionally avoid the <code>!important</code> with media queries or some selector-fu.</li>
+        <li>If using navbars, undo all the navbar collapsing and expanding behavior.</li>
+        <li>For grid layouts, make use of <code>.col-xs-*</code> classes in addition to or in place of the medium/large ones. Don&rsquo;t worry, the extra-small device grid scales up to all resolutions, so you&rsquo;re set there.</li>
+    </ol>
+    <p>You'll still need respond.js for MSIE8 (since our media queries are still there and need to be picked up).</p>
+
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Reset the container</span>
+<span class="nc">.container</span> <span class="p">{</span>
+    <span class="na">max-width</span><span class="o">:</span> <span class="no">none</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">width</span><span class="o">:</span> <span class="nv">$screenDesktop</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.container</span> <span class="nc">.navbar-header</span><span class="o">,</span>
+<span class="nc">.container</span> <span class="nc">.navbar-collapse</span> <span class="p">{</span>
+    <span class="na">margin-right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="na">margin-left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Always float the navbar header</span>
+<span class="nc">.navbar-header</span> <span class="p">{</span> <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">// Undo the collapsing navbar</span>
+<span class="nc">.navbar-collapse</span> <span class="p">{</span>
+    <span class="na">display</span><span class="o">:</span> <span class="no">block</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">height</span><span class="o">:</span> <span class="no">auto</span> <span class="nv">!important</span><span class="p">;</span>
+    <span class="na">padding-bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="na">overflow</span><span class="o">:</span> <span class="no">visible</span> <span class="nv">!important</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.navbar-toggle</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nc">.navbar-brand</span> <span class="p">{</span> <span class="na">margin-left</span><span class="o">:</span> <span class="o">-</span><span class="si">#{</span><span class="nv">$gridGutterWidth</span> <span class="o">/</span> <span class="mi">2</span><span class="si">}</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="c1">// Always apply the floated nav</span>
+<span class="nc">.navbar</span> <span class="nc">.nav</span> <span class="p">{</span>
+    <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
+        <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+        <span class="o">&gt;</span> <span class="nc">.hitarea</span> <span class="p">{</span>
+            <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span> <span class="nf">nth</span><span class="p">(</span><span class="nv">$navbarPadding</span><span class="o">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Redeclare since we override the float above</span>
+<span class="nc">.navbar</span> <span class="nc">.nav.navbar-right</span> <span class="p">{</span> <span class="na">float</span><span class="o">:</span> <span class="no">right</span><span class="p">;</span> <span class="p">}</span></code></pre></div>
+
+</div>
+
+
+<!-- Accessibility
+================================================== -->
+<div id="accessibility-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="accessibility">Accessibility</h1>
+    </div>
+    <p class="lead">Web Skin follows standards set by both the <strong><a target="_blank" href="http://a11yproject.com/" onclick="ga('send', 'event', 'A11y Resources', 'A11y Project');"><abbr title="Accessibility Numeronym">A11y</abbr> Project</a></strong> and <strong><a target="_blank" href="http://www.w3.org/TR/WCAG20-HTML-TECHS/" onclick="ga('send', 'event', 'A11y Resources', 'WCAG 2.0', 'HTML-TECHS');"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0</a>&nbsp;</strong>. With minimal extra effort, Web Skin can be used to create Wdesk apps that are accessibile to those using <abbr title="Assistive Technologies">AT</abbr>.</p>
+
+    <h3 id="accessibility-why">Why Should You Care About Accessibility?</h3>
+<p><small class="text-muted">Excerpts from <em><a target="_blank" href="http://blog.teamtreehouse.com/tackling-accessibility-on-the-web" onclick="a11yClick(event);">&ldquo;Tackling Accessibility On The Web&rdquo;</a></em></small></p>
+
+<p>There are three main reasons why Workiva developers should care about making our <abbr title="websites">sites</abbr> and <abbr title="web applications">apps</abbr> accessible.</p>
+
+
+<h4>#1&nbsp;&nbsp;It&rsquo;s the right thing to do</h4>
+<p>This reason alone should be all you need to convince you that accessibility is worth the time and effort.</p>
+
+<p>Building accessible websites and applications is just simply the right thing to do.</p>
+
+<p>As developers we have enormous power to create anything that our minds can dream of. It&rsquo;s <em>our responsibility</em> to make sure that the things that we create can be <strong>enjoyed by everyone</strong>, regardless of whether they might have a disability.</p>
+
+
+<h4>#2&nbsp;&nbsp;We are gaining clients that are bound to accessibility by law</h4>
+
+<p>As Workiva continues to grow and expand into the private sector, some clients (mostly Governments) will require that our applications comply with <a target="_blank" href="http://www.section508.gov/best-practices">Section 508</a> of the Rehabilitation Act. It requires that all Federal agencies make digital information accessible to <em>everyone</em>.</p>
+
+
+<h4>#3&nbsp;&nbsp;You will become better at what you do</h4>
+
+<p>Whether you&rsquo;re a software engineer, designer, copywriter or any other Workiva team member working on improving customer experiences, having a focus on accessibility will help you to improve your skills.</p>
+
+<p>Lets look at the example of a software engineer. Building accessible web applications means that you need to write good, clean, standards-compliant code. That point in itself has a lot of benefits <em>outside</em> of the realm of accessibility. Writing good code that complies with W3C and WHATWG standards means that it is going to be easier for others to understand, which is a big bonus since we are all part of a larger team of Workiva engineers.</p>
+
+<h5>Understanding the extremes</h5>
+
+<p>Industrial designer <a target="_blank" href="http://danformosa.com/" onclick="a11yClick(event);">Dan Formosa</a> once said:</p>
+<blockquote>
+    <p>What we really need to do to design is look at the extremes.</p>
+    <p>The weakest, or the person with arthritis, or the athlete, or the strongest person.</p>
+    <p>Because if we understand what the extremes are, the middle will take care of itself.</p>
+</blockquote>
+
+<p>That last line is particularly powerful. When we are designing we need to think about the power users. How can we make using our application easier for people that spend significant amounts of time using it? Keyboard shortcuts are a good example of designing for power users.</p>
+
+<p>We also need to think about people at the other <em>extreme</em> end of the spectrum. What can we do to make our apps easier to navigate for blind people that rely on screen readers? Will somebody that has trouble moving a mouse precisely be able to click that small button?</p>
+
+<p>Asking all these questions forces you to think more deeply about whatever it is that you are building. It develops your understanding of problems and expands your skills as a web professional.</p>
+
+
+<div class="wdesk-docs-section-block visible-dev-notes">
+    <h3 id="accessibility-components">Accessibile Web Skin Components</h3>
+    
+
+    <div class="row wdesk-accessibile-components-lists">
+        <div class="col-md-4 col-sm-6">
+            <h4 class="wdesk-docs-heading">Navigation</h4>
+            <dl class="list-wordy">
+                <dt>Tabbed Navigation</dt>
+                <dd>
+                    <a href="../javascript/#nav-tabs-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#tabs-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Collapsible Tree <i class="sr-only">Navigation</i></dt>
+                <dd>
+                    <a href="../components/#nav-list-collapsible-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#collapse-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Dropdown Menu <i class="sr-only">Navigation</i></dt>
+                <dd>
+                    <a href="../components/#dropdowns-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#dropdowns-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Carousel Navigation</dt>
+                <dd>
+                    <a href="../javascript/#carousel-js-accessibility-markup">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#carousel-js-accessibility">
+                        Javascript</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <h4 class="wdesk-docs-heading">Dialogs</h4>
+            <dl class="list-wordy">
+                <dt>Tooltip Dialog</dt>
+                <dd>
+                    <a href="../components/#tooltips-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#tooltips-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Popover Dialog</dt>
+                <dd>
+                    <a href="../components/#popovers-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#popovers-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Alert Dialog</dt>
+                <dd>
+                    <a href="../components/#alerts-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#alerts-js-accessibility">
+                        JavaScript</a>
+                </dd>
+
+                <dt>Modal Dialog</dt>
+                <dd>
+                    <a href="../components/#modals-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#modals-js-accessibility">
+                        JavaScript</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4">
+            <h4 class="wdesk-docs-heading">Miscellaneous</h4>
+            <dl class="list-wordy">
+                <dt>Forms</dt>
+                <dd>
+                    <a href="../css/#forms-accessibility">
+                        HTML Markup</a>
+                    <!-- TODO: Add JS section if form validation plugin is ever added (#49) -->
+                </dd>
+
+                <dt>Tables</dt>
+                <dd>
+                    <a href="../css/#tables-accessibility">
+                        HTML Markup</a>
+                    <!-- TODO: Add JS section when adding sortable table accessibility docs (#774) -->
+                </dd>
+
+                <dt>Toggle Buttons</dt>
+                <dd>
+                    <a href="../javascript/#buttons-js-accessibility">
+                        Javascript</a>
+                </dd>
+
+                <dt>Collapsible Panels</dt>
+                <dd>
+                    <a href="../components/#panels-collapsible-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#collapse-js-accessibility">
+                        Javascript</a>
+                </dd>
+
+                <dt>Accordion Panels</dt>
+                <dd>
+                    <a href="../components/#panels-collapsible-accordion-accessibility">
+                        HTML Markup</a>
+                    <i class="sr-only">and</i><i aria-hidden="true" class="text-muted"> &middot; </i>
+                    <a href="../javascript/#collapse-js-accessibility">
+                        Javascript</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+<h3 id="accessibility-best-practices">Helper Classes &amp; Best Practices</h3>
+<p>In addition to the Web Skin components listed above, here are some examples of some global CSS classes available in Web Skin, along with some best-practices being put to good use.</p>
+
+
+<h4 id="accessibility-helpers-sr-only">Add context for screen readers</h4>
+<p>Layout and proximity are methods often used by UI architects to ensure that more succinct wording, or even a lack of wording can be used without losing context.  However, screen readers do not have the ability to communicate that contex to a user unless we as developers explicitly provide it.</p>
+
+<p>Using a combination of the <a href="../css/#helper-classes-sr"><code>.sr-only</code> CSS helper class</a> and the <code>aria-hidden</code> attribute can help us do just that.</p>
+
+<p><strong>Take an <a href="../components/#alerts">Alert dialog</a> &ldquo;close&rdquo; button for example:</strong></p>
+<ul>
+    <li>Anyone who can <em>see</em> the &nbsp;<span class="close" style="float: none;">&times;</span>&nbsp; iconography generally undestands what will happen when clicked.</li>
+    <li>Those using assistive technologies like screen readers - will not understand this, and a critical piece of UI functionality will be inaccessible to them unless we <strong>explicitly tell the user what this button does using the markup shown below</strong>.</li>
+</ul>
+
+<div class="wdesk-docs-example">
+    <div role="alert" class="alert alert-error fade in" aria-live="assertive">
+        <button type="button" class="close" data-dismiss="alert">
+            <i aria-hidden="true">&times;</i>
+            <i class="sr-only">Close</i>
+        </button>
+        <p>Alert text&hellip;</p>
+    </div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!--</span>
+<span class="c">    Screen Readers will ignore anything with `aria-hidden=&quot;true&quot;`</span>
+<span class="c">    Screen Readers will read the text within `.sr-only` to the user</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;alert&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">aria-hidden=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/i&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+
+<h4 id="accessibility-helpers-skip-navigation">Skip navigation</h4>
+<p>Another way to utilize the <a href="../css/#helper-classes-sr"><code>.sr-only</code></a> CSS helper class is to hide a link that enables screen readers to skip past navigation structures containing many links when that structure comes before the main content in the DOM.</p>
+
+<p>Add a <code>Skip to content</code> link immediately after your opening <code>&lt;body&gt;</code> tag. (<a target="_blank" href="http://a11yproject.com/posts/skip-nav-links/" onclick="a11yClick(event);">read why</a>, or read <a target="_blank" href="http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1" onclick="a11yClick(event);">the whole <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0 spec</a>)</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span> <span class="na">class=</span><span class="s">&quot;sr-only sr-only-focusable&quot;</span><span class="nt">&gt;</span>Skip to content<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+        The main page content.
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+
+
+<h4 id="accessibility-helpers-tabindex">Tabindex</h4>
+<p>If using a DOM element other than an <code>&lt;input&gt;</code>, <code>&lt;button&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code> or <code>&lt;a&gt;</code> - you must add <code>tabindex="0"</code> to it if you want the user to be able to navigate to it using their keyboard.</p>
+
+<p>This is an especially important concept when making keyboard navigation possible in our JS plugins.</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown open&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">role=</span><span class="s">&quot;menu&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#content&quot;</span><span class="nt">&gt;</span>Anchor link<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>Button action<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">&quot;presentation&quot;</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!--</span>
+<span class="c">                Without this tabindex, this menu structure would</span>
+<span class="c">                not be able to be traversed using a keyboard.</span>
+<span class="c">            --&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">&quot;button&quot;</span> <span class="na">tabindex=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>Div posing as a button<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/li&gt;</span></code></pre></div>
+
+
+<h4 id="accessibility-helpers-nested-headings">Nested headings</h4>
+<p>When nesting headings (<code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code>), your primary document header should be an <code>&lt;h1&gt;</code>. Subsequent headings should make logical use of <code>&lt;h2&gt;</code> - <code>&lt;h6&gt;</code> such that screen readers can construct a table of contents for your pages.</p>
+<p>Read more about nesting headings: <a target="_blank" href="http://accessibility.psu.edu/headings" onclick="a11yClick(event);">Penn State&rsquo;s AccessAbility</a></p>
+
+
+<h3 id="accessibility-resources">Additional Resources</h3>
+<p>In order to audit existing implementations for accessibility, there are a number of tools <em>(and lots of great reading)</em> out there. Below is a small sample of them.</p>
+
+
+<h4>Tools</h4>
+<ul>
+    <li><a target="_blank" href="http://bit.ly/chrome-a11y-devtools" onclick="a11yClick(event);">
+        Chrome <abbr title="Accessibility Numeronym">A11y</abbr> Dev Tools</a></li>
+    <li><a target="_blank" href="http://bit.ly/chrome-a11y-contrast-tools" onclick="a11yClick(event);">
+        Chrome Color Contrast Dev Tools</a></li>
+    <li><a target="_blank" href="http://wave.webaim.org/" onclick="a11yClick(event);"><abbr title="Web Accessibility Evaluation Tool">
+        WAVE</abbr> (HTML Markup Testing)</a></li>
+    <li><a target="_blank" href="http://www.spurapp.com/" onclick="a11yClick(event);">
+        Spur (Visual Design Testing)</a></li>
+    <li><a target="_blank" href="http://colororacle.org/" onclick="a11yClick(event);">
+        Color Oracle (Simulate Color Blindness)</a></li>
+</ul>
+
+<h4>Articles / Specifications</h4>
+<ul>
+    <li><a target="_blank" href="http://a11yproject.com/" onclick="ga('send', 'event', 'A11y Resources', 'A11y Project');"><abbr title="Accessibility Numeronym">A11y</abbr> Project</a></li>
+    <li><a target="_blank" href="http://www.w3.org/TR/WCAG20-HTML-TECHS/" onclick="ga('send', 'event', 'A11y Resources', 'WCAG 2.0', 'HTML-TECHS');"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0</a></li>
+    <li><a target="_blank" href="http://www.w3.org/TR/aria-in-html/" onclick="a11yClick(event);">
+        Using <abbr title="Web Accessibility Initiative">WAI</abbr>-<abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles in HTML</a></li>
+    <li><a target="_blank" href="http://substantial.com/blog/2014/07/22/how-i-audit-a-website-for-accessibility/" onclick="a11yClick(event);">
+        How to audit for accessibility</a></li>
+    <li><a target="_blank" href="http://blog.teamtreehouse.com/tackling-accessibility-on-the-web" onclick="a11yClick(event);">
+        Tackling accessibility on the web</a></li>
+    <li><a target="_blank" href="http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/">
+        Section 508 HTML CodeSniffer</a></li>
+</ul>
+
+<h4>Screen Reader Testing</h4>
+<ul>
+    <li><a target="_blank" href="http://webaim.org/articles/voiceover/" onclick="a11yClick(event);">
+        VoiceOver for Mac OSX/iOS</a></li>
+    <li><a target="_blank" href="https://www.virtualbox.org/wiki/Downloads" onclick="a11yClick(event);">
+        Virtual Box (free)</a></li>
+    <li><a target="_blank" href="http://modern.ie/en-us/virtualization-tools#downloads" onclick="a11yClick(event);">
+        Modern.ie: Windows VMs for VirtualBox (free)</a></li>
+    <li><a target="_blank" href="http://www.freedomscientific.com/downloads/jaws/jaws-downloads.asp" onclick="a11yClick(event);">
+        JAWS for Windows (free 40 min. demo version)</a></li>
+    <li><a target="_blank" href="http://www.nvaccess.org/download/" onclick="a11yClick(event);">
+        NVDA for Windows (free)</a></li>
+</ul>
+</div>
+
+
+<!-- Dev Resources
+================================================== -->
+<div id="dev-resources-section" class="wdesk-docs-section">
+    <div class="page-header">
+        <h1 id="dev-resources">Dev Resources</h1>
+    </div>
+    <p class="lead">Web Skin strives to make developing Wdesk apps easy with scripts, code snippets and more.</p>
+
+    <h2 id="dev-resources-code-snippets">Code Snippets</h2>
+<p>Currently we only maintain code snippets for SublimeText.  However, <strong>we do accept pull requests</strong>, and would love to add support for more IDEs in the future!</p>
+
+<h3 id="dev-resources-code-snippets-st">SublimeText Code Snippets</h3>
+<div class="tabbable">
+    <ul role="tablist" class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a role="tab" id="st3-tab" class="hitarea" tabindex="0"
+               href="#st3"
+               aria-controls="st3"
+               aria-selected="true"
+               data-toggle="tab">
+                SublimeText 3
+            </a>
+        </li>
+        <li role="presentation">
+            <a role="tab" id="st2-tab" class="hitarea" tabindex="-1"
+               href="#st2"
+               aria-controls="st2"
+               aria-selected="false"
+               data-toggle="tab">
+                SublimeText 2
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+        <div role="tabpanel" id="st3" class="tab-pane active" tabindex="0"
+             aria-hidden="false"
+             aria-labelledby="st3-tab">
+            <h4>Install SublimeText 3 Web Skin Snippets</h4>
+            <p>Copy and paste the following commands into your terminal.  That&rsquo;s it!</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>3/Packages/User/
+
+git clone git@github.com:aaronlademann-wf/web-skin-code-snippets-st.git</code></pre></div>
+
+            <h4>Update SublimeText 3 Web Skin Snippets</h4>
+            <p>Copy and paste the following commands into your terminal.  That&rsquo;s it!</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>3/Packages/User/
+
+git reset --hard <span class="o">&amp;&amp;</span> git pull origin master</code></pre></div>
+        </div>
+        <div role="tabpanel" id="st2" class="tab-pane" tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="st2-tab">
+            <h4>Install SublimeText 2 Web Skin Snippets</h4>
+            <p>Copy and paste the following commands into your terminal.  That&rsquo;s it!</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/User/
+
+git clone git@github.com:aaronlademann-wf/web-skin-code-snippets-st.git</code></pre></div>
+
+            <h4>Update SublimeText 2 Web Skin Snippets</h4>
+            <p>Copy and paste the following commands into your terminal.  That&rsquo;s it!</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/User/
+
+git reset --hard <span class="o">&amp;&amp;</span> git pull origin master</code></pre></div>
+        </div>
+    </div>
+</div> <!-- /tabbable -->
+
+</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main docs footer (social buttons, copyright, etc). -->
+    <!-- Footer
+================================================== -->
+<div class="wdesk-docs-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>The Web Skin Style Guide was hand made with love by <a href="https://github.com/aaronlademann-wf" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Web Skin Team', 'Aaron Lademann');">Aaron Lademann</a> and the <a href="https://github.com/WebFilings/web-skin/graphs/contributors" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Web Skin Team', 'Web Skin Team');">Web Skin Team</a>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-links">
+                    <li>Currently <a href="https://github.com/WebFilings/web-skin/releases/tag/0.4.11" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Version link', 'Version 0.4.11');">v0.4.11</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/releases" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Releases', 'Releases');">Releases</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/blob/master/CONTRIBUTING.md" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Contribute', 'Contribute');">Contribute</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/issues?state=open" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Issues', 'Issues');">Issues</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="https://github.com/WebFilings/web-skin/issues/new" target="_blank" onclick="ga('send', 'event', 'Footer Actions', 'Issues', 'Report an Issue');">Report an Issue</a></li>
+                    <li class="text-muted">&middot;</li>
+                    <li><a href="#" onclick="return false;" data-toggle="tooltip" data-html="true" title="Room name is &lt;strong&gt;&ldquo;Web Skin - Dev&rdquo;&lt;/strong&gt;">Contact Us on HipChat</a></li>
+                </ul>
+                <p><small class="text-muted">Copyright &copy; 2014 Workiva</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- JS and analytics only. -->
+    <!-- Web Skin core JavaScript
+================================================== -->
+<script src="../assets/js/web-skin.min.js?0.4.11"></script>
+<script src="../assets/js/docs.min.js?0.4.11"></script>
+
+
+
+
+    
+    
+    
+
+</body>
+</html>

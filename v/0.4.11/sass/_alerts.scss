@@ -1,0 +1,268 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _alerts.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_modals.scss"
+
+//----------------------------------------------------
+
+//
+// Base styles
+//
+.alert {
+    min-height: $btnHeight; // for empty alerts
+    padding: $alertPadding;
+    margin-bottom: $lineHeightBasePx;
+    overflow: hidden;
+    color: $alertColorDefault;
+    background-color: $state_defaultBg;
+    border: $alertBdWidth solid $alertBdDefault;
+    border-radius: $alertBdRadius;
+
+    // MSIE 8 and below doesn't support box-sizing: border-box
+    // TODO: change to ltie9 when we change the default support level of the main wdesk_ie.css stylesheet from 8 to 9 (0.5.0 release)
+    @include ltie8 {
+        // re-declare the box-sizing for MSIE 9
+        @include box-sizing(content-box);
+        min-height: $btnHeight - ($alertPaddingVertical * 2);
+    }
+
+    // Improve alignment and spacing of inner content
+    > p,
+    > ul {
+        margin-bottom: 0;
+    }
+    > p + p {
+        margin-top: 5px;
+    }
+}
+
+
+//
+// Alert headings (mainly used in .alert-block)
+//
+.alert-heading {
+    padding-bottom: $dialogHeaderPaddingSm;
+    margin: $dialogHeaderMarginSm;
+    clear: none;
+    font-size: $dialogHeaderFontSizeSm;
+    font-weight: bold;
+    line-height: $dialogHeaderLineHeight;
+    color: inherit;
+    border-bottom: $dialogBdWidth solid $alertHeadingBdDefault;
+
+    &.no-border {
+        border-bottom-color: transparent !important;
+    }
+    // if the heading is the last item in the alert
+    // its probably the only one
+    &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom-color: transparent !important;
+    }
+}
+
+
+//
+// Dismissable alert close button
+//
+.alert .close {
+    position: relative;
+    top: -#{$alertPaddingVertical};
+    right: -#{$alertPaddingHorizontal};
+    width: $alertCloseWidth;
+    height: $alertCloseHeight;
+    margin-bottom: -#{$alertPaddingVertical * 2}; // make the height not affect the height of the .alert container
+    line-height: 1;
+    text-align: center;
+
+    // TODO: implement an .alert-dismissable variation instead of this for 0.5.0
+    // prevent intersection with close button
+    // by adding right padding to adjacent elems
+    + .alert-heading,
+    + p,
+    + ul {
+        padding-right: $alertCloseWidth - $alertPaddingHorizontal;
+    }
+}
+
+
+//
+// Alert link for current .alert-default appearance (TODO: remove in 0.5.0)
+//
+.alert-link {
+    font-weight: $alertLinkFontWeight;
+    color: darken($alertColorDefault, 10%);
+    #{$linkHoverFocus} {
+        color: darken($alertColorDefault, 10%);
+    }
+}
+
+
+//
+// Color Variations
+//
+$n: 1 !global;
+@each $state in $states_min {
+    $stateBg: nth($alertBgs, $n);
+    $stateBd: nth($alertBds, $n);
+    $stateColor: nth($alertColors, $n);
+    $stateHeadingBd: nth($alertHeadingBds, $n);
+
+    .alert-#{$state} {
+        color: $stateColor;
+        background-color: $stateBg;
+        border-color: $stateBd;
+
+        .alert-heading {
+            border-bottom-color: $stateHeadingBd;
+        }
+
+        .alert-link {
+            font-weight: $alertLinkFontWeight;
+            color: darken($stateColor, 10%);
+            #{$linkHoverFocus} {
+                color: darken($stateColor, 10%);
+            }
+        }
+    }
+
+    $n: $n + 1 !global;
+}
+
+
+//
+// Size Variations
+//
+
+// TODO: remove the .modal-footer .alert selector once we make .alert-sm a required class in the 0.5.0 release
+.alert-sm,
+.modal-footer .alert {
+    // small variation
+    // typically used when nested inside a .modal-footer, etc...
+    // where the height needs to line up with the height of a button
+    padding: $alertPaddingSmall;
+
+    // adjust position of close button
+    .close {
+        top: round($alertPaddingSmallVertical / -2);
+        margin-bottom: -#{$alertPaddingSmallVertical};
+    }
+}
+
+
+
+//
+// Block Variation
+//
+.alert-block {
+
+    // the close button should appear to be on the right edge of the .alert-heading
+    .close {
+        height: $alertBlockCloseHeight;
+        padding-bottom: if($ie-support, 0, 6px); // vertical centering
+    }
+
+    .alert-footer {
+        min-height: $dialogContentPadding * 4;
+        margin-top: $dialogContentPadding * 4;
+    }
+
+    // TODO: remove when `.alert-dismissable` variation is implemented in 0.5.0
+    // no chance for the text to intersect with the .close button
+    // since .close is in the top area with the header
+    p { padding-right: 0; }
+
+}
+
+
+//
+// Toast alerts
+//
+.alert-toast {
+    @extend %slide;
+    z-index: $zindexToastAlert; // keep above EVERYTHING
+    margin-bottom: $lineHeightBasePx / 2; // space out when stacking
+
+    &.top,
+    &.bottom {
+        left: 50%;
+        width: 80%;
+        margin-left: -40%;
+        text-align: center;
+    }
+    &.left,
+    &.right {
+        width: 100%; // absolute width hack
+        max-width: 45%;
+    }
+    &.top {
+        @extend %slide-down;
+        margin-top: $lineHeightBasePx / 2;
+    }
+    &.bottom {
+        @extend %slide-up;
+        margin-bottom: $lineHeightBasePx / 2;
+    }
+    &.left {
+        @extend %slide-right;
+        margin-left: $lineHeightBasePx / 2;
+    }
+    &.right {
+        @extend %slide-left;
+        margin-right: $lineHeightBasePx / 2;
+        text-align: right;
+
+        .close {
+            float: left;
+            right: auto;
+            left: -#{$alertPaddingHorizontal};
+
+            // prevent intersection with close button
+            // by adding left padding to adjacent elems
+            + .alert-heading,
+            + p,
+            + ul {
+                padding-right: 0;
+                padding-left: $alertCloseWidth - nth($alertPadding, 2);
+            }
+        }
+    }
+}
+
+
+//
+// Stacked toast alerts
+//
+.toast-alerts {
+    position: fixed;
+    z-index: $zindexToastAlert;
+    width: 100%;
+    left: 0;
+
+    &.toast-alerts-top {
+        top: 0;
+    }
+
+    &.toast-alerts-bottom {
+        bottom: 0;
+    }
+
+    .alert-toast {
+        @include transition-property("opacity");
+        position: relative;
+
+        &.in {
+            @include opacity(1);
+            z-index: $zindexToastAlert;
+        }
+
+        &, &.out {
+            @include opacity(0);
+            z-index: $zindexToastAlert - 5;
+        }
+    }
+}

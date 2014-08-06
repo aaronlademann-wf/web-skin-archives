@@ -1,0 +1,453 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _forms.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_input-groups.scss"
+    //+ "_forms-chosen.scss"
+
+//----------------------------------------------------
+
+
+//
+// Normalize non-controls
+//
+    legend {
+        display: block;
+        width: 100%;
+        margin-bottom: $legendMarginBottom;
+        font-family: $legendFontFace;
+        font-size: $legendFontSize;
+        font-weight: bold;
+        line-height: inherit;
+        color: $legendColor;
+        border-bottom: $headingBdWidth solid $headingBdColor;
+
+        // typically added using an <em> elem
+        .sub-legend {
+            font-size: $fontSizeBase;
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        @include safari {
+            // strange margin collapse bug that only presents in safari
+            // http://bit.ly/12eMCcW
+            + label {
+                margin-top: $legendMarginBottom;
+                -webkit-margin-top-collapse: separate;
+            }
+        }
+    }
+
+    label {
+        display: inline-block;
+        @include ie7-inline-block;
+        margin-bottom: $spacingBase;
+        font-weight: bold;
+        line-height: $lineHeightBase;
+
+        // demonstrate to the user that this field is required
+        &.required:after {
+            font-size: $fontSizeBase;
+            font-weight: normal;
+            color: $state_errorColor;
+            content: "*";
+        }
+    }
+
+
+//
+// Normalize Form controls
+//
+
+    input[type="file"] {
+        display: block;
+        // match the portion of the control that we cannot style
+        font-size: 12px;
+
+        //
+        // do our best to give this input type a focus style that
+        // is reasonably similar to other form controls
+        //
+        &:focus,
+        &.focus {
+            // use outline since we cannot use a border on this element
+            outline: $inputBdWidth solid $inputBdColorFocus;
+        }
+    }
+
+    // Make multiple select elements height not fixed
+    select[multiple],
+    select[size] {
+        height: auto;
+    }
+
+    // Adjust output element
+    output {
+        display: block;
+        padding-top: ($paddingBaseVertical + 1);
+        font-size: $fontSizeBase;
+        line-height: $lineHeightBase;
+        color: $inputColor;
+    }
+
+
+//
+// Common form controls
+//
+// Shared size and type resets for form controls. Apply `.form-control` to any
+// of the following form controls:
+//
+// select
+// textarea
+// input[type="text"]
+// input[type="password"]
+// input[type="datetime"]
+// input[type="datetime-local"]
+// input[type="date"]
+// input[type="month"]
+// input[type="time"]
+// input[type="week"]
+// input[type="number"]
+// input[type="email"]
+// input[type="url"]
+// input[type="search"]
+// input[type="tel"]
+// input[type="color"]
+// input[type="search"]
+//
+    .form-control {
+        @include inputScaffolding;
+
+        // Focused state
+        &:focus,
+        &.focus {
+            @include inputFocusDefault;
+        }
+
+        // Disabled and read-only inputs
+        // Note: HTML5 says that inputs under a fieldset > legend:first-child won't be
+        //     disabled if the fieldset is disabled. Due to implementation difficulty,
+        //     we don't honor that edge case; we style them as disabled anyway.
+        &.disabled,
+        &[disabled],
+        &[readonly] {
+            @include inputDisabledDefault;
+        }
+
+        // this isn't actually completely disabled
+        &[readonly] {
+            // must declare without :pseudo
+            // for IE7/8 when using [readonly]
+            cursor: text !important;
+            color: $inputColor !important;
+            @include enableUserSelect(text !important);
+        }
+
+        // spit out the value of an input without rendering
+        // the bgcolor or borders / box-shadows
+        // works on [disabled] or [readonly] form-controls
+        &.input-vanilla {
+            border-color: transparent !important;
+            background-color: transparent !important;
+            @include box-shadow(none !important);
+        }
+    }
+
+    // Reset height for textareas
+    textarea.form-control {
+        height: auto;
+        padding-right: 0;
+
+        // redeclare for specificity
+        line-height: $lineHeightBase;
+    }
+
+    // Tweak select styling
+    select.form-control {
+        // make them look/feel like our buttons as much as possible for browsers that can handle it
+        padding-right: $paddingBaseVertical;
+        cursor: pointer;
+        background-color: $btnBgDefault;
+        border: $btnBdWidth solid $btnBdDefault;
+        box-shadow: 0 $btnShdDepth 0 0 $btnShdDefault;
+
+        #{$hover} {
+            // the way <select> elems "inherit" colors, borders, etc... is a little different
+            // so we cannot simply omit the style just because our value is inherit,
+            // we need to redeclare it as the default.
+            color: if($btnColorDefaultHover != inherit, $btnColorDefaultHover, $btnColorDefault);
+            background-color: if($btnBgDefaultHover != inherit, $btnBgDefaultHover, $btnBgDefault);
+            border-color: if($btnBdDefaultHover != inherit, $btnBdDefaultHover, $btnBdDefault);
+            box-shadow: if($btnShdDefaultHover != inherit, $btnShdDefaultHover, $btnShdDefault);
+        }
+
+        // for a <select> element, the ":active/pressed" state is the focused state
+        &:focus,
+        &.focus {
+            // the way <select> elems "inherit" colors, borders, etc... is a little different
+            // so we cannot simply omit the style just because our value is inherit,
+            // we need to redeclare it as the default.
+            color: if($btnColorDefaultPress != inherit, $btnColorDefaultPress, $btnColorDefault);
+            background-color: if($btnBgDefaultPress != inherit, $btnBgDefaultPress, $btnBgDefault);
+            border-color: if($btnBdDefaultPress != inherit, $btnBdDefaultPress, $btnBdDefault);
+            box-shadow: if($btnShdDefaultPress != inherit, $btnShdDefaultPress, $btnShdDefault);
+        }
+
+        option {
+            cursor: pointer;
+        }
+    }
+
+
+//
+// Form groups (formerly .control-group)
+//
+// Designed to help with the organization and spacing of vertical forms.
+// For horizontal forms, use the predefined grid classes.
+//
+    .form-group {
+        margin-bottom: $lineHeightBasePx - $spacingBase;
+        &:last-of-type { margin-bottom: 0; }
+    }
+
+
+//
+// Checkboxes and radios
+//
+@import "_forms-cbox-radio.scss";
+
+
+//
+// Form control sizing
+//
+@include inputSize(xs, $inputHeightXsmall, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall);
+@include inputSize(sm, $inputHeightSmall, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall);
+@include inputSize(lg, $inputHeightLarge, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge);
+
+
+//
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+//
+    // Warning
+    .has-warning {
+        @include formFieldState($state_warningColor, $state_warningBd, $state_warningBg, $controlGroup: true);
+    }
+    // Error
+    .has-error {
+        @include formFieldState($state_errorColor, $state_errorBd, $state_errorBg, $controlGroup: true);
+    }
+    // Success
+    .has-success {
+        @include formFieldState($state_successColor, $state_successBd, $state_successBg, $controlGroup: true);
+    }
+
+    // ANGULAR INVALID STATE
+    form[class*="ng-"] {
+        .form-control.ng-dirty {
+            &:invalid {
+                color: $state_errorColor;
+                border-color: $state_errorBd;
+                background-color: $state_errorBg;
+            }
+            &:focus:invalid,
+            &.focus:invalid {
+                @include inputFocusDefault(darken($state_errorBd, 10%));
+            }
+        }
+    }
+
+    // NON-ANGULAR INVALID STATE
+    form:not([class*="ng-"]) {
+        .form-control {
+            &:invalid {
+                color: $state_errorColor;
+                border-color: $state_errorBd;
+                background-color: $state_errorBg;
+            }
+            &:focus:invalid,
+            &.focus:invalid {
+                @include inputFocusDefault(darken($state_errorBd, 10%));
+            }
+        }
+    }
+
+    // for "fake" placeholders generated by jquery-placeholders.min.js
+    @if $ie-support and $min-ie-supported < 10 {
+        .placeholder[data-placeholder],
+        .form-control.placeholder {
+            color: $inputColorPlaceholder;
+        }
+    }
+
+
+//
+// Help text
+//
+// Apply to any element you wish to create light text for placement immediately
+// below a form control. Use for general help, formatting, or instructional text.
+//
+    .help-block {
+        display: block; // account for any element using help-block
+        margin-top: $spacingBase;
+        margin-bottom: $spacingBase * 2;
+        color: zestyCrayonColor(gray, lighter); // lighten the text some for contrast
+    }
+
+    .help-inline {
+        display: inline-block;
+        @include ie7-inline-block;
+        vertical-align: middle;
+        line-height: $inputHeightBase;
+
+        .form-control + & {
+            // Space out adjacent controls / help text
+            padding-left: $spacingBase;
+        }
+    }
+
+
+//
+// Bordered Forms
+//
+// Sometimes you just want your form to look safe
+//
+    .form-actions {
+        @include clearfix; // Adding clearfix to allow for .pull-right button containers
+        margin-top: $lineHeightBasePx * 2;
+        margin-bottom: $lineHeightBasePx;
+        padding: $lineHeightBasePx;
+        border-top: $inputBdWidth solid darken($formActionsBackground, 5%);
+        background-color: $formActionsBackground;
+    }
+
+    .form-bordered {
+        padding: $lineHeightBasePx;
+        border: $formBdWidth solid $formBdColor;
+
+        legend {
+            border-color: $formBdColor;
+        }
+
+        .form-actions {
+            margin-right: -$lineHeightBasePx;
+            // sit flush with the left / right edge of the form
+            margin-left: -$lineHeightBasePx;
+            &:last-of-type {
+                // sit flush to the bottom edge of the form
+                margin-bottom: -$lineHeightBasePx;
+            }
+        }
+    }
+
+
+//
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach <768px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+//
+    .form-inline {
+        // Kick in the inline
+        @media (min-width: $screenTablet) {
+            // Inline-block all the things for "inline"
+            .form-group  {
+                display: inline-block;
+                @include ie7-inline-block;
+                margin-bottom: 0;
+                vertical-align: middle;
+            }
+
+            .control-label {
+                padding-top: $paddingBaseVertical;
+            }
+
+            // Remove default margin on radios/checkboxes that were used for stacking, and
+            // then undo the floating of radios and checkboxes to match (which also avoids
+            // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+            .radio,
+            .checkbox {
+                display: inline-block;
+                @include ie7-inline-block;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            [class^="col-"] {
+                .radio,
+                .checkbox {
+                    margin-top: $lineHeightBasePx / 2;
+                }
+            }
+            .radio input[type="radio"],
+            .checkbox input[type="checkbox"] {
+                float: none;
+                margin-left: 0;
+            }
+        }
+    }
+
+
+//
+// Horizontal forms
+//
+// Horizontal forms are built on grid classes and allow you to create forms with
+// labels on the left and inputs on the right.
+//
+    .form-horizontal .control-label,
+    .form-horizontal .radio-inline,
+    .form-horizontal .checkbox-inline {
+        padding-top: $paddingBaseVertical;
+    }
+
+    .form-horizontal {
+        .form-group {
+            @include makeRow;
+        }
+        label {
+            text-align: left;
+
+            // based on the column grid size class... switch this to right align when appropriate
+            &[class^="col-xs"] {
+                // always side-by-side
+                text-align: right;
+            }
+            @media (min-width: $screenTablet) {
+                &[class^="col-sm"] {
+                    // side-by-side at this size and up
+                    text-align: right;
+                }
+            }
+            @media (min-width: $screenDesktop) {
+                &[class^="col-md"] {
+                    // side-by-side at this size and up
+                    text-align: right;
+                }
+            }
+            @media (min-width: $screenDesktopLarge) {
+                &[class^="col-lg"] {
+                    // side-by-side at this size and up
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+
+// Input Groups
+@import "_input-groups.scss";
+// Search inputs
+@import "_forms-search.scss";
+// Switches (toggle styling for checkboxes)
+@import "_forms-switches.scss";
+// requires chosen.js
+// replace all <select> elems with chosen.js polyfills
+@import "_forms-chosen.scss";
+@import "_forms-number.scss";

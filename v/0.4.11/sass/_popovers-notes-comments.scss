@@ -1,0 +1,259 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _popovers-notes-comments.scss
+//+  PARENT:   wdesk.scss
+
+    // parent partials:
+    //+ "_dialogs.scss"
+    //+ "_popovers.scss"
+    //+ "_comments-common.scss"
+
+    // related partials:
+    //+ "_tooltip.scss"
+    //+ "_tooltip-navs.scss"
+
+    $commentTheadHeaderHeight: if($ie-support, ($popoverCommentThreadHeaderHeight + 1), ($popoverCommentThreadHeaderHeight));
+
+//----------------------------------------------------
+
+
+//
+// TEXT SELECTION CONTROL
+//
+    .popover-comment {
+        width: $popoverCommentWidth;
+        // prevent ios "magnifying glass" bug: http://bit.ly/1eQuSNj
+        @include disableUserSelect;
+        * {
+            @include disableUserSelect;
+        }
+        // obviously, we want the user to be able to select text in here.
+        textarea {
+            @include enableUserSelect;
+        }
+    }
+
+
+//
+// BASE POPOVER ELEM RESETS
+//
+    .popover-comment {
+        .inner,
+        .comments,
+        .comment,
+        .cblock {
+            position: relative;
+            float: left;
+            width: 100%;
+        }
+
+        .inner {
+            min-width: 0;
+            max-width: none;
+        }
+    } // END BASE POPOVER ELEM RESETS
+
+
+//
+// POPOVER COMMENT HEADER
+//
+    .popover-comment {
+
+        .comment-header.navbar {
+            @include comment-header_navbar;
+            margin-bottom: 0;
+            line-height: 1;
+            border-bottom: 0 none;
+        }
+
+        //
+        // LEFT SIDE (TITLE)
+        //
+        .comment-title {
+            @include comment-title;
+            // make sure the author name doesn't overlap the comment-type toggle in the header
+            width: $popoverCommentTitleWidthExisting;
+            font-size: $popoverCommentTitleFontSize !important;
+            line-height: $popoverCommentThreadHeaderLineHeight !important;
+
+            .icon {
+                @include comment-title-icon;
+            }
+        }
+        // make sure the author name doesn't overlap the timestamp in the header
+        &.new-comment {
+            .comment-title {
+                width: $popoverCommentTitleWidthNew;
+            }
+        }
+
+        //
+        // RIGHT SIDE (META / TOGGLE)
+        //
+        .comment-header .dropdown-toggle {
+            // vertical alignment
+            margin-top: round(($popoverCommentThreadHeaderLineHeight - $caretOnlyBtnWidthXsmall) / 2);
+
+            .caret {
+                margin-top: $caretTopMarginXsmall - 1;
+            }
+        }
+        .comment-type-toggle {
+            position: absolute;
+            top: 1px; // not sure why its not lined up already
+            right: 0;
+            padding: 0;
+            margin: 0;
+        }
+        .checkbox-switch-xs {
+            @include checkboxSwitchText(
+                $defaultText: 'private',
+                $checkedText: 'shared',
+                $sizeVariation: 'xs'
+            );
+        }
+    } // END POPOVER COMMENT HEADER
+
+
+//
+// POPOVER COMMENT BODY
+//
+    .popover-comment {
+        .comment {
+            // first cblock within the first comment when a comment is being created
+            &:first-child > .cblock:first-child {
+                margin-top: $dialogContentPadding;
+
+                // when a comment has been saved - we don't need the extra space below the thread heading.
+                textarea[readonly] {
+                    margin-top: -$dialogContentPadding;
+                }
+            }
+        }
+
+        .comment-meta {
+            @include comment-meta;
+            // make sure the author name doesn't overlap the timestamp on replies
+            .comment-author {
+                width: $popoverCommentReplyNameWidth;
+            }
+
+            .comment-timestamp {
+                width: $popoverCommentTimestampMaxWidth;
+            }
+        }
+
+        .comment-body {
+            min-height: $defaultCommentTextareaHeight;
+        }
+
+        // COMMENT / REPLY ACTIONS
+        .comment-actions {
+            margin-top: $dialogContentPadding;
+
+            .nav-pills > li > .hitarea {
+                &[disabled],
+                &.disabled {
+                    // don't make the disabled mouse cursor be so jarring when we're disabling buttons as
+                    // confirmation modals open and close (prevents flicker)
+                    cursor: pointer !important;
+                }
+            }
+        }
+    }
+
+
+//
+// COMMENT THREAD POPOVERS
+//
+    .popover-thread {
+        @include transition(height .3s ease-in-out);
+
+        .comment-header.navbar {
+            .comment-meta .comment-timestamp {
+                right: $popoverCommentThreadActionsOffsetRight; // leave room for thread actions dropdown button
+                line-height: $popoverCommentThreadHeaderLineHeight + ($popoverCommentTitleFontSize - $fontSizeSmall + 2); // baseline align with title text
+            }
+        }
+
+        // wraps around each comment within a thread
+        .comment {
+            + .comment {
+                .comment-meta {
+                    // space out adjacent comments
+                    padding-top: $dialogContentPadding;
+                }
+            }
+
+            .comment-reply {
+                &,
+                .form-control {
+                    min-height: $inputHeightBase;
+                }
+            }
+        }
+
+        //
+        // A comment is being edited / written
+        //
+        .comment.comment-editing {
+            .comment-meta {
+                margin-bottom: $dialogContentPadding;
+            }
+        }
+    } // END .popover-thread
+
+
+//
+// COMMENT THREAD OVERLAYS
+//
+    .popover-thread {
+        &.modal-open,
+        &.popover-thread-closed {
+            .thread-overlay {
+                display: block;
+            }
+        }
+
+        // A COMMENT WITHIN THE THREAD HAS A CONFIRMATION MODAL VISIBLE
+        &.modal-open {
+            .thread-overlay {
+                // light bg color
+                background-color: $tooltipBgGray;
+                @include opacity($popoverCommentThreadOverlayAlpha);
+                z-index: $zindexModalBackdrop - 1; // make sure the modal confirmation is above this overlay
+            }
+            .comment-editing .comment-meta,
+            .comment-reply-empty {
+                display: none;
+            }
+        }
+
+        // THREAD IS CLOSED
+        &.popover-thread-closed {
+            .thread-overlay {
+                // adjust for dialog padding
+                top: -$dialogPadding;
+                right: -$dialogPadding;
+                bottom: -$dialogPadding;
+                left: -$dialogPadding;
+                // dark bg color
+                background-color: $popoverCommentThreadOverlayBg;
+                @include opacity($popoverCommentThreadClosedOverlayAlpha);
+                z-index: $zindexDropdown - 1; // keep the thread actions menu clickable
+            }
+            .comment-reply-empty,
+            .comment.comment-editing {
+                display: none;
+            }
+        }
+    }
+
+
+//
+// MODAL CONFIRMATION POSITIONING
+//
+    .popover-comment {
+        @include comment-modal-confirmations($bdRadius: $dialogBdRadius, $contentPad: $dialogContentPadding, $headerHeight: $commentTheadHeaderHeight, $isOuterElem: true);
+    }
+

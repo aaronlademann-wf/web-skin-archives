@@ -1,0 +1,86 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _tooltip.scss
+//+  PARENT:   wdesk.scss
+
+    // parent partial:
+    //+ "_dialogs.scss"
+
+    // related partials:
+    //+ "_tooltip-navs.scss"
+    //+ "_popovers.scss"
+    //+ "_popovers-notes-comments.scss"
+
+//----------------------------------------------------
+
+
+.tooltip {
+    z-index: $zindexTooltip;
+    padding: $tooltipBdWidth;
+    font-size: $fontSizeSmall;
+    font-weight: normal;
+    line-height: 1.2; // instead of padding
+    color: $tooltipColor;
+    box-shadow: none; // no shadow necessary since the bg color is reverse-contrast
+    background-color: $tooltipBg;
+    border-color: $tooltipBdColor;
+    border-radius: $tooltipBdRadius;
+    @include background-clip(padding-box);
+
+    // Wrapper for the tooltip content
+    .inner {
+        max-width: $tooltipMaxWidth;
+        padding: $tooltipPadding;
+        // not a different color than base elem for tooltips as opposed to popovers
+        color: inherit;
+        text-align: center;
+        // not a different color than base elem for tooltips as opposed to popovers
+        background-color: inherit;
+    }
+
+    // ADJUST ARROW COLORS
+    @each $direction in $arrowDirections {
+        &.#{$direction} .arrow {
+            border-#{$direction}-color: $tooltipBdColor;
+            &:after {
+                border-#{$direction}-color: $tooltipBg;
+            }
+        }
+    }
+
+    //
+    // SMALL ARROWS
+    //
+    // most of the styling for these
+    // is done in _dialogs.scss
+    //
+    @each $direction in $arrowDirections {
+        &.#{$direction} {
+            @include dialogArrow("small", $direction, $radius: $tooltipBdRadius);
+        }
+    }
+} // END .tooltip
+
+
+//
+// Variations
+//
+// (to go along with form control feedback states)
+//
+@mixin tooltipState($bgColor) {
+    background-color: $bgColor;
+    border-color: $bgColor;
+
+    @each $direction in $arrowDirections {
+        &.#{$direction} .arrow {
+            border-#{$direction}-color: $bgColor;
+            &:after {
+                border-#{$direction}-color: $bgColor;
+            }
+        }
+    }
+}
+
+.tooltip-warning { @include tooltipState($state_warningColor); }
+.tooltip-error   { @include tooltipState($state_errorColor); }
+.tooltip-success { @include tooltipState($state_successColor); }

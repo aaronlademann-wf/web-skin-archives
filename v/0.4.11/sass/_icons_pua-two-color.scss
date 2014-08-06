@@ -1,0 +1,222 @@
+//----------------------------------------------------
+
+//+     PARTIAL:  _icons_pua-two-color.scss
+//+     PARENT:   _icons.scss
+
+    // PUA GLYPH DECLARATIONS
+    // For non-doctype two-color icons
+
+    // related partials:
+    //+ "_icons_pua-components.scss"
+    //+ "_icons_pua-main.scss"
+
+//----------------------------------------------------
+
+//
+// reference elems for use with @extend
+// the content value should be taken from
+//
+// icon-after-{glyph-name} in _icons_pua-main.scss
+//
+    @mixin icon-image-glyph2 {
+        content: "\e604";
+    }
+    @mixin icon-file-csr-glyph2 {
+        content: "\e607";
+    }
+    @mixin icon-file-certification-glyph2 {
+        content: "\e606";
+    }
+    @mixin icon-file-risk-glyph2 {
+        content: "\e603";
+    }
+    @mixin icon-file-sec-glyph2 {
+        content: "\e600";
+    }
+    @mixin icon-file-copy-glyph2 {
+        content: "\e601";
+    }
+    @mixin icon-book-binder-alt-copy-glyph2 {
+        content: "\e602";
+    }
+    @mixin icon-file-msexcel-glyph2 {
+        content: "\e000";
+    }
+    @mixin icon-file-mspowerpoint-glyph2 {
+        content: "\e001";
+    }
+    @mixin icon-file-msword-glyph2 {
+        content: "\e002";
+    }
+    @mixin icon-file-pdf-glyph2 {
+        content: "\e003";
+    }
+    @mixin icon-comment-upload-support-glyph2 {
+        content: "\e605";
+    }
+    @mixin icon-comment-filter-glyph2 {
+        content: "\e004";
+    }
+    @mixin icon-comment-alt-glyph2 {
+        content: "\e005";
+    }
+    @mixin icon-comment-add-glyph2 {
+        content: "\e006";
+    }
+    @mixin icon-spellcheck-glyph2 {
+        content: "\e007";
+    }
+    @mixin icon-link-source-glyph2 {
+        content: "\e008";
+    }
+    @mixin icon-link-remove-glyph2 {
+        content: "\e009";
+    }
+    @mixin icon-link-format-glyph2 {
+        content: "\e00a";
+    }
+    @mixin icon-link-create-glyph2 {
+        content: "\e00b";
+    }
+    @mixin icon-file-link-glyph2 {
+        content: "\e00c";
+    }
+    @mixin icon-view-print-area-glyph2 {
+        content: "\e00d";
+    }
+    @mixin icon-file-trash-glyph2 {
+        content: "\e00e";
+    }
+    @mixin icon-view-trash-glyph2 {
+        content: "\e00f";
+    }
+    @mixin icon-file-control-glyph2 {
+        content: "\e010";
+    }
+    @mixin icon-file-properties-glyph2 {
+        content: "\e011";
+    }
+    @mixin icon-file-validate-glyph2 {
+        content: "\e012";
+    }
+    @mixin icon-file-new-glyph2 {
+        content: "\e013";
+    }
+    @mixin icon-file-export-glyph2 {
+        content: "\e014";
+    }
+    @mixin icon-file-import-glyph2 {
+        content: "\e015";
+    }
+    @mixin icon-page-break-glyph2 {
+        content: "\e016";
+    }
+    @mixin icon-table-insert-column-glyph2 {
+        content: "\e017";
+    }
+    @mixin icon-table-insert-row-glyph2 {
+        content: "\e018";
+    }
+    @mixin icon-update-available-glyph2 {
+        content: "\27f2";
+    }
+    @mixin icon-downloaded-glyph2 {
+        content: "\e019";
+    }
+    @mixin icon-highlighter-glyph2 {
+        content: "\e01a";
+    }
+    @mixin icon-comment-private-note-glyph2 {
+        content: "\e01b";
+    }
+    @mixin icon-file-preview-glyph2 {
+        content: "\e01c";
+    }
+    @mixin icon-book-binder-glyph2 {
+        content: "\e01d";
+    }
+    @mixin icon-book-binder-alt-glyph2 {
+        content: "\e01e";
+    }
+    @mixin icon-book-binder-properties-glyph2 {
+        content: "\e01f";
+    }
+    @mixin icon-book-binder-properties-alt-glyph2 {
+        content: "\e020";
+    }
+    @mixin icon-twfr-off-device-droid-glyph2 {
+        content: "\e617";
+    }
+    @mixin icon-twfr-file-certification-glyph2 {
+        content: "\e60c";
+    }
+    @mixin icon-twfr-feedback-glyph2 {
+        content: "\e609";
+    }
+    @mixin icon-twfr-folder-add-glyph2 {
+        content: "\e608";
+    }
+    @mixin icon-twfr-move-glyph2 {
+        content: "\e60a";
+    }
+    @mixin icon-twfr-rename-glyph2 {
+        content: "\e60b";
+    }
+    @mixin icon-twfr-image-glyph2 {
+        content: "\e60d";
+    }
+    @mixin icon-twfr-file-msexcel-glyph2 {
+        content: "\e60e";
+    }
+    @mixin icon-twfr-file-mspowerpoint-glyph2 {
+        content: "\e60f";
+    }
+    @mixin icon-twfr-file-msword-glyph2 {
+        content: "\e610";
+    }
+    @mixin icon-twfr-file-pdf-glyph2 {
+        content: "\e611";
+    }
+    @mixin icon-twfr-file-datacollections-draft-glyph2 {
+        content: "\e612";
+    }
+    @mixin icon-twfr-file-draft-glyph2 {
+        content: "\e614";
+    }
+    @mixin icon-twfr-file-presentation-draft-glyph2 {
+        content: "\e615";
+    }
+    @mixin icon-twfr-file-workbook-draft-glyph2 {
+        content: "\e616";
+    }
+    /*
+        All file-*-frozen icons use this glyph
+    */
+    @mixin icon-twfr-file-frozen-glyph2 {
+        content: "\e613";
+    }
+
+    // DON't PASTE OVER THESE
+    @mixin icon-comment-private-note-glyphBackground {
+        content: "\e01b";
+    }
+    @mixin icon-comment-private-note-glyphForeground {
+        // IMPORTANT:
+        // this must remain equivalent to
+        // .icon-comment-private-note
+        font-family: $mainIconsFont;
+        content: "\e684";
+    }
+    @mixin icon-comment-glyph2 {
+        // IMPORTANT:
+        // this must remain equivalent to
+        // .icon-comment-lines
+        font-family: $mainIconsFont;
+        content: "\e68b";
+    }
+
+
+//
+// SECOND COLOR FOR NON-DOCTYPE ICONS
+//
+@import "_icons_colors.scss";

@@ -1,0 +1,60 @@
+.dp-form {
+    .clearfix {
+        float: left;
+        width: 100%;
+        height: $docsSpacingMd * 2;
+    }
+    [class^="col-"] {
+        padding-top: $docsSpacingMd;
+        padding-bottom: $docsSpacingMd;
+        [class^="col-"] {
+            padding-top: 0;
+            padding-bottom: 0;
+
+            .checkbox:first-child {
+                margin-top: 0 !important;
+            }
+        }
+    }
+    .checkbox {
+        display: block !important;
+    }
+}
+// .datepicker .green { color: #0F0; }
+
+//
+// PRETTIFY
+//
+
+.prettyprint {
+
+    overflow: hidden;
+
+    .com { color: #93a1a1; }
+    .lit { color: #195f91; }
+    .pun, .opn, .clo { color: #93a1a1; }
+    .fun { color: #dc322f; }
+    .str, .atv { color: #D14; }
+    .kwd, .linenums .tag { color: #1e347b; }
+    .typ, .atn, .dec, .var { color: teal; }
+    .pln { color: #48484c; }
+
+    ol.linenums {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &.linenums {
+        ol.linenums {
+            list-style: decimal;
+            margin: 0 0 0 -10px;
+
+            li {
+                padding-left: 8px; // should match padding-right of .highlight pre .lineno
+                color: #bebec5;
+                line-height: 22px;
+            }
+        }
+    }
+}

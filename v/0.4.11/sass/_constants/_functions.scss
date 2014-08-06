@@ -1,0 +1,382 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_functions.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+    // related partials:
+    //+ "_prefixing.scss"
+    //+ "_mixins.scss"
+
+//----------------------------------------------------
+
+
+//
+// FONT HELPERS
+//
+
+    // since gibson doesn't vertically align correctly when
+    // top and bottom padding is equal... we offset it
+    @function gibsonPadOffset($padding) {
+        $right: 0;
+        $left:  0;
+        $top:   0;
+        $bot:   0;
+
+        @if length($padding) > 1 {
+            $right: nth($padding, 2);
+            $left:  $right;
+            $top:   stripUnit(nth($padding, 1)) + $webfontBaselineOffset;
+            $bot:   stripUnit(nth($padding, 1)) - $webfontBaselineOffset;
+
+            @if length($padding) > 2 {
+                $bot: stripUnit(nth($padding, 3)) - $webfontBaselineOffset;
+
+                @if length($padding) > 3 {
+                    $left: nth($padding, 4);
+                }
+            }
+        } @else {
+            $right: $padding;
+            $left:  $right;
+            $top:   $padding + $webfontBaselineOffset;
+            $bot:   $padding - $webfontBaselineOffset;
+        }
+
+        // enforce non-negative result since negative padding
+        // is invalid CSS and would therefore be ignored
+        $top:   if($top < 0, 0, $top);
+        $right: if($right < 0, 0, $right);
+        $bot:   if($bot < 0, 0, $bot);
+        $left:  if($left < 0, 0, $left);
+
+        @return $top $right $bot $left;
+    }
+
+
+//
+// COLOR CALCULATIONS
+//
+    //
+    // "state" color calculation helpers
+    //
+        $targetBgLightness:         98%; // how light do we want these bgs per-state?
+        $targetBdLightness:         78%;
+
+        @function lightenBgAmount($stateColor, $targetLightness: $targetBgLightness, $offset: 0%) {
+            @return lighten($stateColor, ($targetLightness - lightness($stateColor) - $offset));
+        }
+
+        @function darkenBdAmount($bgColor, $targetLightness: $targetBdLightness, $offset: 0%) {
+            @return lightness($bgColor) - ($targetLightness - $offset);
+        }
+
+        $alertColorDesatAmt:        20%;
+        $alertColorDarkenAmt:       10%;
+        @function alertText($bdColor, $darkenMod: 0%, $desatMod: 0%) {
+            @return desaturate(darken($bdColor, $alertColorDarkenAmt + $darkenMod), $alertColorDesatAmt + $desatMod);
+        }
+
+        $alertHeadingBdMixAmt:      40%;
+        @function alertHeadingBd($bdColor, $bgColor) {
+            @return mix($bdColor, $bgColor, $alertHeadingBdMixAmt);
+        }
+
+        //
+
+    @function darkness($color) {
+        // simply the inverse of compass' built-in lightness() function
+        @return 100 - lightness($color);
+    }
+
+    @function mute($bg: #fff, $color: $textColor, $amount: $mutedPct) {
+        @return mix($bg, $color, $amount);
+    }
+
+    @function darkenOrLighten(
+        $color,
+        $type: "",
+        $dark: $contrasted-dark-default,
+        $light: $contrasted-light-default,
+        $threshold: $contrasted-lightness-threshold) {
+
+        // if its an icon... we want to chisel dark unless the UI is REALLY dark.
+        @if $type == "icon" {
+            $icoThreshold: 10%;
+            @return if(lightness($color) > $icoThreshold, "lighten", "darken");
+        } @else {
+            @return if(lightness($color) > $threshold, "lighten", "darken");
+        }
+
+    }
+
+    @function disabledColor($color, $alpha: $disabledAlphaDefault) {
+        @if $color == white {
+            @return mix($contrasted-dark-default, $color, percentage($disabledAlphaDefault));
+        } @else {
+            @return mix($contrasted-light-default, $color, percentage(1 - $disabledAlphaDefault));
+        }
+    }
+
+    // return a text-shadow value based on the color of the text
+    @function contrastTextShadow(
+        $color,
+        $dark: transparentize($contrasted-dark-default,1 - $textShadow_alpha),
+        $light: transparentize($contrasted-light-default,1 - $textShadow_alpha),
+        $threshold: $contrasted-lightness-threshold) {
+
+        @return if(lightness($color) > $threshold, $dark, $light);
+
+    }
+
+    // CHISEL (BORDERS, ICONS, ETC)
+    @function chisel($bgColor, $shift: "dark", $depth: "normal", $type: "") {
+
+        @if $type == "" { // NORMAL CHISEL TYPE
+            // these are used for borders mostly, where we want a fixed light/dark shade
+            // no matter how light / dark the base color of the UI is
+
+            @if $depth == "normal" { // REGULAR DEPTH
+
+                @if $shift == "dark" {
+                    $darken: darken($bgColor, $chisel_bd_pctDk);
+                    @return $darken;
+                } @else {
+                    $lighten: lighten($bgColor, $chisel_bd_pctLt);
+                    @return $lighten;
+                }
+
+            } @else { // DEEPER DEPTH
+
+                @if $shift == "dark" {
+                    $darken: darken($bgColor, $chisel_bd_pctDk + $chisel_depthMod);
+                    @return $darken;
+                } @else {
+                    $lighten: lighten($bgColor, $chisel_bd_pctLt + $chisel_depthMod);
+                    @return $lighten;
+                }
+
+            } // END DEEPER DEPTH
+
+        } // END NORMAL CHISEL TYPE
+
+        @else { // ICON CHISEL TYPE
+            // these chisels should be dark or light
+            // based on the contrast / darkness of the UI itself.
+
+            // based on the bg color... tell us whether we should be lightening or darkening the icon for optimal contrast
+            $dkOrLt: darkenOrLighten($bgColor, $type);
+            //@debug("#{$bgColor} -> $dkOrLt: #{$dkOrLt}");
+
+            // icon chiseling should be heavier no matter what
+
+            @if $dkOrLt == "darken" {
+
+                @if $depth == "normal" {
+                    $lighten: lighten($bgColor, $chisel_ico_pctLt);
+                    @return $lighten;
+                } @else {
+                    $lighten: lighten($bgColor, $chisel_ico_pctLt);
+                    @return $lighten;
+                } // END DEEPER DEPTH
+
+            // END lighten
+            } @else {
+
+                @if $depth == "normal" {
+                    $darken: darken($bgColor, $chisel_ico_pctDk);
+                    @return $darken;
+                } @else {
+                    $darken: darken($bgColor, $chisel_ico_pctDk);
+                    @return $darken;
+                } // END DEEPER DEPTH
+
+            } // END darken
+
+
+        } // END ICON CHISEL TYPE
+
+    } // END chisel
+
+    @function shadeShift($shade, $amt) {
+        @if $amt > 0 {
+            @return lighten($shade, abs($amt));
+        } @else if $amt < 0 {
+            @return darken($shade, abs($amt));
+        } @else {
+            @return $shade;
+        }
+    } // END @funtion shadeShift
+
+    //
+    // simply lighten rgb value when rgba is used
+    // in a place where filter cannot be used
+    // by mixing the top color with the bottom color
+    //
+    @function rgbaIE($color, $alpha, $bgcolor: $bodyBgColor){
+        $alpha_base: $alpha * 100;
+        @if not ($alpha_base <= 100) {
+            // user sent opacity like 100 or 80 instead of 1 or .8
+            $alpha: ($alpha / 100);
+        }
+        $ie_color: rgb(red($color), green($color), blue($color));
+        $ie_bgColor: rgb(red($bgcolor), green($bgcolor), blue($bgcolor));
+        $weight: ($alpha * 100) + 0%; // convert, for instance .7 into 70%
+        @if $ie6-support or $ie7-support {
+            @return mix($ie_color, $ie_bgColor, $weight);
+        } @else {
+            @return rgba($color, $alpha);
+        }
+    }
+
+
+//
+// UNIT CONVERSIONS
+//
+    // convert pixels to REM (ROOT ems (not relative to parent))
+    @function pxtorem($px, $base: $remBase) {
+        @return ($px / $base) + rem;
+    }
+    @function pxtoem($target, $parentFontSize: $fontSizeBase) {
+        @return ($target/$parentFontSize)+0em;
+    }
+    @function emtopx($target, $parentFontSize: $fontSizeBase) {
+        @return (stripUnit($target)*$parentFontSize)+0px;
+    }
+    @function dectopct($decimal) {
+        @return $decimal * 100%;
+    }
+
+
+//
+// SIZE CALCULATIONS
+//
+    @function innerRadius($outerRadius, $bdWidth) {
+        $calc: $outerRadius - ($bdWidth + 1);
+        // we want it to still be rounded no matter what
+        @return if($calc == 0, $bdWidth - 1, $calc);
+    }
+
+    @function spinnerBdWidth($spinnerDiameter: $baseSpinnerSize) {
+        @return ceil($spinnerDiameter * $baseSpinnerBdWidthRatio);
+    }
+
+
+//
+// DISPLAY HELPERS
+//
+    @function elements-of-type($display) {
+
+        // elements we want to give a custom ::selection value to
+        $selectable: comma-list(address blockquote pre code input textarea p span small strong em abbr acronym td th);
+
+        $block:      comma-list(address article aside blockquote center dir div dd details dl dt fieldset
+                                figcaption figure form footer frameset h1 h2 h3 h4 h5 h6 hr header hgroup
+                                isindex menu nav noframes noscript ol p pre section summary ul);
+        $inline:     comma-list(a abbr acronym audio b basefont bdo big br canvas cite code command
+                                datalist dfn em embed font i img input keygen kbd label mark meter output
+                                progress q rp rt ruby s samp select small span strike strong sub
+                                sup textarea time tt u var video wbr);
+        $inline-block: img;
+        $list-item: li;
+        $table: table;
+        $table-row-group: tbody;
+        $table-header-group: thead;
+        $table-footer-group: tfoot;
+        $table-row: tr;
+        $table-cell:   comma-list(th td);
+        $html5-block:  comma-list(article aside details figcaption figure footer header hgroup menu nav section summary);
+        $html5-inline: comma-list(audio canvas command datalist embed keygen mark meter output progress rp rt ruby time video wbr);
+
+        $displayTypes: selectable, block, inline, inline-block, list-item, table, table-row-group, table-header-group, table-footer-group, table-row, table-cell, html5-block, html5-inline;
+        $displayTypeSelectors: $selectable, $block, $inline, $inline-block, $list-item, $table, $table-row-group, $table-header-group, $table-footer-group, $table-row, $table-cell, $html5-block, $html5-inline;
+
+        @return nth($displayTypeSelectors, index($displayTypes, $display));
+
+    } // END elements-of-type
+
+
+//
+// GRADIENT CALCULATIONS
+//
+    @function gradientDirection($direction) {
+        @if $direction == vertical {
+            @return top;
+        } @else {
+            @if $direction == horizontal {
+                @return left;
+            } @else {
+                // most likely an angle deg
+                @return $direction;
+            }
+        }
+    }
+    // used for old-school webkit gradient positioning
+    @function gradientPosition($direction) {
+        @if $direction == vertical {
+            @return 0 100%;
+        } @else {
+            @if $direction == horizontal {
+                @return 100% 0;
+            } @else {
+                // most likely an angle deg
+                @return $direction;
+            }
+        }
+    }
+
+
+//
+// CHEKBOX SWITCH WIDTH CALC
+//
+    @function checkboxSwitchVal($returnWhat: "width", $defaultText: "off", $checkedText: "on", $sizeVariation: false) {
+
+        $fontSize: $cboxSwitchFontSize;
+        $bold: true;
+        $textIndent: $cboxSwitchTextIndent;
+        $height: $cboxSwitchHeight;
+
+        @if $sizeVariation != false {
+            @if $sizeVariation == "sm" {
+                $fontSize: $cboxSwitchFontSizeSm;
+                $bold: false;
+                $textIndent: $cboxSwitchTextIndentSm;
+                $height: $cboxSwitchHeightSm;
+            } @elseif $sizeVariation == "xs" {
+                $fontSize: $cboxSwitchFontSizeXs;
+                $bold: false;
+                $textIndent: $cboxSwitchTextIndentXs;
+                $height: $cboxSwitchHeightXs;
+            } @else {
+                @warn "#{$sizeVariation} is not a valid size variation for checkboxSwitchVal()";
+            }
+        }
+
+        $edgePad: $textIndent * 2;
+        $maxChars: max(str-length($defaultText), str-length($checkedText));
+        $charRatio: if($bold == true, .95, 1);
+        @if $fontSize == $cboxSwitchFontSizeSm {
+            $charRatio: .9;
+        }
+        @if $fontSize == $cboxSwitchFontSizeXs {
+            $charRatio: 1.03;
+        }
+
+        $avgCharWidth: round($fontSize / $charRatio);
+
+        $elemWidth: round(($maxChars * $avgCharWidth) + $edgePad);
+
+
+        // RETURN WHAT WAS REQUESTED
+        $returnVal: 0;
+        @if $returnWhat == "width" {
+            $returnVal: $elemWidth;
+        }
+        @if $returnWhat == "height" {
+            $returnVal: $height;
+        }
+        @if $returnWhat == "textIndent" {
+            $returnVal: $textIndent;
+        }
+
+        @return $returnVal;
+    }

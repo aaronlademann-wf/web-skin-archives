@@ -1,0 +1,18 @@
+<ul class="nav pager">
+    {%- if prev %}
+    <li class="pull-left" style="float: left !important;">
+        <a class="hitarea" href="{{ prev.link|e }}" title="{{ _('previous chapter') }}">
+           <i class="icon icon-chevron-left"></i>
+           {{ prev.title }}
+        </a>
+    </li>
+    {%- endif %}
+    {%- if next %}
+    <li class="pull-right">
+        <a class="hitarea" href="{{ next.link|e }}" title="{{ _('next chapter') }}">
+            {{ next.title }}
+            <i class="icon icon-chevron-right" style="margin: 0 0 0 7px;"></i>
+        </a>
+    </li>
+    {%- endif %}
+</ul>

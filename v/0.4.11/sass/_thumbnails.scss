@@ -1,0 +1,39 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _thumbnails.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_media.scss"
+
+//----------------------------------------------------
+
+
+// The actual thumbnailed element
+// Can be `a`, `div`, or `img`
+.thumbnail {
+    @extend .img-thumbnail;
+    margin-bottom: $lineHeightBasePx;
+
+    > img {
+        @include imgResponsive;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .caption {
+        padding: $thumbnailCaptionPadding;
+        color: $thumbnailCaptionColor;
+    }
+}
+
+// Add a hover state for linked versions only
+a.thumbnail,
+.hitarea.thumbnail {
+    &.active,
+    #{$linkHoverFocus} {
+        border-color: $inputBdColorFocus;
+        // prevent underline from appearing on caption text
+        text-decoration: none;
+    }
+}

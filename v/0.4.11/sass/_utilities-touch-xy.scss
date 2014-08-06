@@ -1,0 +1,72 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _utilities-touch-xy.scss
+//+  PARENT:   _utilities.scss
+
+//----------------------------------------------------
+
+// TODO: Remove in 0.5.0
+
+//
+// POPOVER ORIGIN / NOTE ICONS
+//
+    .annotation-origin,
+    .new-annotation-origin {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        @include experimental('touch-callout', none);
+        @include disableUserSelect;
+    }
+
+    .annotation-origin > .hitarea {
+        position: absolute;
+        left: -25%;
+        top: -25%;
+        bottom: -25%;
+        right: -25%;
+    }
+
+    .note-origin {
+        .note-icon {
+            &:before, &:after {
+                line-height: 28px;
+            }
+        }
+
+        &.dragging .note-icon {
+            position: absolute;
+            height: 72px;
+            width: 72px;
+            left: -24px;
+            top: -24px;
+            font-size: 64px;
+            &:before, &:after {
+                line-height: 76px;
+            }
+        }
+    }
+
+    .highlight-origin {
+        .highlight-icon {
+            background-color: #f9d805;
+            opacity: .8;
+            border-radius: 10px;
+            width: 20px;
+            height: 20px;
+            left: 2px;
+            top: 2px;
+            position: absolute;
+        }
+
+        &.dragging {
+            .highlight-icon {
+                height: 64px;
+                width: 64px;
+                left: -20px;
+                top: -20px;
+
+                border-radius: 32px;
+            }
+        }
+    }

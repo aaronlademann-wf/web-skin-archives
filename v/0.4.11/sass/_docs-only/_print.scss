@@ -1,0 +1,13 @@
+@media print {
+    .wdesk-docs-navbar,
+    .wdesk-docs-sidebar,
+    .wdesk-archived-docs {
+        display: none !important;
+    }
+    body {
+        padding-top: 0 !important; // no navbar, so this is unnecessary.
+    }
+    .wdesk-docs-header {
+        padding-bottom: 0;
+    }
+}

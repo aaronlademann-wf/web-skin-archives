@@ -1,0 +1,121 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _tooltip-navs.scss
+//+  PARENT:   wdesk.scss
+
+    // parent partials:
+    //+ "_dialogs.scss"
+    //+ "_tooltip.scss"
+
+    // related partials:
+    //+ "_popovers.scss"
+    //+ "_popovers-notes-comments.scss"
+
+//----------------------------------------------------
+
+.nav-tooltip {
+
+    .inner {
+        min-width: 0;
+        max-width: none;
+        padding: $dialogContentPadding;
+    }
+
+    .nav-pills {
+        max-height: $btnHeightLarge;
+
+        > li {
+            > .hitarea {
+
+                // need to achieve an overall height of 44px
+                padding: $paddingLargeGibson;
+                color: $navLinkColor;
+                background-color: transparent;
+                font-size: $fontSizeLarge;
+                font-weight: bold;
+
+                .caret { border-top-color: $navLinkColor; }
+                .badge {
+                    color: $tooltipBgGray;
+                    background-color: $navLinkColor;
+                    font-weight: normal;
+                }
+
+                #{$linkHoverFocus} {
+                    color: $pillTabLinkColorHover;
+                    background-color: $pillTabLinkBgHover;
+                }
+
+                #{$linkPressed} {
+                    color: $pillTabLinkColorPress;
+                    background-color: $pillTabLinkBgPress;
+                }
+
+                &[disabled],
+                &.disabled {
+                    background-color: transparent !important;
+                }
+
+                &.delete,
+                &.delete-hover {
+                    // both .delete and .delete-hover are red on hover / press
+                    #{$linkHoverFocus} {
+                        color: $pillTabLinkColorPress !important;
+                        background-color: $state_error !important;
+                    }
+                    #{$linkPressed} {
+                        color: $pillTabLinkColorPress !important;
+                        // one shde darker than $state_error
+                        background-color: zestyCrayonColor(red, main) !important;
+                    }
+                    &[disabled],
+                    &.disabled {
+                        #{$linkHoverFocus},
+                        #{$linkPressed} {
+                            color: $pillTabLinkColorDisabled !important;
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+
+                &.delete {
+                    // .delete is red all the time
+                    background-color: $state_error !important;
+                    color: $pillTabLinkColorPress !important;
+                }
+
+                &.blue {
+                    // .delete is red all the time
+                    background-color: $state_alt !important;
+                    color: $pillTabLinkColorPress !important;
+                }
+            }
+            + li > .hitarea {
+                margin-left: 0;
+            }
+        }
+
+        &.nav-justified {
+            > li > .hitarea {
+                border-radius: $borderRadiusBase;
+            }
+        }
+    }
+
+    //
+    // LARGE ARROWS
+    //
+    // most of the styling for these
+    // is done in _dialogs.scss
+    //
+    .arrow        { border-width: $popoverArrowOuterWidth; }
+    .arrow:after  { border-width: $popoverArrowWidth; }
+    .arrow:before { width: $popoverArrowWidth; height: $popoverArrowWidth; }
+
+    @each $direction in $arrowDirections {
+        &.#{$direction} {
+            @include dialogArrow("large", $direction, $radius: $tooltipBdRadius);
+        }
+    }
+
+} // END .nav-tooltip

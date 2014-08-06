@@ -1,0 +1,252 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _dialogs.scss
+//+  PARENT:   wdesk.scss
+
+    // core styles for wdesk "dialog" boxes
+    // related partials listed below all inherit
+    // certain patterns.
+
+    // related partials:
+    //+ "_popovers.scss"
+    //+ "_tooltip.scss"
+    //+ "_modals.scss"
+
+//----------------------------------------------------
+
+//
+// DIALOG BACKDROPS
+//
+.backdrop {
+    @extend %default-backdrop;
+    // only modal backdrops actually have color.
+    background-color: transparent;
+}
+.tooltip-backdrop {
+    z-index: $zindexTooltip - 1;
+}
+.popover-backdrop {
+    // never want a popover backdrop to overlap the navbar it was spawned from.
+    z-index: $zindexFixedNavbar - 1;
+}
+
+
+//
+// DIALOGS WITH ARROWS
+//
+.popover,
+.tooltip {
+    @include opacity(0); // js will reveal
+    @include box-shadow(#{$dialogShadow});
+    @include background-clip(padding-box);
+    display: block;
+    padding: $dialogPadding;
+    position: absolute;
+    background-color: $dialogBg;
+    border: $dialogBdWidth solid $dialogBdColor;
+    border-radius: $dialogBdRadius;
+
+    // even if animation is turned off in the plugin...
+    // the addition of the .in CSS class should produce a visible dialog.
+    &.in {
+        @include opacity(1);
+    }
+
+    //
+    // where content is dynamically inserted
+    //
+    .inner {
+        position: relative;
+        z-index: 2; // reset for content layering (keep above arrow)
+        width: 100%; // min/max widths set individually by tooltip/popover partials
+        padding: $dialogContentPadding;
+        text-align: left;
+        // Overrides for proper insertion
+        white-space: normal;
+        color: $dialogColor;
+        background-color: $dialogBg; // overlap arrow shadow
+        // @if $dialogBdRadius > 0 {
+        //     border-radius: $dialogBdRadius - $dialogBdWidth;
+        // }
+    }
+
+    &.modal-container {
+        // match transition of the modal backdrop
+        @include transition(opacity $fadeDefaultTiming linear 0s);
+        @include translateZ(0); // force GPU acceleration
+    }
+    // when confirmation dialog (e.g. to delete a note) is open...
+    &.overlaid {
+        @each $direction in $arrowDirections {
+            &.#{$direction} .arrow:after {
+
+                $computedArrowColor: mix($dialogBg, $dialogBackdropBg, dectopct($modalContainedBackdropAlpha));
+                border-#{$direction}-color: $computedArrowColor;
+            }
+        }
+    }
+} // END .popover, .tooltip
+
+
+//
+// ARROWS
+//
+// .arrow        => outer (border color)
+// .arrow:after  => inner (bg color)
+// .arrow:before => shadow
+//
+    .arrow,
+    .arrow:after,
+    .arrow:before {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: transparent;
+
+        .overlaid & {
+            // Transition the arrow's color as the modal shows
+            @include transition(border-color $fadeDefaultTiming linear);
+        }
+
+        // IE7/8 can't handle the heat
+        @include ie8 {
+            display: none;
+        }
+        @include ltie8 {
+            // IE 6-7
+            *display: none;
+        }
+    }
+    .csstransforms {
+        // for browsers that support rotation...
+        .arrow:before {
+            @include box-shadow(#{$dialogShadow});
+            @include rotate(45deg);
+            content: "";
+        }
+    }
+    .arrow:after { content: ""; }
+
+    //
+    // Global Arrow Sizes
+    //
+    // Need to declare global widths for popover / tooltip arrows here
+    // so that the individual position border-width declarations below
+    // overrule them
+    //
+    .tooltip .arrow        { border-width: $tooltipArrowOuterWidth; }
+    .tooltip .arrow:after  { border-width: $tooltipArrowWidth; }
+    .tooltip .arrow:before { width: $tooltipArrowWidth; height: $tooltipArrowWidth; }
+    .popover .arrow        { border-width: $popoverArrowOuterWidth; }
+    .popover .arrow:after  { border-width: $popoverArrowWidth; }
+    .popover .arrow:before { width: $popoverArrowWidth; height: $popoverArrowWidth; }
+
+    //
+    // Global Arrow Positioning
+    //
+    // some positions are declared in the tooltip/popover partials
+    // because they are based on the individual arrow size/width
+    //
+    .top .arrow {
+        left: 50%;
+        @include caret('down', $dialogBdColor, $size: false);
+        &:before {
+            // because :after is shifted by $dialogBdWidth and one side of the arrow has $dialogBdWidth and one more because we want this to sit behind it
+            bottom: $dialogBdWidth * 4;
+        }
+        &:after {
+            bottom: $dialogBdWidth;
+            @include caret('down', $dialogBg, $size: false);
+        }
+    }
+
+    .right .arrow {
+        top: 50%;
+        @include caret('left', $dialogBdColor, $size: false);
+        &:before {
+            // because :after is shifted by $dialogBdWidth and one side of the arrow has $dialogBdWidth and one more because we want this to sit behind it
+            left: $dialogBdWidth * 4;
+        }
+        &:after {
+            left: $dialogBdWidth;
+            @include caret('left', $dialogBg, $size: false);
+        }
+    }
+
+    .bottom .arrow {
+        left: 50%;
+        @include caret('up', $dialogBdColor, $size: false);
+        &:before {
+            // because :after is shifted by $dialogBdWidth and one side of the arrow has $dialogBdWidth and one more because we want this to sit behind it
+            top: $dialogBdWidth * 4;
+        }
+        &:after {
+            top: $dialogBdWidth;
+            @include caret('up', $dialogBg, $size: false);
+        }
+    }
+
+    .left .arrow {
+        top: 50%;
+        @include caret('right', $dialogBdColor, $size: false);
+        &:before {
+            // because :after is shifted by $dialogBdWidth and one side of the arrow has $dialogBdWidth and one more because we want this to sit behind it
+            right: $dialogBdWidth * 4;
+        }
+        &:after {
+            right: $dialogBdWidth;
+            @include caret('right', $dialogBg, $size: false);
+        }
+    }
+
+
+.dialog-gray {
+    border-color: $dialogBdColor !important;
+    // darken the shadow a little bit
+    // to ensure it is visible above crazy amounts of text
+    $shadow: $shadowDefaultX $shadowDefaultY $shadowDefaultBlur $shadowDefaultSpread rgba($shadowDefaultColor, ($shadowDefaultAlpha * 2));
+    @include box-shadow($shadow !important);
+    .csstransforms & {
+        // for browsers that support rotation...
+        .arrow:before {
+            @include box-shadow(#{$shadow});
+        }
+    }
+
+    &,
+    .inner,
+    .title {
+        background-color: $tooltipBgGray !important;
+    }
+
+    // ADJUST ARROW COLORS
+    @each $direction in $arrowDirections {
+        &.#{$direction} .arrow {
+            border-#{$direction}-color: $tooltipBgGray !important;
+            &:after {
+                border-#{$direction}-color: $tooltipBgGray !important;
+            }
+        }
+    }
+
+    &.popover-thread-closed {
+        @each $direction in $arrowDirections {
+            &.#{$direction} .arrow:after {
+                $computedArrowColor: mix($popoverCommentThreadOverlayBg, $tooltipBgGray, dectopct($popoverCommentThreadClosedOverlayAlpha));
+                border-#{$direction}-color: $computedArrowColor !important;
+            }
+        }
+    }
+    // when confirmation dialog (e.g. to delete a note) is open...
+    &.overlaid {
+        @each $direction in $arrowDirections {
+            &.#{$direction} .arrow:after {
+                $computedArrowColor: mix($dialogBackdropBg, $tooltipBgGray, dectopct($modalContainedBackdropAlpha));
+                border-#{$direction}-color: $computedArrowColor !important;
+            }
+        }
+    }
+}

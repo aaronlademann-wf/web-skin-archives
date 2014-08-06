@@ -1,0 +1,570 @@
+//----------------------------------------------------
+
+//+     PARTIAL:  _icons_pua.scss
+//+     PARENT:   _icons.scss
+
+    // PUA GLYPH DECLARATIONS
+    // For all icons except SEC DOCTYPES
+
+    // related partials:
+    //+ "_icons_pua-components.scss"
+    //+ "_icons_pua-two-color.scss"
+    //+ "_icons_pua-doctypes.scss"
+
+//----------------------------------------------------
+
+.icon-template-master {
+    @include iconPua("\e6b0");
+}
+.icon-template-child {
+    @include iconPua("\e6b1");
+}
+.icon-clipboard {
+    @include iconPua("\e6b2");
+}
+.icon-checkmark {
+    // NOTE: IF YOU CHANGE THIS VALUE - MAKE SURE YOU ALSO CHANGE THE VALUE IN _forms-cbox-radio.scss
+    // AND IN _dropdowns.scss
+    @include iconPua("\e600");
+}
+.icon-checkmark-sign {
+    @include iconPua("\e601");
+}
+.icon-checkmark-sign-outline {
+    @include iconPua("\e6a4");
+}
+.icon-close {
+    @include iconPua("\e602");
+}
+.icon-close-sign {
+    @include iconPua("\e603");
+}
+.icon-close-sign-outline {
+    @include iconPua("\e6a6");
+}
+.icon-plus {
+    @include iconPua("\e604");
+}
+.icon-plus-sign {
+    @include iconPua("\e605");
+}
+.icon-plus-sign-outline {
+    @include iconPua("\e6a7");
+}
+.icon-minus {
+    // NOTE: IF YOU CHANGE THIS VALUE - MAKE SURE YOU ALSO CHANGE THE VALUE IN _forms-cbox-radio.scss
+    @include iconPua("\e606");
+}
+.icon-minus-sign {
+    @include iconPua("\e607");
+}
+.icon-minus-sign-outline {
+    @include iconPua("\e6a8");
+}
+.icon-blocked {
+    @include iconPua("\e608");
+}
+.icon-empty-sign-outline {
+    @include iconPua("\e6a9");
+}
+.icon-notification-alt {
+    @include iconPua("\e65b");
+}
+.icon-warning-sign {
+    @include iconPua("\e609");
+}
+.icon-notification {
+    @include iconPua("\e60b");
+}
+.icon-info-sign {
+    @include iconPua("\e60a");
+}
+.icon-help {
+    @include iconPua("\e60c");
+}
+.icon-support {
+    @include iconPua("\e60d");
+}
+.icon-arrow-up {
+    @include iconPua("\e60e");
+}
+.icon-arrow-right {
+    @include iconPua("\e60f");
+}
+.icon-arrow-down {
+    @include iconPua("\e610");
+}
+.icon-arrow-left {
+    @include iconPua("\e611");
+}
+.icon-arrow-up-circle {
+    @include iconPua("\e612");
+}
+.icon-arrow-down-circle {
+    @include iconPua("\e613");
+}
+.icon-comments-arrow-up {
+    @include iconPua("\e69c");
+}
+.icon-comments-arrow-down {
+    @include iconPua("\e69d");
+}
+.icon-chevron-up {
+    @include iconPua("\e614");
+}
+.icon-chevron-right {
+    @include iconPua("\e615");
+}
+.icon-chevron-down {
+    @include iconPua("\e616");
+}
+.icon-chevron-left {
+    @include iconPua("\e617");
+}
+.icon-chevron-up-sm {
+    @include iconPua("\e618");
+}
+.icon-chevron-right-sm {
+    @include iconPua("\e619");
+}
+.icon-chevron-down-sm {
+    @include iconPua("\e61a");
+}
+.icon-chevron-left-sm {
+    @include iconPua("\e61b");
+}
+.icon-carousel-prev {
+    @include iconPua("\e6aa");
+}
+.icon-carousel-next {
+    @include iconPua("\e6ab");
+}
+.icon-undo {
+    @include iconPua("\e61c");
+}
+.icon-redo {
+    @include iconPua("\e61d");
+}
+.icon-reply {
+    @include iconPua("\e6ac");
+}
+.icon-redo-alt {
+    @include iconPua("\e61e");
+}
+.icon-full-screen {
+    @include iconPua("\e61f");
+}
+.icon-arrow-sm-expand-y {
+    @include iconPua("\e620");
+}
+.icon-contract {
+    @include iconPua("\e621");
+}
+.icon-expand {
+    @include iconPua("\e622");
+}
+.icon-cog {
+    @include iconPua("\e623");
+}
+.icon-menu-list {
+    @include iconPua("\e624");
+}
+.icon-gripper {
+    @include iconPua("\e625");
+}
+.icon-home {
+    @include iconPua("\e626");
+}
+.icon-refresh {
+    @include iconPua("\e627");
+}
+.icon-download-available {
+    @include iconPua("\e628");
+}
+.icon-update-available {
+    @include iconPua("\e629");
+}
+.icon-pending {
+    @include iconPua("\e62a");
+}
+.icon-downloaded {
+    @include iconPua("\e62b");
+}
+.icon-upload {
+    @include iconPua("\e62c");
+}
+.icon-cloud-upload {
+    @include iconPua("\e62d");
+}
+.icon-cloud-download {
+    @include iconPua("\e62e");
+}
+.icon-cloud {
+    @include iconPua("\e62f");
+}
+.icon-align-left {
+    @include iconPua("\e630");
+}
+.icon-align-center {
+    @include iconPua("\e631");
+}
+.icon-align-right {
+    @include iconPua("\e632");
+}
+.icon-align-justify {
+    @include iconPua("\e633");
+}
+.icon-italic {
+    @include iconPua("\e634");
+}
+.icon-bold {
+    @include iconPua("\e635");
+}
+.icon-font {
+    @include iconPua("\e636");
+}
+.icon-formula {
+    @include iconPua("\e637");
+}
+.icon-quote-open {
+    @include iconPua("\e638");
+}
+.icon-quote-close {
+    @include iconPua("\e639");
+}
+.icon-spellcheck {
+    @include iconPua("\e63a");
+}
+.icon-link-source {
+    @include iconPua("\e63b");
+}
+.icon-page-break {
+    @include iconPua("\e63c");
+}
+.icon-link {
+    @include iconPua("\e63d");
+}
+.icon-link-broken {
+    @include iconPua("\e63e");
+}
+.icon-link-remove {
+    @include iconPua("\e63f");
+}
+.icon-link-create {
+    @include iconPua("\e640");
+}
+.icon-link-format {
+    @include iconPua("\e641");
+}
+.icon-delete-backspace {
+    @include iconPua("\e642");
+}
+.icon-print {
+    @include iconPua("\e643");
+}
+.icon-filter {
+    @include iconPua("\e644");
+}
+.icon-trash {
+    @include iconPua("\e645");
+}
+.icon-view-trash {
+    @include iconPua("\e646");
+}
+.icon-symbol {
+    @include iconPua("\e647");
+}
+.icon-envelope {
+    @include iconPua("\e648");
+}
+.icon-drawer {
+    @include iconPua("\e649");
+}
+.icon-drawer2 {
+    @include iconPua("\e64a");
+}
+.icon-pencil {
+    @include iconPua("\e64b");
+}
+.icon-pencil-draw {
+    @include iconPua("\e64c");
+}
+.icon-pencil-reverse {
+    @include iconPua("\e64d");
+}
+.icon-eye {
+    @include iconPua("\e64e");
+}
+.icon-eye-blocked {
+    @include iconPua("\e64f");
+}
+.icon-find {
+    @include iconPua("\e650");
+}
+.icon-search {
+    @include iconPua("\e651");
+}
+.icon-zoom-in {
+    @include iconPua("\e652");
+}
+.icon-zoom-out {
+    @include iconPua("\e653");
+}
+.icon-volume-mute {
+    @include iconPua("\e654");
+}
+.icon-volume-low {
+    @include iconPua("\e655");
+}
+.icon-volume-high {
+    @include iconPua("\e656");
+}
+.icon-tag {
+    @include iconPua("\e657");
+}
+.icon-tags {
+    @include iconPua("\e658");
+}
+.icon-attachment {
+    @include iconPua("\e659");
+}
+.icon-flag {
+    @include iconPua("\e65a");
+}
+.icon-camera {
+    @include iconPua("\e65c");
+}
+.icon-film {
+    @include iconPua("\e65d");
+}
+.icon-chart-bar {
+    @include iconPua("\e65e");
+}
+.icon-play-sign {
+    @include iconPua("\e65f");
+}
+.icon-play {
+    @include iconPua("\e660");
+}
+.icon-pause {
+    @include iconPua("\e661");
+}
+.icon-stop {
+    @include iconPua("\e662");
+}
+.icon-backward {
+    @include iconPua("\e663");
+}
+.icon-forward {
+    @include iconPua("\e664");
+}
+.icon-first {
+    @include iconPua("\e665");
+}
+.icon-last {
+    @include iconPua("\e666");
+}
+.icon-previous {
+    @include iconPua("\e667");
+}
+.icon-next {
+    @include iconPua("\e668");
+}
+.icon-eject {
+    @include iconPua("\e669");
+}
+.icon-heartbeat {
+    @include iconPua("\e66a");
+}
+.icon-connection {
+    @include iconPua("\e66b");
+}
+.icon-switch {
+    @include iconPua("\e66c");
+}
+.icon-pushpin {
+    @include iconPua("\e66d");
+}
+.icon-target {
+    @include iconPua("\e66e");
+}
+.icon-location {
+    @include iconPua("\e66f");
+}
+.icon-droplet {
+    @include iconPua("\e670");
+}
+.icon-calendar {
+    @include iconPua("\e671");
+}
+.icon-calculator-sm {
+    @include iconPua("\e672");
+}
+.icon-calculator-buttons {
+    @include iconPua("\e673");
+}
+.icon-phone {
+    @include iconPua("\e674");
+}
+.icon-notification-megaphone {
+    @include iconPua("\e675");
+}
+.icon-notification-cheerleader {
+    @include iconPua("\e676");
+}
+.icon-users {
+    @include iconPua("\e677");
+}
+.icon-user {
+    @include iconPua("\e678");
+}
+.icon-directory {
+    @include iconPua("\e679");
+}
+.icon-key2 {
+    @include iconPua("\e67a");
+}
+.icon-lock {
+    @include iconPua("\e67b");
+}
+.icon-unlock {
+    @include iconPua("\e67c");
+}
+.icon-enter {
+    @include iconPua("\e67d");
+}
+.icon-exit {
+    @include iconPua("\e67e");
+}
+.icon-construction-cone {
+    @include iconPua("\e67f");
+}
+.icon-construction-barrier {
+    @include iconPua("\e680");
+}
+.icon-library-bookshelf {
+    @include iconPua("\e681");
+}
+.icon-certification {
+    @include iconPua("\e682");
+}
+.icon-bookmark {
+    @include iconPua("\e683");
+}
+.icon-comment-private-note {
+    @include iconPua("\e684");
+}
+.icon-highlighter {
+    @include iconPua("\e685");
+}
+.icon-comment-on {
+    @include iconPua("\e686");
+}
+.icon-comment {
+    @include iconPua("\e687");
+}
+.icon-comment-outlined {
+    @include iconPua("\e688");
+}
+.icon-comment-checkmark {
+    @include iconPua("\e689");
+}
+.icon-comment-reopen {
+    @include iconPua("\e68a");
+}
+.icon-comment-lines {
+    @include iconPua("\e68b");
+}
+.icon-comment-alt {
+    @include iconPua("\e68c");
+}
+.icon-comment-filter {
+    @include iconPua("\e68d");
+}
+.icon-comment-add {
+    @include iconPua("\e68e");
+}
+.icon-comment-upload-support {
+    @include iconPua("\e6a3");
+}
+.icon-comment-ban {
+    @include iconPua("\e6ad");
+}
+.icon-comment-disconnect {
+    @include iconPua("\e68f");
+}
+.icon-comment-cursor {
+    @include iconPua("\e690");
+}
+.icon-table {
+    @include iconPua("\e691");
+}
+.icon-view-print-area {
+    @include iconPua("\e692");
+}
+.icon-table-insert-column {
+    @include iconPua("\e693");
+}
+.icon-table-insert-row {
+    @include iconPua("\e694");
+}
+.icon-zoom-page-height {
+    @include iconPua("\e695");
+}
+.icon-zoom-page-width {
+    @include iconPua("\e696");
+}
+.icon-safari {
+    @include iconPua("\e697");
+}
+.icon-opera {
+    @include iconPua("\e698");
+}
+.icon-IE {
+    @include iconPua("\e699");
+}
+.icon-firefox {
+    @include iconPua("\e69a");
+}
+.icon-chrome {
+    @include iconPua("\e69b");
+}
+.icon-css3 {
+    @include iconPua("\e69e");
+}
+.icon-html5 {
+    @include iconPua("\e69f");
+}
+.icon-twfr-on-device-ios {
+    @include iconPua("\e6a1");
+}
+.icon-twfr-off-device-ios {
+    @include iconPua("\e6b5");
+}
+.icon-twfr-on-device-droid {
+    @include iconPua("\e6b6");
+}
+.icon-twfr-off-device-droid {
+    @include iconPua("\e6b7");
+}
+.icon-twfr-menu-list {
+    @include iconPua("\e6a5");
+}
+.icon-twfr-feedback {
+    @include iconPua("\e6a2");
+}
+.icon-twfr-folder-add {
+    @include iconPua("\e6a0");
+}
+.icon-twfr-move {
+    @include iconPua("\e6ae");
+}
+.icon-twfr-folder-open {
+    @include iconPua("\e6af");
+}
+.icon-twfr-rename {
+    @include iconPua("\e6b3");
+}
+.icon-twfr-trash {
+    @include iconPua("\e6b4");
+}

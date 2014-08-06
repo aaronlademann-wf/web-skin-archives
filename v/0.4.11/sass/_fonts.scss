@@ -1,0 +1,56 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _fonts.scss
+//+  PARENT:   wdesk.scss
+
+    // THIS MUST BE @IMPORTED AT THE ROOT OF THE DOC
+
+    // related partials:
+    //+ "_type.scss"
+    //+ "_icons.scss"
+
+//----------------------------------------------------
+
+@import "_fonts-gibson-license.scss";
+
+
+//
+// TYPE
+//
+    // don't allow the use of Gibson in MSIE 8 or below (http://bit.ly/1dLufVI)
+    @if $gibsonWebfontSupport {
+        // GIBSON
+        $n: 1 !global;
+        @each $fontFace in $webfontFontFamilyFiles {
+            // same name no matter what, use style/weight to differentiate
+            // http://bit.ly/1fjY4H8
+            $fontFaceName: $webfontFontFamilyName;
+            $fontFaceWeight: #{nth($webfontFamilyWeights, $n)};
+            $fontFaceStyle: #{nth($webfontFamilyStyles, $n)};
+
+            @include wdeskFontFace($fontFaceName, $fontFace, $fontFaceWeight, $fontFaceStyle);
+
+            $n: $n + 1 !global;
+        } // END @each webfont $fontFace
+    }
+
+    // RIBBON NAV LABELS
+    @include wdeskFontFace($helveticaFontFamilyName, $helveticaLightNarrowFile, $webfontWeightLt, normal);
+
+
+//
+// WF ICONS
+//
+    @include wdeskFontFace($mainIconsFont, $mainIconsPath);
+
+
+//
+// WF COLOR ICONS
+//
+    @include wdeskFontFace($colorIconsFont, $colorIconsPath);
+
+
+//
+// WF DOCTYPE ICONS
+//
+    @include wdeskFontFace($doctypeIconsFont, $doctypeIconsPath);

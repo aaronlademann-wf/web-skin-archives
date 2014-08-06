@@ -1,0 +1,79 @@
+/*!
+ * Wdesk's Web Skin for Internet Explorer 7/8
+ *
+ * Copyright 2014 WebFilings, LLC
+ *
+ */
+$includeNormalizeStyles: true;
+// TODO: remove this override in 0.5.0 release
+$gibsonWebfontSupport: false;
+
+// Core constants
+// NOTE: This compiled result is built for internet explorer 7/8
+@import "_constants/_support_ie-lt9.scss";
+@import "_constants/_wdesk-manifest.scss";
+
+// Font Face Embedding
+@import "_fonts.scss";
+
+// Print
+@import "_print.scss";
+
+// Core CSS
+@import "_foundation.scss";
+@import "_scaffolding.scss";
+@import "_type.scss";
+@import "_code.scss";
+@import "_grid.scss";
+@import "_tables.scss";
+@import "_forms.scss";
+@import "_buttons.scss";
+
+// Components: common
+@import "_component-animations.scss";
+@import "_brand-marks.scss";
+@import "_icons.scss";
+@import "_dropdowns.scss";
+@import "_wells.scss";
+@import "_close.scss";
+@import "_comments-common.scss";
+
+// Components: Nav
+@import "_navs.scss";
+@import "_navbar.scss";
+@import "_button-groups.scss";
+@import "_breadcrumbs.scss";
+@import "_pagination.scss";
+@import "_pager.scss";
+@import "_page-indicators.scss";
+
+// Components: Dialogs
+@import "_dialogs.scss";
+@import "_modals.scss";
+@import "_tooltip.scss";
+@import "_tooltip-navs.scss";
+@import "_popovers.scss";
+@import "_popovers-notes-comments.scss";
+@import "_alerts.scss";
+@import "_datepicker.scss";
+
+// Components: Misc
+@import "_list-group.scss";
+@import "_panels.scss";
+@import "_panels-notes-comments.scss";
+@import "_panels-global-jobs.scss";
+@import "_thumbnails.scss";
+@import "_media.scss";
+@import "_labels.scss";
+@import "_badges.scss";
+@import "_progress-bars.scss";
+@import "_progress-app-loading.scss";
+@import "_progress-spinners.scss";
+@import "_jumbotron.scss";
+@import "_carousel.scss";
+
+// Responsive utilities
+@import "_responsive.scss";
+
+// Utility classes
+@import "_utilities.scss"; // Has to be last to override when necessary

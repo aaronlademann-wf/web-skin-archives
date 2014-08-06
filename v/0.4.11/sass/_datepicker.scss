@@ -1,0 +1,369 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _datepicker.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_dialogs.scss"
+
+//----------------------------------------------------
+
+.datepicker {
+    border-radius: $dpBdRadius;
+    direction: ltr;
+
+    .inner,
+    .content {
+        padding: 0;
+    }
+
+    .inner {
+        min-width: $dpMinWidth;
+    }
+
+    //
+    // Date scope visibility
+    //
+    .content {
+        // the padding can't be quite even because of the way we add table borders to one edge and not the other
+        $dpContentPadXtra: $dpContentPad + $tableBdWidth;
+        padding: $dpContentPad $dpContentPadXtra $dpContentPadXtra $dpContentPad;
+
+        > div {
+            display: none;
+        }
+    }
+    // show individual date scopes based on base-elem class
+    &.days .content > div.datepicker-days {
+        display: block;
+    }
+    &.months .content > div.datepicker-months {
+        display: block;
+    }
+    &.years .content > div.datepicker-years {
+        display: block;
+    }
+
+    //
+    // Calendar cell appearance
+    //
+    table {
+        margin: 0;
+        @include disableUserSelect;
+
+        // Global cells
+        td,
+        th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        // Global cell states
+        td {
+            &.day,
+            span {
+                // universal hover
+                #{$linkHoverFocus} {
+                    color: $dpLinkColorHover;
+                    cursor: pointer;
+                    background-color: $dpLinkBgHover;
+                    @include box-shadow(none);
+                }
+                // universal press
+                #{$linkPressed} {
+                    color: $dpLinkColorPress;
+                    background-color: $dpLinkBgPress;
+                }
+
+                // universal active
+                &.active,
+                &.active.disabled {
+                    &,
+                    #{$linkHoverFocus} {
+                        font-weight: bold;
+                        color: $dpLinkColorActive;
+                        background-color: $dpLinkBgActive;
+                        @include box-shadow(none);
+                    }
+                }
+
+                // universal disabled
+                &.disabled {
+                    &,
+                    #{$linkHoverFocus} {
+                        color: $dpLinkColorDisabled;
+                        cursor: default;
+                        background-color: $dpLinkBgDisabled;
+                        @include box-shadow(none);
+                    }
+                }
+            }
+
+            // In year / decade views... these are the "grid" cells
+            span {
+                display: block;
+                float: left;
+                margin: $dpContentPad 0;
+                width: percentage($dpMoYrSize);
+                height: $dpMoYrSizePx;
+                line-height: $dpMoYrSizePx;
+                cursor: pointer;
+                border-radius: $dpBdRadius;
+                @include disableUserSelect;
+            }
+
+            // colorization of "out-of-current-range" days/months/etc...
+            &.old,
+            &.new {
+                &.disabled {
+                    // even if disabled... keep the bg the same on hover, etc...
+                    background-color: $dpLinkOldBg !important;
+                }
+                background-color: $dpLinkOldBg;
+                color: $dpLinkOldColor;
+            }
+
+            // current day "highlight"
+            &.today {
+                color: $dpLinkTodayColor;
+                @include box-shadow(inset 0 0 0 $tableBdWidth $dpLinkTodayBg);
+            }
+        }
+
+        // Body cells (days / weeks / months / years)
+        tbody td,
+        tbody th {
+            width: $dpDaySize;
+            height: $dpDaySize;
+            padding-top: 0;
+            padding-bottom: 0;
+            font-size: $dpDayFontSize;
+            line-height: $dpDaySize - $tableBdWidth;
+        }
+
+        // Header / Footer cells
+        thead,
+        tfoot {
+            th {
+                padding: $tableCellPadCnd; // override default header padding
+                background-color: $dpBg; // override default header bg
+                border-color: $dpBdColor;
+                border-right: 0 none;
+                border-left: 0 none;
+            }
+        }
+        thead {
+
+            @if $dpContentPad > 0 {
+                // this setup will only work if the browser supports box shadows
+                .boxshadow & {
+                    tr:first-child {
+                        th {
+                            // use a bottom 'border' to mimic the content padding
+                            // so the hover effect doesn't look uneven
+                            border-bottom: $dpContentPad solid $dpBg !important;
+                        }
+                        + tr {
+                            th {
+                                // place the 'border' that is usually on the <th> on top of the second <tr>
+                                box-shadow: inset 0 $dpContentPad 0 0 $tableBdColor;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // table header (not second header row though)
+            th.datepicker-switch {
+                width: $dpSwitchWidth;
+            }
+        }
+        // Make sure only the very top header looks like the true header
+        thead th.dow,
+        tfoot th {
+            border-width: 0;
+            cursor: default;
+            font-family: $fontFamilyBase;
+            font-size: $dpDayFontSize;
+            font-weight: bold;
+            color: $dpDowColor;
+            // not a selectable piece of text
+            @include disableUserSelect;
+        }
+        tfoot th {
+            // do the same padding adjustment we did on the thead to make the hover effect not look off-center
+            @if $dpContentPad > 0 {
+                // this setup will only work if the browser supports box shadows
+                .boxshadow & {
+                    // use a top 'border' to mimic the content padding
+                    // so the hover effect doesn't look uneven
+                    box-shadow: inset 0 ($dpContentPad + 1) 0 0 $dpBg;
+                    // add an actual bottom border so the bottom padding doesn't look like its too much
+                    border-bottom: $dpContentPad solid $dpBg;
+
+                    #{$linkHoverFocus} {
+                        border-bottom-color: $menuVLinkBgHover;
+                    }
+                    #{$linkPressed} {
+                        border-bottom-color: $menuVLinkBgPress;
+                    }
+                }
+            }
+        }
+
+        &.table-bordered {
+            border: 0 none;
+
+            // prevent double borders with container if it sits flush with the edge of the table
+            @if $dpContentPad == 0 {
+                tr > td:first-child,
+                tr > th:first-child {
+                    border-left-width: 0;
+                }
+            } @else {
+                // only want the tbody to have the outer border...
+                tbody {
+                    border: $tableBdWidth solid $dpInnerBdColor;
+                }
+            }
+
+            // lighten the color of most of the inner borders
+            &,
+            thead > tr:last-child th,
+            tbody td {
+                border-color: $dpInnerBdColor;
+            }
+        }
+
+        // Inline display inside a table presents some problems with
+        // border and background colors.
+        &.table-striped & table tr {
+            td,
+            th {
+                background-color: transparent;
+            }
+        }
+    } // END Calendar cell appearance
+
+    // zero-out the padding on months/years scope
+    .datepicker-months,
+    .datepicker-years {
+        tbody,
+        tbody td {
+            padding: 0;
+            border-left: 0 none !important;
+            border-right: 0 none !important;
+        }
+        table thead tr:first-child th {
+            border-bottom: $tableBdWidth solid $tableBdColor !important;
+            padding-bottom: $tableCellPadCnd + 1;
+        }
+    }
+
+    // clickable headers and footers
+    thead tr:first-child th,
+    tfoot th {
+        cursor: pointer !important;
+        #{$linkHoverFocus} {
+            color: $menuVLinkColorHover;
+            background-color: $menuVLinkBgHover;
+        }
+        #{$linkPressed} {
+            color: $dpLinkColorPress;
+            background-color: $dpLinkBgPress;
+        }
+    }
+
+    // calendar-week cells
+    table td.cw {
+        width: round($dpDaySize / 2);
+        font-size: $dpCwFontSize;
+        text-align: right;
+        cursor: default;
+    }
+    // this is not clickable unlike the other contents of the first thead row
+    thead tr:first-child th.cw {
+        cursor: default;
+        background-color: transparent !important;
+    }
+
+
+    //
+    // Datepicker Variations
+    //
+    &.datepicker-inline {
+        position: relative;
+        width: $dpMinWidth + ($dialogBdWidth * 2) + ($dialogPadding * 2);
+        box-shadow: none;
+
+        // since this will never be "floating" above content
+        // we will follow our style-guide pattern of squaring
+        // corners of all "inlined" containers (e.g. panels, list-groups)
+        border-radius: 0;
+    }
+    &.datepicker-rtl {
+        direction: rtl;
+        table tr td span {
+            float: right;
+        }
+        .arrow {
+            direction: ltr;
+        }
+        table.table-bordered {
+            // everything is reversed
+            tr > td:first-child,
+            tr > th:first-child {
+                border-left-width: $tableBdWidth;
+            }
+
+            tr > td:last-child,
+            tr > th:last-child {
+                border-left-width: 0;
+            }
+        }
+    }
+
+    &.datepicker-dropdown {
+        top: 0;
+        left: 0;
+
+        // Supplemental Arrow Positioning
+        //
+        // Inherits mostly from _dialogs.scss
+        //
+        .arrow {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        &.orient-left {
+            .arrow {
+                left: $dialogContentPadding;
+            }
+        }
+        &.orient-right {
+            .arrow {
+                right: $dialogContentPadding;
+                left: auto;
+            }
+        }
+    }
+} // END .datepicker
+
+.date {
+    .input-group-addon {
+        cursor: pointer;
+    }
+}
+.input-daterange {
+    input:first-child {
+        @include border-right-radius(0);
+        border-right: 0 none;
+    }
+    input:last-child {
+        @include border-left-radius(0);
+        border-left: 0 none;
+    }
+    .input-group-addon {
+        @include disableUserSelect;
+    }
+}

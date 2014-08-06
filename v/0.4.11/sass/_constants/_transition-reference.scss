@@ -1,0 +1,54 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_transition-reference.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+    // related partials:
+    //+ "../_component-animations.scss"
+
+//----------------------------------------------------
+
+// TODO: address all the animation @extend and reference class usage (#612) for 0.5.0
+
+%collapsing {
+    @include transition(height .35s ease);
+
+    position: relative;
+    overflow: hidden;
+    height: 0;
+}
+
+%collapse {
+    display: none;
+}
+%collapse-in { display: block; }
+
+%slide {
+    position: fixed;
+    @include transition-property("height, width, top, bottom, left, right");
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0.1s);
+}
+    %slide-down {
+        @include slideDown($height: 100%);
+    }
+    %slide-up {
+        @include slideUp($height: 100%);
+    }
+    %slide-left {
+        position: absolute;
+        @include slideLeft($width: 100%);
+    }
+    %slide-right {
+        position: absolute;
+        @include slideRight($width: 100%);
+    }
+
+%animation-stop {
+    @include experimental(animation-play-state, paused);
+}
+
+%animation-start {
+    @include experimental(animation-play-state, running);
+}

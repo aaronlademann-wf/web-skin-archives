@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,
+                               initial-scale=1.0,
+                               maximum-scale=1.0,
+                               target-densityDpi=device-dpi">
+<meta name="description" content="Web Skin Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>
+    
+        Web Skin Style Guide
+    
+</title>
+
+<!--
+    STYLES
+-->
+<!--[if !IE]> -->
+<link href="./assets/css/wdesk.css?0.4.11" rel="stylesheet" title="standard">
+<link href="./assets/css/wdesk_ie.css?0.4.11" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if gte IE 9]>
+<link href="./assets/css/wdesk_ie.css?0.4.11" rel="stylesheet">
+<![endif]-->
+<!--[if lte IE 8]>
+<link href="./assets/css/wdesk_ie-lt9.css?0.4.11" rel="stylesheet">
+<![endif]-->
+
+<link href="./assets/css/docs.css?0.4.11" rel="stylesheet">
+
+
+
+
+<!--
+    SCRIPTS
+-->
+<script src="./assets/js/docs-only/holder.js?0.4.11"></script>
+<script src="./assets/js/core/wf-js-vendor/dist/wf-vendor.min.js?0.4.11"></script>
+<!--[if lte IE 9]>
+<script src="./assets/js/core/libs_ie.min.js?0.4.11"></script>
+<![endif]-->
+<!--[if !IE]> -->
+<script src="./assets/js/core/libs.min.js?0.4.11"></script>
+<!-- <![endif]-->
+<script>
+
+    var toTitleCase = function(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
+
+    // custom pageview so we can track landing pages where folks are permalinking # locations within a page
+    var hash = location.hash.replace('#', ''); // remove #
+    var hashTitle = hash.replace(/-/g, ' '); // replace dashes with spaces
+
+    var fullLocation = location.pathname + location.search + hash;
+    var gaPage = fullLocation.replace('/index.html', '/'); // remove potential index.html
+    var fullLocation = window.location.protocol + '//' + window.location.hostname + gaPage; // set location
+
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17703918-45', 'webfilings.com');
+
+    // custom parameters
+    if(hash.length) {
+        ga('set', 'title', toTitleCase(hashTitle) + ' · ' + document.title);
+    } else {
+        ga('set', 'title', document.title);
+    }
+    ga('set', 'location', fullLocation);
+    // ----------------
+
+    ga('send', 'pageview');
+
+    function a11yClick(event) {
+        if (event) {
+            if (event.target) {
+                var linkText = $(event.target);
+
+                try {
+                    ga("send", "event", "A11y Resources", linkText);
+                } catch(err) {
+
+                }
+            }
+        }
+    }
+
+</script>
+
+
+<!--
+    IMAGE LINKS
+    (FAVICONS / APP ICONS / SPLASH SCREENS, ETC)
+-->
+
+
+
+
+
+
+<!--
+    Google TV
+-->
+<link rel="icon" type="image/png" href="./assets/ico/favicon-196x196.png0.4.11" sizes="196x196">
+
+<!--
+    Modern Browser Bookmark "Favicons"
+-->
+<link rel="icon" type="image/png" href="./assets/ico/favicon-160x160.png0.4.11" sizes="160x160">
+<link rel="icon" type="image/png" href="./assets/ico/favicon-96x96.png0.4.11" sizes="96x96">
+<link rel="icon" type="image/png" href="./assets/ico/favicon-16x16.png0.4.11" sizes="16x16">
+<link rel="icon" type="image/png" href="./assets/ico/favicon-32x32.png0.4.11" sizes="32x32">
+
+<!--
+    Standard Browser Bookmark "Favicon"
+-->
+<link rel="shortcut icon" type="image/x-icon" href="./assets/ico/favicon.ico?0.4.11">
+
+<!--
+    App Icons (Android / iOS)
+-->
+<!-- For iPad w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="152x152" href="./assets/ico/apple-touch-icon-152.png?0.4.11">
+<!-- For iPad w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="144x144" href="./assets/ico/apple-touch-icon-144.png?0.4.11">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="120x120" href="./assets/ico/apple-touch-icon-120.png?0.4.11">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="114x114" href="./assets/ico/apple-touch-icon-114.png?0.4.11">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="76x76"   href="./assets/ico/apple-touch-icon-76.png?0.4.11">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="72x72"   href="./assets/ico/apple-touch-icon-72.png?0.4.11">
+<!-- For non-Retina iPhone, iPod Touch, & Android 2.1+ devices: -->
+<link rel="apple-touch-icon" href="./assets/ico/apple-touch-icon-57.png?0.4.11">
+
+<!--
+    Win8 tiles
+-->
+<meta name="msapplication-TileImage" content="./assets/ico/mstile-144x144.png?0.4.11">
+<meta name="msapplication-TileColor" content="#66CC00">
+<meta name="application-name"        content="Web Skin">
+
+<!--
+    IE11 tiles
+-->
+<meta name="msapplication-square70x70logo"   content="./assets/ico/mstile-70x70.png?0.4.11">
+<meta name="msapplication-square150x150logo" content="./assets/ico/mstile-150x150.png?0.4.11">
+<meta name="msapplication-square310x310logo" content="./assets/ico/mstile-310x310.png?0.4.11">
+<meta name="msapplication-wide310x150logo"   content="./assets/ico/mstile-310x150.png?0.4.11">
+    <!-- Place anything custom after this. -->
+</head>
+<body class="wdesk-docs-body home">
+    <a href="#main-content" class="sr-only sr-only-focusable">Skip to content</a>
+
+    <!-- Main navbar for all docs pages. -->
+    <!-- Navbar
+================================================== -->
+<div role="navigation" class="navbar navbar-fixed-top wdesk-docs-navbar">
+    <div role="presentation" class="container">
+        <ul role="presentation" class="nav navbar-nav mobile nav-blocks">
+            <li role="presentation">
+                <button type="button" class="navbar-toggle hitarea no-text collapsed"
+                        aria-expanded="false"
+                        data-toggle="collapse"
+                        data-target=".docs-nav-collapse">
+                    <!-- TODO: fix accessibility of this nav system -->
+                    <i class="icon icon-md icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-header navbar-brand">
+            <a class="brand-link" href="./">
+                <div role="img" class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]>
+                        <img src="./assets/img/brand/wdesk-logo_white.png">
+                    <![endif]-->
+                </div>
+                Web Skin
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li >
+                    <a class="hitarea" href="./getting-started/">Getting Started</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./css/">CSS</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./components/">Components</a>
+                </li>
+                <li >
+                    <a class="hitarea" href="./javascript/">JavaScript</a>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="nav navbar-nav nav-blocks docs-options-nav pull-right">
+            <li>
+                <button type="button" class="hitarea no-text"
+                        title="Documentation Options"
+                        data-toggle="options"
+                        data-target="#docs-options">
+                    <i class="icon icon-md icon-cog"></i>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="docs-options-backdrop" class="docs-options-backdrop backdrop hide"></div>
+<div id="docs-options" class="navbar navbar-fixed-top wdesk-docs-navbar docs-options slide fixed-top down" role="dialog" tabindex="-1">
+    <div class="container">
+        <form class="form-inline">
+
+            <!--
+                NOTE: If you add an option here,
+                      you MUST add it to the Analytics Property as well
+                      using the `data-option-key` attr.
+            -->
+
+            <div class="tabbable">
+                <div class="nav-stripe"></div>
+                <ul role="tablist" class="nav nav-pills">
+                    <li role="presentation" class="active">
+                        <button role="tab" type="button" class="hitarea"
+                                data-toggle="tab"
+                                data-target="#docs-options-basic">
+                            Basic
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button role="tab" type="button" class="hitarea"
+                                data-toggle="tab"
+                                data-target="#docs-options-advanced">
+                            Advanced
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="docs-options-basic">
+
+                        <fieldset id="option-groups" class="block-center valign-middle">
+                            <div class="doc-option-container flush-right">
+                                <label class="doc-option-label" for="opt-user-type">I am a</label>
+                                <select id="opt-user-type" class="chosen form-control dev-design-container"
+                                        data-option-group-controller="true"
+                                        data-option-key="user-type">
+                                    <option value="" disabled selected>-- Pick One --</option>
+                                    <option value="dev">Developer</option>
+                                    <option value="design">Designer</option>
+                                </select>
+                            </div>
+                            <div class="doc-option-container">
+                                <label class="doc-option-label" for="opt-device-type"><i data-option-related-text-key="user-type" data-lbl-dev="developing" data-lbl-design="designing">building</i> a Web Skin app for </label>
+                                <select id="opt-device-type" class="chosen form-control"
+                                        data-option-group-controller="true"
+                                        data-option-key="device-type">
+                                    <option value="" disabled selected>-- Pick One --</option>
+                                    <option value="desktop">Desktop</option>
+                                    <option value="mobile">Mobile</option>
+                                </select>
+                            </div>
+                        </fieldset>
+
+                    </div> <!-- END BASIC -->
+                    <div role="tabpanel" class="tab-pane" id="docs-options-advanced">
+
+                        <fieldset class="row" id="device-options">
+                            <legend class="col-xs-2">Target Device</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-device-touch" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-device-touch"
+                                                   data-option-key="device-touch"
+                                                   data-option-group="mobile">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Touch Enabled
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-device-mouse" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-device-mouse"
+                                                   data-option-key="device-mouse"
+                                                   data-option-group="desktop">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Mouse Enabled
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="row" id="design-options">
+                            <legend class="col-xs-2">Designers</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-design-assets" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-design-assets"
+                                                   data-option-key="design-assets"
+                                                   data-option-group="design">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Design Assets
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-design-notes" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-design-notes"
+                                                   data-option-key="design-notes"
+                                                   data-option-group="design">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Design Notes
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="row" id="dev-options">
+                            <legend class="col-xs-2">Developers</legend>
+                            <div class="col-xs-10">
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-examples" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-examples"
+                                                   data-option-key="code"
+                                                   data-option-related-off="code-snippets"
+                                                   data-option-group="dev"
+                                                   checked>
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Code Examples
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-dev-notes" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-dev-notes"
+                                                   data-option-key="dev-notes"
+                                                   data-option-group="dev"
+                                                   checked>
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Dev Notes
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-snippets" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-snippets"
+                                                   data-option-key="code-snippets"
+                                                   data-option-related-on="code">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        Code Snippets
+                                    </label>
+                                </div>
+                                <div class="checkbox doc-option-container">
+                                    <label for="opt-code-angularjs" class="doc-option-label doc-option-cbox-label">
+                                        <span class="option-checkbox">
+                                            <input type="checkbox" id="opt-code-angularjs"
+                                                   data-option-key="code-angularjs">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        AngularJS Help
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div> <!-- END ADVANCED -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div role="main" id="main-content" class="wdesk-docs-header wdesk-docs-masthead">
+    <div class="container">
+        <h1>Web Skin</h1>
+        <p class="lead">Sleek, intuitive, and powerful front-end framework for faster and easier web development at Workiva.</p>
+        <p>
+            <a href="https://github.com/WebFilings/web-skin/archive/0.4.11.zip" class="btn btn-outline btn-lg" onclick="ga('send', 'event', 'Jumbotron Actions', 'Download', 'Download 0.4.11');">Download Web Skin</a>
+        </p>
+        <ul class="masthead-links">
+            <li class="current-version">
+                Currently <a href="https://github.com/WebFilings/web-skin/releases/tag/0.4.11" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Version link', 'Version 0.4.11');">v0.4.11</a>
+            </li>
+            <li class="current-version">
+                <a href="../0.2.34/" target="webskin_archives" onclick="ga('send', 'event', 'Archives', 'Version 0.2.34', 'Homepage');">Web Skin 0.2.34 docs</a>
+            </li>
+            <li>
+                <a href="https://github.com/WebFilings/web-skin" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Repo', 'Github repo');">GitHub project</a>
+            </li>
+            <li>
+                <a href="https://github.com/WebFilings/web-skin/blob/master/CONTRIBUTING.md" target="_blank" onclick="ga('send', 'event', 'Jumbotron Actions', 'Contribute', 'Contribute');">Contribute</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    <!-- JS and analytics only. -->
+    <!-- Web Skin core JavaScript
+================================================== -->
+<script src="./assets/js/web-skin.min.js?0.4.11"></script>
+<script src="./assets/js/docs.min.js?0.4.11"></script>
+
+
+
+
+    
+    
+    
+
+</body>
+</html>

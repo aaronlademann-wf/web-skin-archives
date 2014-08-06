@@ -1,0 +1,150 @@
+//----------------------------------------------------
+
+//+     PARTIAL:  _icons_colors.scss
+//+     PARENT:   _icons_pua-two-color.scss
+
+    // PUA GLYPH DECLARATIONS
+    // For non-doctype two-color icons
+
+    // related partials:
+    //+ "_icons_pua-components.scss"
+    //+ "_icons_pua-main.scss"
+    //+ "_icons_colors-doctypes.scss"
+
+//----------------------------------------------------
+
+.#{$twoColorClassName} {
+
+    &.icon {
+        &:before, &:after {
+            padding: 0;
+        }
+    }
+
+    // ICON CLASSNAME IMPLEMENTATION
+    // USE THE % REFERENCE ELEMS ABOVE.
+    &.icon-comment-upload-support:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-comment-upload-support-glyph2;
+    }
+    &.icon-comment-filter:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-comment-filter-glyph2;
+    }
+    &.icon-comment-alt:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-comment-alt-glyph2;
+    }
+    &.icon-comment-add:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-comment-add-glyph2;
+    }
+    &.icon-spellcheck:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-spellcheck-glyph2;
+    }
+    &.icon-link-source:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-link-source-glyph2;
+    }
+    &.icon-link-remove:after {
+        color: zestyCrayonColor(orange, main) !important;
+        @include icon-link-remove-glyph2;
+    }
+    &.icon-link-format:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-link-format-glyph2;
+    }
+    &.icon-link-create:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-link-create-glyph2;
+    }
+    &.icon-view-print-area:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-view-print-area-glyph2;
+    }
+    &.icon-file-trash:after {
+        color: zestyCrayonColor(orange, main) !important;
+        @include icon-file-trash-glyph2;
+    }
+    &.icon-view-trash:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-view-trash-glyph2;
+    }
+    &.icon-page-break:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-page-break-glyph2;
+    }
+    &.icon-table-insert-column:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-table-insert-column-glyph2;
+    }
+    &.icon-table-insert-row:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-table-insert-row-glyph2;
+    }
+    &.icon-update-available:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-update-available-glyph2;
+    }
+    &.icon-downloaded:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-downloaded-glyph2;
+    }
+    &.icon-highlighter:after {
+        color: $defaultAnnotationsColor !important;
+        @include icon-highlighter-glyph2;
+    }
+    &.icon-twfr-off-device-droid {
+        // this icon has custom colors for both the :before and the :after
+        &:before {
+            color: $wf_gray_lt4 !important;
+        }
+        &:after {
+            color: $wf_gray_lt3 !important;
+            @include icon-twfr-off-device-droid-glyph2;
+        }
+    }
+    &.icon-twfr-feedback:after {
+        color: zestyCrayonColor(orange, main) !important;
+        @include icon-twfr-feedback-glyph2;
+    }
+    &.icon-twfr-folder-add:after {
+        color: zestyCrayonColor(green, main) !important;
+        @include icon-twfr-folder-add-glyph2;
+    }
+    &.icon-twfr-move:after {
+        color: zestyCrayonColor(blue, main) !important;
+        @include icon-twfr-move-glyph2;
+    }
+    &.icon-twfr-rename:after {
+        color: zestyCrayonColor(orange, main) !important;
+        @include icon-twfr-rename-glyph2;
+    }
+
+
+    // DON'T PASTE OVER THESE
+    &.icon-comment-private-note {
+        &:before {
+            color: $white !important;
+            @include icon-comment-private-note-glyphBackground;
+            font-family: $colorIconsFont;
+        }
+        &:after {
+            color: $defaultAnnotationsColor !important;
+            @include icon-comment-private-note-glyphForeground;
+        }
+    }
+    &.icon-comment {
+        // use the solid comment bubble as the bg
+        &:before {
+            color: $white !important;
+        }
+        // and the comment with lines as the foreground
+        &:after {
+            color: $defaultAnnotationsColor !important;
+            @include icon-comment-glyph2;
+        }
+    }
+
+} // END #{$twoColorClassName}

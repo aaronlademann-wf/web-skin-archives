@@ -1,0 +1,215 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _responsive.scss
+//+  PARENT:   _global-utils.scss
+
+//----------------------------------------------------
+
+
+//
+// Future Friendly Device Width Defaults
+//
+// *** NOTE: Requires some JS for MSIE 10+ Mobile
+//     see: https://api.webfilings.com/WebSkin/docs/build/html/getting-started/#browsers-msie-device-width ***
+//
+// Source: http://bit.ly/1oOEpc9
+//
+@if $ie-support {
+    @-ms-viewport { width: device-width; }
+}
+        @viewport { width: device-width; }
+
+
+//
+// Visibility utilities
+//
+
+// general size ranges
+@include responsiveInvisibility(".visible-xs");
+    @media (max-width: $screenPhoneMax) {
+        @include responsiveVisibility(".visible-xs");
+    }
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveVisibility(".visible-xs.visible-sm");
+}
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveVisibility(".visible-xs.visible-md");
+}
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveVisibility(".visible-xs.visible-lg");
+}
+
+@include responsiveInvisibility(".visible-sm");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveVisibility(".visible-sm.visible-xs");
+}
+    @media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+        @include responsiveVisibility(".visible-sm");
+    }
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveVisibility(".visible-sm.visible-md");
+}
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveVisibility(".visible-sm.visible-lg");
+}
+
+@include responsiveInvisibility(".visible-md");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveVisibility(".visible-md.visible-xs");
+}
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveVisibility(".visible-md.visible-sm");
+}
+    @media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+        @include responsiveVisibility(".visible-md");
+    }
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveVisibility(".visible-md.visible-lg");
+}
+
+@include responsiveInvisibility(".visible-lg");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveVisibility(".visible-lg.visible-xs");
+}
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveVisibility(".visible-lg.visible-sm");
+}
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveVisibility(".visible-lg.visible-md");
+}
+    @media (min-width: $screenDesktopLargeMin) {
+        @include responsiveVisibility(".visible-lg");
+    }
+
+@include responsiveVisibility(".hidden-xs");
+    @media (max-width: $screenPhoneMax) {
+        @include responsiveInvisibility(".hidden-xs");
+    }
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveInvisibility(".hidden-xs.hidden-sm");
+}
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveInvisibility(".hidden-xs.hidden-md");
+}
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveInvisibility(".hidden-xs.hidden-lg");
+}
+
+@include responsiveVisibility(".hidden-sm");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveInvisibility(".hidden-sm.hidden-xs");
+}
+    @media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+       @include responsiveInvisibility(".hidden-sm");
+    }
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveInvisibility(".hidden-sm.hidden-md");
+}
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveInvisibility(".hidden-sm.hidden-lg");
+}
+
+@include responsiveVisibility(".hidden-md");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveInvisibility(".hidden-md.hidden-xs");
+}
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveInvisibility(".hidden-md.hidden-sm");
+}
+    @media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+        @include responsiveInvisibility(".hidden-md");
+    }
+@media (min-width: $screenDesktopLargeMin) {
+    @include responsiveInvisibility(".hidden-md.hidden-lg");
+}
+
+@include responsiveVisibility(".hidden-lg");
+@media (max-width: $screenPhoneMax) {
+    @include responsiveInvisibility(".hidden-lg.hidden-xs");
+}
+@media (min-width: $screenTabletMin) and (max-width: $screenTabletMax) {
+    @include responsiveInvisibility(".hidden-lg.hidden-sm");
+}
+@media (min-width: $screenDesktopMin) and (max-width: $screenDesktopMax) {
+    @include responsiveInvisibility(".hidden-lg.hidden-md");
+}
+    @media (min-width: $screenDesktopLargeMin) {
+        @include responsiveInvisibility(".hidden-lg");
+    }
+
+
+//
+// PIXEL DENSITY Utilities
+//
+
+// start out assuming standard resolution
+@include responsiveVisibility(".visible-res-standard");
+@include responsiveInvisibility(".hidden-res-standard");
+
+// iOS / OSx Retina (for all browsers b/c of navbar-brand usage)
+@include responsiveInvisibility(".visible-retina");
+@include responsiveVisibility(".hidden-retina");
+@media #{$retinaDensity} {
+    @include responsiveInvisibility(".hidden-retina");
+    @include responsiveVisibility(".visible-retina");
+    @include responsiveInvisibility(".visible-res-standard");
+    @include responsiveVisibility(".hidden-res-standard");
+}
+
+// Specific Device Resolutions (not for MSIE because it causes selector count to exceed 4095)
+@if not $ie-support {
+    // specific resolutions
+
+    @include responsiveInvisibility(".visible-res-high");
+    @include responsiveVisibility(".hidden-res-high");
+
+    @include responsiveInvisibility(".visible-mdpi");
+    @include responsiveVisibility(".hidden-mdpi");
+
+    @include responsiveInvisibility(".visible-hdpi");
+    @include responsiveVisibility(".hidden-hdpi");
+
+    // any non-standard resolution
+    @media #{$retinaDensity}, #{$hDpiDensity}, #{$mDpiDensity} {
+        @include responsiveVisibility(".hidden-res-standard"); // visible by default
+        @include responsiveInvisibility(".visible-res-standard"); // visible by default
+        @include responsiveInvisibility(".hidden-res-high");
+        @include responsiveVisibility(".visible-res-high");
+    }
+
+    // Android Medium Density (mdpi)
+    @media #{$mDpiDensity} {
+        @include responsiveInvisibility(".hidden-mdpi");
+        @include responsiveVisibility(".visible-mdpi");
+    }
+
+    // Android High Density (hdpi)
+    @media #{$hDpiDensity} {
+        @include responsiveInvisibility(".hidden-hdpi");
+        @include responsiveVisibility(".visible-hdpi");
+    }
+}
+
+
+// Browser visibility utilities
+@include responsiveInvisibility('.visible-ie');
+.ua-ie {
+    @include responsiveVisibility('.visible-ie');
+    @include responsiveInvisibility('.hidden-ie');
+}
+
+
+// Modernizr handles this for us.
+@include responsiveInvisibility(".visible-touch");
+html.touch {
+    @include responsiveVisibility(".visible-touch");
+    @include responsiveInvisibility(".hidden-touch");
+}
+
+
+// Print utilities
+@include responsiveInvisibility(".visible-print");
+@media print {
+    @include responsiveVisibility(".visible-print");
+    @include responsiveInvisibility(".hidden-print");
+}

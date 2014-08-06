@@ -1,0 +1,33 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _close.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_buttons.scss"
+    //+ "_modals.scss"
+    //+ "_alerts.scss"
+
+//----------------------------------------------------
+
+.close {
+    @include closeScaffolding;
+    font-size: $closeBtnFontSize;
+    float: right;
+
+    #{$linkHoverFocus} {
+        @include closeHoverDefault;
+    }
+}
+
+// a "delete" button is essentially just a "red" close button
+.close-delete {
+    color: zestyCrayonColor(red, main);
+
+    #{$linkHoverFocus} {
+        color: zestyCrayonColor(red, main);
+    }
+    #{$linkPressed} {
+        color: darken(zestyCrayonColor(red, main), 2);
+    }
+}

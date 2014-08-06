@@ -1,0 +1,283 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _progress-spinners.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_progress-bars.scss"
+
+//----------------------------------------------------
+
+@function spinnerLabelSpacing($spinnerSize: $baseSpinnerSize, $labelFontSize: $spinnerLabelFontSize) {
+    @return round(($spinnerSize - $labelFontSize) / 2);
+}
+
+@mixin spinnerBdColor($color: $spinnerColor, $bg: $bodyBg, $alphaOn: $spinnerAlphaOn, $alphaBase: $spinnerAlphaBase) {
+    // fallback
+    $fallbackOn:   percentage($alphaOn);
+    $fallbackBase: percentage($alphaBase);
+
+    $colorOn: $color;
+    $colorBase: darken($colorOn, 30); // reduce the contrast between the spinning color and it's adjacent color just a tad
+
+    border-color: mix($colorOn,   $bg, $fallbackOn)
+                  mix($colorBase, $bg, $fallbackBase)
+                  mix($colorBase, $bg, $fallbackBase)
+                  mix($colorBase, $bg, $fallbackBase);
+
+    // rgba
+    border-color: rgba($colorOn,   $alphaOn)
+                  rgba($colorBase, $alphaBase)
+                  rgba($colorBase, $alphaBase)
+                  rgba($colorBase, $alphaBase);
+}
+
+
+//
+// Outer container
+//
+.progress-spinner-container {
+    position: relative;
+
+    // Labels
+    .progress-label {
+        // by default the label sits side-by-side with the spinner
+        display: inline-block;
+        @include ie7-inline-block;
+        font-size: $spinnerLabelFontSize;
+        font-style: italic;
+        color: $spinnerLabelColor;
+        text-align: left;
+        // vertical alignment
+        vertical-align: top;
+        margin-top: spinnerLabelSpacing();
+        // horizontal spacing
+        margin-left: spinnerLabelSpacing();
+    }
+
+    &.progress-spinner-stacked {
+        .progress-spinner,
+        .progress-label {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+        }
+    }
+}
+
+
+//
+// PURE CSS SPINNERS
+//
+.progress-spinner {
+    position: relative;
+    display: inline-block;
+    @include ie7-inline-block;
+    width:  $baseSpinnerSize;
+    height: $baseSpinnerSize;
+    border-width: spinnerBdWidth($baseSpinnerSize);
+    border-style: solid;
+    @include spinnerBdColor;
+    border-radius: 100%;
+
+    // animate
+    @include spinner();
+
+    // ensure the spinner isn't spinning when its hidden (saves on CPU)
+    .hide &, &.hide,
+    .fade &, &.fade,
+    .hide &.in {
+        @extend %animation-stop;
+    }
+    .in &, &.in,
+    .show &, &.show {
+        @extend %animation-start;
+    }
+}
+
+
+//
+// SPINNERS WITHIN BUTTONS
+//
+.btn {
+    .progress-spinner {
+        position: absolute;
+    }
+    &.no-text {
+        .progress-spinner {
+            position: relative;
+        }
+    }
+}
+
+
+//
+// FALLBACK GIF SPINNERS
+//
+.no-cssanimations {
+    .progress-spinner {
+        border: 0 none !important; // cancel out the default style
+        background-color: transparent;
+        background-image: image-url("animated/spinner.gif", false);
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 100%;
+        @include opacity($spinnerAlphaOn);
+
+        &.progress-spinner-inverse {
+            background-image: image-url("animated/spinner-inverse.gif");
+        }
+    }
+}
+
+
+//
+// INVERSE COLOR VARIATION
+//
+.progress-spinner.progress-spinner-inverse {
+    @include spinnerBdColor($color: $white);
+}
+
+
+//
+// SIZE VARIATIONS
+//
+$n: 1 !global;
+@each $sizeClass in $utilitySizeClasses {
+
+    $newSpinnerSize: floor($baseIconSize * nth($utilitySizeMultipliers, $n));
+
+    // STANDALONE SPINNER SIZES
+    .progress-spinner.progress-spinner-#{$sizeClass} {
+
+        @if $sizeClass == "sm" {
+            width: $baseIconSize;
+            height: $baseIconSize;
+            border-width: spinnerBdWidth($baseIconSize);
+        } @else {
+            width: $newSpinnerSize;
+            height: $newSpinnerSize;
+            border-width: spinnerBdWidth($newSpinnerSize);
+        }
+
+        // for the animated gifs - we need exact image sizes
+        // since IE8 doesn't support background-size
+        .no-cssanimations & {
+            // we currently don't have a 'lg' spinner size
+            @if $sizeClass != 'lg' {
+                background-image: image-url("animated/spinner-#{$sizeClass}.gif", false);
+
+                &.progress-spinner-inverse {
+                    background-image: image-url("animated/spinner-inverse-#{$sizeClass}.gif", false);
+                }
+            }
+        }
+
+        // LABELS
+        + .progress-label {
+            $newLabelFontSize: if($sizeClass == "huge", $fontSizeBase, if($sizeClass == "gigantic", $fontSizeLarge, $spinnerLabelFontSize));
+
+            font-size: $newLabelFontSize;
+            margin-top: spinnerLabelSpacing($spinnerSize: $newSpinnerSize, $labelFontSize: $newLabelFontSize);
+            // horizontal spacing
+            margin-left: spinnerLabelSpacing($spinnerSize: $newSpinnerSize, $labelFontSize: $newLabelFontSize);
+        }
+
+        // STACKED LABELS
+        .progress-spinner-stacked & {
+            + .progress-label {
+                // reset
+                margin-left: auto;
+            }
+        }
+    }
+
+    $n: $n + 1 !global;
+}
+
+
+
+
+//
+// DOWNLOADING ICON WITH PROGRESS SPINNER
+//
+// when downloading, the animated progress-spinner bg
+// should be moving around the second-color icon glyph
+//
+.icon-downloading {
+    // since the progress-spinner is not a pseudo glyph
+    // we have to align it using the same amount
+    // the .icon:before/:after glyphs get
+    top: $iconPseudoShiftY;
+    @include ltie8 {
+        // IE6+7
+        *top: $iconPseudoShiftY * 2;
+    };
+    @include ie('<10') {
+        // IE8+9
+        top: $iconPseudoShiftY * 2;
+    };
+    width: $baseIconSize;
+    height: $baseIconSize;
+
+    // for browsers that can support a SMIL SVG
+    background-image: image-url("animated/icon-downloading.svg", false);
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    // base icon-size
+    background-size: $baseIconSize;
+
+    // CROSS BROWSER IMAGES (icon)
+    // since we need to animate the dots separate from the other part of the glyph, we are forced to use .gif
+    .ua-safari &,
+    .no-smil &,
+    .os-ios & {
+        background-image: image-url("animated/icon-downloading.gif", false);
+    }
+
+    // add the second-color glyph
+    &:after {
+        @include icon-downloaded-glyph2;
+        color: zestyCrayonColor(orange, main) !important;
+        top: 0 !important;
+        @include ltie8 {
+            // IE6+7
+            *top: -$iconPseudoShiftY !important;
+        };
+        @include ie('<10') {
+            // IE 8+9
+            top: -$iconPseudoShiftY !important;
+        }
+    }
+} // END .icon-downloading
+
+
+//
+// SIZE VARIATIONS
+//
+$n: 1 !global;
+@each $sizeClass in $utilitySizeClasses {
+
+    $newSpinnerSize: floor($baseIconSize * nth($utilitySizeMultipliers, $n));
+
+    // ICON SIZES
+    .icon-downloading.icon-#{$sizeClass} {
+        width: $newSpinnerSize;
+        height: $newSpinnerSize;
+        background-size: $newSpinnerSize;
+
+        // for the animated gifs - we need exact image sizes
+        // since IE8 doesn't support background-size
+        .ua-safari &,
+        .no-smil &,
+        .os-ios & {
+            @if $sizeClass != "sm" { // not going to actually use an 8px spinner
+                background-image: image-url("animated/icon-downloading-#{$sizeClass}.gif", false);
+            }
+        }
+    }
+
+    $n: $n + 1 !global;
+}

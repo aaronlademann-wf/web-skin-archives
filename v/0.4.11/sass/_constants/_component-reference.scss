@@ -1,0 +1,324 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_component-reference.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+//----------------------------------------------------
+
+//
+// FORM COMPONENTS
+//
+    %form-control {
+        display: block;
+        width: 100%;
+        height: $inputHeightBase;
+        padding: $paddingBaseVertical $paddingBaseHorizontal;
+        font-family: $fontFamilyBase;
+        font-size: $fontSizeBase;
+        line-height: $lineHeightBase;
+        color: $inputColor;
+        background-color: $inputBg;
+        background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+        border: $inputBdWidth solid $inputBdColor;
+        border-radius: $inputBdRadius;
+        @include box-shadow(#{$inputShadowInner});
+        @include transition(#{border-color ease-in-out .15s, box-shadow ease-in-out .15s});
+        @include placeholder;
+    }
+    %input-xs { @include inputSize(xs, $inputHeightXsmall, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall, $nested: true); }
+    %input-sm { @include inputSize(sm, $inputHeightSmall, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall, $nested: true); }
+    %input-lg { @include inputSize(lg, $inputHeightLarge, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge, $nested: true); }
+
+
+//
+// BUTTON COMPONENTS
+//
+    %btn-xs { @include btnSize(xs, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall, $btnIconMarginXsmall, $global: false); }
+    %btn-sm { @include btnSize(sm, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall, $btnIconMarginSmall, $global: false); }
+    %btn-lg { @include btnSize(lg, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge, $btnIconMarginLarge, $global: false); }
+
+    // TODO: remove completely in 0.5.0
+    %close-btn {
+        @include closeScaffolding;
+        font-size: $closeBtnFontSize;
+        float: right;
+
+        #{$linkHoverFocus} {
+            @include closeHoverDefault;
+        }
+    }
+
+
+//
+// TYPE COMPONENTS
+//
+    %text-highlighted {
+        color: $textColor;
+        background-color: $wf_yellow_highlight;
+        &.text-muted, .text-muted {
+            color: mix($textColor, $wf_yellow_highlight, 50%);
+        }
+    }
+
+    %heading-base {
+        margin: $headingsMargins;
+        font-family: $headingsFontFace;
+        font-weight: normal;
+        line-height: $headingsLineHeight;
+        color: $headingsColor;
+        text-rendering: $webfontRendering; // Fix the character spacing for headings
+        small {
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+        }
+    }
+
+    // When adding a hyperlink to a header of any kind (th, <h1>, etc...)
+    %header-link {
+        cursor: pointer;
+        color: inherit;
+        #{$linkHoverFocus} {
+            color: $linkColorHover;
+            text-decoration: none;
+        }
+    }
+
+
+//
+// DROPDOWN / NAV COMPONENTS
+//
+    @mixin dropdown-menu {
+        // when positioned within a relative container, this will
+        // make the dropdown appear directly beneath the button/input
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: $zindexDropdown;
+        float: left;
+        // min/max widths don't work if this is set to 100%
+        width: auto;
+        min-width: $menuVMinWidth;
+        padding: $menuVPadding;
+        // override default ul styles
+        margin: $btnDropdownMenuSpacing 0 0 0;
+        list-style: none;
+        // skin
+        background-color: $menuVLinkBg;
+        border: $menuVBdWidth solid $menuVBdColor;
+        border-radius: $menuVBdRadius;
+        // prevent link bg colors from overflowing outside corner radii
+        @include background-clip(padding-box);
+        // makes it much easier to handle vertical scrolling
+        @include box-sizing(content-box);
+        @include box-shadow(#{$menuVShadow});
+        @include ltie8 {
+            // IE6+7
+            *overflow-x: hidden;
+        }
+        @include ltie10 {
+            @include ie('<10') {
+                overflow-x: hidden;
+            }
+        }
+    }
+    %dropdown-menu {
+        @include dropdown-menu;
+    }
+
+    @mixin dropdown-menu-item {
+        overflow: hidden;
+        clear: both;
+        font-size: $menuVLinkFontSize;
+        color: $menuVLinkColor;
+        cursor: default;
+        // not a selectable piece of text
+        @include disableUserSelect;
+    }
+    %dropdown-menu-item {
+        @include dropdown-menu-item;
+    }
+
+    @mixin dropdown-menu-link {
+        display: block;
+        max-width: $menuVMaxWidth;
+        min-width: 100%;
+        padding: $menuVLinkPadding;
+        padding-left: 0;
+        overflow: hidden;
+        clear: both;
+        font-family: $fontFamilyBase;
+        font-size: $menuVLinkFontSize;
+        line-height: $menuVLinkLineHeight;
+        color: $menuVLinkColor;
+        text-align: left;
+        // Use text indent on the left side of the hitareas
+        // To fix firefox white-space: nowrap; bug with <button class="hitarea">
+        // https://github.com/WebFilings/web-skin/issues/319
+        text-indent: $menuVLinkPaddingHorizontal;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // not a selectable piece of text
+        @include disableUserSelect;
+
+        @include ltie8 {
+            // IE6+7
+            *width: auto;
+        }
+        @include ltie10 {
+            // IE8+9
+            @include ie('<10') {
+                width: auto;
+            }
+        }
+
+        * {
+            // don't know why this is automatically inherited by .hitarea children... but it is.
+            text-indent: 0;
+        }
+
+        .icon {
+
+            // adjust margins because of unusual text-indent hack
+            // we have to use here for <button> elems
+            margin-right: $menuVLinkIconMargin;
+            margin-left: -#{$menuVLinkIconMargin};
+            &.icon-downloading,
+            &:before,
+            &:after { top: -1px; }
+        }
+    }
+    %dropdown-menu-link {
+        @include dropdown-menu-link;
+    }
+
+    @mixin dropdown-header {
+        display: block;
+        @include dropdownMenuItemHeaderPadding($menuVLinkPaddingVertical, $menuVLinkPaddingHorizontal, $menuVLinkIconMargin);
+        margin: 0;
+        font-family: $fontFamilyBase;
+        font-size: $menuVLinkHeaderFontSize !important; // override .dropdown-menu > li font-size
+        font-weight: bold;
+        line-height: $menuVLinkLineHeight;
+        color: $dropdownHeaderColor !important; // override .dropdown-menu > li color
+        text-transform: uppercase;
+        cursor: default;
+    }
+    %dropdown-header {
+        @include dropdown-header;
+    }
+
+    @mixin dropdown-info {
+        // DEFAULT - between two other <li> elems
+        @include dropdownMenuItemHeaderPadding($menuVLinkPaddingVertical + $menuVPaddingVertical, $menuVLinkPaddingHorizontal, $menuVLinkIconMargin);
+        margin: $menuVPaddingVertical 0;
+        background-color: $dropdownInfoPanelBg; // same as default alert bg
+        border-top: $dropdownInfoPanelBdWidth solid $dropdownInfoPanelBdColor; // similar to a .divider
+        border-bottom: $dropdownInfoPanelBdWidth solid $dropdownInfoPanelBdColor; // similar to a .divider
+
+        .dropdown-menu & {
+            // TOP ALIGNMENT - no <li> above it
+            &:first-child {
+                margin-top: -#{$menuVPaddingVertical};
+                border-top: none;
+                @include border-top-radius($menuVBdRadius - $menuVBdWidth);
+            }
+
+            // BOTTOM ALIGNMENT - no <li> below it
+            &:last-child {
+                margin-bottom: -#{$menuVPaddingVertical};
+                border-bottom: none;
+                @include border-bottom-radius($menuVBdRadius - $menuVBdWidth);
+            }
+        }
+
+
+        // when a .dropdown-header is nested within a .dropdown-info <li>
+        .dropdown-header {
+            // tweak padding for nested header
+            // use important to over-rule the dropdown
+            // size variation implementations of dropdown-header
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+            // darken just a bit
+            color: $dropdownInfoPanelHeaderColor !important; // override .dropdown-menu > li color
+        }
+    }
+    %dropdown-info {
+        @include dropdown-info;
+    }
+
+    %nav-link-hover {
+        text-decoration: none;
+        color: $navLinkColorHover;
+        outline: 0;
+        background-color: $navLinkBgHover;
+
+        // caret should match the link color
+        .caret { border-top-color: $navLinkColorHover; }
+        // badges appear with reverse contrast
+        .badge {
+            color: if($navLinkBgHover == transparent, #fff, $navLinkBgHover);
+            background-color: $navLinkColorHover;
+        }
+    }
+
+    %nav-link-press {
+        color: $navLinkColorPress;
+        outline: 0;
+        background-color: $navLinkBgPress;
+
+        // caret should match the link color
+        .caret { border-top-color: $navLinkColorPress; }
+        // badges appear with reverse contrast
+        .badge {
+            color: if($navLinkBgPress == transparent, #fff, $navLinkBgPress);
+            background-color: $navLinkColorPress;
+        }
+    }
+
+    %vertical-nav-link-hover {
+        text-decoration: none;
+        color: $menuVLinkColorHover;
+        background-color: $menuVLinkBgHover;
+        outline: 0;
+        .caret {
+            border-top-color: $menuVLinkColorHover;
+            @include opacity(1);
+        }
+        // badges appear with reverse contrast
+        .badge {
+            color: if($menuVLinkBgHover == transparent, #fff, $menuVLinkBgHover);
+            background-color: $menuVLinkColorHover;
+        }
+    }
+
+    %vertical-nav-link-press {
+        color: $menuVLinkColorPress;
+        background-color: $menuVLinkBgPress;
+        outline: 0;
+        .caret {
+            border-top-color: $menuVLinkColorPress;
+            @include opacity(1);
+        }
+        // badges appear with reverse contrast
+        .badge {
+            color: if($menuVLinkBgPress == transparent, #fff, $menuVLinkBgPress);
+            background-color: $menuVLinkColorPress;
+        }
+    }
+
+
+
+//
+// MODAL COMPONENTS
+//
+    %default-backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: $zindexModalBackdrop;
+        overflow: hidden;
+    }

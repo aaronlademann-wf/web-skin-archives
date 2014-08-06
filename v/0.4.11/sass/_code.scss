@@ -1,0 +1,81 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _code.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_type.scss"
+
+//----------------------------------------------------
+
+
+// Inline and block code styles
+@mixin codeAndPreGlobal {
+    font-family: $fontFamilyMonospace;
+    font-weight: normal;
+}
+
+samp {
+    @include codeAndPreGlobal;
+}
+
+// Inline code
+code {
+    @include codeAndPreGlobal;
+    padding: 2px 4px;
+    font-size: 90%;
+    color: $codeColor;
+    white-space: nowrap;
+    // down-level fallback
+    background-color: $codeBg;
+    background-color: rgba(darken(saturate($codeBg, 97), 40), (darkness($codeBg) / 100%));
+    border-radius: $borderRadiusBase;
+}
+
+// User input typically entered via keyboard
+kbd {
+  @include codeAndPreGlobal;
+  padding: 2px 4px;
+  font-size: 90%;
+  color: $kbdColor;
+  background-color: $kbdBg;
+  border-radius: $borderRadiusSmall;
+  box-shadow: inset 0 -1px 0 rgba($black, .25);
+}
+
+// Blocks of code
+pre {
+    @include codeAndPreGlobal;
+    display: block;
+    padding: (($lineHeightBasePx - 1) / 2);
+    margin: 0 0 ($lineHeightBasePx / 2);
+    overflow: none;
+    font-size: ($fontSizeBase - 1); // 14px to 13px
+    line-height: $lineHeightBase;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: $preColor;
+    background-color: $preBg;
+    border: 1px solid $preBdColor; // fallback for IE7-8
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: $borderRadiusBase;
+
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        white-space: pre-wrap;
+        @include ltie8 {
+            *white-space: pre;
+        }
+        background-color: transparent;
+        border: 0;
+    }
+}
+
+// Enable scrollable blocks of code
+.pre-scrollable {
+    max-height: $preScrollableMaxHeight;
+    overflow-y: scroll;
+}

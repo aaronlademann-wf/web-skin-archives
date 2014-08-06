@@ -1,0 +1,22 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_ua-media/_manifest.scss
+//+  PARENT:   ../_constants/_mixins.scss
+
+    // These mixins are included inside media queries
+    // to easily access
+
+//----------------------------------------------------
+
+//
+// PARTIAL THAT CONTAINS SHARED MIXINS THAT THE BELOW
+// @IMPORTED PARTIALS MAY USE
+// (must be imported first here)
+//
+
+// contains all the device media query vars
+// and responsive mixins we need to @include
+// elsewhere
+@import "_responsive-device-helpers.scss";
+
+@import "_browsers.scss";

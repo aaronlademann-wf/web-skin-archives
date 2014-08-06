@@ -1,0 +1,393 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _button-groups.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_buttons.scss"
+    //+ "_dropdowns.scss"
+
+//----------------------------------------------------
+
+// Make the div behave like a button
+.btn-group {
+    position: relative;
+    display: inline-block;
+    @include ie7-inline-block;
+    vertical-align: middle; // match .btn alignment given font-size hack above
+    white-space: nowrap;
+    font-size: 0; // part 1 of font-size inline-block hack
+
+    > .btn {
+        position: relative;
+        float: left;
+
+        // Bring the "active" button to the front
+        #{$linkHoverFocus},
+        #{$linkPressed} {
+            z-index: 2;
+        }
+    }
+
+    // redeclare as part 2 of font-size inline-block hack
+    .btn,
+    .form-control,
+    .dropdown-menu { font-size: $fontSizeBase; }
+}
+
+// Prevent double borders when buttons are next to each other
+.btn-group {
+    .btn + .btn,
+    .btn + .btn-group,
+    .btn-group + .btn,
+    .btn-group + .btn-group {
+        margin-left: -#{$btnBdWidth};
+    }
+}
+
+// Optional: Group multiple button groups together for a toolbar
+.btn-toolbar {
+    margin-left: -#{$spacingBase}; // offset the first child's margin
+    overflow: visible; // ensure dropdown menus appear
+    @include clearfix;
+
+    .btn-group,
+    .input-group {
+        float: left;
+    }
+
+    // Space out series of button groups
+    > .btn,
+    > .btn-group,
+    > .input-group {
+        margin-left: $spacingBase;
+    }
+}
+
+//
+// ADJACENT BTN / FIRST & LAST BTN BORDER RADIUS HANDLING
+//
+// We can use all these advanced :not selectors here because browsers
+// that don't support them also don't support rounded corners...
+// so the problem fixes itself.
+//
+.btn-group {
+    > .btn {
+        // reset radius on non-"end-cap" buttons
+        &:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+            border-radius: 0;
+        }
+        // Set corners individual because sometimes a single button can be in a
+        // .btn-group and we need :first-child and :last-child to both match
+        &:first-child {
+            margin-left: 0;
+            &:not(:last-child):not(.dropdown-toggle) {
+                @include border-right-radius(0);
+            }
+        }
+        // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+        &:last-child:not(:first-child),
+        &.dropdown-toggle:not(:first-child) {
+            @include border-left-radius(0);
+        }
+    } // END .btn-group > .btn
+
+    //
+    // NESTING BTN-GROUPS WITHIN BTN-GROUPS
+    // especially useful for including dropdown buttons within a btn-group
+    //
+    > .btn-group {
+        float: left;
+        &:not(:first-child):not(:last-child) > .btn {
+            border-radius: 0;
+        }
+        &:first-child {
+            > .btn:last-child,
+            > .dropdown-toggle {
+                @include border-right-radius(0);
+            }
+        }
+        &:last-child > .btn:first-child {
+            @include border-left-radius(0);
+        }
+    }
+}
+
+
+//
+// Split button dropdowns
+//
+// Give the line between buttons some depth
+// Matches both .btn-group and .input-group-btn
+//
+[class*=group] {
+    > .btn {
+        + .dropdown-toggle {
+            padding-left:  round($paddingBaseHorizontal * $btnDdTogglePadReduce);
+            padding-right: round($paddingBaseHorizontal * $btnDdTogglePadReduce);
+
+            .caret {
+                margin-left: 0;
+            }
+        }
+    }
+    > .btn-xs {
+        font-size: $fontSizeXsmall; // override inline-block font size hack reset
+
+        + .dropdown-toggle {
+            padding-left:  round($paddingXsmallHorizontal * $btnDdTogglePadReduce);
+            padding-right: round($paddingXsmallHorizontal * $btnDdTogglePadReduce);
+        }
+    }
+    > .btn-sm {
+        font-size: $fontSizeSmall; // override inline-block font size hack reset
+
+        + .dropdown-toggle {
+            padding-left:  round($paddingSmallHorizontal * $btnDdTogglePadReduce);
+            padding-right: round($paddingSmallHorizontal * $btnDdTogglePadReduce);
+        }
+    }
+    > .btn-lg {
+        font-size: $fontSizeLarge; // override inline-block font size hack reset
+
+        + .dropdown-toggle {
+            padding-left:  round($paddingLargeHorizontal * $btnDdTogglePadReduce);
+            padding-right: round($paddingLargeHorizontal * $btnDdTogglePadReduce);
+        }
+    }
+}
+
+
+//
+// Vertical button groups
+//
+.btn-group-vertical {
+    > .btn,
+    > .btn-group,
+    > .btn-group > .btn {
+        display: block;
+        float: none;
+        width: 100%; // https://github.com/WebFilings/web-skin/issues/658
+        max-width: 100%;
+    }
+
+    // Clear floats so dropdown menus can be properly placed
+    > .btn-group {
+        @include clearfix;
+        > .btn {
+            float: none;
+        }
+    }
+    // remove the negative margin set by horizontal version
+    // add correct negative margin to prevent double borders
+    // when buttons are adjacent to one another
+    > .btn + .btn,
+    > .btn + .btn-group,
+    > .btn-group + .btn,
+    > .btn-group + .btn-group {
+        margin-top: -#{$btnBdWidth};
+        margin-left: 0;
+    }
+
+    // Handle adjacent / first / last elem radius situations
+    > .btn {
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+        &:first-child:not(:last-child) {
+            // need !important to override the specificity of the default :not(.dropdown-toggle)
+            @include border-top-right-radius($borderRadiusBase !important);
+            @include border-bottom-radius(0 !important);
+        }
+        &:last-child:not(:first-child) {
+            // need !important to override the specificity of the default :not(.dropdown-toggle)
+            @include border-bottom-left-radius($borderRadiusBase !important);
+            @include border-top-radius(0 !important);
+        }
+
+        // size variations
+        // TODO: change this to use the size variation of the .btn-group itself when #656 is implemented
+        &.btn.btn-xs {
+            &:first-child:not(:last-child) {
+                @include border-top-right-radius($borderRadiusXsmall);
+            }
+            &:last-child:not(:first-child) {
+                @include border-bottom-left-radius($borderRadiusXsmall);
+            }
+        }
+        &.btn.btn-sm {
+            &:first-child:not(:last-child) {
+                @include border-top-right-radius($borderRadiusSmall);
+            }
+            &:last-child:not(:first-child) {
+                @include border-bottom-left-radius($borderRadiusSmall);
+            }
+        }
+        &.btn.btn-lg {
+            &:first-child:not(:last-child) {
+                @include border-top-right-radius($borderRadiusLarge);
+            }
+            &:last-child:not(:first-child) {
+                @include border-bottom-left-radius($borderRadiusLarge);
+            }
+        }
+    }
+
+    // nested btn-group adjacent / first / last elem radius situations
+    > .btn-group {
+        &:not(:first-child):not(:last-child) > .btn {
+            border-radius: 0;
+        }
+        &:first-child:not(:last-child) {
+            > .btn:last-child,
+            > .dropdown-toggle {
+                @include border-top-right-radius($borderRadiusBase);
+                @include border-bottom-radius(0);
+
+                // size variations
+                // TODO: change this to use the size variation of the .btn-group itself when #656 is implemented
+                &.btn-xs {
+                    @include border-top-right-radius($borderRadiusXsmall);
+                }
+                &.btn-sm {
+                    @include border-top-right-radius($borderRadiusSmall);
+                }
+                &.btn-lg {
+                    @include border-top-right-radius($borderRadiusLarge);
+                }
+            }
+        }
+        &:last-child:not(:first-child) > .btn:first-child {
+            @include border-bottom-left-radius($borderRadiusBase);
+            @include border-top-radius(0);
+
+            // size variations
+            // TODO: change this to use the size variation of the .btn-group itself when #656 is implemented
+            &.btn-xs {
+                @include border-bottom-left-radius($borderRadiusXsmall);
+            }
+            &.btn-sm {
+                @include border-bottom-left-radius($borderRadiusSmall);
+            }
+            &.btn-lg {
+                @include border-bottom-left-radius($borderRadiusLarge);
+            }
+        }
+    }
+
+
+    //
+    // VERTICAL BUTTON GROUP SHADOWS
+    // shift the "punch" shadow to the right since we have
+    // buttons lined up flush top-to-bottom
+    //
+    > .btn {
+        box-shadow: $btnShdDepth 0 0 0 $btnShdDefault;
+        @if $ie-support and $min-ie-supported < 9 {
+            // MSIE 8 doesn't support `box-shadow`
+            // gracefully degrade our "punchable" effect
+            // using right border width
+            border-right-width: $btnBdWidth + $btnShdDepth;
+            // reset border-bottom-width we set for normal .btn "punchable" effects
+            border-bottom-width: $btnBdWidth;
+
+            #{$linkPressed},
+            &.active {
+                border-right-width: $btnBdWidth;
+            }
+        }
+
+        @each $state in $states {
+            $idx: index($states, $state);
+
+            $shd:       nth($state_btnShds, $idx);
+            $shd_hover: nth($state_btnShdsHover, $idx);
+            $shd_press: nth($state_btnShdsPress, $idx);
+
+            // TODO: remove this when .btn-default is required via #664
+            @if $state != default {
+                &.btn-#{$state} {
+                    box-shadow: $btnShdDepth 0 0 0 $shd;
+
+                    #{$linkHoverFocus} {
+                        @if $shd_hover != inherit {
+                            box-shadow: $btnShdDepth 0 0 0 $shd_hover;
+                        }
+                    }
+
+                    #{$linkPressed},
+                    &.active {
+                        box-shadow: none;
+                    }
+
+                    &.disabled,
+                    &[disabled] {
+                        box-shadow: $btnShdDepth 0 0 0 $shd !important;
+                    }
+                }
+            }
+        }
+    }
+} // END .btn-group-vertical
+
+
+//
+// Justified button groups
+//
+.btn-group-justified {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+
+    > .btn,
+    > .btn-group {
+        display: table-cell;
+        float: none;
+        width: 1%;
+        // prevent double borders
+        border-right-width: 0;
+    }
+
+    > .btn-group > .btn {
+        width: 100%;
+        // prevent double borders
+        border-right-width: 0;
+    }
+
+    // last .btn / .btn-group in a justified .btn-group
+    // should have a right border
+    > .btn:last-child,
+    > .btn-group:last-child > .btn {
+        border-right-width: $btnBdWidth;
+    }
+
+    // IE < 7 does not support display: table-cell
+    // Instead, we use inline-block as a fallback
+    @include ltie8 {
+        *display: block;
+        > .btn,
+        > .btn-group {
+            @include ie7-inline-block();
+            *width: auto;
+        }
+    }
+}
+
+
+//
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `opacity`. We cannot
+// use `display: none;` or `visibility: hidden;` as that also hides the popover.
+// This way, we ensure a DOM element is visible to position the popover form.
+//
+[data-toggle*="button"] {
+    input[type="radio"],
+    input[type="checkbox"] {
+        position: absolute;
+        z-index: -1;
+        @include opacity(0);
+    }
+}

@@ -1,0 +1,315 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _grid.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_scaffolding.scss"
+    //+ "_responsive.scss"
+
+//----------------------------------------------------
+
+
+// Set the container width, and override it for fixed navbars in media queries
+.container {
+    @include containerFixed;
+}
+
+// Mobile-first defaults
+.row {
+    @include makeRow;
+}
+
+// "Wide" container variant
+.container-wide {
+    @include containerFixed($gutter: $gridGutterWideWidth);
+    // expand to the edge of the viewport no matter what
+    max-width: $gridContainerWideMaxWidth !important;
+}
+
+// Generate selector arrays
+$colsXs:    comma-list();
+$colsSm:    comma-list();
+$colsMd:    comma-list();
+$colsLg:    comma-list();
+
+$colsPushSm:  comma-list();
+$colsPullSm:  comma-list();
+$offsetsSm:   comma-list();
+
+$colsPushMd:  comma-list();
+$colsPullMd:  comma-list();
+$offsetsMd:   comma-list();
+
+$colsPushLg:  comma-list();
+$colsPullLg:  comma-list();
+$offsetsLg:   comma-list();
+
+@for $i from 1 through $gridColumns {
+    // Columns
+    $colsXs:    append($colsXs,   unquote(".col-xs-#{$i}"), comma) !global;
+    $colsSm:    append($colsSm,   unquote(".col-sm-#{$i}"), comma) !global;
+    $colsMd:    append($colsMd,   unquote(".col-md-#{$i}"), comma) !global;
+    $colsLg:    append($colsLg,   unquote(".col-lg-#{$i}"), comma) !global;
+}
+@for $i from 0 through ($gridColumns - 1) {
+    // Push, pull and offsets
+    $colsPushSm:  append($colsPushSm, unquote(".col-sm-push-#{$i}"), comma) !global;
+    $colsPullSm:  append($colsPullSm, unquote(".col-sm-pull-#{$i}"), comma) !global;
+    $offsetsSm:   append($offsetsSm,  unquote(".col-sm-offset-#{$i}"), comma) !global;
+
+    $colsPushMd:  append($colsPushMd, unquote(".col-md-push-#{$i}"), comma) !global;
+    $colsPullMd:  append($colsPullMd, unquote(".col-md-pull-#{$i}"), comma) !global;
+    $offsetsMd:   append($offsetsMd,  unquote(".col-md-offset-#{$i}"), comma) !global;
+
+    $colsPushLg:  append($colsPushLg, unquote(".col-lg-push-#{$i}"), comma) !global;
+    $colsPullLg:  append($colsPullLg, unquote(".col-lg-pull-#{$i}"), comma) !global;
+    $offsetsLg:   append($offsetsLg,  unquote(".col-lg-offset-#{$i}"), comma) !global;
+}
+
+// Common styles for small and large grid columns
+// TODO (0.5.0): once we get a better handle on selector efficiency / breaking into modules, we should go back to explicitly defining classes here instead of using the (slower) fuzzy selectors.
+[class*="col-xs-"],
+[class*="col-sm-"],
+[class*="col-md-"],
+[class*="col-lg-"] {
+    display: block;
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-right: ($gridGutterWidth / 2);
+    padding-left:  ($gridGutterWidth / 2);
+    // MSIE 7 cannot do the width+padding b/c of no border-box support
+    // so instead of going crazy and trying to use % widths / padding for everything
+    // we'll add the padding to immediate children
+    @include ltie8 {
+        *clear: right;
+        *padding-right: 0;
+        *padding-left:  0;
+        > * {
+            *width: auto;
+            *padding-right: ($gridGutterWidth / 2);
+            *padding-left:  ($gridGutterWidth / 2);
+        }
+    }
+}
+
+
+//
+// Container and grid column sizing
+//
+
+
+//
+// Extra small grid
+//
+// Grid classes for extra small devices like smartphones. No offset, push, or
+// pull classes are present here due to the size of the target.
+//
+// Note that `.col-xs-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+//
+
+// TODO (0.5.0): once we get a better handle on selector efficiency / breaking into modules, we should go back to explicitly defining classes here instead of using the (slower) fuzzy selectors.
+[class*="col-xs-"] {
+    float: left
+}
+$i: 1 !global;
+@each $col in $colsXs {
+    #{$col} {
+        width: percentage($i / $gridColumns);
+    }
+    $i: $i + 1 !global;
+}
+
+
+//
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+//
+// Note that `.col-sm-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+//
+@media screen and (min-width: $screenTablet) {
+    .container {
+        max-width: $gridContainerMaxWidthTablet;
+    }
+
+    // TODO (0.5.0): once we get a better handle on selector efficiency / breaking into modules, we should go back to explicitly defining classes here instead of using the (slower) fuzzy selectors.
+    [class*="col-sm-"] {
+        float: left;
+    }
+    $i: 1 !global;
+    @each $colSm in $colsSm {
+        #{$colSm} {
+            width: percentage($i / $gridColumns);
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPushSm in $colsPushSm {
+        @if $i == 0 {
+            #{$colPushSm} { left: auto; }
+        } @else {
+            #{$colPushSm} {
+                left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPullSm in $colsPullSm {
+        @if $i == 0 {
+            #{$colPullSm} { right: auto; }
+        } @else {
+            #{$colPullSm} {
+                right: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $offsetSm in $offsetsSm {
+        @if $i == 0 {
+            #{$offsetSm} { margin-left: 0; }
+        } @else {
+            #{$offsetSm} {
+                margin-left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+} // END small device columns
+
+
+//
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+//
+// Note that `.col-md-12` doesn't get floated on purpose—there's no need since
+// it's full-width.
+//
+@media screen and (min-width: $screenDesktop) {
+    .container {
+        max-width: $gridContainerMaxWidthDesktop;
+    }
+
+    // TODO (0.5.0): once we get a better handle on selector efficiency / breaking into modules, we should go back to explicitly defining classes here instead of using the (slower) fuzzy selectors.
+    [class*="col-md-"] {
+        float: left;
+    }
+    $i: 1 !global;
+    @each $colMd in $colsMd {
+        #{$colMd} {
+            width: percentage($i / $gridColumns);
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPushMd in $colsPushMd {
+        @if $i == 0 {
+            #{$colPushMd} { left: auto; }
+        } @else {
+            #{$colPushMd} {
+                left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPullMd in $colsPullMd {
+        @if $i == 0 {
+            #{$colPullMd} { right: auto; }
+        } @else {
+            #{$colPullMd} {
+                right: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $offsetMd in $offsetsMd {
+        @if $i == 0 {
+            #{$offsetMd} { margin-left: 0; }
+        } @else {
+            #{$offsetMd} {
+                margin-left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+} // END medium device columns
+
+
+//
+// Large device columns (large desktop and up)
+//
+@media screen and (min-width: $screenDesktopLarge) {
+    .container {
+        max-width: $gridContainerMaxWidthDesktopLarge;
+    }
+
+    // TODO (0.5.0): once we get a better handle on selector efficiency / breaking into modules, we should go back to explicitly defining classes here instead of using the (slower) fuzzy selectors.
+    [class*="col-lg-"] {
+        float: left;
+    }
+    $i: 1 !global;
+    @each $colLg in $colsLg {
+        #{$colLg} {
+            width: percentage($i / $gridColumns);
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPushLg in $colsPushLg {
+        @if $i == 0 {
+            #{$colPushLg} { left: auto; }
+        } @else {
+            #{$colPushLg} {
+                left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $colPullLg in $colsPullLg {
+        @if $i == 0 {
+            #{$colPullLg} { right: auto; }
+        } @else {
+            #{$colPullLg} {
+                right: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+    $i: 0 !global;
+    @each $offsetLg in $offsetsLg {
+        @if $i == 0 {
+            #{$offsetLg} { margin-left: 0; }
+        } @else {
+            #{$offsetLg} {
+                margin-left: percentage($i / $gridColumns);
+            }
+        }
+        $i: $i + 1 !global;
+    }
+} // END large device columns
+
+
+//
+// Huge desktops and up
+//
+@media screen and (min-width: $screenDesktopHuge) {
+    .container {
+        max-width: $gridContainerMaxWidthDesktopLarge;
+    }
+}
+
+// Reset utility classes due to specificity
+[class^="col-"].pull-right {
+    float: right;
+}

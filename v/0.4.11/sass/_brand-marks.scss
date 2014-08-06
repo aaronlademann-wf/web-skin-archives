@@ -1,0 +1,23 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _brand-marks.scss
+//+  PARENT:   wdesk.scss
+
+    // WebFilings Brand Marks / Logos
+
+    // related partials:
+
+//----------------------------------------------------
+
+.w-symbol {
+    @include bgImage($name: "w-symbol_color", $dir: $wdeskLogoDir, $mime: $wdeskLogoMime);
+}
+
+.wf-logo {
+    @include bgImage($name: "wf-logo_color", $dir: $wdeskLogoDir, $mime: $wdeskLogoMime);
+}
+
+.wdesk-logo,
+.wdesk-logo-flat {
+    @include bgImage($name: $wdeskLogoName, $dir: $wdeskLogoDir, $mime: $wdeskLogoMime);
+}

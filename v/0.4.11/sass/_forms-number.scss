@@ -1,0 +1,130 @@
+@function calculateCaretMargin ($inputHeight: $inputHeightBase) {
+    @return floor((($inputHeight / 2) - $caretWidth) / 2);
+}
+
+@mixin numberInputSize ($classSuffix, $inputHeight, $paddingVertical, $paddingHorizontal, $radius) {
+    $sizeClass: ".input-#{$classSuffix}";
+
+    #{$sizeClass}.number-polyfill {
+        padding-right: $inputHeight + floor($paddingHorizontal / 2);
+    }
+
+    #{$sizeClass} {
+        + .number-spin-btn-container {
+            top: -#{$inputHeight};
+            width: $inputHeight;
+            height: $inputHeight;
+            margin-left: -#{$inputHeight};
+
+            .number-spin-btn {
+                width: $inputHeight;
+                height: floor($inputHeight / 2) - $btnBdWidth !important;
+
+                &.number-spin-btn-up {
+                    @include border-top-right-radius($radius !important);
+                }
+                &.number-spin-btn-down {
+                    @include border-bottom-right-radius($radius !important);
+                }
+
+                .caret {
+                    margin-top: calculateCaretMargin($inputHeight) !important;
+                }
+            }
+        }
+    }
+}
+
+//----------------------------------------------------
+
+//+  PARTIAL:  _forms-number.scss
+//+  PARENT:   _forms.scss
+
+    // This works alongside the number-polyfill.js
+    // shim that is part of libs_ie.js
+
+//----------------------------------------------------
+
+
+// this is the class that is added to the input when converted
+.form-control.number-polyfill {
+    // right aligned text needs to not be stuck behind the buttons
+    padding-right: $inputHeightBase + floor($paddingBaseHorizontal / 2);
+}
+
+.number-spin-btn-container {
+    position: relative;
+    top: -#{$inputHeightBase};
+    left: 100%;
+    display: inline-block;
+    width: $inputHeightBase;
+    height: $inputHeightBase;
+    padding: 0;
+    margin-left: -$inputHeightBase;
+    vertical-align: bottom;
+}
+
+.btn.number-spin-btn {
+    display: block;
+    position: absolute;
+    top: $btnBdWidth !important;
+    right: $btnBdWidth;
+    width: $inputHeightBase;
+    height: floor($inputHeightBase / 2) - $btnBdWidth !important;
+    padding: 0 !important;
+    border-right-width: 0 !important;
+    @include border-left-radius(0 !important);
+
+    // no "depth" / punchable state for these buttons
+    box-shadow: none;
+    border-bottom-width: $btnBdWidth !important;
+}
+
+// need the extra specificity for a few overrides
+.number-spin-btn-container .btn.number-spin-btn {
+    &.number-spin-btn-up {
+        @include border-top-right-radius($borderRadiusBase !important);
+    }
+
+    &.number-spin-btn-down {
+        @include border-bottom-right-radius($borderRadiusBase !important);
+    }
+
+    .caret {
+        margin-top: calculateCaretMargin() !important;
+    }
+}
+
+.btn.number-spin-btn-up {
+    border-top-width: 0 !important;
+    @include border-bottom-right-radius(0 !important);
+
+    .caret {
+        border-color: transparent transparent $caretColor transparent !important;
+    }
+}
+
+.btn.number-spin-btn-down {
+    top: auto !important;
+    bottom: $btnBdWidth;
+    border-bottom-width: 0 !important;
+    border-top-color: white !important;
+    @include border-top-right-radius(0 !important);
+
+    .caret {
+        border-color: $caretColor transparent transparent transparent !important;
+    }
+
+    #{$linkPressed} {
+        border-top-color: darken($btnBdDefault, 2) !important;
+    }
+}
+
+
+//
+// SIZE VARIATIONS
+//
+@include numberInputSize(xs, $inputHeightXsmall, $paddingXsmallVertical, $paddingXsmallHorizontal, $borderRadiusXsmall);
+@include numberInputSize(sm, $inputHeightSmall, $paddingSmallVertical, $paddingSmallHorizontal, $borderRadiusSmall);
+@include numberInputSize(lg, $inputHeightLarge, $paddingLargeVertical, $paddingLargeHorizontal, $borderRadiusLarge);
+

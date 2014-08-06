@@ -1,0 +1,288 @@
+//+ Misc
+%wf_blue_selectBgHover    { background-color: $wf_blue_selectBgHover;    color: contrast-color($wf_blue_selectBgHover); }
+%wf_blue_selectBgPress    { background-color: $wf_blue_selectBgPress;    color: contrast-color($wf_blue_selectBgPress); }
+%wf_blue_selectBgActive   { background-color: $wf_blue_selectBgActive;   color: contrast-color($wf_blue_selectBgActive); }
+%wf_blue_selectTextHover  { background-color: $wf_blue_selectTextHover;  color: contrast-color($wf_blue_selectTextHover); }
+%wf_blue_selectTextPress  { background-color: $wf_blue_selectTextPress;  color: contrast-color($wf_blue_selectTextPress); }
+%wf_blue_selectTextActive { background-color: $wf_blue_selectTextActive; color: contrast-color($wf_blue_selectTextActive); }
+
+%wf_yellow_highlight      { background-color: $wf_yellow_highlight;      color: contrast-color($wf_yellow_highlight); }
+
+//+ WF Grays ("Secondary")
+%wf_gray_dk  { background-color: $wf_gray_dk;  color: contrast-color($wf_gray_dk); }
+%wf_gray     { background-color: $wf_gray;     color: contrast-color($wf_gray); }
+%wf_gray_lt  { background-color: $wf_gray_lt;  color: contrast-color($wf_gray_lt); }
+%wf_gray_lt2 { background-color: $wf_gray_lt2; color: contrast-color($wf_gray_lt2); }
+%wf_gray_lt3 { background-color: $wf_gray_lt3; color: contrast-color($wf_gray_lt3); }
+%wf_gray_ps1 { background-color: $wf_gray_ps1; color: contrast-color($wf_gray_ps1); }
+%wf_gray_lt4 { background-color: $wf_gray_lt4; color: contrast-color($wf_gray_lt4); }
+%wf_gray_lt5 { background-color: $wf_gray_lt5; color: contrast-color($wf_gray_lt5); }
+%wf_gray_ps2 { background-color: $wf_gray_ps2; color: contrast-color($wf_gray_ps2); }
+%wf_gray_lt6 { background-color: $wf_gray_lt6; color: contrast-color($wf_gray_lt6); }
+
+//+ WF Greens ("Primary")
+// These all read from left to right when looking at the style guide matrix
+%wf_green_alt2     { background-color: $wf_green_alt2;     color: contrast-color($wf_green_alt2); }
+%wf_green_alt      { background-color: $wf_green_alt;      color: contrast-color($wf_green_alt); }
+%wf_green          { background-color: $wf_green;          color: contrast-color($wf_green); }
+// Darker
+%wf_green_dk_alt2  { background-color: $wf_green_dk_alt2;  color: contrast-color($wf_green_dk_alt2); }
+%wf_green_dk_alt   { background-color: $wf_green_dk_alt;   color: contrast-color($wf_green_dk_alt); }
+%wf_green_dk       { background-color: $wf_green_dk;       color: contrast-color($wf_green_dk); }
+// Lighter
+%wf_green_lt_alt2  { background-color: $wf_green_lt_alt2;  color: contrast-color($wf_green_lt_alt2); }
+%wf_green_lt_alt   { background-color: $wf_green_lt_alt;   color: contrast-color($wf_green_lt_alt); }
+%wf_green_lt       { background-color: $wf_green_lt;       color: contrast-color($wf_green_lt); }
+// Pastel 1
+%wf_green_ps1_alt2 { background-color: $wf_green_ps1_alt2; color: contrast-color($wf_green_ps1_alt2); }
+%wf_green_ps1_alt  { background-color: $wf_green_ps1_alt;  color: contrast-color($wf_green_ps1_alt); }
+%wf_green_ps1      { background-color: $wf_green_ps1;      color: contrast-color($wf_green_ps1); }
+// Pastel 2
+%wf_green_ps2_alt2 { background-color: $wf_green_ps2_alt2; color: contrast-color($wf_green_ps2_alt2); }
+%wf_green_ps2_alt  { background-color: $wf_green_ps2_alt;  color: contrast-color($wf_green_ps2_alt); }
+%wf_green_ps2      { background-color: $wf_green_ps2;      color: contrast-color($wf_green_ps2); }
+
+//+ WF Blues ("Alternate")
+%wf_blue_dk  { background-color: $wf_blue_dk;  color: contrast-color($wf_blue_dk); }
+%wf_blue     { background-color: $wf_blue;     color: contrast-color($wf_blue); }
+%wf_blue_lt  { background-color: $wf_blue_lt;  color: contrast-color($wf_blue_lt); }
+%wf_blue_ps1 { background-color: $wf_blue_ps1; color: contrast-color($wf_blue_ps1); }
+%wf_blue_ps2 { background-color: $wf_blue_ps2; color: contrast-color($wf_blue_ps2); }
+
+//+ WF Orange ("Warning")
+%wf_orange_dk  { background-color: $wf_orange_dk;  color: contrast-color($wf_orange_dk); }
+%wf_orange     { background-color: $wf_orange;     color: contrast-color($wf_orange); }
+%wf_orange_lt  { background-color: $wf_orange_lt;  color: contrast-color($wf_orange_lt); }
+%wf_orange_ps1 { background-color: $wf_orange_ps1; color: contrast-color($wf_orange_ps1); }
+%wf_orange_ps2 { background-color: $wf_orange_ps2; color: contrast-color($wf_orange_ps2); }
+
+//+ WF Purple ("University/Help")
+%wf_purple_dk  { background-color: $wf_purple_dk;  color: contrast-color($wf_purple_dk); }
+%wf_purple     { background-color: $wf_purple;     color: contrast-color($wf_purple); }
+%wf_purple_lt  { background-color: $wf_purple_lt;  color: contrast-color($wf_purple_lt); }
+%wf_purple_ps1 { background-color: $wf_purple_ps1; color: contrast-color($wf_purple_ps1); }
+%wf_purple_ps2 { background-color: $wf_purple_ps2; color: contrast-color($wf_purple_ps2); }
+
+//+ WF Red ("Danger/Error")
+%wf_red_dk  { background-color: $wf_red_dk;  color: contrast-color($wf_red_dk); }
+%wf_red     { background-color: $wf_red;     color: contrast-color($wf_red); }
+%wf_red_lt  { background-color: $wf_red_lt;  color: contrast-color($wf_red_lt); }
+%wf_red_ps1 { background-color: $wf_red_ps1; color: contrast-color($wf_red_ps1); }
+%wf_red_ps2 { background-color: $wf_red_ps2; color: contrast-color($wf_red_ps2); }
+
+.scss-output {
+
+    //
+    // KEY VARIABLES
+    //
+    &.font-size-base:before { content: "#{$fontSizeBase}"; }
+    &.font-size-lg:before { content: "#{$fontSizeLarge}"; }
+    &.font-size-md:before { content: "#{$fontSizeMedium}"; }
+    &.font-size-sm:before { content: "#{$fontSizeSmall}"; }
+    &.font-size-sm-pct:before { content: "#{floor($fontSizeSmallPct)}"; }
+    &.line-height-base:before { content: "#{$lineHeightBase}"; }
+    &.paragraph-margin:before { content: "#{$lineHeightBasePx / 2}"; }
+    &.font-size-mod-sm:before { content: "#{percentage($fontSizeModifierSmall)}"; }
+    &.disabled-fade-pct:before { content: "#{percentage(1 - $disabledAlphaDefault)}"; }
+
+    &.navbar-height:before { content: "#{$navbarHeight}"; }
+
+    &.pre-scrollable-height:before{ content: "#{$preScrollableMaxHeight}"; }
+
+    &.min-ie-supported:before { content: "#{$min-ie-supported}"; }
+    &.min-mozilla-supported:before { content: "#{$min-mozilla-supported}"; }
+    &.min-opera-supported:before { content: "#{$min-opera-supported}"; }
+    &.min-safari-supported:before { content: "#{$min-safari-supported}"; }
+    &.min-chrome-supported:before { content: "#{$min-safari-supported}"; }
+
+    &.min-ios-supported:before { content: "#{$min-ios-supported}"; }
+    &.min-droid-supported:before { content: "#{$min-droid-supported}"; }
+
+    // Icon Sizes
+    &.icon-base-size:before     { content: "#{$baseIconSize}"; }
+    &.icon-sm-size:before    { content: "#{$iconSmallSize}"; }
+    &.icon-md-size:before   { content: "#{$iconMediumSize}"; }
+    &.icon-lg-size:before    { content: "#{$iconLargeSize}"; }
+    &.icon-huge-size:before     { content: "#{$iconHugeSize}"; }
+    &.icon-gigantic-size:before { content: "#{$iconGiganticSize}"; }
+    // base 24
+    &.icon-twfr-base-size:before     { content: "#{$iconMediumSize}"; }
+    &.icon-twfr-lg-size:before    { content: "#{$iconMediumSize * nth($utilitySizeMultipliersBase24, 3)}"; }
+    &.icon-twfr-huge-size:before     { content: "#{$iconMediumSize * nth($utilitySizeMultipliersBase24, 4)}"; }
+    &.icon-twfr-gigantic-size:before { content: "#{$iconMediumSize * nth($utilitySizeMultipliersBase24, 5)}"; }
+
+    //
+    // GRID
+    //
+    &.grid-columns:before { content: "#{$gridColumns}"; }
+    &.grid-gutter-width:before { content: "#{$gridGutterWidth}"; }
+    &.grid-gutter-side-width:before { content: "#{$gridGutterWidth / 2}"; }
+    &.grid-column-width-mobile:before { content: "#{$gridColumnWidthMobile}"; }
+    &.grid-column-width-desktop:before { content: "#{$gridColumnWidthDesktop}"; }
+    &.grid-column-width-desktop-lg:before { content: "#{$gridColumnWidthDesktopLarge}"; }
+    &.grid-column-width-desktop-huge:before { content: "#{$gridColumnWidthDesktopHuge}"; }
+
+    &.screen-tablet:before { content: "#{$screenTablet}"; }
+    &.grid-container-max-width-tablet:before { content: "#{$gridContainerMaxWidthTablet}"; }
+
+    &.screen-desktop:before { content: "#{$screenDesktop}"; }
+    &.grid-container-max-width-desktop:before { content: "#{$gridContainerMaxWidthDesktop}"; }
+
+    &.screen-desktop-lg:before { content: "#{$screenDesktopLarge}"; }
+    &.grid-container-max-width-desktop-lg:before { content: "#{$gridContainerMaxWidthDesktopLarge}"; }
+
+    &.screen-desktop-huge:before { content: "#{$screenDesktopHuge}"; }
+    &.grid-container-max-width-desktop-huge:before { content: "#{$gridContainerMaxWidthDesktopHuge}"; }
+
+    //
+    // COLOR PALETTE
+    //
+    &.swatch:before {
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+
+    //+ Misc
+    &.wf_blue_selectBgHover    { @extend %wf_blue_selectBgHover; }
+    &.wf_blue_selectBgPress    { @extend %wf_blue_selectBgPress; }
+    &.wf_blue_selectBgActive   { @extend %wf_blue_selectBgActive; }
+    &.wf_blue_selectTextHover  { @extend %wf_blue_selectTextHover; }
+    &.wf_blue_selectTextPress  { @extend %wf_blue_selectTextPress; }
+    &.wf_blue_selectTextActive { @extend %wf_blue_selectTextActive; }
+
+    &.wf_yellow_highlight      { @extend %wf_yellow_highlight; }
+    // labels
+    &.wf_blue_selectBgHover:before    { content: "#{$wf_blue_selectBgHover}";    @extend %wf_blue_selectBgHover; }
+    &.wf_blue_selectBgPress:before    { content: "#{$wf_blue_selectBgPress}";    @extend %wf_blue_selectBgPress; }
+    &.wf_blue_selectBgActive:before   { content: "#{$wf_blue_selectBgActive}";   @extend %wf_blue_selectBgActive; }
+    &.wf_blue_selectTextHover:before  { content: "#{$wf_blue_selectTextHover}";  @extend %wf_blue_selectTextHover; }
+    &.wf_blue_selectTextPress:before  { content: "#{$wf_blue_selectTextPress}";  @extend %wf_blue_selectTextPress; }
+    &.wf_blue_selectTextActive:before { content: "#{$wf_blue_selectTextActive}"; @extend %wf_blue_selectTextActive; }
+
+    &.wf_yellow_highlight:before      { content: "#{$wf_yellow_highlight}";     @extend %wf_yellow_highlight; }
+
+    //+ WF Grays ("Secondary")
+    &.wf_gray_dk  { @extend %wf_gray_dk; }
+    &.wf_gray     { @extend %wf_gray; }
+    &.wf_gray_lt  { @extend %wf_gray_lt; }
+    &.wf_gray_lt2 { @extend %wf_gray_lt2; }
+    &.wf_gray_lt3 { @extend %wf_gray_lt3; }
+    &.wf_gray_ps1 { @extend %wf_gray_ps1; }
+    &.wf_gray_lt4 { @extend %wf_gray_lt4; }
+    &.wf_gray_lt5 { @extend %wf_gray_lt5; }
+    &.wf_gray_ps2 { @extend %wf_gray_ps2; }
+    &.wf_gray_lt6 { @extend %wf_gray_lt6; }
+    // labels
+    &.wf_gray_dk:before  { content: "#{$wf_gray_dk}";  @extend %wf_gray_dk; }
+    &.wf_gray:before     { content: "#{$wf_gray}";     @extend %wf_gray; }
+    &.wf_gray_lt:before  { content: "#{$wf_gray_lt}";  @extend %wf_gray_lt; }
+    &.wf_gray_lt2:before { content: "#{$wf_gray_lt2}"; @extend %wf_gray_lt2; }
+    &.wf_gray_lt3:before { content: "#{$wf_gray_lt3}"; @extend %wf_gray_lt3; }
+    &.wf_gray_ps1:before { content: "#{$wf_gray_ps1}"; @extend %wf_gray_ps1; }
+    &.wf_gray_lt4:before { content: "#{$wf_gray_lt4}"; @extend %wf_gray_lt4; }
+    &.wf_gray_lt5:before { content: "#{$wf_gray_lt5}"; @extend %wf_gray_lt5; }
+    &.wf_gray_ps2:before { content: "#{$wf_gray_ps2}"; @extend %wf_gray_ps2; }
+    &.wf_gray_lt6:before { content: "#{$wf_gray_lt6}"; @extend %wf_gray_lt6; }
+
+    //+ WF Greens ("Primary")
+    // These all read from left to right when looking at the style guide matrix
+    &.wf_green_alt2     { @extend %wf_green_alt2; }
+    &.wf_green_alt      { @extend %wf_green_alt; }
+    &.wf_green          { @extend %wf_green; }
+    // labels
+    &.wf_green_alt2:before     { content: "#{$wf_green_alt2}";     @extend %wf_green_alt2; }
+    &.wf_green_alt:before      { content: "#{$wf_green_alt}";      @extend %wf_green_alt; }
+    &.wf_green:before          { content: "#{$wf_green}";          @extend %wf_green; }
+
+    // Darker
+    &.wf_green_dk_alt2     { @extend %wf_green_dk_alt2; }
+    &.wf_green_dk_alt      { @extend %wf_green_dk_alt; }
+    &.wf_green_dk          { @extend %wf_green_dk; }
+    // labels
+    &.wf_green_dk_alt2:before  { content: "#{$wf_green_dk_alt2}";  @extend %wf_green_dk_alt2; }
+    &.wf_green_dk_alt:before   { content: "#{$wf_green_dk_alt}";   @extend %wf_green_dk_alt; }
+    &.wf_green_dk:before       { content: "#{$wf_green_dk}";       @extend %wf_green_dk; }
+
+    // Lighter
+    &.wf_green_lt_alt2     { @extend %wf_green_lt_alt2; }
+    &.wf_green_lt_alt      { @extend %wf_green_lt_alt; }
+    &.wf_green_lt          { @extend %wf_green_lt; }
+    // labels
+    &.wf_green_lt_alt2:before  { content: "#{$wf_green_lt_alt2}";  @extend %wf_green_lt_alt2; }
+    &.wf_green_lt_alt:before   { content: "#{$wf_green_lt_alt}";   @extend %wf_green_lt_alt; }
+    &.wf_green_lt:before       { content: "#{$wf_green_lt}";       @extend %wf_green_lt; }
+
+    // Pastel 1
+    &.wf_green_ps1_alt2     { @extend %wf_green_ps1_alt2; }
+    &.wf_green_ps1_alt      { @extend %wf_green_ps1_alt; }
+    &.wf_green_ps1          { @extend %wf_green_ps1; }
+    // labels
+    &.wf_green_ps1_alt2:before { content: "#{$wf_green_ps1_alt2}"; @extend %wf_green_ps1_alt2; }
+    &.wf_green_ps1_alt:before  { content: "#{$wf_green_ps1_alt}";  @extend %wf_green_ps1_alt; }
+    &.wf_green_ps1:before      { content: "#{$wf_green_ps1}";      @extend %wf_green_ps1; }
+
+    // Pastel 2
+    &.wf_green_ps2_alt2     { @extend %wf_green_ps2_alt2; }
+    &.wf_green_ps2_alt      { @extend %wf_green_ps2_alt; }
+    &.wf_green_ps2          { @extend %wf_green_ps2; }
+    // labels
+    &.wf_green_ps2_alt2:before { content: "#{$wf_green_ps2_alt2}"; @extend %wf_green_ps2_alt2; }
+    &.wf_green_ps2_alt:before  { content: "#{$wf_green_ps2_alt}";  @extend %wf_green_ps2_alt; }
+    &.wf_green_ps2:before      { content: "#{$wf_green_ps2}";      @extend %wf_green_ps2; }
+
+
+    //+ WF Blues ("Alternate")
+    &.wf_blue_dk  { @extend %wf_blue_dk; }
+    &.wf_blue     { @extend %wf_blue; }
+    &.wf_blue_lt  { @extend %wf_blue_lt; }
+    &.wf_blue_ps1 { @extend %wf_blue_ps1; }
+    &.wf_blue_ps2 { @extend %wf_blue_ps2; }
+    // labels
+    &.wf_blue_dk:before  { content: "#{$wf_blue_dk}";  @extend %wf_blue_dk; }
+    &.wf_blue:before     { content: "#{$wf_blue}";     @extend %wf_blue; }
+    &.wf_blue_lt:before  { content: "#{$wf_blue_lt}";  @extend %wf_blue_lt; }
+    &.wf_blue_ps1:before { content: "#{$wf_blue_ps1}"; @extend %wf_blue_ps1; }
+    &.wf_blue_ps2:before { content: "#{$wf_blue_ps2}"; @extend %wf_blue_ps2; }
+
+
+    //+ WF Orange ("Warning")
+    &.wf_orange_dk  { @extend %wf_orange_dk; }
+    &.wf_orange     { @extend %wf_orange; }
+    &.wf_orange_lt  { @extend %wf_orange_lt; }
+    &.wf_orange_ps1 { @extend %wf_orange_ps1; }
+    &.wf_orange_ps2 { @extend %wf_orange_ps2; }
+    // labels
+    &.wf_orange_dk:before  { content: "#{$wf_orange_dk}";  @extend %wf_orange_dk; }
+    &.wf_orange:before     { content: "#{$wf_orange}";     @extend %wf_orange; }
+    &.wf_orange_lt:before  { content: "#{$wf_orange_lt}";  @extend %wf_orange_lt; }
+    &.wf_orange_ps1:before { content: "#{$wf_orange_ps1}"; @extend %wf_orange_ps1; }
+    &.wf_orange_ps2:before { content: "#{$wf_orange_ps2}"; @extend %wf_orange_ps2; }
+
+
+    //+ WF Purple ("University/Helpl")
+    &.wf_purple_dk  { @extend %wf_purple_dk; }
+    &.wf_purple     { @extend %wf_purple; }
+    &.wf_purple_lt  { @extend %wf_purple_lt; }
+    &.wf_purple_ps1 { @extend %wf_purple_ps1; }
+    &.wf_purple_ps2 { @extend %wf_purple_ps2; }
+    // labels
+    &.wf_purple_dk:before  { content: "#{$wf_purple_dk}";  @extend %wf_purple_dk; }
+    &.wf_purple:before     { content: "#{$wf_purple}";     @extend %wf_purple; }
+    &.wf_purple_lt:before  { content: "#{$wf_purple_lt}";  @extend %wf_purple_lt; }
+    &.wf_purple_ps1:before { content: "#{$wf_purple_ps1}"; @extend %wf_purple_ps1; }
+    &.wf_purple_ps2:before { content: "#{$wf_purple_ps2}"; @extend %wf_purple_ps2; }
+
+
+    //+ WF Red ("Danger/Error")
+    &.wf_red_dk  { @extend %wf_red_dk; }
+    &.wf_red     { @extend %wf_red; }
+    &.wf_red_lt  { @extend %wf_red_lt; }
+    &.wf_red_ps1 { @extend %wf_red_ps1; }
+    &.wf_red_ps2 { @extend %wf_red_ps2; }
+    // labels
+    &.wf_red_dk:before  { content: "#{$wf_red_dk}";  @extend %wf_red_dk; }
+    &.wf_red:before     { content: "#{$wf_red}";     @extend %wf_red; }
+    &.wf_red_lt:before  { content: "#{$wf_red_lt}";  @extend %wf_red_lt; }
+    &.wf_red_ps1:before { content: "#{$wf_red_ps1}"; @extend %wf_red_ps1; }
+    &.wf_red_ps2:before { content: "#{$wf_red_ps2}"; @extend %wf_red_ps2; }
+}

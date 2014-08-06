@@ -1,0 +1,505 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_defaults.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+    // constant values that are used as defaults
+    // across multiple components / applications
+    // and that are commonly used in functions
+    // (which is why it must be imported before functions)
+
+    // related partials:
+    //+ "_variables.scss"
+    //+ "_support.scss"
+    //+ "_ua-media/_responsive-device-helpers.scss"
+
+//----------------------------------------------------
+
+//
+// SCSS INHERITANCE
+//
+    // used to remove img dir dependency in inheriting projects
+    $useWebSkinImgDir:  true !default;
+
+
+//
+// PORTABILITY HELPERS
+//
+    $baseElem:          "body" !default;
+
+
+//
+// TOUCH UI OPTIONS
+//
+    $touchOnly:         false !default;
+    $touchUIhitarea:    44px;
+
+
+//
+// PSEUDO STATES FOR TOUCH / NON-TOUCH UI
+//
+// e.g. :hover just brings a world of pain to touch-only UI
+// so we replace it with :focus in those situations
+//
+    //
+    // HOVER & HOVER/FOCUS COMBO
+    //
+    // if touch only ui - don't even use the :hover pseudo state... use .hover class only so js can explicitly set it if the rare use-case occurs for it
+    //
+    $hover:                     if($touchOnly == false, "&#{$cl}hover", "&.hover") !default;
+    $hoverInline:               if($touchOnly == false, "#{$cl}hover", ".hover") !default;
+    // if touch only ui - don't even use the :hover pseudo state... use .hover
+    $hoverNested:               $hover !default;
+    // if touch only ui - don't even use the :hover pseudo state... use .hover
+    $linkHoverFocus:            if($touchOnly == false, "&#{$cl}hover, &#{$cl}focus", "&.hover, &.focus") !default;
+    // if touch only ui - don't even use the :hover/:focus pseudo states... use .hover / .focus
+    $linkHoverFocusNested:      $linkHoverFocus !default;
+
+    //
+    // FOCUS
+    //
+    // focus-only styles for forms should always happen no matter the device
+    //
+    $inputFocus:                "&#{$cl}focus" !default;
+    $inputFocusInline:          "#{$cl}focus" !default;
+    // if touch only ui - don't even use the :focus pseudo state... use .focus
+    $linkFocus:                 if($touchOnly == false, "&#{$cl}focus", "&.focus") !default;
+    $linkFocusInline:           if($touchOnly == false, "#{$cl}focus", ".focus") !default;
+    // if touch only ui - don't even use the :focus pseudo state... use .focus
+    $linkFocusNested:           $linkFocus !default;
+
+    //
+    // PRESSED
+    //
+    // we only want a button to appear "pressed" if the mouse is also hovering it
+    // html elem is only added for specificity so that .no-touch :hover doesn't override it
+    //
+    $linkPressed:               if($touchOnly == false, "&#{$cl}hover#{$cl}active", "&#{$cl}active") !default;
+    $linkPressedInline:         if($touchOnly == false, "#{$cl}hover#{$cl}active", "#{$cl}active") !default;
+    $linkPressedNested:         $linkPressed !default;
+
+
+//
+// GLOBAL UI OPTIONS
+//
+// often used as "switches" for conditional styles
+//
+
+    $btnGradients:      false !default;
+    $wdeskLogoDir:      "brand/" !default;
+    $wdeskLogoName:     "wdesk-logo_color" !default;
+    $wdeskLogoMime:     "png" !default;
+    $wdeskLogoUrl:      "#{$wdeskLogoDir}#{$wdeskLogoName}.#{$wdeskLogoMime}" !default;
+
+    $componentActiveBg: zestyCrayonColor(green, main) !default;
+
+
+//
+// GLOBAL TYPHOGRAPHIC DEFAULTS
+//
+    $browserDefaultFontSize:    16px !default;
+    $htmlFontSize:              62.5% !default;
+    // prevent Gibson ligatures from disappearing
+    $webfontRendering:          auto !default;
+    $gibsonWebfontSupport:      if($ie-support and $min-ie-supported < 9, false, true) !default;
+
+
+//
+// GLOBAL CONTRAST DEFAULTS
+//
+// ensure that text elems are readable based on bg colors
+//
+    $contrasted-softness:               5 !default;
+    $contrasted-dark-default:           lighten(#000, $contrasted-softness) !default;
+    $contrasted-light-default:          darken(#fff, $contrasted-softness) !default;
+    $contrasted-lightness-threshold:    50%;
+
+    $disabledShadeShiftDefault:         45% !default; // for use with mix()
+    $disabledAlphaDefault:              .45 !default; // for use with opacity() or rgba()
+
+
+//
+// GLOBAL RESPONSIVE DEFAULTS
+//
+    //
+    // Media queries breakpoints
+    //
+
+    // Extra small screen / phone
+    $screenPhone:               480px !default;
+    $screenPhoneMin:            $screenPhone !default;
+
+    // Small screen / tablet
+    $screenTablet:              768px !default;
+    $screenTabletMin:           $screenTablet !default;
+
+    // Medium screen / desktop
+    $screenDesktop:             992px !default;
+    $screenDesktopMin:          $screenDesktop !default;
+
+    // Large screen / wide desktop
+    $screenDesktopLarge:        1200px !default;
+    $screenDesktopLargeMin:     $screenDesktopLarge !default;
+
+    // Huge screen / wide desktop
+    $screenDesktopHuge:         1600px;
+    $screenDesktopHugeMin:      $screenDesktopHuge;
+
+    // So media queries don't overlap when required, provide a maximum
+    $screenPhoneMax:            ($screenTabletMin - 1) !default;
+    $screenTabletMax:           ($screenDesktopMin - 1) !default;
+    $screenDesktopMax:          ($screenDesktopLargeMin - 1) !default;
+    $screenDesktopLargeMax:     ($screenDesktopHugeMin - 1) !default;
+
+    // where does our grid stop floating?
+    $gridFloatBreakpoint:       $screenTablet !default;
+
+    // where does the collapsed navbar appear?
+    $navbarCollapseWidth:       $screenTablet - 1 !default;
+
+    // grid gutter
+    $containerGutterDefault:    30px !default;
+    $containerGutterWide:       48px !default;
+
+
+//
+// GLOBAL BOX MODEL DEFAULTS
+//
+    $box-sizing-default:        border-box !default;
+    $nav-box-sizing-default:    content-box !default; // makes scrolling navs easier
+
+
+//
+// GLOBAL CHISEL & TEXT SHADOW SHADES
+//
+    $textShadow_alpha:          .7 !default;
+    $iconTextShadows:           false !default;
+    $chisel_bd_pctDk:           7.5% !default;
+    $chisel_bd_pctLt:           10% !default;
+    $chisel_ico_pctDk:          $chisel_bd_pctDk + 36 !default; // icons are a more significant chisel than border seperators
+    $chisel_ico_pctLt:          $chisel_bd_pctLt + 36 !default;
+    $chisel_ico_darken:         20% !default; // text shadow for icon
+    $chisel_ico_shadow:         "1px 1px 1px" !default; // how much of an inset shadow?
+    $chisel_ico_midShadow:      "0 0 0" !default;
+    $chisel_depthMod:           20 !default; // if we want to globally chisel deeper... give a modifier value we should multiply by
+
+
+//
+// GLOBAL TYPE SCALE
+//
+    // TYPE
+    $fontSizeBase:                  14px !default;
+    $lineHeightBasePx:              20px !default;
+
+    // font / line-height size variations
+    $lineHeightBase:                stripUnit($lineHeightBasePx / $fontSizeBase);//1.428571429 !default; // 20 / 14
+    $lineHeightLarge:               1.333333333 !default;
+    $lineHeightSmall:               1.5 !default;
+    $lineHeightXsmall:              1.35 !default;
+
+    $goldenRule:                    $lineHeightBase !default;
+
+    $fontSizeModifierLarge:         1.25 !default;
+    $fontSizeModifierSmall:         .85714285714286 !default; // 12px
+    $fontSizeModifierXsmall:        $fontSizeModifierSmall !default; // 12px
+
+    $fontSizeLead:                  21px !default;
+    $fontSizeLarge:                 ceil($fontSizeBase * $fontSizeModifierLarge) !default;
+    $fontSizeMedium:                $fontSizeBase - 1 !default; // for legacy apps
+    $fontSizeSmall:                 floor($fontSizeBase * $fontSizeModifierSmall) !default;
+    $fontSizeXsmall:                floor($fontSizeBase * $fontSizeModifierXsmall) !default;
+
+    $fontSizeLargePct:              percentage($fontSizeModifierLarge) !default;
+    $fontSizeSmallPct:              percentage($fontSizeModifierSmall) !default;
+    $fontSizeXsmallPct:             percentage($fontSizeModifierXsmall) !default;
+
+
+//
+// Global Sizing / Spacing
+//
+// Based on #{$fontSizeBase} font-size
+// and #{$lineHeightBase} line-height
+//
+// DO NOT EDIT THESE UNLESS YOU PLAN ON EDITING
+// $fontSizeBase AND $lineHeightBase TOO
+//
+//
+    $paddingBaseVertical:       6px !default;
+    $paddingBaseHorizontal:     12px !default;
+    $paddingBase:               $paddingBaseVertical $paddingBaseHorizontal !default;
+
+    $paddingLargeVertical:      10px !default;
+    $paddingLargeHorizontal:    16px !default;
+    $paddingLarge:              $paddingLargeVertical $paddingLargeHorizontal !default;
+
+    $paddingSmallVertical:      5px !default;
+    $paddingSmallHorizontal:    10px !default;
+    $paddingSmall:              $paddingSmallVertical $paddingSmallHorizontal !default;
+
+    $paddingXsmallVertical:     3px !default;
+    $paddingXsmallHorizontal:   8px !default;
+    $paddingXsmall:             $paddingXsmallVertical $paddingXsmallHorizontal !default;
+
+    // since gibson doesn't vertically align correctly when
+    // top and bottom padding is equal... we have to offset it
+    $paddingBaseGibson:         gibsonPadOffset($paddingBase) !default;
+    $paddingLargeGibson:        gibsonPadOffset($paddingLarge) !default;
+    $paddingSmallGibson:        gibsonPadOffset($paddingSmall) !default;
+
+    // corner rounding
+    $borderRadiusBase:          4px !default;
+    $borderRadiusLarge:         6px !default;
+    $borderRadiusSmall:         3px !default;
+    $borderRadiusXsmall:        3px !default;
+
+    // key spacing between form elems, button groups, etc...
+    $spacingBase:               $lineHeightBasePx / 4 !default;
+    $spacingLarge:              $spacingBase + 2 !default;
+    $spacingSmall:              $spacingBase - 1 !default;
+
+
+//
+// GLOBAL COMPONENT CHARACTERISTICS
+// Shared attributes like size, layering, etc...
+//
+    // z-index master list
+    // Used for a bird's eye view of components dependent on the z-axis
+    $zindexDropdown:                1000 !default;
+    $zindexTooltip:                 1030 !default;
+    $zindexFixedNavbar:             1030 !default;
+    $zindexModalBackdrop:           1040 !default;
+    $zindexModal:                   1050 !default;
+    $zindexPopover:                 1051 !default;
+    $zindexToastAlert:              1100 !default;
+
+    // Animation Timings
+    $fadeDefaultTiming:             .15s !default;
+    $dialogFadeTiming:              .3s !default;
+
+    // Colors
+    $dialogBackdropBg:              $wf_gray !default;
+    $shadowDefaultColor:            #000 !default;
+
+    // Alphas (opacity)
+    $dialogBackdropAlpha:           .4 !default;
+    $modalContainedBackdropAlpha:   .9 !default;
+    $shadowDefaultAlpha:            .15 !default;
+
+    // Shadows for z-axis components listed above
+    $shadowDefaultX:                0 !default;
+    $shadowDefaultY:                0 !default;
+    $shadowDefaultBlur:             4px !default;
+    $shadowDefaultSpread:           0 !default;
+    $boxShadowDefault:              $shadowDefaultX $shadowDefaultY $shadowDefaultBlur $shadowDefaultSpread rgba($shadowDefaultColor,$shadowDefaultAlpha) !default;
+
+    // Spacing
+    $dialogContentPadding:          8px !default;
+    $defaultCommentTextareaHeight:  90px;
+
+
+//
+// FORM CONTROL DEFAULTS
+//
+    $inputBdWidth:              1px !default;
+    $inputBdWidthFocus:         1px !default; // we want this extra border to be outset - so box shadow will be used
+
+    $inputBdColorGroupFocus:    blue !default; // which group in the ZC palette are we using for focused form controls?
+
+    $inputPadding:              $paddingBaseVertical $paddingBaseHorizontal !default;
+    $inputPaddingLarge:         $paddingLargeVertical $paddingLargeHorizontal !default;
+    $inputPaddingSmall:         $paddingSmallVertical $paddingSmallHorizontal !default;
+    $inputPaddingXsmall:        $paddingXsmallVertical $paddingXsmallHorizontal !default;
+
+    $inputHeightBase:           ($lineHeightBasePx + (nth($inputPadding, 1) * 2) + ($inputBdWidth * 2)) !default;
+    $inputHeightLarge:          (round($fontSizeLarge * $lineHeightLarge) + (nth($inputPaddingLarge, 1) * 2) + ($inputBdWidth * 2)) !default;
+    $inputHeightSmall:          (round($fontSizeSmall * $lineHeightSmall) + (nth($inputPaddingSmall, 1) * 2) + ($inputBdWidth * 2)) !default;
+    $inputHeightXsmall:         (round($fontSizeXsmall * $lineHeightXsmall) + (nth($inputPaddingXsmall, 1) * 2) + ($inputBdWidth * 2)) !default;
+
+
+//
+// BUTTON DEFAULTS
+//
+    $btnBdWidth:                1px !default;
+    $btnShdDepth:               $btnBdWidth !default;
+    $btnPadding:                $paddingBase !default;
+    $btnBdRadius:               $borderRadiusBase !default;
+
+    $btnPadX:                   $paddingBaseHorizontal !default;
+    $btnPadY:                   $paddingBaseVertical !default;
+    $btnPadTop:                 $btnPadY !default;
+
+    $btnPadTopLarge:            $paddingLargeVertical !default;
+    $btnPadTopSmall:            $paddingSmallVertical !default;
+    $btnPadTopXsmall:           $paddingXsmallVertical !default;
+
+    $btnHeight:                 ($lineHeightBasePx + ($btnPadTop * 2) + ($btnBdWidth * 2)) !default;
+    $btnHeightInner:            $btnHeight - ($btnBdWidth * 2) !default; // without borders
+    $btnTextHeight:             $btnHeightInner - ($btnPadTop * 2) !default; // without padding or borders
+
+    $btnHeightLarge:            (round($lineHeightLarge * $fontSizeLarge) + ($btnPadTopLarge * 2) + ($btnBdWidth * 2)) !default;
+    $btnHeightInnerLarge:       $btnHeightLarge - ($btnBdWidth * 2) !default; // without borders
+    $btnTextHeightLarge:        $btnHeightInnerLarge - ($btnPadTopLarge * 2) !default; // without padding or borders
+
+    $btnHeightSmall:            (round($lineHeightSmall * $fontSizeSmall) + ($btnPadTopSmall * 2) + ($btnBdWidth * 2)) !default;
+    $btnHeightInnerSmall:       $btnHeightSmall - ($btnBdWidth * 2) !default; // without borders
+    $btnTextHeightSmall:        $btnHeightInnerSmall - ($btnPadTopSmall * 2) !default; // without padding or borders
+
+    $btnHeightXsmall:           (round($lineHeightXsmall * $fontSizeXsmall) + ($btnPadTopXsmall * 2) + ($btnBdWidth * 2)) !default;
+    $btnHeightInnerXsmall:      $btnHeightXsmall - ($btnBdWidth * 2) !default; // without borders
+    $btnTextHeightXsmall:       $btnHeightInnerXsmall - ($btnPadTopXsmall * 2) !default; // without padding or borders
+
+    $btnIconMargin:             $spacingBase;
+    $btnIconMarginLarge:        $spacingBase * 1.5;
+    $btnIconMarginSmall:        $spacingBase;
+    $btnIconMarginXsmall:       $spacingBase / 2;
+
+
+//
+// CARET DEFAULTS
+//
+    $caretWidth:                5px !default;
+    $caretHeight:               3px !default;
+    $caretSizeDifferential:     $caretWidth - $caretHeight !default;
+    $caretSizeRatio:            $caretWidth / $caretHeight !default;
+
+    $caretTopMarginBase:        $paddingBaseVertical  + ($btnBdWidth * 2) - 1 !default;
+    $caretTopMarginSmall:       $paddingSmallVertical + ($btnBdWidth * 2) !default;
+    $caretTopMarginXsmall:      $paddingXsmallVertical + ($btnBdWidth * 2) + 1 !default;
+    $caretTopMarginLarge:       $paddingLargeVertical + ($btnBdWidth * 2) + 1 !default;
+
+    $caretTopOffsetBase:        ceil(($btnHeight - $caretHeight) / 2) - 1 !default;
+    $caretTopOffsetSmall:       ceil(($btnHeightSmall - $caretHeight) / 2) !default;
+    $caretTopOffsetXsmall:      ceil(($btnHeightXsmall - $caretHeight) / 2) - 2 !default;
+    $caretTopOffsetLarge:       ceil(($btnHeightLarge - $caretHeight) / 2) !default;
+
+    $caretHorizontalSpacing:    $caretHeight !default;
+    $caretOnlyBtnWidth:         ($caretWidth * 2) + ($paddingBaseHorizontal * 2) + ($btnBdWidth * 2) !default;
+    $caretOnlyBtnWidthLarge:    ($caretWidth * 2) + ($paddingLargeHorizontal * 2) + ($btnBdWidth * 2) !default;
+    $caretOnlyBtnWidthSmall:    ($caretWidth * 2) + ($paddingSmallHorizontal * 2) + ($btnBdWidth * 2) !default;
+    $caretOnlyBtnWidthXsmall:   ($caretWidth * 2) + ($paddingXsmallHorizontal * 2) + ($btnBdWidth * 2) !default;
+
+
+//
+// CHECKBOX "SWITCH" DEFAULTS
+//
+    $cboxSwitchWidth:                   78px !default;
+
+    $cboxSwitchHeight:                  $btnHeight !default;
+    $cboxSwitchHeightSm:                $btnHeightSmall !default;
+    $cboxSwitchHeightXs:                $btnHeightXsmall !default;
+
+    $cboxSwitchFontSize:                $fontSizeBase !default;
+    $cboxSwitchFontSizeSm:              $fontSizeSmall !default;
+    $cboxSwitchFontSizeXs:              $fontSizeXsmall !default;
+
+    $cboxSwitchBdRadius:                $borderRadiusBase !default;
+    $cboxSwitchBdRadiusSm:              $borderRadiusSmall !default;
+    $cboxSwitchBdRadiusXs:              $borderRadiusSmall !default;
+
+    $cboxSwitchTextIndent:              $paddingBaseHorizontal !default;
+    $cboxSwitchTextIndentSm:            $paddingSmallHorizontal !default;
+    $cboxSwitchTextIndentXs:            $paddingXsmallHorizontal !default;
+
+    $cboxSwitchBgVoid:                  round($cboxSwitchWidth / 1.5) !default;
+    $cboxSwitchBtnInset:                $inputBdWidth !default;
+    $cboxSwitchBgActive:                $wf_green !default;
+    $cboxSwitchBg:                      grayscale($cboxSwitchBgActive) !default;
+    $cboxSwitchBtnBg:                   #fff !default;
+
+        // elems that consumers can use to easily change their pseudo content in the switches
+        $cboxSwitchTextElemDefault:     "label:before" !default;
+        $cboxSwitchTextElemChecked:     "input[type=checkbox]:checked + label:before", "input[type=checkbox][checked] + label:before", "input[type=checkbox].checked + label:before" !default;
+        $cboxSwitchBtnElem:             "label:after" !default;
+        $cboxSwitchBtnElemChecked:      "input[type=checkbox]:checked + label:after", "input[type=checkbox][checked] + label:after", "input[type=checkbox][checked] + label:after" !default;
+
+
+//
+// ICON / SPINNER DEFAULTS
+//
+    $twoColorClassName:         "icon-two-color" !default;
+    $mainIconsPath:             "icons/Wdesk_Icons" !default;
+    $mainIconsFont:             "Wdesk_Icons" !default;
+    $colorIconsPath:            "icons/Wdesk_Icons_Color" !default;
+    $colorIconsFont:            "Wdesk_Icons_Color" !default;
+    $doctypeIconsPath:          "icons/Wdesk_Doctype-Icons" !default;
+    $doctypeIconsFont:          "Wdesk_Doctype-Icons" !default;
+
+    $baseIconSize:              16px !default;
+    $baseIconSize24:            24px !default; // for use with glyphs that start with .icon-twfr-
+    $baseSpinnerSize:           $baseIconSize * 2 !default;
+    $baseSpinnerBdWidthRatio:   .05 !default;
+    $iconPseudoShiftY:          0 !default;
+
+
+//
+// SIZE UTILITY CLASS ARRAYS
+//
+    $utilitySizeClasses:            'sm', 'md', 'lg', 'huge', 'gigantic' !default;
+    $utilitySizeMultipliers:        .5, 1.5, 2, 3, 6 !default;
+    $utilitySizeMultipliersBase24:  .5, 1, 2, 3, 6 !default; // for use with glyphs that start with .icon-twfr-
+
+    //
+    // base16 utility size multipliers
+    //
+    $smallMultiplier:           nth($utilitySizeMultipliers, index($utilitySizeClasses, 'sm')) !default;
+    $mediumMultiplier:          nth($utilitySizeMultipliers, index($utilitySizeClasses, 'md')) !default;
+    $largeMultiplier:           nth($utilitySizeMultipliers, index($utilitySizeClasses, 'lg')) !default;
+    $hugeMultiplier:            nth($utilitySizeMultipliers, index($utilitySizeClasses, 'huge')) !default;
+    $giganticMultiplier:        nth($utilitySizeMultipliers, index($utilitySizeClasses, 'gigantic')) !default;
+
+    //
+    // base24 utility size multipliers
+    //
+    $smallMultiplierBase24:     nth($utilitySizeMultipliersBase24, index($utilitySizeClasses, 'sm')) !default;
+    $mediumMultiplierBase24:    nth($utilitySizeMultipliersBase24, index($utilitySizeClasses, 'md')) !default;
+    $largeMultiplierBase24:     nth($utilitySizeMultipliersBase24, index($utilitySizeClasses, 'lg')) !default;
+    $hugeMultiplierBase24:      nth($utilitySizeMultipliersBase24, index($utilitySizeClasses, 'huge')) !default;
+    $giganticMultiplierBase24:  nth($utilitySizeMultipliersBase24, index($utilitySizeClasses, 'gigantic')) !default;
+
+    //
+    // base16 utility size vars
+    //
+    $iconSmallSize:             $baseIconSize * $smallMultiplier !default;
+    $iconMediumSize:            $baseIconSize * $mediumMultiplier !default;
+    $iconLargeSize:             $baseIconSize * $largeMultiplier !default;
+    $iconHugeSize:              $baseIconSize * $hugeMultiplier !default;
+    // for some reason - gigantic icon width/height does not match the font-size
+    $iconGiganticFontSize:      $baseIconSize * $giganticMultiplier !default;
+    $iconGiganticSize:          floor($iconGiganticFontSize * 1.2) !default;
+    $iconGiganticHeight:        floor($iconGiganticFontSize * 1.2) !default;
+    $iconGiganticWidth:         floor($iconGiganticFontSize * 1.2) !default;
+
+    //
+    // base24 utility size vars
+    //
+    $iconSmallSizeBase24:       $baseIconSize24 * $smallMultiplierBase24 !default;
+    $iconMediumSizeBase24:      $baseIconSize24 * $mediumMultiplierBase24 !default;
+    $iconLargeSizeBase24:       $baseIconSize24 * $largeMultiplierBase24 !default;
+    $iconHugeSizeBase24:        $baseIconSize24 * $hugeMultiplierBase24 !default;
+    $iconGiganticSizeBase24:    $baseIconSize24 * $giganticMultiplierBase24 !default;
+
+    //
+    // icons in buttons
+    //
+    $btnSizeClasses:            'xs', 'sm', 'base', 'lg' !default;
+
+    // what size of icon should go in each size of button by default?
+    // base16
+    $btnIconSizes:              $iconSmallSize, $baseIconSize, $baseIconSize, $iconMediumSize !default;
+    $btnIconSizeClasses:        'sm', 'base', 'base', 'md' !default;
+    // base24
+    $btnIconSizesBase24:        $iconSmallSizeBase24, $baseIconSize24, $baseIconSize24, $baseIconSize24 !default;
+    $btnIconSizeClassesBase24:  'sm', 'base', 'base', 'base' !default;
+
+    // this is not a typo - we want it to be 16px for small spinners... not 8px
+    $spinnerSmallSize:          $baseSpinnerSize * $smallMultiplier !default;
+    $spinnerMediumSize:         $baseIconSize * $mediumMultiplier !default;
+    $spinnerLargeSize:          $baseIconSize * $largeMultiplier !default;
+    $spinnerHugeSize:           $baseIconSize * $hugeMultiplier !default;
+    $spinnerGiganticSize:       $baseIconSize * $giganticMultiplier !default;
+
+
+//
+// MISC ELEMENTS / ARRAYS
+//
+    $dialogs:                   ".modal, .tooltip, .popover, .alert" !default;

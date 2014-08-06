@@ -1,0 +1,126 @@
+{% extends "basic/layout.html" %}
+{% set script_files = script_files + ['_static/js/core/wf-js-vendor/dist/wf-vendor.min.js', '_static/js/core/libs.min.js', '_static/wdesk-sphinx-dom-shim.js'] %}
+{% set css_files = ['_static/css/wdesk-sphinx.css'] + css_files %}
+
+{%- block doctype -%}
+<!DOCTYPE html>
+{%- endblock %}
+
+{%- block extrahead %}
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" href="{{ pathto('_static/ico/favicon.png',1) }}">
+<link rel="shortcut icon" href="{{ pathto('_static/ico/favicon.ico',1) }}">
+        <link rel="icon"  href="{{ pathto('_static/ico/favicon.ico',1) }}" type="image/x-icon">
+{% endblock %}
+
+{# Sidebar: Rework into our Wdesk nav section. #}
+{% macro navBar() %}
+<nav class="navbar navbar-fixed-top wdesk-docs-navbar" role="navigation">
+    <div class="container">
+        <ul class="nav navbar-nav nav-blocks mobile">
+            <li>
+                <button type="button" class="navbar-toggle hitarea btn btn-invisible collapsed" data-toggle="collapse" data-target=".docs-nav-collapse">
+                    <i class="icon icon-menu-list"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="navbar-header navbar-brand">
+            <a class="brand-link" href="{{ pathto(master_doc) }}">
+                <div role="img" class="brand-logo">
+                    <div class="visible-retina"></div>
+                    <div class="hidden-retina"></div>
+                    <!--[if lt IE 9]><!-->
+                        <img src="{{ pathto('_static/img/brand/wdesk-logo_white.png',1) }}">
+                    <!--<![endif]-->
+                </div>
+                {{ project|e }}
+            </a>
+        </div>
+        <div class="docs-nav-collapse nav-collapse collapse">
+            <ul class="nav navbar-nav">
+            {% block sidebartoc %}
+                {% include "globaltoc.html" %}
+                {% include "localtoc.html" %}
+            {% endblock %}
+            </ul>
+            {% block sidebarsearch %}
+                {% include "searchbox.html" %}
+            {% endblock %}
+        </div>
+    </div>
+</nav>
+{% endmacro %}
+
+{# Silence the sidebar's, relbar's #}
+{% block header %}{% endblock %}
+{% block sidebar1 %}{% endblock %}
+{% block sidebar2 %}{% endblock %}
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+{% block sidebarsourcelink %}{% endblock %}
+
+{%- block content %}
+{{ navBar() }}
+
+<div class="container wdesk-docs-container">
+    <div class="row">
+        <div class="col-sm-3 wdesk-docs-sidebar">
+            {% include "globaltoc-sidebar.html" %}
+        </div>
+        <div class="col-sm-9" role="main">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+    <hr>
+    {% block sidebarrel %}
+        {% include "relations.html" %}
+    {% endblock %}
+</div>
+{%- endblock %}
+
+{%- block footer %}
+<footer class="wdesk-docs-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Wdesk {{ project|e }}
+                    <span class="label" title="Wdesk ">{{ version|e }}</span>
+                    {%- if show_copyright %}
+                    &nbsp;&nbsp;<span class="muted">&middot;</span>&nbsp;&nbsp;
+                    {%- if hasdoc('copyright') %}
+                    {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
+                    {%- else %}
+                    {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+                    {%- endif %}
+                    {%- endif %}
+                    {%- if last_updated %}
+                    {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
+                    {%- endif %}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <ul class="footer-links">
+                    <li><a href="mailto:shawn.rusaw@webfilings.com?subject=I have a question about Rest Services">Questions</a></li>
+                    <li class="muted">&middot;</li>
+                    <li>{% include "sourcelink.html" %}</li>
+                </ul>
+
+                {%- if show_sphinx %}
+                <hr>
+                <p>
+                    {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/" target="_blank">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+                </p>
+                {%- endif %}
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% include "footer-scripts.html" %}
+{%- endblock %}
+

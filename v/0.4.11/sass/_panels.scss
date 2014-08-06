@@ -1,0 +1,318 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _panels.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_dialogs.scss"
+
+//----------------------------------------------------
+
+
+// Base class
+.panel {
+    margin-bottom: $lineHeightBasePx;
+    background-color: $panelBg;
+    border: $panelBdWidth solid transparent;
+    @include box-shadow(unquote($panelShadow));
+
+    // allow .panel to be nested as .panel-collapse for simpler
+    // adjacent selector overrides in accordion variant
+    .panel {
+        margin-bottom: 0;
+        background-color: transparent;
+        border: 0 none;
+        box-shadow: none !important;
+    }
+}
+
+// Panel contents
+.panel-body {
+    padding: $panelBodyPadding;
+    @include clearfix;
+}
+
+
+//
+// List groups in panels
+//
+// By default, space out list group content from panel headings to account for
+// any kind of custom content between the two.
+//
+.panel {
+    > .list-group {
+        margin-bottom: 0;
+        border-top: $listGroupBdWidth solid $listGroupBd;
+
+        .list-group-item {
+            border-width: $listGroupBdWidth 0;
+            // But keep it for the last one
+            &:last-child {
+                border-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+    .list-group-item:first-child {
+        border-top-width: 0;
+    }
+}
+
+
+//
+// Tables in panels
+//
+// Place a non-bordered `.table` within a panel (not within a `.panel-body`) and
+// watch it go full width.
+//
+.panel {
+    > .table {
+        margin-bottom: 0;
+    }
+    > .panel-body + .table {
+        border-top: 1px solid $tableBdColor;
+    }
+}
+
+
+// Optional heading
+.panel-heading {
+    position: relative;
+    padding: $panelHeadingPaddingVertical $panelBodyPadding;
+    border-bottom: $panelBdWidth solid transparent;
+    line-height: $panelHeadingLineHeight;
+}
+
+// Within heading, strip any `h*` tag of it's default margins for spacing.
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: $panelTitleFontSize;
+    > .hitarea {
+        color: inherit;
+    }
+}
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+    padding: $dialogHeaderPaddingSm $panelBodyPadding;
+    background-color: $panelFooterBg;
+    border-top: $panelBdWidth solid $panelInnerBdColor;
+    line-height: $panelHeadingLineHeight; // make sure height of footer matches height of header
+}
+
+// since the footer / heading are not floated
+// align nested elements right using text-align
+// to prevent height collapse of parents
+.panel-heading,
+.panel-footer {
+    > .pull-right {
+        float: none;
+        text-align: right;
+    }
+}
+
+
+//
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+//
+.panel-group {
+    // Tighten up margin so it's only between panels
+    .panel {
+        margin-bottom: 0;
+
+        + .panel {
+            margin-top: $spacingBase;
+        }
+    }
+
+    .panel-heading {
+        border-bottom-width: 0;
+        + .panel-collapse .panel-body {
+            border-top: $panelBdWidth solid $panelInnerBdColor;
+        }
+
+        // ACCORDION FUNCTIONALITY
+        &[data-toggle] {
+            cursor: pointer;
+            @include disableUserSelect;
+
+            .caret {
+                position: absolute;
+                top: $caretTopMarginBase + $panelHeadingPaddingVertical;
+                right: $panelBodyPadding;
+            }
+        }
+    }
+    .panel-footer {
+        border-top: 0;
+        + .panel-collapse .panel-body {
+            border-bottom: $panelBdWidth solid $panelInnerBdColor;
+        }
+    }
+
+    // New subcomponent for wrapping collapsable content for proper animations
+    .panel-collapse {
+
+    }
+}
+
+
+//
+// "Condensed" panel variation
+//
+.panel-condensed {
+
+    .panel-body,
+    .list-group-item {
+        padding: $panelCnBodyPadding;
+    }
+
+    .panel-title {
+        font-size: $panelCnTitleFontSize;
+    }
+
+    .panel-heading,
+    .panel-footer {
+        padding: $panelCnHeadingPadding;
+        line-height: $panelCnHeadingLineHeight;
+    }
+
+    // Adjust caret position for condensed accordion
+    .panel-heading[data-toggle] {
+        .caret {
+            top: $caretTopMarginBase + nth($panelCnHeadingPadding, 1);
+            right: $panelCnBodyPadding;
+        }
+    }
+}
+
+
+//
+// "HOVER / FOCUS" panel variation
+//
+// can be used on .panel or .panel-group
+//
+.panel-focus,
+.panel-hover:hover,
+.panel-hover:focus {
+    border-color: $panelFocusBdDefault !important;
+    @include box-shadow(unquote($panelFocusShadow) !important);
+}
+
+
+//
+// Contextual "STATE" variations
+//
+$n: 1 !global;
+@each $state in $states {
+    .panel-#{$state} {
+        $stateBd: nth($panelBds, $n);
+        $stateFocusBd: nth($panelFocusBds, $n);
+        $stateHeadingColor: nth($panelHeadingColors, $n);
+        $stateHeadingBg: nth($panelHeadingBgs, $n);
+        $stateHeadingBd: nth($panelHeadingBds, $n);
+
+        border-color: $stateBd;
+
+        .panel-heading {
+            &, .panel-title {
+                color: $stateHeadingColor;
+            }
+            background-color: $stateHeadingBg;
+            border-color: $stateHeadingBd;
+
+            + .panel-collapse .panel-body {
+                border-top-color: $stateBd;
+            }
+
+            // ACCORDION FUNCTIONALITY
+            .caret {
+                border-top-color: $stateHeadingColor;
+            }
+            &[data-toggle] {
+                $toggleHoverBg: darken($stateHeadingBg, $panelHeadingToggleHoverDarken);
+                #{$hover} {
+                    background-color: $toggleHoverBg;
+
+                    .caret {
+                        @include opacity(1);
+                    }
+                }
+                // open
+                &.open {
+                    .caret {
+                        border-bottom-color: $stateHeadingColor;
+                    }
+                }
+            }
+        }
+        .panel-footer {
+            + .panel-collapse .panel-body {
+                border-bottom-color: $stateBd;
+            }
+        }
+
+
+        // "Focus" panel states
+        // if the bd color for a "focused" state
+        //
+        // is different than normal state... add a style for it
+        //
+        @if $stateBd != $stateFocusBd {
+            &.panel-focus,
+            &.panel-hover:hover,
+            &.panel-hover:focus {
+                border-color: $stateFocusBd !important;
+            }
+        }
+    }
+
+    $n: $n + 1 !global;
+}
+
+
+//
+// "Vanilla" panel variation
+//
+// Used mainly for "empty result" messaging
+//
+.panel-vanilla {
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+
+    .panel-body {
+        padding-top: $dialogHeaderPaddingSm;
+        padding-bottom: $dialogHeaderPaddingSm;
+    }
+}
+
+// allow individual panel components to be "vanilla" as well
+.panel-vanilla .panel-heading,
+.panel-heading.panel-heading-vanilla {
+    padding-bottom: 0;
+    background-color: transparent;
+    border: 0 none;
+}
+.panel-vanilla .panel-footer,
+.panel-footer.panel-footer-vanilla {
+    padding-top: 0;
+    background-color: transparent;
+    border: 0 none;
+}
+
+// "empty results" panel used when searches come up with nada
+.panel-empty-results {
+    text-align: center;
+    margin: $btnHeight;
+}
+.panel-empty-results > .panel-heading .panel-title {
+    color: $wf_gray_lt;
+}

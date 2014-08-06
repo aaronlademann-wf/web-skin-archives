@@ -1,0 +1,80 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _pagination.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_navs.scss"
+    //+ "_pager.scss"
+    //+ "_page-indicators.scss"
+
+    // should appear very similar to .nav-pills.nav-justified
+
+//----------------------------------------------------
+
+
+.pagination {
+    // inherit overall look 'n feel from .nav-pills
+    @extend .nav-pills;
+    display: inline-block;
+    @include ie7-inline-block;
+    margin: $lineHeightBasePx 0;
+    list-style: none;
+    @include box-sizing($nav-box-sizing-default);
+
+    // should also have some traits similar to .nav-justified
+    // except for the larger padding .nav-pills.nav-justified has
+    > li {
+        > .hitarea {
+            border-radius: 0;
+            display: block;
+        } // END .pagination > li > .hitarea
+
+        // round the left and right edge of the series of the pagination hitareas
+        &:first-child > .hitarea { @include border-left-radius($borderRadiusBase); }
+        &:last-child  > .hitarea { @include border-right-radius($borderRadiusBase); }
+
+        // separate each link since their bg colors are identical
+        + li > .hitarea { margin-left: $paginationItemSpacing; }
+
+    }
+
+} // END .pagination
+
+
+//
+// Size Varitions
+//
+.pagination-lg {
+    > li > .hitarea {
+        padding: gibsonPadOffset($paddingLarge);
+        font-size: $fontSizeLarge;
+    }
+    > li:first-child > .hitarea { @include border-left-radius($borderRadiusLarge); }
+    > li:last-child > .hitarea { @include border-right-radius($borderRadiusLarge); }
+    // increase spacing between links
+    > li {
+        + li > .hitarea { margin-left: $paginationItemSpacing + 1; }
+    }
+}
+
+.pagination-sm {
+    margin: ($lineHeightBasePx - 4px) 0;
+    > li > .hitarea {
+        padding: gibsonPadOffset($paddingSmall);
+        font-size: $fontSizeSmall;
+    }
+    > li:first-child > .hitarea { @include border-left-radius($borderRadiusSmall); }
+    > li:last-child > .hitarea { @include border-right-radius($borderRadiusSmall); }
+}
+
+.pagination-xs {
+    margin: ($lineHeightBasePx - 4px) 0;
+    > li > .hitarea {
+        padding: gibsonPadOffset($paddingXsmall);
+        font-size: $fontSizeSmall;
+        line-height: 17px;
+    }
+    > li:first-child > .hitarea { @include border-left-radius($borderRadiusSmall); }
+    > li:last-child > .hitarea { @include border-right-radius($borderRadiusSmall); }
+}

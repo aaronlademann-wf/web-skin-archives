@@ -1,0 +1,3425 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_mixins.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+    // related partials:
+    //+ "_prefixing.scss"
+    //+ "_functions.scss"
+
+//----------------------------------------------------
+
+
+//
+// GLOBAL UTILITIES
+//
+    @mixin blockCenter() {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    @mixin imgResponsive($display: block) {
+        display: #{$display};
+        // Responsive images (ensure images don't scale beyond their parents)
+        max-width: 100%; // Part 1: Set a maxium relative to the parent
+        // Older MSIE versions need help adjusting responsive images
+        @include ltie8 {
+            // IE 8
+            width: auto;
+            // IE 6-7
+            *width: auto;
+        }
+        height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+    }
+
+    @mixin buttonReset {
+        padding: 0;
+        cursor: pointer;
+        background-color: transparent;
+        border: 0 none;
+        outline: 0;
+        @include appearance(none);
+        @include disableUserSelect;
+    }
+
+    @mixin scrollbarCompensation($existingPad: 0) {
+        $existingPadAdjustment:       if($existingPad > $scrollBarWidthDefault, $existingPad - $scrollBarWidthDefault, $scrollBarWidthDefault);
+        $existingPadAdjustmentWebkit: if($existingPad > $scrollBarWidthWebkit, $existingPad - $scrollBarWidthWebkit, $scrollBarWidthWebkit);
+
+        padding-right: $existingPadAdjustment;
+
+        @if $webkit-support{
+            .ua-chrome &,
+            .ua-safari & {
+                padding-right: $existingPadAdjustmentWebkit;
+            }
+        }
+    }
+
+    @mixin valign($containerHeight, $elemHeight, $offset: 0, $offsetDir: top, $needBottom: true, $isImportant: false) {
+        $important: if($isImportant == true, !important, '');
+        $negOrPos: if($offsetDir == top, -1, 1);
+
+        top: round($negOrPos * (($containerHeight - $elemHeight) / 2)) + $offset #{$important};
+        @if $needBottom {
+            bottom: auto #{$important};
+        }
+    }
+
+    @mixin calc($property, $expression) {
+        #{$property}: -webkit-calc(#{$expression});
+        #{$property}:    -moz-calc(#{$expression});
+        #{$property}:      -o-calc(#{$expression});
+        #{$property}:         calc(#{$expression});
+    }
+
+    @mixin clearfix {
+        @include ltie8 {
+            *zoom: 1;
+        }
+        &:before,
+        &:after {
+            display: table;
+            content: "";
+        }
+        &:after {
+            clear: both;
+        }
+    }
+
+    // Text overflow
+    // Requires inline-block or block for proper styling
+    @mixin textOverflow($symbol: ellipsis, $allowWrap: false) {
+        overflow: hidden;
+        @if not $allowWrap {
+            white-space: nowrap;
+        }
+        text-overflow: $symbol;
+    }
+
+    // Properly size table cells
+    // when used in conjunction
+    // with table-layout: fixed;
+    @mixin tableCellWidth($w) {
+        width: $w;
+        max-width: $w;
+        min-width: $w;
+    } // END @mixin tableCellWidth()
+
+    // Completely hide table cells
+    @mixin hideTableCell {
+        visibility: collapse;
+        display: none;
+        @include tableCellWidth(0);
+        padding: 0;
+        margin: 0;
+    }
+
+    @mixin overlay($pos: fixed, $top: 0, $right: 0, $bottom: 0, $left: 0, $zindex: $zindexModalBackdrop, $scrollable: false) {
+        position: $pos;
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+        z-index: $zindex;
+        overflow: if($scrollable == false, hidden, auto);
+    }
+
+    //
+    // wrap styles in every possible
+    // state that a clickable element has
+    // up, #{$linkHoverFocus}, #{$linkPressed}
+    //
+    // WARNING: Use this at your own risk...
+    // it is extremely expensive when it comes
+    // to how many CSS selectors it generates.
+    //
+    @mixin allPseudoStates($nested: false, $touchOnly: $touchOnly, $attrSelector: false) {
+        @if $nested {
+            // if its a touch-only ui... :hover causes nothing but problems.
+            $hoverFocus: if($touchOnly == true, false, $linkHoverFocusNested);
+
+            @if $hoverFocus {
+                &, // up/default
+                #{$hoverFocus},
+                #{$linkPressedNested} {
+                    @content;
+                }
+            } @else {
+                &, // up/default
+                #{$linkPressedNested} {
+                    @content;
+                }
+            }
+        } @else {
+            // if its a touch-only ui... :hover causes nothing but problems.
+            $hoverFocus: if($touchOnly == true, false, $linkHoverFocus);
+
+            @if $hoverFocus {
+                &, // up/default
+                #{$hoverFocus},
+                #{$linkPressed} {
+                    @content;
+                }
+            } @else {
+                &, // up/default
+                #{$linkPressed} {
+                    @content;
+                }
+            }
+        }
+
+        @if $attrSelector and $min-ie-supported < 9 {
+            // must declare without :pseudo
+            // for IE7/8 when using [disabled] or any other [attribute]
+            @content;
+        }
+    } // END allPseudoStates
+
+    // Webkit-style focus
+    @mixin tabFocus {
+        // Default
+        outline: thin solid $inputBdColorFocus;
+        // Webkit
+        @if $webkit-support {
+            outline: 5px auto $inputBdColorFocus;
+            outline-offset: -2px;
+        }
+    }
+
+    //
+    // use rem values for any property
+    //
+    @mixin rem($property, $pxValues) {
+        // check to see if we should actually be producing
+        // rem font sizes, or straight pixels
+        $remUnits: if($baseElem == "body", true, false);
+
+        // Convert the baseline into rems
+        $baselineRem: $remBase / 1rem;
+        // Print the first line in pixel values
+        // only if we are supporting browsers that don't support rem units
+        @if    $min-ie-supported < 9
+            or $min-mozilla-supported < 3.6
+            or $min-opera-supported < 11.6
+            or $min-safari-supported < 5
+            or $min-chrome-supported < 6
+            or not $remUnits
+        {
+            #{$property}: $pxValues;
+        }
+        @if $remUnits {
+            // produce rem font sizes
+            // If there is only one (numeric) value, return the property/value line for it.
+            @if type-of($pxValues) == "number" {
+                #{$property}: $pxValues / $baselineRem;
+            } @else {
+                // Create an empty list that we can dump values into
+                $remValues: unquote("");
+                @each $value in $pxValues {
+                    // If the value is zero, return 0
+                    @if $value == 0 {
+                        $remValues: append($remValues, $value);
+                    } @else {
+                        $remValues: append($remValues, $value / $baselineRem);
+                    }
+                }
+                // Return the property and its list of converted values
+                #{$property}: $remValues;
+            }
+        }
+    }
+
+
+    //
+    // Cross-Browser Background Size
+    //
+    @mixin background-size($size-1: $default-background-size,
+                           $size-2: false,
+                           $size-3: false,
+                           $size-4: false,
+                           $size-5: false,
+                           $size-6: false,
+                           $size-7: false,
+                           $size-8: false,
+                           $size-9: false,
+                           $size-10: false,
+                           $important: false)
+    {
+        $size-1: if(type-of($size-1) == string, unquote($size-1), $size-1);
+        $sizes: compact($size-1, $size-2, $size-3, $size-4, $size-5, $size-6, $size-7, $size-8, $size-9, $size-10);
+        $sizes: if($important == false, $sizes, $sizes !important);
+        @include experimental(background-size, $sizes, -moz, -webkit, -o, not -ms, not -khtml);
+    }
+
+
+    //
+    // Cross-Browser Opacity
+    //
+    @mixin opacity($alpha, $important: false) {
+        $important: if($important == false, "", "!important");
+
+        // seems people have a tendency to pass params that are
+        // both base 10 and base 100 alpha values
+        // so lets make it foolproof!
+        $base10: 100;
+        // declare base 10 values
+        $opacityFilter: round($alpha * $base10);
+              $opacity: $alpha;
+
+        @if $alpha > 1 and $alpha <= $base10 {
+            // they passed a base 100 alpha
+            $opacityFilter: round($alpha);
+                  $opacity: $alpha / $base10;
+        } @else {
+            // not gonna work :( ... let 'em know
+            @if $alpha > $base10 {
+                @warn "invalid alpha value passed to opacity() mixin: #{$alpha} > #{$base10}";
+            }
+            @if $alpha < 0 {
+                @warn "invalid alpha value passed to opacity() mixin: #{$alpha} < 0";
+            }
+        }
+
+        // declare opacity for MSIE 8 and lower
+        @if $ie-support and $min-ie-supported < 9 {
+            // IE8 / 9
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacityFilter})" unquote($important);
+
+            @if $min-ie-supported < 8 {
+                // IE6+7
+                *filter: alpha(opacity=$opacityFilter) unquote($important);
+            }
+        }
+        // declare opacity for the rest
+        opacity: $opacity unquote($important);
+    }
+
+
+    //
+    // Responsive utilities
+    //
+    // More easily include all the states for _responsive-utilities.scss
+    @mixin responsiveVisibility($cssClass) {
+        $cssClass: unquote($cssClass);
+
+        #{$cssClass} {
+            display: inherit !important;
+            @include ltie8 {
+                // MSIE doesn't support inherit
+                *display: block !important;
+            }
+            visibility: visible !important;
+        }
+        .inline#{$cssClass} {
+            display: inline !important;
+        }
+        tr#{$cssClass} {
+            display: table-row !important;
+        }
+        th#{$cssClass},
+        td#{$cssClass} {
+            display: table-cell !important;
+        }
+    }
+
+    @mixin responsiveInvisibility($cssClass) {
+        $cssClass: unquote($cssClass);
+
+        #{$cssClass} {
+            display: none !important;
+            visibility: collapse !important;
+        }
+    }
+
+
+//
+// FONT UTILITIES
+//
+// so we can control which fonts to use
+// according to our browser support levels
+//
+    @mixin font-face($name, $font-files, $eot: false, $weight: false, $style: false) {
+        $iefont: unquote("#{$eot}?#iefix");
+        @font-face {
+            font-family: quote($name);
+            @if $eot {
+                src: font-url($eot);
+                $font-files: font-url($iefont) unquote("format('embedded-opentype')"), $font-files;
+            }
+            src: $font-files;
+            @if $weight {
+                font-weight: $weight;
+            }
+            @if $style {
+                font-style: $style;
+            }
+        }
+    }
+
+    @mixin wdeskFontFace($fontFaceName, $fontFace, $weight: false, $style: false) {
+
+        @include font-face(
+            $fontFaceName,
+            font-files(
+                "#{$fontFace}.woff", woff
+              , "#{$fontFace}.ttf", truetype
+              , "#{$fontFace}.svg##{$fontFaceName}", svg
+            )
+            , "#{$fontFace}.eot"
+            , #{$weight}
+            , #{$style}
+        );
+
+    } // END wdeskFontFace()
+
+
+//
+// USER SELECT CONTROL
+//
+// useful with touch gestures
+//
+    @mixin disableTapHighlight {
+        // prevent touch flicker
+        @include experimental(tap-highlight-color, rgba(0,0,0, 0));
+    }
+
+    @mixin disableUserSelect {
+        -webkit-user-select: none;
+           -moz-user-select: -moz-none;
+            -ms-user-select: none;
+                user-select: none;
+
+        @include disableTapHighlight;
+    }
+
+    @mixin enableUserSelect($el: text) {
+        -webkit-user-select: $el;
+           -moz-user-select: $el;
+            -ms-user-select: $el;
+                user-select: $el;
+    }
+
+
+//
+// ANIMATION UTILITIES
+//
+    //
+    //  Spinning animations for progress loader
+    //
+        @mixin spinner($speed: $spinnerSpeed, $duration: infinite, $steps: false, $direction: right) {
+            $effect: if($direction == right, rotate-clockwise, rotate-counter-clockwise);
+            $animationEffect: $effect $speed linear if($steps == false, $duration, $duration steps($steps));
+            @include experimental(animation, $animationEffect);
+        }
+
+        $rotateKeys:                to;
+        $rotateCounterClockwise:   -360deg;
+        $rotateClockwise:           360deg;
+        $allPrefixes:              -webkit, -moz, -o, -ms, false;
+        $allPrefixSupport:          $webkit-support, $mozilla-support, $opera-support, $ie-support, true;
+
+        @mixin _rotateKeyframes($prefix, $direction: right) {
+            // init vars before conditionals
+            $direction: unquote($direction);
+            $steps: '';
+
+            // allow the user to pass right, left OR clockwise, counter-clockwise
+            @if $direction == right or $direction == clockwise {
+                $steps: $rotateClockwise;
+            }
+            @if $direction == left or $direction == counter-clockwise {
+                $steps: $rotateCounterClockwise;
+            }
+
+            // generate keys for when this mixin is called within a @include keyframes declaration
+            $i: 1 !global;
+            $prefix: if($prefix == false, "", "#{$prefix}-");
+            @each $key in $rotateKeys {
+                @if $prefix == "" {
+                    #{$key} {
+                        $p: 1;
+                        @each $_prefix in $allPrefixes {
+                            $_prefixSupported: nth($allPrefixSupport, $p);
+                            @if $_prefix and $_prefixSupported {
+                                #{$_prefix}-transform: rotate(nth($steps, $i));
+                            }
+
+                            $p: $p + 1;
+                        }
+                        transform: rotate(nth($steps, $i));
+                    }
+                } @else {
+                    #{$key} {
+                        #{$prefix}transform: rotate(nth($steps, $i));
+                        transform: rotate(nth($steps, $i));
+                    }
+                }
+
+                $i: $i + 1 !global;
+            }
+        }
+
+        @each $prefix in $allPrefixes {
+            $webkit:    if($prefix == -webkit, true, false);
+            $moz:       if($prefix == -moz, true, false);
+            $o:         if($prefix == -o, true, false);
+            $ms:        if($prefix == -ms, true, false);
+            $official:  if($prefix == false, true, false);
+
+            @include keyframes(rotate-counter-clockwise,
+                $khtml: false, $webkit: $webkit, $moz: $moz, $o: $o, $ms: $ms, $official: $official
+            ) {
+                @include _rotateKeyframes($prefix, counter-clockwise);
+            }
+
+            @include keyframes(rotate-clockwise,
+                $khtml: false, $webkit: $webkit, $moz: $moz, $o: $o, $ms: $ms, $official: $official
+            ) {
+                @include _rotateKeyframes($prefix, clockwise);
+            }
+        }
+
+
+    //
+    // Sliding Animations
+    //
+        // top to bottom
+        @mixin slideDown($height, $speed: .3s, $delay: 0s) {
+            @include transition-duration($speed);
+            @include transition-delay($delay);
+            @include translateZ(0); // force GPU acceleration
+            // shown
+            &.in {
+                top: 0;
+                bottom: auto;
+            }
+            // hidden
+            &, &.out {
+                top: -#{$height};
+                bottom: auto;
+            }
+        }
+
+        // bottom to top
+        @mixin slideUp($height, $speed: .3s, $delay: 0s) {
+            @include transition-duration($speed);
+            @include transition-delay($delay);
+            @include translateZ(0); // force GPU acceleration
+            // shown
+            &.in {
+                bottom: 0;
+                top: auto;
+            }
+            // hidden
+            &, &.out {
+                bottom: -#{$height};
+                top: auto;
+            }
+        }
+
+        // right to left
+        @mixin slideLeft($width, $speed: .1s, $delay: 0s) {
+            @include transition-duration($speed);
+            @include transition-delay($delay);
+            @include translateZ(0); // force GPU acceleration
+            // shown
+            &.in {
+                right: 0;
+                left: auto;
+            }
+            // hidden
+            &, &.out {
+                right: -$width;
+                left: auto;
+            }
+        }
+
+        // left to right
+        @mixin slideRight($width, $speed: .1s, $delay: 0s) {
+            @include transition-duration($speed);
+            @include transition-delay($delay);
+            @include translateZ(0); // force GPU acceleration
+            // shown
+            &.in {
+                left: 0;
+                right: auto;
+            }
+            // hidden
+            &, &.out {
+                left: -$width;
+                right: auto;
+            }
+        }
+
+
+//
+// FADE TIMER
+// allows us to set different .fade.in timings
+// without screwing up the core visibility
+// options that prevent bugs in our angular app
+//
+    @mixin fadeTimer($durationOut, $delayOut: 0s, $durationIn: false, $delayIn: false) {
+
+        // If $durationIn not defined, default to $durationOut
+        $durationIn: if($durationIn != false, $durationIn, $durationOut);
+        $delayIn: if($delayIn != false, $delayIn, $delayOut);
+
+        // when fading out, transition all properties (including visibility) with equal timings
+        @include transition(all $durationOut linear $delayOut);
+        @include translateZ(0); // force GPU acceleration
+
+        &.mid,
+        &.in {
+            // when fading in, transition only opacity so that
+            // visibility: visible; is enforced immediately with no delay / "fade"
+            @include transition(opacity $durationIn linear $delayIn);
+        }
+    }
+
+
+//
+// INTERNET EXPLORER UTILITIES
+//
+    @mixin filter-gradient($start-color, $end-color, $orientation: vertical, $important: false) {
+        $gradient-type: if($orientation == vertical, 0, 1);
+        $important: if($important == false, "", "!important");
+        $filter: unquote("progid:DXImageTransform.Microsoft.gradient(gradientType=#{$gradient-type}, startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}')");
+        @if $filter-gradient-support {
+            @include has-layout;
+
+            @if $ie-support and $min-ie-supported < 10 {
+                // IE8+9
+                -ms-filter: $filter unquote($important);
+
+                @if $min-ie-supported < 8 {
+                    // IE6+7
+                    *filter: "#{$filter}" unquote($important);
+                }
+            }
+        }
+    }
+
+    // Reset filters for IE
+    @mixin reset-filter($isImportant: false) {
+        $important: if($isImportant == false, "", "!important");
+        $filter: $resetMSIEGradient;
+        @if $filter-gradient-support {
+            @if $ie-support and $min-ie-supported < 10 {
+                // IE8+9
+                -ms-filter: $filter unquote($important);
+
+                @if $min-ie-supported < 8 {
+                    // IE6+7
+                    *filter: none unquote($important);
+                    *filter: "#{$filter}" unquote($important);
+                }
+            }
+        }
+    }
+
+    @function filter-opacity($alpha) {
+        // seems people have a tendency to pass params that are
+        // both base 10 and base 100 alpha values
+        // so lets make it foolproof!
+        $base10: 100;
+        // declare base 10 values
+        $opacityFilter: round($alpha * $base10);
+
+        @if $alpha > 1 and $alpha <= $base10 {
+            // they passed a base 100 alpha
+            $opacityFilter: round($alpha);
+        }
+
+        @return unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacityFilter})");
+    }
+
+    @mixin filter($filter, $isImportant: false) {
+        $important: if($isImportant == false, "", "!important");
+        @if $ie-support and $min-ie-supported < 10 {
+            // IE8+9
+            -ms-filter: "#{$filter}" unquote($important);
+
+            @if $min-ie-supported < 8 {
+                // IE6+7
+                *filter: "#{$filter}" unquote($important);
+            }
+        }
+    }
+
+    // IE7 inline-block
+    @mixin ie7-inline-block {
+        @include ltie8 {
+            *display: inline;
+            *zoom: 1;
+        }
+    }
+
+    // IE7 likes to collapse whitespace on either side of the inline-block elements.
+    // Ems because we're attempting to match the width of a space character. Left
+    // version is for form buttons, which typically come after other elements, and
+    // right version is for icons, which come before. Applying both is ok, but it will
+    // mean that space between those elements will be .6em (~2 space characters) in IE7,
+    // instead of the 1 space in other browsers.
+    @mixin ie7-restore-left-whitespace {
+        @include ltie8 {
+            *margin-left: .3em;
+
+            &:first-child {
+                *margin-left: 0;
+            }
+        }
+    }
+
+    @mixin ie7-restore-right-whitespace {
+        @include ltie8 {
+            *margin-right: .3em;
+        }
+    }
+
+
+//
+// IMAGE UTILITIES
+//
+    // make sure that when we scale our images...
+    // we're outputting them in the best possible interpolation mode
+    @mixin crispImages {
+        image-rendering: optimizeSpeed;                     // Legal fallback
+        image-rendering: optimize-contrast;                 // CSS3 Proposed
+        @if $mozilla-support {
+            image-rendering: -moz-crisp-edges;              // Firefox
+        }
+        @if $opera-support {
+            image-rendering: -o-crisp-edges;                // Opera
+        }
+        @if $webkit-support {
+            image-rendering: -webkit-optimize-contrast;     // Chrome (and eventually Safari)
+        }
+        @if $ie-support {
+            -ms-interpolation-mode: nearest-neighbor;       // IE8+
+        }
+    }
+
+    // CSS image replacement
+    // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+    @mixin hideText {
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+
+    @mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x, $valign: false, $vPad: 0, $hPad: 0) {
+
+        // if the image is bigger than its container... scale it down and center it
+        // if its smaller than its container... center it
+        $valignScale: if($valign, $valign - ($vPad * 2), 9999);
+        $scaleDownImg: $valignScale < $height-1x;
+        $finalHeight: if($scaleDownImg == false, $height-1x, $valign) - ($vPad * 2);
+
+         // substitute for width: auto;
+        $imgWratio:  $width-1x / $height-1x;
+        $scaledImgW: round($finalHeight * $imgWratio);
+        $finalWidth: if($scaleDownImg == false, $width-1x, $scaledImgW);
+
+        width: $finalWidth;
+        height: $finalHeight;
+        margin-top: $vPad;
+        background-image: image-url(#{$file-1x});
+        background-repeat: no-repeat;
+        background-position: center top;
+
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 192dpi),
+        only screen and (                min-resolution: 2dppx) {
+            background-image: image-url(#{$file-2x});
+            background-size: $finalWidth $finalHeight;
+        }
+    }
+
+
+    //
+    // Dual-resolution bg images
+    //
+    @mixin bgImagePreventClip {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-color: transparent;
+    }
+
+    @mixin bgImageAlignment($valign, $halign, $finalHeight, $finalWidth) {
+        width: $finalWidth;
+        height: $finalHeight;
+        @if $valign != false {
+            position: relative;
+            top: ($valign - $finalHeight) / 2;
+        }
+        @if $halign != false {
+            position: relative;
+            left: ($halign - $finalWidth) / 2;
+        }
+    }
+
+    @mixin bgImage($name, $mime: "png", $suffix: "_retina", $dir: "", $valign: false, $halign: false, $childAttrs: false, $vPad: 0, $hPad: 0, $imgSrc: true) {
+
+        //
+        // VARS
+        //
+        $img: #{$dir}#{$name};
+        // we want the container size to be the
+        // width / height of the NORMAL image... not the retina.
+        $imgW:  image-width("#{$img}.#{$mime}");
+        $imgH:  image-height("#{$img}.#{$mime}");
+
+        $retinaImg: "#{$img}_retina.#{$mime}";
+        $normalImg: "#{$img}.#{$mime}";
+
+        // if the image is bigger than its container... scale it down and center it
+        // if its smaller than its container... center it
+        $valignScale: if($valign, $valign, 9999);
+        $scaleDownImg: $valignScale < $imgH;
+        $finalHeight: if($scaleDownImg == false, $imgH, $valign) - ($vPad * 2);
+
+         // substitute for width: auto;
+        $imgWratio: $imgW / $imgH;
+        $scaledImgW: round($finalHeight * $imgWratio);
+        $finalWidth: if($scaleDownImg == false, $imgW, $scaledImgW) - ($hPad * 2);
+
+
+        //
+        // STYLES
+        //
+        width: $finalWidth;
+        min-height: $finalHeight;
+        // make sure parent container doesn't clip the bg
+        @include bgImagePreventClip;
+
+        .visible-retina {
+            @include bgImageAlignment($valign, $halign, $finalHeight, $finalWidth);
+
+            @if $imgSrc {
+                background-image: image-url($retinaImg);
+                // make sure parent container doesn't clip the bg
+                @include bgImagePreventClip;
+            }
+        }
+
+        .hidden-retina {
+            @include bgImageAlignment($valign, $halign, $finalHeight, $finalWidth);
+
+            @if $imgSrc {
+                background-image: image-url($normalImg);
+                // make sure parent container doesn't clip the bg
+                @include bgImagePreventClip;
+            }
+        }
+
+        // when background-size is not supported
+        // REQUIRES MODERNIZR SUPPORT
+        @if $ie-support and $min-ie-supported < 9 {
+            .no-backgroundsize & {
+                img {
+                    width: $finalWidth;
+                    min-height: $finalHeight;
+                    line-height: $finalHeight;
+                    vertical-align: top;
+                }
+                .hidden-retina,
+                .visible-retina {
+                    display: none !important;
+                }
+            }
+        }
+    } // END bgImage
+
+
+//
+// MODALS / DIALOGS
+//
+    @function calcModalTotalHeight($contentHeight: $modalContentHeight, $footer: true) {
+        $ftHeight: if($footer == true, $modalFooterHeight, 0);
+        @return $dialogHeaderMinHeight + $contentHeight + $ftHeight;
+    }
+    @mixin centeredDialog($modalDialogWidth: $modalDialogWidth, $modalCntHeight: false, $footer: true, $contentClass: '.modal-body') {
+
+        // add the offset of the dialog
+        // to ensure the actual width of the dialog (without the padding)
+        // equals the intent of the consumer of the mixin
+        $ttlWidth: ($modalDialogOffset * 2) + $modalDialogWidth;
+
+        $modalCntHeight: if($modalCntHeight == false, $modalContentHeight, $modalCntHeight); // use global default if no param passed
+        $ttlModalHeight: calcModalTotalHeight($modalCntHeight, $footer);
+
+        .modal-content {
+            height: auto;
+        }
+
+        // VERTICAL CENTERING
+        top: 50%; // override wdesk global top value for vertical centering
+        margin-top: -(floor(($ttlModalHeight / 2) + $modalDialogOffset));
+        // HORIZONTAL CENTERING
+        width: $ttlWidth;
+        margin-left: -(floor($ttlWidth/2));
+    }
+
+    // for "contained" modal confirmation dialogs,
+    // we typically have a DOM structure that places
+    // confirmation buttons to the right of a single
+    // line of text.  This mixin helps us make sure
+    // the two blocks have appropriate widths / spacing
+    @mixin containedModalActions($actionsWidth: 100px) {
+        .modal-body   { padding-right: $actionsWidth; }
+        .modal-footer {
+            bottom: auto;
+            top: 0;
+            width: $actionsWidth;
+            line-height: inherit; // center in the container its nested in
+        }
+    }
+
+    @mixin caret($direction: 'down', $color: $textColor, $size: $caretWidth, $fallbackColor: false) {
+        // only modify the size if $size is not false
+        @if $size != false and $direction != 'all' {
+            border-width: $size;
+        }
+        @if $direction == 'down' {
+            border-top-style: solid;
+            @if $fallbackColor { border-top-color: $fallbackColor; }
+            border-top-color: $color;
+            border-right-style: solid;
+            border-right-color: transparent;
+            border-bottom-width: 0 !important;
+            border-left-style: solid;
+            border-left-color: transparent;
+        } @elseif $direction == 'up' {
+            border-top-width: 0 !important;
+            border-right-style: solid;
+            border-right-color: transparent;
+            border-bottom-style: solid;
+            @if $fallbackColor { border-bottom-color: $fallbackColor; }
+            border-bottom-color: $color;
+            border-left-style: solid;
+            border-left-color: transparent;
+        } @elseif $direction == 'left' {
+            border-top-style: solid;
+            border-top-color: transparent;
+            border-right-style: solid;
+            @if $fallbackColor { border-right-color: $fallbackColor; }
+            border-right-color: $color;
+            border-bottom-style: solid;
+            border-bottom-color: transparent;
+            border-left-width: 0 !important;
+        } @elseif $direction == 'right' {
+            border-top-style: solid;
+            border-top-color: transparent;
+            border-right-width: 0 !important;
+            border-bottom-style: solid;
+            border-bottom-color: transparent;
+            border-left-style: solid;
+            @if $fallbackColor { border-left-color: $fallbackColor; }
+            border-left-color: $color;
+        } @elseif $direction == 'all' {
+            border-width: $size;
+        } @else {
+            @warn 'Invalid $direction value passed to @mixin caret: #{$direction}';
+        }
+    }
+
+    @mixin dialogArrow($size, $direction, $dialogBdWidth: $dialogBdWidth, $radius: $dialogBdRadius) {
+
+        $outerWidth: if($size == "large", $popoverArrowOuterWidth, $tooltipArrowOuterWidth);
+             $width: if($size == "large", $popoverArrowWidth, $tooltipArrowWidth);
+
+        //
+        // Position
+        //   some of the positioning is done in
+        //   _dialogs.scss for the stuff that is
+        //
+        //   common among tooltips and popovers
+        //
+        $beforePosOffset: $width - ($dialogBdWidth * 2);
+        @if $direction == "top" {
+            margin-top: -$width;
+
+            .arrow {
+                margin-left: -$outerWidth;
+                bottom: -$outerWidth;
+                &:before {
+                    left: -$beforePosOffset;
+                }
+                &:after {
+                    margin-left: -$width;
+                }
+            }
+        }
+        @if $direction == "right" {
+            margin-left: $width;
+
+            .arrow {
+                left: -$outerWidth;
+                margin-top: -$outerWidth;
+                &:before {
+                    top: -$beforePosOffset;
+                }
+                &:after {
+                    bottom: -$width;
+                }
+            }
+        }
+        @if $direction == "bottom" {
+            margin-top: $width;
+
+            .arrow {
+                margin-left: -$outerWidth;
+                top: -$outerWidth;
+                &:before {
+                    left: -$beforePosOffset;
+                }
+                &:after {
+                    margin-left: -$width;
+                    @if $popoverTitleBg != $dialogBg {
+                        // since the title area is on top, we need the arrow bg to match
+                        border-bottom-color: $popoverTitleBg;
+                        // since we've got a border, we need to use a box shadow to fill in the rest of the space with the bg color of the title
+                        @include box-shadow(0 $dialogBdWidth 0 0 $popoverTitleBg);
+                    }
+                }
+            }
+        }
+        @if $direction == "left" {
+            margin-left: -$width;
+
+            .arrow {
+                right: -$outerWidth;
+                margin-top: -$outerWidth;
+                &:before {
+                    top: -$beforePosOffset;
+                }
+                &:after {
+                    bottom: -$width;
+                }
+            }
+        }
+    } // END @mixin dialogArrow
+
+
+//
+// DROPDOWNS
+//
+    @mixin dropdownMenuSize($size, $minWidth, $paddingVertical, $paddingHorizontal, $borderRadius) {
+        min-width: $minWidth;
+        padding: $paddingVertical $paddingHorizontal;
+        border-radius: $borderRadius;
+
+        .divider {
+            $dividerMargin: $paddingVertical 0 ($paddingVertical - $menuVBdWidth) 0;
+            @include dividerHorizontal($bg: $menuVLinkBg, $margin: $dividerMargin);
+        }
+
+        .dropdown-info {
+            &:first-child {
+                margin-top: -#{$paddingVertical};
+                margin-bottom: $paddingVertical;
+                @include border-top-radius($borderRadius - $menuVBdWidth);
+            }
+            &:last-child {
+                margin-top: $paddingVertical;
+                margin-bottom: -#{$paddingVertical};
+                @include border-bottom-radius($borderRadius - $menuVBdWidth);
+            }
+        }
+    } // END @mixin dropdownMenuSize
+
+    @mixin dropdownMenuItemHeaderPadding($paddingVertical, $paddingHorizontal, $iconMargin) {
+        padding: $paddingVertical $paddingHorizontal $paddingVertical ($paddingHorizontal - ceil($iconMargin / 2));
+    }
+
+    @mixin dropdownMenuItemSize($size, $fontSize, $headerFontSize, $iconMargin, $lineHeight, $maxWidth, $paddingVertical, $paddingHorizontal) {
+        $padding: $paddingVertical $paddingHorizontal;
+        > li {
+            font-size: $fontSize;
+
+            > .hitarea {
+                max-width: $maxWidth;
+                padding: $padding;
+                padding-left: 0;
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                // Use text indent on the left side of the hitareas
+                // To fix firefox white-space: nowrap; bug with <button class="hitarea">
+                // https://github.com/WebFilings/web-skin/issues/319
+                text-indent: $paddingHorizontal;
+
+                * {
+                    // don't know why this is automatically inherited by .hitarea children... but it is.
+                    text-indent: 0;
+                }
+
+                .icon {
+                    // adjust margins because of unusual text-indent hack
+                    // we have to use here for <button> elems
+                    margin-right: $iconMargin;
+                    margin-left: -#{$iconMargin};
+                }
+            }
+            @include dropdownMenuItemChecked ($paddingHorizontal);
+        }
+
+        .dropdown-header {
+            @include dropdownMenuItemHeaderPadding($paddingVertical, $paddingHorizontal, $iconMargin);
+            font-size: $headerFontSize !important; // override .dropdown-menu > li font-size
+            line-height: $lineHeight;
+        }
+    } // END @mixin dropdownMenuItemSize
+
+    @mixin dropdownMenuItemHoverDefault {
+        @include menuVerticalItemHoverDefault;
+    } // END @mixin dropdownMenuItemHoverDefault
+
+    @mixin dropdownMenuItemPressDefault {
+        @include menuVerticalItemPressDefault;
+    } // END @mixin dropdownMenuItemPressDefault
+
+    @mixin dropdownMenuItemChecked ($paddingHorizontal) {
+        &.checked {
+            > .hitarea {
+                &:before {
+                    $dropdownCheckPadding: round(($paddingHorizontal - $iconSmallSize) / 2);
+
+                    font-family: $mainIconsFont;
+                    content: "\e600";
+                    font-size: $iconSmallSize;
+                    margin-left: -($iconSmallSize + $dropdownCheckPadding);
+                    margin-right: $dropdownCheckPadding;
+                }
+            }
+        }
+    }
+
+
+//
+// FORM INPUTS
+//
+    @mixin inputFocusDefault($bdColor: $inputBdColorFocus,
+                               $color: $inputColorFocus,
+                             $bdWidth: $inputBdWidthFocus,
+                         $insetShadow: $inputShadowInner,
+                          $selectElem: false)
+    {
+        // since we want a "solid" appearance to our outline
+        // and that outline is thicker than the border of the form elem
+        // instead of making the border thicker (which will change the size of the input)
+        //
+        // we use box-shadow to create an  extra bit of solid stroke
+        //
+        $extraOutlineWidth: $bdWidth - $inputBdWidth;
+        $outsetShadow: 0 0 0 $extraOutlineWidth $bdColor;
+        $insetShadow: $inputShadowInner;
+
+        color: $color;
+        border-color: $bdColor;
+        outline: 0; // no native "blurred" outlines please
+    } // END @mixin inputFocusDefault
+
+    @mixin inputScaffolding {
+        @extend %form-control;
+    } // END @mixin inputScaffolding
+
+    @mixin inputSize($class, $inputHeight, $paddingVertical, $paddingHorizontal, $fontSize, $lineHeight, $borderRadius, $nested: false) {
+        @if $nested {
+            min-height: $inputHeight; // for .chosen-choices
+            height: $inputHeight;
+            padding: $paddingVertical $paddingHorizontal;
+            font-size: $fontSize;
+            line-height: $lineHeight;
+            border-radius: $borderRadius;
+        } @else {
+            .input-#{$class} {
+                height: $inputHeight;
+                padding: $paddingVertical $paddingHorizontal;
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                border-radius: $borderRadius;
+            }
+
+            select.input-#{$class} {
+                padding-right: $paddingVertical;
+                height: $inputHeight;
+                line-height: $inputHeight;
+            }
+
+            textarea.input-#{$class} {
+                height: auto;
+                padding-right: 0;
+            }
+        }
+    }
+
+    @mixin inputGroupSize($class, $inputHeight, $paddingVertical, $paddingHorizontal, $fontSize, $lineHeight, $borderRadius) {
+        .input-group-#{$class} {
+            > .form-control,
+            > .input-group-addon {
+                height: $inputHeight;
+                padding: $paddingVertical $paddingHorizontal;
+                font-size: $fontSize;
+                line-height: $lineHeight;
+                border-radius: $borderRadius;
+            }
+            > .input-group-btn > .btn {
+                @include btnSize($class, $paddingVertical, $paddingHorizontal, $fontSize, $lineHeight, $borderRadius);
+            }
+        }
+    }
+
+    // NOTE: DEPRECATED AS OF v0.3.2
+    @mixin inputScaffoldingSmall {
+        @include inputSize(sm, $inputHeightSmall, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall);
+    } // END @mixin inputScaffoldingSmall
+
+    // NOTE: DEPRECATED AS OF v0.3.2
+    @mixin inputScaffoldingLarge {
+        @include inputSize(lg, $inputHeightLarge, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge);
+    } // END @mixin inputScaffoldingLarge
+
+    // nested "clear search" button style within inputs
+    @mixin clearSearchBtn($inputHeightBase: $inputHeightBase, $fontSize: $clearSearchFontSize, $inputBdWidth: $inputBdWidth, $inputBdRadius: $inputBdRadius, $btnPaddingX: nth($btnPadding, 2), $global: false) {
+
+        $innerRadius: $inputBdRadius - $inputBdWidth;
+        $btnPadOffset: $inputBdWidth * 2;
+
+        // .search-box
+        position: relative;
+        height: $inputHeightBase;
+
+        // global styles for the search box components
+        // no matter if an active search is in progress or not
+        .form-control {
+            height: $inputHeightBase;
+            width: 100%;
+            text-indent: $baseIconSize;
+        }
+
+        // search icon glyph to the left of the search text
+        > .icon {
+            position: absolute;
+            top: round(($inputHeightBase - $baseIconSize) / 2);
+            left: round(nth($inputPadding, 2) / 2) + 2px; // 2px offset is to account for the angle of the search icon
+            color: $inputColorPlaceholder;
+        }
+
+        .btn.clear-search {
+            @include closeScaffolding;
+            position: absolute;
+            top: $inputBdWidth;
+            right: $inputBdWidth;
+            bottom: $inputBdWidth;
+            display: block;
+            padding: ($paddingBaseVertical - $btnPadOffset) $paddingBaseHorizontal ($paddingBaseVertical + $btnPadOffset) ($btnPaddingX - $inputBdWidth);
+            @if $ie-support {
+                padding-bottom: $inputPaddingVerticalMSIE;
+            }
+            font-size: $fontSize;
+            line-height: 1;
+            cursor: text;
+            border-width: 0 0 0 $inputBdWidth;
+            border-radius: 0 $innerRadius $innerRadius 0;
+            // remove .btn bg / borders
+            outline: 0 !important;
+            background-color: transparent !important;
+            border-color: transparent !important;
+            @include box-shadow(none !important);
+            @include transition(opacity .3s linear);
+            @include opacity(0);
+        }
+
+        // an active search is in-progress
+        // .search-box.searching
+        // NOTE: if you change this class - you must change the class in wdesk-button.js as well.
+        &.searching {
+            .form-control {
+                // when .appended is added to any input you've applied a fixed width to
+                // you'll need to subtract this width from that width
+                $clearSearchBtnWidth: $fontSize + ($btnPaddingX * 2) - ($inputBdWidth * 2);
+                // make room on the right side of the input for the btn
+                padding-right: $clearSearchBtnWidth;
+            }
+
+            .btn.clear-search {
+                cursor: pointer;
+                // reveal
+                @include opacity(.8, !important);
+
+                #{$linkHoverFocus} {
+                    color: zestyCrayonColor(red, main);
+                    @include opacity(1, !important);
+                }
+            }
+        }
+
+    } // END @mixin clearSearchBtn
+
+    // calculate the width of the two "columns"
+    // in a .form-horizontal situation
+    @mixin formHorizontalWidths($labelWidth: $horizontalComponentOffset, $colOffset: $horizontalComponentLblRightPad) {
+        > .control-label {
+            @include makeMdColumn(2);
+        }
+        > .controls {
+            @include makeMdColumn(10);
+        }
+    } // END @mixin formHorizontalWidths
+
+
+//
+// BUTTONS
+//
+    @mixin btnIconValign($btnSizeClass, $btnFontSize) {
+        // in order to determine how the icon will align within the button
+        // we only need to use the top padding - so we need to subtract that
+        // and add the bdwidth of the buttons from the text height vars
+        $btnHeightCalc: nth($btnTextHeights, index($btnSizeClasses, $btnSizeClass)) + ($btnBdWidth * 2);
+        $btnPadBot: nth($btnPadTops, index($btnSizeClasses, $btnSizeClass));
+        $innerBtnHeight: $btnHeightCalc - ($btnBdWidth * 2);
+
+        $btnSizeClassIndex: index($btnSizeClasses, $btnSizeClass);
+        $iconSize: nth($btnIconSizes, $btnSizeClassIndex);
+        $defaultIconSizeClass: nth($btnIconSizeClasses, $btnSizeClassIndex); // the size that is going to be set as default for this button size
+        $valignOffset: -(round($btnPadBot / 2));
+
+        .icon {
+            // size the icon based on the size class of the button
+            font-size: $iconSize;
+            width: $iconSize;
+            height: $iconSize;
+
+            // if the font size of the button exceeds the height of the icon
+            // the icon will need to have it's "valign" adjusted accordingly
+            // since the line height will no longer be able to do it alone.
+            @if $btnFontSize > $iconSize {
+                top: -#{$btnFontSize - $iconSize};
+            }
+
+            // if the icon height exceeds the inner height of the button
+            // use negative bottom margin to ensure we don't change the overall height
+            // of the button by nesting the icon
+            @if $iconSize >= $innerBtnHeight {
+                margin-bottom: $btnFontSize - $iconSize !important;
+            }
+        }
+
+        // various icon sizes explicity defined in any size of button
+        $availableBtnIconSizeClasses: 'sm', 'md', 'lg', 'base';
+        $availableBtnIconSizes: $iconSmallSize, $iconMediumSize, $iconLargeSize, $baseIconSize;
+
+        @each $size in $availableBtnIconSizeClasses {
+            $iconSizeIndex: index($availableBtnIconSizeClasses, $size);
+            $iconSizeClass: nth($availableBtnIconSizeClasses, $iconSizeIndex);
+            // don't print the extra style if its the default pairing that we
+            // already made styles for above.
+            @if $iconSizeClass != $defaultIconSizeClass {
+                $iconSize: nth($availableBtnIconSizes, $iconSizeIndex);
+                .icon-#{$iconSizeClass} {
+
+                    // size the icon based on the size class of the icon
+                    font-size: $iconSize !important;
+                    width: $iconSize !important;
+                    height: $iconSize !important;
+
+                    // if the font size of the button exceeds the height of the icon
+                    // the icon will need to have it's "valign" adjusted accordingly
+                    // since the line height will no longer be able to do it alone.
+                    @if $btnFontSize > $iconSize {
+                        top: -#{$btnFontSize - $iconSize};
+                    }
+
+                    // if the icon height exceeds the inner height of the button
+                    // use negative bottom margin to ensure we don't change the overall height
+                    // of the button by nesting the icon
+                    @if $iconSize > $innerBtnHeight {
+                        $offset: $btnFontSize - $iconSize + $valignOffset;
+                        margin-bottom: $offset !important;
+                        margin-top: $offset !important;
+                    }
+                }
+            }
+        }
+    } // END @mixin btnIconValign
+
+    @mixin btnHoverDefault($overrideActive: false) {
+        @if $overrideActive {
+            &,
+            #{$linkPressed} {
+        }
+
+        color: $btnColorDefault;
+        @if $btnGradients == true {
+            border-color: $state_default_gradBot;
+            @include gradientVertical(lighten($state_default_gradTop, 5%), lighten($state_default_gradBot, 5%));
+        } @else {
+            background-color: lighten($btnBgDefault, 5%);
+        }
+
+        @if $overrideActive {
+            }
+        }
+    } // END @mixin btnHoverDefault
+
+    @mixin btnActiveDefault($revert: false) {
+        @if not $revert {
+            outline: 0;
+        }
+    } // END @mixin btnActiveDefault
+
+    @mixin btnDisabledDefault {
+        cursor: not-allowed !important;
+        @include opacity($btnDisabledAlpha, !important);
+        box-shadow: none !important;
+        // TODO: Remove this extra class specifier once we move the default support level for wdesk_ie.css below version 9 since we can then just use a simple @if $min-ie-supported < 9
+        @include ie('<9') {
+            border-bottom-width: $btnBdWidth; // reset bottom border width
+            margin-bottom: 0; // reset negative margin
+        }
+
+
+        .caret {
+            @include opacity($caretAlpha, !important);
+        }
+    } // END @mixin btnDisabledDefault
+
+    // keep track of how many times we attempt to call this
+    // as a global style within one sheet (prevent bloat)
+    $trackGlobalBtnScaffoldingCalls: 0 !global;
+    @mixin btnScaffolding($global: false) {
+
+        // TODO: remove all the color information from this once we implement #664
+
+        $trackGlobalBtnScaffoldingCalls: $trackGlobalBtnScaffoldingCalls + if($global == true, 1, 0) !global;
+        @if($trackGlobalBtnScaffoldingCalls < 2) {
+            position: relative;
+            top: 0;
+            display: inline-block;
+            @include ie7-inline-block;
+            padding: $btnPadding;
+            margin-bottom: 0; // For input.btn
+            font-family: $btnFontFamily;
+            font-size: $fontSizeBase;
+            font-weight: normal;
+            line-height: $lineHeightBase;
+            color: $btnColorDefault;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: $btnBgDefault;
+            border: $btnBdWidth solid $btnBdDefault;
+            border-radius: $borderRadiusBase;
+            outline: 0;
+            box-shadow: 0 $btnShdDepth 0 0 $btnShdDefault;
+            @include appearance(none);
+
+            // TODO: Remove this extra class specifier once we move the default support level for wdesk_ie.css below version 9 since we can then just use a simple @if $min-ie-supported < 9
+            @include ie('<9') {
+                // MSIE 8 doesn't support `box-shadow`
+                // gracefully degrade our "punchable" effect
+                // using bottom border width
+                border-bottom-width: $btnBdWidth + $btnShdDepth;
+                margin-bottom: -$btnShdDepth; // account for extra height added
+            }
+
+            // not a selectable piece of text
+            @include disableUserSelect;
+            * {
+                @include disableUserSelect;
+            }
+
+            @if $global {
+                .caret {
+                    margin-top: $caretTopMarginBase;
+                    border-top-color: $btnColorDefault;
+                    border-bottom-color: $btnColorDefault;
+                    // add a little extra contrast for browsers that are capable
+                    @include opacity($caretAlpha);
+                }
+
+                .badge {
+                    color: $btnBgDefault;
+                    background-color: $btnColorDefault;
+                }
+            }
+
+            //
+            // HOVER / FOCUS
+            //
+            #{$linkHoverFocus} {
+                text-decoration: none;
+                @if $btnColorDefaultHover != inherit {
+                    color: $btnColorDefaultHover;
+                }
+                @if $btnBgDefaultHover != inherit {
+                    background-color: $btnBgDefaultHover;
+                }
+                @if $btnBdDefaultHover != inherit {
+                    border-color: $btnBdDefaultHover;
+                }
+                @if $btnShdDefaultHover != inherit {
+                    box-shadow: 0 $btnShdDepth 0 0 $btnShdDefaultHover;
+                }
+
+                @if $global {
+                    .caret {
+                        @if $btnColorDefaultHover != inherit {
+                            border-top-color: $btnColorDefaultHover;
+                            border-bottom-color: $btnColorDefaultHover;
+                        }
+                        // add a little extra contrast for browsers that are capable
+                        @include opacity(1);
+                    }
+
+                    .badge {
+                        @if $btnBgDefaultHover != inherit {
+                            color: $btnBgDefaultHover;
+                        }
+                        @if $btnColorDefaultHover != inherit {
+                            background-color: $btnColorDefaultHover;
+                        }
+                    }
+                }
+            }
+
+            //
+            // PRESSED / ACTIVE
+            //
+            #{$linkPressed},
+            &.active,
+            .open &.dropdown-toggle {
+                top: $btnShdDepth; // make button look like it was "punched"
+                // need !important to over-rule the .btn-group-vertical specificity
+                box-shadow: none !important;
+                @if $ie-support and $min-ie-supported < 9 {
+                    // MSIE 8 doesn't support `box-shadow`
+                    // gracefully degrade our "punchable" effect
+                    // using bottom border width
+                    border-bottom-width: $btnBdWidth;
+                    margin-bottom: 0; // override negative margin added when bottom bd had extra thickness
+                }
+
+                @if $btnColorDefaultPress != inherit {
+                    color: $btnColorDefaultPress;
+                }
+                @if $btnBgDefaultPress != inherit {
+                    background-color: $btnBgDefaultPress;
+                }
+                @if $btnBdDefaultPress != inherit {
+                    border-color: $btnBdDefaultPress;
+                }
+
+                @if $global {
+                    .caret {
+                        @if $btnColorDefaultPress != inherit {
+                            border-top-color: $btnColorDefaultPress;
+                            border-bottom-color: $btnColorDefaultPress;
+                        }
+                    }
+
+                    .badge {
+                        @if $btnBgDefaultPress != inherit {
+                            color: $btnBgDefaultPress;
+                        }
+                        @if $btnColorDefaultPress != inherit {
+                            background-color: $btnColorDefaultPress;
+                        }
+                    }
+                }
+            }
+
+
+            //
+            // DISABLED
+            //
+            &.disabled,
+            &[disabled] {
+                @include btnDisabledDefault;
+            }
+
+            // icon horizontal spacing
+            .icon {
+                margin-right: $btnIconMargin;
+                &:before,
+                &:after {
+                    // no need for this type of adjustment
+                    // since we're using btnIconValign() to
+                    // align all different icon sizes within buttons.
+                    top: 0;
+                    @include ios {
+                        top: -2px;
+                    }
+                }
+                &.right,
+                &.pull-right {
+                    margin-right: 0;
+                    margin-left: $btnIconMargin;
+                }
+            }
+
+            @if $global {
+                // icon vertical spacing
+                @include btnIconValign('base', $fontSizeBase);
+            }
+
+        } @else {
+            @warn "@mixin btnScaffolding should only be called with $global: true once per stylesheet (current count: #{$trackGlobalBtnScaffoldingCalls})";
+        }
+    } // END @mixin btnScaffolding
+
+    @mixin btnSize($size, $paddingVertical, $paddingHorizontal, $fontSize, $lineHeight, $borderRadius, $iconMargin: 0, $global: false) {
+        padding: $paddingVertical $paddingHorizontal;
+        font-size: $fontSize;
+        line-height: $lineHeight;
+        border-radius: $borderRadius;
+
+        @if $global {
+
+            // Position the caret in various button sizes
+            $caretOffset: if($size == xs, 2, 0);
+            $caretTop: $paddingVertical + ($btnBdWidth * 2) + $caretOffset;
+            .caret {
+                margin-top: $caretTop !important;
+            }
+
+            .icon {
+                margin-right: $iconMargin;
+                &.right,
+                &.pull-right {
+                    margin-right: 0;
+                    margin-left: $iconMargin;
+                }
+            }
+            // icon vertical spacing
+            @include btnIconValign($size, $fontSize);
+        }
+    }
+
+    // NOTE: DEPRECATED AS OF v0.3.2
+    @mixin btnScaffoldingXsmall($global: false) {
+        @include btnSize(xs, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall, $btnIconMarginXsmall, $global: $global);
+    } // END @mixin btnScaffoldingXsmall
+
+    // NOTE: DEPRECATED AS OF v0.3.2
+    @mixin btnScaffoldingSmall($global: false) {
+        @include btnSize(sm, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall, $btnIconMarginSmall, $global: $global);
+    } // END @mixin btnScaffoldingSmall
+
+    // NOTE: DEPRECATED AS OF v0.3.2
+    @mixin btnScaffoldingLarge($global: false) {
+        @include btnSize(lg, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge, $btnIconMarginLarge, $global: $global);
+    } // END @mixin btnScaffoldingLarge
+
+    @mixin btnCallout {
+        text-transform: uppercase;
+        font-family: $webfontSansSerif;
+        font-weight: bold !important;
+
+        // adjust padding since Gibson sucks
+        padding: gibsonPadOffset($paddingBaseVertical $paddingBaseHorizontal);
+
+        &.btn-lg {
+            padding: gibsonPadOffset($paddingLargeVertical $paddingLargeHorizontal);
+        }
+
+        // too small for webfont
+        &.btn-sm {
+            font-family: $fontFamilySansSerif;
+            font-weight: normal;
+            padding: gibsonPadOffset($paddingSmallVertical $paddingSmallHorizontal);
+        }
+        &.btn-xs {
+            font-family: $fontFamilySansSerif;
+            font-weight: normal;
+            padding: gibsonPadOffset($paddingXsmallVertical $paddingXsmallHorizontal);
+        }
+    } // END @mixin btnCallout
+
+
+    //
+    // Button State Variations
+    //
+    // Easily pump out default styles, as well as #{$hover}, #{$linkFocus}, #{$linkPressed},
+    // and disabled options for all buttons
+    //
+    @mixin btnVariant($state) {
+        $idx: index($states, $state);
+        $state_colors:      nth($state_btnColors, $idx), nth($state_btnColorsHover, $idx), nth($state_btnColorsPress, $idx);
+        $state_bd_colors:   nth($state_btnBds, $idx),    nth($state_btnBdsHover, $idx),    nth($state_btnBdsPress, $idx);
+        $state_bg_colors:   nth($state_btnBgs, $idx),    nth($state_btnBgsHover, $idx),    nth($state_btnBgsPress, $idx);
+        $state_shd_colors:  nth($state_btnShds, $idx),   nth($state_btnShdsHover, $idx),   nth($state_btnShdsPress, $idx);
+
+        //
+        // each *_colors is a comma-separated list like so: (normal, hover, press)
+        // so - nth(color, 1) = normal, nth(color, 2) = hover, nth(color, 3) = press
+        //
+        $color:         nth($state_colors, 1);
+        $bd:            nth($state_bd_colors, 1);
+        $bg:            nth($state_bg_colors, 1);
+        $shd:           nth($state_shd_colors, 1);
+
+        $color_hover:   nth($state_colors, 2);
+        $bd_hover:      nth($state_bd_colors, 2);
+        $bg_hover:      nth($state_bg_colors, 2);
+        $shd_hover:     nth($state_shd_colors, 2);
+
+        $color_press:   nth($state_colors, 3);
+        $bd_press:      nth($state_bd_colors, 3);
+        $bg_press:      nth($state_bg_colors, 3);
+        $shd_press:     nth($state_shd_colors, 3);
+
+        //
+        // NORMAL
+        //
+        color: $color;
+        border-color: $bd;
+        background-color: $bg;
+        box-shadow: 0 $btnShdDepth 0 0 $shd;
+
+        // caret should always match/accent text color
+        @if $color != inherit {
+            .caret {
+                border-top-color: $color;
+                border-bottom-color: $color;
+                // add a little extra contrast for browsers that are capable
+                @include opacity($caretAlpha);
+            }
+        }
+
+        // badge should always match/accent text/bg color
+        .badge {
+            @if $bg != inherit {
+                color: $bg;
+            }
+            @if $color != inherit {
+                background-color: $color;
+            }
+        }
+
+        //
+        // HOVER / FOCUS
+        //
+        #{$linkHoverFocus} {
+            @if $color_hover != inherit {
+                color: $color_hover;
+            }
+            @if $bd_hover != inherit {
+                border-color: $border;
+            }
+            @if $bg_hover != inherit {
+                background-color: $bg_hover;
+            }
+            @if $shd_hover != inherit {
+                box-shadow: 0 $btnShdDepth 0 0 $shd_hover;
+            }
+
+            @if $color_hover != inherit {
+                .caret {
+                    border-top-color: $color_hover;
+                    border-bottom-color: $color_hover;
+                    // add a little extra contrast for browsers that are capable
+                    @include opacity(1);
+                }
+            }
+
+            .badge {
+                @if $bg_hover != inherit {
+                    color: $bg_hover;
+                }
+                @if $color_hover != inherit {
+                    background-color: $color_hover;
+                }
+            }
+        }
+
+        //
+        // PRESSED / ACTIVE
+        //
+        #{$linkPressed},
+        &.active,
+        .open &.dropdown-toggle {
+            @if $color_press != inherit {
+                color: $color_press;
+            }
+            @if $bd_press != inherit {
+                border-color: $border;
+            }
+            @if $bg_press != inherit {
+                background-color: $bg_press;
+            }
+
+            @if $color_press != inherit {
+                .caret {
+                    border-top-color: $color_press;
+                    border-bottom-color: $color_press;
+                }
+            }
+
+            .badge {
+                @if $bg_press != inherit {
+                    color: $bg_press;
+                }
+                @if $color_press != inherit {
+                    background-color: $color_press;
+                }
+            }
+        }
+
+        //
+        // DISABLED
+        //
+        &.disabled,
+        &[disabled] {
+            color: $color !important;
+            border-color: $bd !important;
+            background-color: $bg !important;
+            box-shadow: none !important;
+        }
+    }
+
+    @mixin closeScaffolding {
+        @include buttonReset;
+        padding-bottom: $closeBtnPaddingBottom; // vertical centering
+        font-family: $fontFamilyBase;
+        font-weight: bold;
+        line-height: 1;
+        color: $closeBtnColor;
+        text-shadow: 0 1px 0 rgba($white, 1);
+        opacity: $closeBtnAlpha;
+        // TODO: change to ltie9 when we change the default support level of the main wdesk_ie.css stylesheet from 8 to 9 (0.5.0 release)
+        @include ltie8 {
+            // MSIE 8 and below struggle using filter opacity for this elem
+            // since its often used in a <button> elem
+            // so we'll mix the color instead
+            color: mix($closeBtnColor, $bodyBg, $closeBtnAlpha * 100%);
+        }
+        // make windows sans-serif font for close button match osx
+        @include windows { line-height: 1.2; }
+        // not a selectable piece of text
+        @include disableUserSelect;
+    } // END @mixin closeScaffolding
+
+    @mixin closeHoverDefault {
+        cursor: pointer;
+        text-decoration: none;
+        color: $closeBtnColor;
+        opacity: $closeBtnAlphaHover;
+        // TODO: change to ltie9 when we change the default support level of the main wdesk_ie.css stylesheet from 8 to 9 (0.5.0 release)
+        @include ltie8 {
+            // MSIE 8 and below struggle using filter opacity for this elem
+            // since its often used in a <button> elem
+            // so we'll mix the color instead
+            color: mix($closeBtnColor, $bodyBg, $closeBtnAlphaHover * 100%);
+        }
+    } // END @mixin closeHoverDefault
+
+
+//
+// END STANDARD COMPONENT STYLE MIXINS
+//
+
+
+//
+// PROGRESS
+//
+    @mixin progressBarSize($size, $barHeight, $barRadius, $lblFontSize) {
+        .progress-#{$size} {
+            height: $barHeight;
+            margin-bottom: $barHeight;
+            border-radius: $barRadius;
+
+            .progress-label {
+                height: $barHeight;
+                font-size: $lblFontSize;
+                line-height: $barHeight;
+
+                @if $size == xs {
+                    text-shadow: none;
+                }
+            }
+        }
+    }
+
+
+//
+// FORM UTILITIES
+//
+
+    @mixin checkboxSwitchWidth($defaultText: "off", $checkedText: "on", $sizeVariation: false) {
+
+        $elemWidth:     checkboxSwitchVal($returnWhat: "width", $defaultText: $defaultText, $checkedText: $checkedText, $sizeVariation: $sizeVariation);
+        $height:        checkboxSwitchVal($returnWhat: "height", $defaultText: $defaultText, $checkedText: $checkedText, $sizeVariation: $sizeVariation);
+        $textIndent:    checkboxSwitchVal($returnWhat: "textIndent", $defaultText: $defaultText, $checkedText: $checkedText, $sizeVariation: $sizeVariation);
+
+        // use max() here to make sure the button doesn't get too skinny compared to it's height
+        $bgVoid: max(round($elemWidth / 1.5), round($height * .9));
+        $btnWidth: $elemWidth - $bgVoid;
+
+        &,
+        label,
+        input[type="checkbox"] {
+            width: $elemWidth;
+        }
+        #{$cboxSwitchBtnElem} {
+            width: $btnWidth;
+        }
+        // :checked style has to be it's own un-comma-separated
+        // statement in order to make MSIE 8 happy
+        #{nth($cboxSwitchTextElemChecked, 1)} {
+            // :checked
+            left: $textIndent;
+        }
+        // IE 8 doesn't understand :checked
+        @include ie('<9') {
+            // IE8 just ignores :checked, so it shows all checkboxes as selected
+            // unless we reset it here, and re-apply the "selected" styles using .checked
+            #{nth($cboxSwitchTextElemChecked, 1)} {
+                // :checked
+                right: $textIndent;
+                left: auto;
+            }
+            #{nth($cboxSwitchTextElemChecked, 2)} {
+                // [checked]
+                right: auto;
+                left: $textIndent;
+            }
+            #{nth($cboxSwitchTextElemChecked, 3)} {
+                // .checked (via buttons plugin)
+                right: auto;
+                left: $textIndent;
+            }
+        }
+    }
+
+    @mixin checkboxSwitchText($defaultText: "off", $checkedText: "on", $sizeVariation: false) {
+
+        @include checkboxSwitchWidth($defaultText: $defaultText, $checkedText: $checkedText, $sizeVariation: $sizeVariation);
+
+        #{$cboxSwitchTextElemDefault} {
+            content: attr("data-unchecked-text");
+            content: $defaultText;
+        }
+
+        // :checked style has to be it's own un-comma-separated
+        // statement in order to make MSIE 8 happy
+        #{nth($cboxSwitchTextElemChecked, 1)} {
+            // :checked
+            content: attr("data-unchecked-text");
+            content: $checkedText;
+        }
+        // IE 8 doesn't understand :checked
+        @include ie('<9') {
+            // IE8 just ignores :checked, so it shows all checkboxes as selected
+            // unless we reset it here, and re-apply the "selected" styles using .checked
+            #{nth($cboxSwitchTextElemChecked, 1)} {
+                // :checked
+                content: attr("data-unchecked-text");
+                content: $defaultText;
+            }
+            #{nth($cboxSwitchTextElemChecked, 2)} {
+                // [checked]
+                content: attr("data-unchecked-text");
+                content: $checkedText;
+            }
+            #{nth($cboxSwitchTextElemChecked, 3)} {
+                // .checked (via buttons plugin)
+                content: attr("data-unchecked-text");
+                content: $checkedText;
+            }
+        }
+    }
+
+    // Placeholder text
+    @mixin placeholder($color: $inputColorPlaceholder) {
+        @if $mozilla-support {
+            &:-moz-placeholder { color: $color; }           // Firefox 4-18
+            &::-moz-placeholder {                           // Firefox 19+
+                opacity: 1; // Firefox 19+ sets opacity to 0.54
+                color: $color;
+            }
+        }
+        @if $ie-support {
+            &:-ms-input-placeholder { color: $color; }      // Internet Explorer 10
+        }
+        @if $webkit-support {
+            &::-webkit-input-placeholder { color: $color; } // Safari and Chrome
+        }
+    }
+
+    @mixin inputDisabledDefault {
+        cursor: not-allowed !important;
+        color: $inputColorDisabled !important;
+        border-color: $inputBdColorDisabled !important;
+        background-color: $inputBgDisabled !important;
+        resize: none;
+        @include placeholder($inputColorDisabled !important);
+        @include box-shadow(none !important);
+        @include disableUserSelect;
+    }
+
+    @mixin formFieldStateInputStyle($textColor: $inputTextColor, $borderColor: $inputBorder, $backgroundColor: $inputBackground) {
+        color: $textColor; // Redeclare so transitions work
+        border-color: $borderColor;
+        background-color: $backgroundColor;
+        @include box-shadow(#{$inputShadowInner});
+
+        #{$inputFocus},
+        &.focus {
+            @include inputFocusDefault($bdColor: darken($borderColor, 10%), $color: $textColor);
+        }
+
+        &.input-with-feedback {
+            padding-right: $iconMediumSize;
+        }
+    }
+
+    @mixin formFieldState($textColor: $inputTextColor, $borderColor: $inputBorder, $backgroundColor: $inputBackground, $controlGroup: false) {
+
+        // this was @included within something other than an individual form element declaration block
+        @if $controlGroup == true {
+            // Color the label text
+            .control-label,
+            label,
+            .help-block,
+            .help-inline {
+                color: $textColor;
+            }
+
+            .form-control,
+            .btn.add-on { // [1]
+                @include formFieldStateInputStyle($textColor, $borderColor, $backgroundColor);
+            }
+
+        } @else {
+
+            // if $controlGroup is false, this styles an individual input elem
+            @include formFieldStateInputStyle($textColor, $borderColor, $backgroundColor);
+
+        } // END @if $controlGroup
+
+    } // END @mixin formFieldState
+
+
+//
+// NAV UTILITIES
+//
+    @mixin menuVerticalItemHoverDefault {
+        @extend %vertical-nav-link-hover;
+    } // END @mixin dropdownMenuItemHoverDefault
+
+    @mixin menuVerticalItemPressDefault {
+        @extend %vertical-nav-link-press;
+    } // END @mixin dropdownMenuItemPressDefault
+
+    // list menus used in popovers, dropdowns, etc...
+    @mixin linedListMenu {
+
+        // tertiary <li> color adjustment for hover/press
+        $lightnessAdjustment:  lightness(zestyCrayonColor(gray, pastel1)) - lightness(zestyCrayonColor(gray, main));
+        $tertiaryHoverColor:   lighten($menuVLinkColorHover, $lightnessAdjustment);
+        $tertiaryPressColor:   lighten($menuVLinkColorPress, $lightnessAdjustment);
+        $tertiaryActiveColor:  lighten($menuVLinkColorActive, $lightnessAdjustment);
+
+        > li {
+            // top / bottom padding
+            // (so that even without hitarea, .list-lined elems have spacing)
+            padding: $menuVLinkElemPadding 0;
+            border-bottom: 1px solid zestyCrayonColor(gray, pastel2);
+
+            > .hitarea {
+                @include dropdown-menu-link;
+                border: 0 none;
+                // since we only have bottom borders via the parent <li>
+                // we don't need the negative margin to prevent any double borders
+                margin-bottom: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+                text-indent: $menuVLinkElemPadding; // override <button> hack from dropdown-menu-link()
+
+                //
+                // HOVER STATE
+                //
+                #{$linkHoverFocus} {
+                    @include menuVerticalItemHoverDefault;
+                    // tertiary color adjustment
+                    li li { color: $tertiaryHoverColor; }
+                }
+
+                //
+                // PRESSED STATE
+                //
+                #{$linkPressed} {
+                    @include menuVerticalItemPressDefault;
+                    // tertiary color adjustment
+                    li li { color: $tertiaryPressColor; }
+                }
+            } // END nested .nav-list > li > .hitarea
+
+            //
+            // Active state
+            //
+            &.active {
+                .hitarea {
+                    color: $menuVLinkColorActive !important;
+                    outline: 0 !important;
+                    background-color: $menuVLinkBgActive !important;
+                    // tertiary color adjustment
+                    li li { color: $tertiaryActiveColor !important; }
+                }
+            }
+
+            //
+            // Disabled state
+            //
+            > .hitarea[disabled],
+            > .hitarea.disabled {
+                cursor: default !important;
+                text-decoration: none !important;
+                color: $navLinkColorDisabled !important;
+                background-color: transparent !important;
+            }
+
+        } // END nested .nav-list > li
+    }
+
+    // "block" icon buttons like those used in tablet viewers
+    // nest inside of the element that is the immediate parent of .hitarea
+    @mixin navbarBlockLinks($global: false,
+                            $navbarHeight: $navbarHeight,
+                            $navbarBdWidth: $navbarBdWidth,
+                            $navBdWidthEmphasized: $navBdWidthEmphasized,
+                            $navbarBlockLinkColorHover: $navbarBlockLinkColorHover,
+                            $navbarBlockLinkBgHover: $navbarBlockLinkBgHover
+    ) {
+
+        height: $navbarHeight;
+
+        > .hitarea {
+            @if $global {
+                padding: 0;
+                margin: 0;
+                color: $navbarBlockLinkColor;
+                text-align: center;
+                background-color: $navbarBlockLinkBg;
+                border: 0 none;
+            } // END @if $global
+
+            // HOVER STATE
+            #{$linkHoverFocus} {
+                color: $navbarBlockLinkColorHover;
+                background-color: $navbarBlockLinkBgHoverFallback; // fallback
+                background-color: $navbarBlockLinkBgHover;
+            }
+
+            // PRESSED STATE
+            #{$linkPressed} {
+                color: $navbarBlockLinkColorPress !important;
+                background-color: $navbarBlockLinkBgPress;
+            }
+
+            // viewer navbar buttons are squares
+            min-width: $navbarHeight;
+            // so that it stays a total height of $navbarHeight
+            height: $navbarHeight - $navbarBdWidth;
+            // links in the viewer navbar are perfectly centered
+            line-height: $navbarHeight - $navbarBdWidth;
+            // so that hover bg colors don't overlap the bottom navbar border
+            border-bottom: $navbarBdWidth solid transparent;
+            @if $ie-support {
+                border-bottom: 0 none;
+                .icon:before,
+                .icon:after {
+                    top: 0;
+                }
+            }
+
+            &.dropdown-toggle {
+                height: $navbarHeight;
+                line-height: $navbarHeight;
+            }
+        } // END viewer .navbar .nav > li > .hitarea
+
+        //
+        // ACTIVE STATE
+        // In viewer, its the same as pressed state
+        //
+        &.active > .hitarea,
+        &.open > .hitarea,
+        & > .hitarea.active,
+        & > .hitarea.open {
+            @if $global {
+                // in our navbar - they can click active buttons because most of them are toggles
+                cursor: pointer !important;
+            }
+            color: $navbarBlockLinkColorActive !important;
+            background-color: $navbarBlockLinkBgActive !important;
+            @if not $navBdWidthEmphasized or $navBdWidthEmphasized <= $navbarBdWidth {
+                @include box-shadow(none !important);
+            }
+        } // END viewer .navbar .nav > li.active > .hitarea
+
+        //
+        // DISABLED STATE
+        //
+        > .hitarea.disabled,
+        > .hitarea[disabled] {
+            &,
+            #{$linkPressed} {
+                @if $global {
+                    // not clickable
+                    cursor: not-allowed !important;
+                    outline: 0 !important;
+                    background-color: transparent !important;
+                    background-image: none !important;
+                    @include opacity($disabledAlphaDefault);
+                }
+
+                color: $navbarBlockLinkColor !important;
+            }
+        } // END viewer .navbar .nav > disabled state
+    } // END @mixin navbarBlockLinks
+
+    @mixin navPillItemDefault {
+        padding: $pillTabPadding; // slightly different padding for pills
+        color: $pillTabLinkColor;
+        background-color: $pillTabLinkBg;
+        border-radius: $borderRadiusBase;
+
+        // caret should match the link color
+        .caret { border-top-color: $pillTabLinkColor; }
+        // badges appear with reverse contrast
+        .badge {
+            color: $pillTabLinkBg;
+            background-color: $pillTabLinkColor;
+        }
+    } // END @mixin navPillItemDefault
+
+    @mixin navPillItemHoverDefault {
+        text-decoration: none;
+        color: $pillTabLinkColorHover;
+        background-color: $pillTabLinkBgHover;
+
+        // caret should match the link color
+        .caret { border-top-color: $pillTabLinkColorHover; }
+        .badge {
+            color: $pillTabLinkBgHover;
+            background-color: $pillTabLinkColorHover;
+        }
+    } // END @mixin navPillItemHoverDefault
+
+    @mixin navPillItemPressDefault {
+        color: $pillTabLinkColorPress;
+        background-color: $pillTabLinkBgPress;
+
+        // caret should match the link color
+        .caret { border-top-color: $pillTabLinkColorPress; }
+        .badge {
+            color: $pillTabLinkBgPress;
+            background-color: $pillTabLinkColorPress;
+        }
+    } // END @mixin navPillItemPressDefault
+
+    @mixin navPillItemActiveDefault {
+        color: $pillTabLinkColorActive;
+        background-color: $pillTabLinkBgActive;
+
+        // caret should match the link color
+        .caret { border-top-color: $pillTabLinkColorActive; }
+        .badge {
+            color: $pillTabLinkBgActive;
+            background-color: $pillTabLinkColorActive;
+        }
+    } // END @mixin navPillItemActiveDefault
+
+    @mixin navPillItemDisabledDefault {
+        cursor: not-allowed !important;
+        text-decoration: none !important;
+        color: $pillTabLinkColorDisabled !important;
+        background-color: $pillTabLinkBgDisabled !important;
+
+        .badge {
+            color: $pillTabLinkBgDisabled !important;
+            background-color: $pillTabLinkColorDisabled !important;
+        }
+    } // END @mixin navPillItemDisabledDefault
+
+    @mixin navLinksJustified {
+        // applies to both Tabs and Pills
+        > li {
+            text-align: center;
+            // IE < 7 does not support display: table-cell
+            // Instead, we use inline-block as a fallback
+            @if $ie7-support {
+                *display: block;
+                *float: left;
+                *margin-left: 0 !important;
+            } @else {
+                display: table-cell;
+                float: none;
+                width: 1%;
+
+                > .hitarea {
+                    width: 100%;
+                    margin-bottom: 0;
+                    margin-left: 0 !important;
+                    text-align: center; // for specificity in case they use <button> instead of <a>
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+
+    @mixin navTabsJustified {
+        // we don't multiply the navTabBdWidth * 2 here
+        // because we want the bottom border to overlap on active tabs
+        max-height: $navLinkHeight + $navTabBdWidth;
+        // Give the tabs something to sit on
+        border-bottom: $navTabBdWidth solid $navTabBdColor;
+
+        > li {
+            &.active,
+            &.open {
+                > .hitarea {
+                    &,
+                    #{$linkHoverFocus} {
+                        border-bottom: $navTabBdWidth solid transparent;
+
+                        @include ltie8 {
+                            *border-bottom-color: $navLinkBg;
+                        }
+                    }
+                }
+            }
+
+            &.dropdown .dropdown-menu {
+                @include border-top-radius(0);
+            }
+        }
+    }
+
+    @mixin navPillsJustified {
+        max-height: $navLinkHeight + ($pillTabLinkBdWidth * 2);
+
+        > li {
+            > .hitarea {
+                overflow: hidden;
+                margin-left: 0;
+                // redeclare larger padding since .nav-pills horizontally are different
+                padding: $navLinkPadding;
+                border-radius: 0;
+            }
+            // round the left and right edge of the series of pills only
+            &:first-child > .hitarea { @include border-left-radius($borderRadiusBase); }
+            &:last-child  > .hitarea { @include border-right-radius($borderRadiusBase); }
+
+            // create the spacing using borders instead of margin so we don't break the box model with 100% width button.hitarea
+            + li { border-left: $pillTabSpacing solid transparent; }
+        }
+    }
+
+    // these are justified no matter the screen width
+    @mixin navPillsWizardJustified {
+        @include navLinksJustified;
+        @include navPillsJustified;
+
+        $arrowWidth: $navLinkHeight / 2;
+        $sepArrowWidth: $arrowWidth + $pillTabSpacing;
+
+        overflow: hidden; // so arrow edges don't show outside the nav area
+
+        > li {
+
+            // indent the text when there is an arrow before it
+            $normalHitareaLeftPad: nth($navLinkPadding, 2);
+            position: relative;
+            max-height: $navLinkHeight;
+            border-left: 0 none;
+
+            // the .wizard-inner element is optional for webkit, but should be
+            // wrapped around the wizard-arrow elem for IE/FF
+            > .wizard-inner {
+                position: relative;
+                top: -$navLinkHeight;
+                left: 0;
+                display: block;
+            }
+            + li > .hitarea { padding-left: $arrowWidth + $normalHitareaLeftPad; }
+
+            // By default, hitareas in .nav-wizard are not clickable
+            #{$linkPressed} > .hitarea,
+            > .hitarea {
+                cursor: default !important;
+                // make sure the steps that are not yet completed don't show up as vividly as the current step
+                color: mix($pillTabLinkColor, $pillTabLinkBg, 20%); // fallback
+                color: transparentize($pillTabLinkColor, .2);
+                background-color: $pillTabLinkBg;
+            }
+
+            //
+            // ARROWS
+            //
+            .wizard-arrow {
+                &,
+                &:before {
+                    // arrow border (seperator)
+                    position: absolute;
+                    z-index: 4; // keep above .hitarea
+                    top:  -($pillTabSpacing);
+                    left: -($pillTabSpacing);
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    border-width: $sepArrowWidth 0 $sepArrowWidth $sepArrowWidth;
+                    border-style: solid none solid solid;
+                    border-color: transparent transparent transparent $bodyBg;
+                }
+                // arrow bg
+                &:before {
+                    top:  -($arrowWidth);
+                    left: -($sepArrowWidth);
+                    content: "";
+                    border-width: $arrowWidth 0 $arrowWidth $arrowWidth;
+                    border-left-color: $pillTabLinkBg;
+                }
+            }
+
+            //
+            // ACTIVE STATE
+            //
+            &.active {
+                #{$linkPressed} > .hitarea,
+                > .hitarea {
+                    color: $pillTabLinkColorActive;
+                    background-color: $pillTabLinkBgActive;
+                }
+                .wizard-arrow:before,
+                + li .wizard-arrow:before  { border-left-color: $pillTabLinkBgActive; }
+            } // END li.active
+
+            //
+            // COMPLETED STATE
+            //
+            &.completed {
+                > .hitarea {
+                    // make sure the steps that came before aren't more vibrant than the current step
+                    color: mix($pillTabLinkColorActive, $pillTabLinkBg, 20%); // fallback
+                    color: transparentize($pillTabLinkColorActive, .2);
+                }
+                .icon {
+                    @extend %icon-checkmark-sign;
+                    display: inline-block;
+                    margin-right: $spacingBase;
+                }
+            } // END li.completed
+
+
+            //
+            // ICONS
+            //
+            // hidden by default
+            .icon { display: none; }
+
+        } // END .nav-wizard > li
+
+        //
+        // If the nav-wizard is .clickable... (allows the user to jump ahead / back)
+        //
+        &.clickable {
+            > li {
+                &,
+                > .hitarea {
+                    cursor: pointer !important; // these are clickable
+                }
+
+                //
+                // HOVER STATE
+                //
+                #{$linkHoverFocus} {
+                    > .hitarea {
+                        background-color: $pillTabLinkBgHover;
+                        color: $pillTabLinkColorHover;
+                    }
+                    // only change the color of the arrow if the <li> being hovered has a .hitarea directly before the arrow
+                    + li .wizard-arrow:before {
+                        border-left-color: $pillTabLinkBgHover;
+                    }
+                }
+
+                //
+                // PRESSED STATE
+                //
+                #{$linkPressed} {
+                    > .hitarea {
+                        background-color: $pillTabLinkBgPress;
+                        color: $pillTabLinkColorPress;
+                    }
+                    // only change the color of the arrow if the <li> being pressed has a .hitarea directly before the arrow
+                    + li .wizard-arrow:before {
+                        border-left-color: $pillTabLinkBgPress;
+                    }
+                }
+
+                &.active {
+                    &,
+                    > .hitarea { cursor: default !important; }
+
+                    &:not(.completed) {
+                        > .hitarea {
+                            background-color: $pillTabLinkBgActive;
+                        }
+                        // only change the color of the arrow if the <li> being hovered has a .hitarea directly before the arrow
+                        + li .wizard-arrow:before {
+                            border-left-color: $pillTabLinkBgActive;
+                        }
+                    }
+                }
+
+                &.completed {
+                    &,
+                    > .hitarea { cursor: pointer !important; }
+
+                    #{$linkHoverFocus} {
+                        > .hitarea {
+                            &,
+                            #{$linkHoverFocusNested} {
+                                background-color: $pillTabLinkBgHover;
+                            }
+                            color: $pillTabLinkColorActive;
+                        }
+                    }
+                    // Pressed State
+                    > .hitarea {
+                        #{$linkPressed} { background-color: $pillTabLinkBgPress; }
+                    }
+                }
+
+            } // END .nav-wizard.clickable > li
+        } // END .nav-wizard.clickable
+    }
+
+
+    //
+    // Dividers
+    //
+    @mixin dividerHorizontal($bg: $bodyBg, $margin: $lineHeightBasePx 0) {
+        $dividerHeight: if($nav-box-sizing-default == content-box, 2px, 1px);
+
+        height: $dividerHeight;
+        clear: both;
+        margin: $margin;
+        overflow: hidden;
+        line-height: $dividerHeight;
+        background: transparent;
+        border: 0 none; // clear out default
+        border-top: $hrBdWidth solid chisel($bg, "dark");
+        border-bottom: $hrBdWidth solid chisel($bg, "light");
+
+        @include ltie8 {
+            *width: 100%;
+        }
+
+        // make sure the very next nav item doesn't have a top border
+        + li {
+            &,
+            > .hitarea { border-top: 0 none; }
+        }
+    }
+
+    @mixin dividerVertical($bg: $bodyBg) {
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        margin: 0;
+        background-color: chisel($bg, "dark");
+        border: 0 none;
+        border-left: $hrBdWidth solid chisel($bg, "light");
+    }
+
+
+    //
+    // Navbar vertical align
+    //
+    // Vertically center elements in the navbar.
+    // Example: an element has a height of 30px, so write out `.navbarVerticalAlign(30px);` to calculate the appropriate top margin.
+    //
+    @mixin navbarVerticalAlign($elementHeight) {
+        margin-top: (($navbarHeight - $elementHeight) / 2);
+        margin-bottom: (($navbarHeight - $elementHeight) / 2);
+    }
+
+
+    //
+    // @mixin navbarWizards
+    // creating as a mixin so that its easy to use
+    // the local product-specific navbar variables
+    // as the foundation for how step-by-step wizards
+    // appear in those navbars
+    //
+    @mixin navbarWizards($height: $navbarHeight, $inset: 1px, $navbarBdRadius: $navbarBdRadius, $navbarBg: $navbarBg, $navbarLinkColor: $navbarLinkColor, $navbarRibbonTabLinkBdColorActive: $navbarRibbonTabLinkBdColorActive) {
+
+        $linkHeight:    floor($height - ($inset * 2) - ($navbarBdWidth * 2));
+        $linkBg:        if($navbarBg == white, darken($navbarBg, 10%), darken($navbarBg, 5%));
+        $arrowWidth:    floor(($linkHeight + $inset) / 2);
+        $sepArrowWidth: floor($arrowWidth + $inset);
+
+        .nav-justified.nav-wizard {
+            position: absolute; // FF / IE
+            right: 0;
+            left: 0;
+            padding: $inset;
+            max-height: $linkHeight;
+
+            > li {
+                // override .navbar defaults
+                float: none;
+                // override .nav-wizard defaults
+                max-height: $linkHeight;
+                // override .nav-justified.nav-pills defaults
+                &:first-child > .hitarea { @include border-left-radius($navbarBdRadius - $inset); }
+                &:last-child  > .hitarea { @include border-right-radius($navbarBdRadius - $inset); }
+
+                &:last-child { right: $navbarBdWidth * 2; }
+
+                .wizard-inner {
+                    top: -$linkHeight;
+                }
+
+                &,
+                > .hitarea {
+                    height: $linkHeight;
+                    line-height: $linkHeight;
+                }
+
+                > .hitarea {
+                    // by default - its not clickable
+                    @include allPseudoStates {
+                        color: mix($navbarLinkColor, $linkBg, 20%); // fallback
+                        color: transparentize($navbarLinkColor, .2);
+                        background-color: $linkBg;
+                    }
+                }
+                .wizard-arrow {
+                     top: -($inset);
+                    left: -($inset * 2);
+                    border-width: $sepArrowWidth 0 $sepArrowWidth $sepArrowWidth;
+                    // this border color should match the bg of the navbar
+                    border-left-color: $navbarBg;
+                    &:before {
+                         top: -($arrowWidth);
+                        left: -($sepArrowWidth);
+                        border-width: $arrowWidth 0 $arrowWidth $arrowWidth;
+                        // this border color should match the bg of the navbar
+                        border-left-color: $linkBg;
+                    }
+                }
+
+                //
+                // ACTIVE STATE
+                //
+                &.active {
+                    #{$linkPressed} > .hitarea,
+                    > .hitarea {
+                        // override .navbar
+                        color: $navbarBg;
+                        background-color: $navbarRibbonTabLinkBdColorActive;
+                        @include box-shadow(none);
+                    }
+                    .wizard-arrow:before,
+                    + li .wizard-arrow:before  { border-left-color: $navbarRibbonTabLinkBdColorActive; }
+                } // END li.active
+
+                //
+                // COMPLETED STATE
+                //
+                &.completed {
+                    #{$linkPressed} > .hitarea,
+                    > .hitarea {
+                        color: mix($navbarBg, $linkBg, 20%); // fallback
+                        // make sure the steps that came before aren't more vibrant than the current step
+                        color: transparentize($navbarBg, .2);
+                    }
+                }
+
+            } // END .navbar .nav-wizard > li
+
+
+            //
+            // If the wizard is clickable (allows the user to jump ahead / back)
+            //
+            &.clickable {
+
+            }
+
+        } // END .navbar .nav-justified.nav-wizard
+
+        &.navbar-static-top,
+        &.navbar-fixed-top,
+        &.navbar-fixed-bottom {
+            .nav-pills.nav-justified.nav-wizard {
+                left: 0;
+                right: 0;
+
+                > li > .hitarea { border-radius: 0; }
+            }
+        }
+
+    } // END @mixin navbarWizards
+
+
+    @mixin collapsedNavbar {
+
+        .navbar {
+            // hide some stuff / adjust some sizes
+            .solution-name { display: none !important; }
+            .ribbon-nav-container .nav > li > .hitarea {
+                padding: 0 ($navbarPadLeft / 2);
+            }
+            .container { margin: 0; }
+            .navbar-brand {
+                .brand-link {
+                    width: auto;
+                    padding-left: $navbarPadLeft;
+                }
+            } // END .navbar-brand
+
+            //
+            // Collapsible navbar toggle
+            // (shown when navbar is collapsed)
+            //
+            .nav.mobile {
+                display: block;
+            } // END .navbar .nav
+
+            //
+            // the menu that is revealed by
+            // clicking the button in .nav.mobile
+            //
+            .nav-collapse {
+                clear: both;
+                background-color: $navbarBg;
+                @include border-bottom-radius($navbarBdRadius);
+                right: 0 !important;
+
+                // its showing
+                &.in {
+                    padding-bottom: $navbarPadLeft;
+                    border: $navbarBdWidth solid $navbarBdColor;
+                    border-top: 0 none;
+                }
+
+                // all navs within .nav-collapse
+                .nav {
+                    position: static !important;
+                    float: none;
+                    height: auto;
+                    max-height: 100%;
+
+                    > li {
+                        float: none; // stack, not left to right
+                        clear: both; // END .navbar .nav-collapse .nav > li.active
+
+                        > .hitarea {
+                            width: 100%;
+                            height: $navbarLinkHeight;
+                            padding: 0 $navbarPadLeft;
+                            // normalize the appearance of hitareas
+                            // even if they were "secondary" in the uncollapsed version
+                            font-size: $navbarFontSize;
+                            line-height: $navbarLinkHeight; // no vertical offset since its a vertial nav now
+                            text-align: left;
+
+                            .caret {
+                                margin-top: $navbarDropdownCaretMargin !important;
+                            }
+                        }
+
+                        //
+                        // ACTIVE STATE
+                        //
+                        &.active {
+                            > .hitarea {
+                                @include box-shadow(inset #{$navbarRibbonTabLinkBdWidth} 0 0 $navbarRibbonTabLinkBdColorActive);
+                            }
+                        }
+
+                        > .global-help-tab {
+                            .sr-only {
+                                // show the actual text of the icon-only button
+                                // by overriding the .sr-only styles
+                                overflow: visible;
+                                clip: auto;
+                                text-indent: $baseIconSize + 4px;
+                            }
+                            // match the text hover to the icon hover
+                            #{$linkHoverFocus} {
+                                color: $navbarGlobalHelpIconColorHover !important;
+                            }
+                        }
+                    }
+
+                    &.nav-tabs {
+                        border-bottom: 0 none;
+                    }
+                } // END .nav-collapse .nav
+
+                // primary navs (immediate children of .nav-collapse)
+                > .nav {
+                    margin: 0;
+                    padding: 0;
+                    border: 0 none;
+                    &.nav-tabs + .nav-tabs {
+                        // if there is more than one nav - provide a separator
+                        border-top: $navbarBdWidth solid $navbarBdColor;
+                        margin-top: nth($navbarPadding, 1);
+                        padding-top: nth($navbarPadding, 1);
+                    }
+                } // END .nav-collapse > .nav
+
+                // dropdowns within collapsed navs
+                .dropdown {
+
+                    // override .nav-tabs styling
+                    .dropdown-toggle { border-width: 0 !important; }
+                    .dropdown-menu {
+                        // inset contents to show hierarchy
+                        position: relative;
+                        right: 0; // override .pull-right
+                        float: none;
+                        clear: both;
+                        padding: 0 $navbarPadLeft;
+                        border-right: 0 none;
+                        border-left: 0 none;
+                        @include box-sizing(border-box);
+
+                        &,
+                        > li > .hitarea { max-width: none; }
+                    }
+
+                    &.open {
+                        .dropdown-menu {
+                            @include box-shadow(none !important);
+                            border-radius: 0 !important;
+                        }
+                        &:last-of-type {
+                            .dropdown-menu { border-bottom: 0 none; }
+                        }
+                    }
+                } // END .nav-collapse .dropdown
+            } // END .nav-collapse
+
+            //
+            // Scrollable navbar navigation
+            //
+            // Sometimes you might have too many links in your fixed navbar and you need to
+            // maintain access to all that content. To help, add `.nav-collapse-scrollable`
+            // to your `.nav-collapse` to prevent the the content from flowing past the max-
+            // height of your browser.
+            //
+            // This is not automatically added to the `.navbar-fixed-top` because it causes
+            // z-index bugs in iOS7 (possibly earlier).
+            //
+            .nav-collapse-scrollable {
+                margin-bottom: nth($navbarPadding, 1);
+                max-height: 360px;
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            // clear the top navbar portion that doesn't collapse (the ribbon)
+            .ribbon-nav-container + .nav-collapse {
+                position: absolute !important;
+                top: $navbarHeight;
+            }
+
+        } // END .navbar
+
+        //
+        // on a fixed navigation... adjust some borders and such
+        // when the dropdown (nav-collapse) menu is shown (.in)
+        //
+        .navbar-fixed-top .nav-collapse,
+        .navbar-fixed-bottom .nav-collapse,
+        .navbar-static-top .nav-collapse {
+            border-right: 0 none !important;
+            border-left: 0 none !important;
+
+            $upwardShadowOverlay: 0 -2px 0 $navbarBg;
+            @include box-shadow(inset #{$upwardShadowOverlay}, #{$navCollapseDropShadow});
+            border-radius: 0;
+        } // END fixed navigation tweaks
+
+    } // END @mixin collapsedNavbar
+
+
+//
+// BACKGROUND UTILITIES
+//
+    @mixin gradientLinear($direction, $startColor: $gray, $endColor: $grayDark, $important: false) {
+
+        $important: if($important != false, !important, "");
+
+        $start-pos:     gradientDirection($direction);
+        $start-pos-owg: gradientPosition($direction);
+
+        $standard: linear-gradient($start-pos, $startColor, $endColor);
+
+        background-repeat: repeat-x #{$important};
+        background-color: mix($startColor, $endColor, 50%) #{$important};
+
+        @if $support-for-original-webkit-gradients and prefixed(-owg, $standard) {
+            background-image: -webkit-gradient(linear, 0 0, $start-pos-owg, from($startColor), to($endColor)) #{$important}; // Safari 4+, Chrome 2+
+        }
+        @if $experimental-support-for-webkit and prefixed(-webkit, $standard) {
+            background-image: -webkit-linear-gradient($start-pos, $startColor, $endColor) #{$important}; // Safari 5.1+, Chrome 10+
+        }
+        @if $experimental-support-for-mozilla and prefixed(-moz, $standard) {
+            background-image: -moz-linear-gradient($start-pos, $startColor, $endColor) #{$important}; // FF 3.6+
+        }
+        @if $experimental-support-for-microsoft {
+            background-image: -ms-linear-gradient($start-pos, $startColor, $endColor) #{$important}; // IE10
+        }
+        @if $experimental-support-for-opera and prefixed(-o, $standard) {
+            background-image: -o-linear-gradient($start-pos, $startColor, $endColor) #{$important}; // Opera 11.10
+        }
+
+        background-image: $standard #{$important};
+    }
+
+    @mixin gradientStriped($color, $angle: 45deg) {
+
+        $t: transparent;
+        $w: rgba($white, .20);
+
+        $standard: linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t);
+
+        background-color: $color;
+        background-repeat: repeat;
+
+        @if $experimental-support-for-svg and prefixed(-svg, $standard) {
+            background-size: 100%;
+            background-image: -svg(linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t));
+        }
+        @if $support-for-original-webkit-gradients and prefixed(-owg, $standard) {
+            background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, $w), color-stop(.25, $t), color-stop(.5, $t), color-stop(.5, $w), color-stop(.75, $w), color-stop(.75, $t), to($t)); // Safari 4+, Chrome 2+
+        }
+        @if $experimental-support-for-webkit and prefixed(-webkit, $standard) {
+            background-image: -webkit-linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t); // Safari 5.1+, Chrome 10+
+        }
+        @if $experimental-support-for-mozilla and prefixed(-moz, $standard) {
+            background-image: -moz-linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t); // FF 3.6+
+        }
+        @if $experimental-support-for-microsoft and prefixed(-ms, $standard) {
+            background-image: -ms-linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t); // IE10
+        }
+        @if $experimental-support-for-opera and prefixed(-o, $standard) {
+            background-image: -o-linear-gradient($angle, $w 25%, $t 25%, $t 50%, $w 50%, $w 75%, $t 75%, $t); // Opera 11.10
+        }
+
+        background-image:  $standard;
+    }
+
+    @mixin gradientRadial($innerColor: #555, $outerColor: #333)    {
+
+        $standard: radial-gradient(circle, $innerColor, $outerColor);
+
+        background-color: $outerColor;
+        background-repeat: no-repeat;
+
+        @if $support-for-original-webkit-gradients and prefixed(-owg, $standard) {
+            background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($innerColor), to($outerColor));
+        }
+        @if $experimental-support-for-webkit and prefixed(-webkit, $standard) {
+            background-image: -webkit-radial-gradient(circle, $innerColor, $outerColor);
+        }
+        @if $experimental-support-for-mozilla and prefixed(-moz, $standard) {
+            background-image: -moz-radial-gradient(circle, $innerColor, $outerColor);
+        }
+        @if $experimental-support-for-microsoft and prefixed(-ms, $standard) {
+            background-image: -ms-radial-gradient(circle, $innerColor, $outerColor);
+        }
+        @if $experimental-support-for-opera and prefixed(-o, $standard) {
+            background-image: -o-radial-gradient(circle, $innerColor, $outerColor);
+        }
+
+        background-image:  $standard;
+    }
+
+    @mixin gradientDirectional($startColor: #555, $endColor: #333, $deg: 45deg, $startOrEndColor: end) {
+
+        $standard: linear-gradient($deg, $startColor, $endColor);
+
+        background-color:  if($startOrEndColor == end, $endColor, $startColor);
+        background-repeat: repeat-x;
+
+        @if $experimental-support-for-webkit and prefixed(-webkit, $standard) {
+            background-image: -webkit-linear-gradient($deg, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+        }
+        @if $experimental-support-for-mozilla and prefixed(-moz, $standard) {
+            background-image: -moz-linear-gradient($deg, $startColor, $endColor); // FF 3.6+
+        }
+        @if $experimental-support-for-opera and prefixed(-o, $standard) {
+            background-image: -o-linear-gradient($deg, $startColor, $endColor); // Opera 11.10
+        }
+
+        background-image:  $standard; // Standard, IE10
+    }
+
+    @mixin gradientHorizontal($startColor: $gray, $endColor: $grayDark, $important: false) {
+        @include gradientLinear(horizontal, $startColor, $endColor, $important);
+    }
+
+    @mixin gradientVertical($startColor: $gray, $endColor: $grayDark, $important: false) {
+        @include gradientLinear(vertical, $startColor, $endColor, $important);
+    }
+
+
+//
+// TABLES
+//
+    @mixin hoveredTableRowCell {
+        color: $tableCellColorHover !important;
+        background-color: $tableBgHover !important;
+    }
+
+    @mixin selectableTableRow {
+        cursor: pointer;
+
+        td,
+        th {
+            @include disableUserSelect;
+        }
+
+        // HOVER
+        #{$hover} {
+            td,
+            th {
+                @include hoveredTableRowCell;
+            }
+        }
+
+        // SELECTED
+        &.selected {
+            td,
+            th {
+                color: $tableCellColorActive;
+                background-color: $tableBgActive;
+            }
+
+            // HOVER SELECTED
+            #{$hover} {
+                td,
+                th {
+                    @include hoveredTableRowCell;
+                }
+            }
+        }
+    }
+
+    @mixin responsiveTables {
+        .table-responsive {
+            width: 100%;
+            margin-bottom: 15px;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            border: $tableBdWidth solid $tableBdColor;
+            @if $ie-support {
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+            }
+            @if $webkit-support {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            // Tighten up spacing and give a background color
+            > .table {
+                margin-bottom: 0;
+                background-color: $bodyBg;
+
+                // Ensure the content doesn't wrap
+                > thead,
+                > tbody,
+                > tfoot {
+                    > tr {
+                        > th,
+                        > td {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+
+            // Special overrides for the bordered tables
+            > .table-bordered {
+                border: 0;
+
+                // Nuke the appropriate borders so that the parent can handle them
+                > thead,
+                > tbody,
+                > tfoot {
+                    > tr {
+                        > th:first-child,
+                        > td:first-child {
+                            border-left: 0;
+                        }
+                        > th:last-child,
+                        > td:last-child {
+                            border-right: 0;
+                        }
+                    }
+                    > tr:last-child {
+                        > th,
+                        > td {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @mixin roundedCornerTables($radius) {
+        border-radius: $tableBdRadius;
+        // For first th/td in the first row in the first thead or tbody
+        thead:first-of-type tr:first-child > th:first-child,
+        tbody:first-of-type tr:first-child > td:first-child,
+        tbody:first-of-type tr:first-child > th:first-child {
+            @include border-top-left-radius($radius);
+        }
+        // For last th/td in the first row in the first thead or tbody
+        thead:first-of-type tr:first-child > th:last-child,
+        tbody:first-of-type tr:first-child > td:last-child,
+        tbody:first-of-type tr:first-child > th:last-child {
+            @include border-top-right-radius($radius);
+        }
+        // For first th/td (can be either) in the last row in the last thead, tbody, and tfoot
+        thead:last-of-type tr:last-child > th:first-child,
+        tbody:last-of-type tr:last-child > td:first-child,
+        tbody:last-of-type tr:last-child > th:first-child,
+        tfoot:last-of-type tr:last-child > td:first-child,
+        tfoot:last-of-type tr:last-child > th:first-child {
+            @include border-bottom-left-radius($radius);
+        }
+        // For last th/td (can be either) in the last row in the last thead, tbody, and tfoot
+        thead:last-of-type tr:last-child > th:last-child,
+        tbody:last-of-type tr:last-child > td:last-child,
+        tbody:last-of-type tr:last-child > th:last-child,
+        tfoot:last-of-type tr:last-child > td:last-child,
+        tfoot:last-of-type tr:last-child > th:last-child {
+            @include border-bottom-right-radius($radius);
+        }
+
+        // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+        tfoot + tbody:last-of-type tr:last-child td:first-child {
+            @include border-bottom-left-radius(0);
+        }
+        tfoot + tbody:last-of-type tr:last-child td:last-child {
+            @include border-bottom-right-radius(0);
+        }
+
+        // Special fixes to round the left border on the first td/th
+        caption + thead tr:first-child th:first-child,
+        caption + tbody tr:first-child td:first-child,
+        colgroup + thead tr:first-child th:first-child,
+        colgroup + tbody tr:first-child td:first-child {
+            @include border-top-left-radius($radius);
+        }
+        caption + thead tr:first-child th:last-child,
+        caption + tbody tr:first-child td:last-child,
+        colgroup + thead tr:first-child th:last-child,
+        colgroup + tbody tr:first-child td:last-child {
+            @include border-top-right-radius($radius);
+        }
+    }
+
+
+//
+// TYPOGRAPHY
+//
+    @mixin wdeskHeadings($elems: true) {
+        $headings_: if($elems == true, $headings, $fakeHeadings);
+        $h6: if($elems == true, unquote("h6"), unquote(".h6"));
+
+        #{comma-list($headings_)} {
+            @extend %heading-base;
+        }
+
+        //
+        // heading font size / line height / color
+        //
+        $n: 1 !global;
+        @each $heading in $headings_ {
+            $fontSize:    nth($headingFontSizes, $n);
+
+            #{$heading} {
+                @if $n > 2 {
+                    // h3, h4, h5, h6 are bold
+                    font-weight: bold;
+                }
+                font-size: $fontSize;
+            }
+
+            #{$heading} {
+                small {
+                    @if $n < 4 {
+                        // h1, h2, h3 small
+                        font-size: floor($fontSizeSmallPct - 20);
+                    } @else {
+                        // h4, h5, h6 small
+                        font-size: floor($fontSizeSmallPct - 10);
+                    }
+                }
+            }
+
+            $n: $n + 1 !global;
+        }
+
+        // <h6> is a little different than the rest.
+        #{$h6} {
+            font-weight: normal;
+            margin-top: round($lineHeightBasePx / 2);
+
+            small {
+                font-weight: $webfontWeightLt;
+            }
+        }
+    }
+
+    //
+    // <sub> / <sup> elem reset for _normalize.scss
+    //
+    @mixin sub-sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+
+
+//
+// GRID SYSTEM
+//
+    // Centered container element
+    @mixin containerFixed($gutter: $gridGutterWidth) {
+        margin-right: auto;
+        margin-left: auto;
+        padding-left:  ($gutter / 2);
+        padding-right: ($gutter / 2);
+        @include clearfix;
+
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll remove the padding
+        @include ltie8 {
+            *padding-right: 0;
+            *padding-left:  0;
+        }
+    }
+
+    // Creates a wrapper for a series of columns
+    @mixin makeRow($gutter: $gridGutterWidth) {
+        margin-left:  ($gutter / -2);
+        margin-right: ($gutter / -2);
+        @include clearfix;
+
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll remove the margin
+        @include ltie8 {
+            *margin-right: 0;
+            *margin-left:  0;
+        }
+
+        // make sure horizontal divider behaves as expected
+        > hr {
+            margin-right: $gutter / 2;
+            margin-left: $gutter / 2;
+            margin-bottom: $lineHeightBasePx / 2;
+        }
+    }
+
+    // Generate the extra small columns
+    @mixin makeXsColumn($columns, $gutter: $gridGutterWidth) {
+        display: block;
+        position: relative;
+        float: left;
+        width: percentage(($columns / $gridColumns));
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-right: ($gutter / 2);
+        padding-left:  ($gutter / 2);
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll add the padding to immediate children
+        @include ltie8 {
+            *clear: right;
+            *padding-right: 0;
+            *padding-left:  0;
+            > * {
+                *width: auto;
+                *padding-right: ($gutter / 2);
+                *padding-left:  ($gutter / 2);
+            }
+        }
+    }
+
+    // Generate the small columns
+    @mixin makeSmColumn($columns, $gutter: $gridGutterWidth) {
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-right: ($gutter / 2);
+        padding-left:  ($gutter / 2);
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll add the padding to immediate children
+        @include ltie8 {
+            *clear: right;
+            *padding-right: 0;
+            *padding-left:  0;
+            > * {
+                *width: auto;
+                *padding-right: ($gutter / 2);
+                *padding-left:  ($gutter / 2);
+            }
+        }
+
+        // Calculate width based on number of columns available
+        @media (min-width: $screenTablet) {
+            float: left;
+            width: percentage(($columns / $gridColumns));
+        }
+    }
+
+    // Generate the small column offsets
+    @mixin makeSmColumnOffset($columns) {
+        @media (min-width: $screenTablet) {
+            margin-left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeSmColumnPush($columns) {
+        @media (min-width: $screenTablet) {
+            left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeSmColumnPull($columns) {
+        @media (min-width: $screenTablet) {
+            right: percentage(($columns / $gridColumns));
+        }
+    }
+
+    // Generate the medium columns
+    @mixin makeMdColumn($columns, $gutter: $gridGutterWidth) {
+        display: block;
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-right: ($gutter / 2);
+        padding-left:  ($gutter / 2);
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll add the padding to immediate children
+        @include ltie8 {
+            *clear: right;
+            *padding-right: 0;
+            *padding-left:  0;
+            > * {
+                *width: auto;
+                *padding-right: ($gutter / 2);
+                *padding-left:  ($gutter / 2);
+            }
+        }
+
+        // Calculate width based on number of columns available
+        @media (min-width: $screenDesktop) {
+            float: left;
+            width: percentage(($columns / $gridColumns));
+        }
+    }
+
+    // Generate the large column offsets
+    @mixin makeMdColumnOffset($columns) {
+        @media (min-width: $screenDesktop) {
+            margin-left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeMdColumnPush($columns) {
+        @media (min-width: $screenDesktop) {
+            left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeMdColumnPull($columns) {
+        @media (min-width: $screenDesktop) {
+            right: percentage(($columns / $gridColumns));
+        }
+    }
+
+    // Generate the large columns
+    @mixin makeLgColumn($columns, $gutter: $gridGutterWidth) {
+        display: block;
+        position: relative;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-right: ($gutter / 2);
+        padding-left:  ($gutter / 2);
+        // MSIE 7 cannot do the width+padding b/c of no border-box support
+        // so instead of going crazy and trying to use % widths / padding for everything
+        // we'll add the padding to immediate children
+        @include ltie8 {
+            *clear: right;
+            *padding-right: 0;
+            *padding-left:  0;
+            > * {
+                *width: auto;
+                *padding-right: ($gutter / 2);
+                *padding-left:  ($gutter / 2);
+            }
+        }
+
+        // Calculate width based on number of columns available
+        @media (min-width: $screenDesktopLarge) {
+            float: left;
+            width: percentage(($columns / $gridColumns));
+        }
+    }
+
+    // Generate the large column offsets
+    @mixin makeLgColumnOffset($columns) {
+        @media (min-width: $screenDesktopLarge) {
+            margin-left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeLgColumnPush($columns) {
+        @media (min-width: $screenDesktopLarge) {
+            left: percentage(($columns / $gridColumns));
+        }
+    }
+    @mixin makeLgColumnPull($columns) {
+        @media (min-width: $screenDesktopLarge) {
+            right: percentage(($columns / $gridColumns));
+        }
+    }
+
+
+//
+// COMPLEX MIXINS (CLEANER IN THEIR OWN PARTIAL)
+//
+@import "_mixins-chisels.scss";
+

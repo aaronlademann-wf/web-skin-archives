@@ -1,0 +1,55 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_zesty-crayon/_functions.scss
+//+  PARENT:   _constants/_zesty-crayon/_manifest.scss
+
+//----------------------------------------------------
+
+    $wf_paletteSequence_main: $wf_green_alt2, $wf_green_alt, $wf_green, $wf_blue, $wf_orange, $wf_purple, $wf_red, $wf_gray;
+    $wf_paletteSequence_dk:   $wf_green_dk_alt2, $wf_green_dk_alt, $wf_green_dk, $wf_blue_dk, $wf_orange_dk, $wf_purple_dk, $wf_red_dk, $wf_gray_dk;
+    $wf_paletteSequence_lt:   $wf_green_lt_alt2, $wf_green_lt_alt, $wf_green_lt, $wf_blue_lt, $wf_orange_lt, $wf_purple_lt, $wf_red_lt, $wf_gray_lt;
+    $wf_paletteSequence_ps1:  $wf_green_ps1_alt2, $wf_green_ps1_alt, $wf_green_ps1, $wf_blue_ps1, $wf_orange_ps1, $wf_purple_ps1, $wf_red_ps1, $wf_gray_ps1;
+    $wf_paletteSequence_ps2:  $wf_green_ps2_alt2, $wf_green_ps2_alt, $wf_green_ps2, $wf_blue_ps2, $wf_orange_ps2, $wf_purple_ps2, $wf_red_ps2, $wf_gray_ps2;
+    $wf_paletteAxisYVals:     $wf_paletteSequence_dk, $wf_paletteSequence_main, $wf_paletteSequence_lt, $wf_paletteSequence_ps1, $wf_paletteSequence_ps2;
+
+    // this spectrum moves from left to right when looking at a single row in masterStyling.ai
+    $wf_paletteAxisX: greenAlt2, greenAlt1, green, blue, orange, purple, red, gray;
+    // this spectrum moves from top to bottom when looking at a single column in masterStyling.ai
+    $wf_paletteAxisY: darker, main, lighter, pastel1, pastel2;
+
+
+    //
+    // @function zestyCrayonColor
+    //
+    // Allows us to reference a color using the same "matrix" grid that is shown in masterStyling.ai
+    //
+    // Usage:
+    // zestyCrayonColor(green, pastel1);
+    //
+    @function zestyCrayonColor($color, $sequence: main) {
+
+        $thisColor: index($wf_paletteAxisX, $color);
+        $thisSequence: index($wf_paletteAxisY, $sequence);
+
+        $zestyColorVal: inherit; // something to return no matter what
+
+        // check to make sure that the $sequence and $color requested
+        // fall within the matrix created by $wf_paletteAxisX and $wf_paletteAxisY
+        @if $thisSequence != false and $thisColor != false {
+
+            $paletteSequenceVals: nth($wf_paletteAxisYVals, index($wf_paletteAxisY, $sequence));
+            $zestyColorVal: nth($paletteSequenceVals, $thisColor);
+
+        } @else {
+            // generate warnings during compile
+            @if $thisSequence == false {
+                @warn "#{$sequence} is not a valid palette sequence. Possible values: {#{$wf_paletteAxisY}}";
+            }
+            @if $thisColor == false {
+                @warn "#{$color} is not a valid palette color. Possible values: {#{$wf_paletteAxisX}}";
+            }
+        }
+
+        @return $zestyColorVal;
+
+    }

@@ -1,0 +1,170 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_prefixing.scss
+//+  PARENT:   _constants/_wdesk-manifest.scss
+
+//----------------------------------------------------
+
+
+
+
+//
+// CROSS-BROWSER KEYFRAMES
+//
+    // @private css3-feature-support variables must always include a list of five boolean values
+    // representing in order: -moz, -webkit, -ms, -o, -khtml.
+    $animation-support: -moz, -webkit, false, -o, -khtml;
+
+    @mixin keyframes($animationName
+        , $webkit: $webkit-support
+        , $moz: $mozilla-support
+        , $ms: $ie-support
+        , $o: $opera-support
+        , $khtml: $khtml-support
+        , $official: true
+    )
+    {
+        @if $webkit-support and $webkit and nth($animation-support, 2) {
+            @-webkit-keyframes "#{$animationName}" { @content; }
+        }
+        @if $mozilla-support and $moz and nth($animation-support, 1) {
+            @-moz-keyframes #{$animationName} { @content; }
+        }
+        @if $ie-support and $ms and nth($animation-support, 3) {
+            @-ms-keyframes #{$animationName} { @content; }
+        }
+        @if $opera-support and $o and nth($animation-support, 4) {
+            @-o-keyframes "#{$animationName}" { @content; }
+        }
+        @if $khtml-support and $khtml and nth($animation-support, 5) {
+            @-khtml-keyframes "#{$animationName}" { @content; }
+        }
+        @if $official {
+            @keyframes #{$animationName} { @content; }
+        }
+
+    } // END @mixin keyframes
+
+
+//
+// FLEXBOX (SUPPORTING BOTH OLD AND NEW SYNTAX
+//
+// http://bit.ly/QbVCFO)
+//
+    @mixin displayBox {
+        @if $ie-support {
+            // IE10 will use the stupid -ms-flexbox display property
+            // http://bit.ly/SUM20b
+            display: -ms-flexbox;
+        }
+        @include experimental-value(display, box, $ms: false);
+    }
+
+    // Default box orientation, assuming that the user wants something less block-like
+    $default-boxOrient: horizontal !default;
+
+    // Box orientation [ horizontal | vertical | inline-axis | block-axis | inherit ]
+    @mixin boxOrient( $orientation: $default-boxOrient ) {
+        $orientation : unquote($orientation);
+        @include experimental(boxOrient, $orientation, $ms: false);
+    }
+    // Box direction default value
+    $default-boxDirection: normal !default;
+
+    // mixin for boxDirection [ normal | reverse | inherit ]
+    @mixin boxDirection( $direction: $default-boxDirection ) {
+        $direction: unquote($direction);
+        @include experimental(boxDirection, $direction, $ms: false);
+    }
+
+    // Flex direction default value
+    $default-flex-orient: if($default-boxOrient == horizontal, inline, block);
+    $default-flexDirection: if($default-boxDirection == normal, "", -reverse);
+    $default-flexDirection: "#{$default-flex-orient}#{$default-flexDirection}";
+
+    // New flexDirection combines boxOrient and boxDirection
+    // [lr | rl | tb | bt | inline | inline-reverse | block | block-reverse]
+    @mixin flexDirection( $direction: $default-flexDirection ) {
+        $direction: unquote($direction);
+        -ms-flex-direction: $direction;
+    }
+
+    // Default boxAlign
+    $default-boxAlign: stretch !default;
+
+    // Box align [ start | end | center | baseline | stretch ]
+    @mixin boxAlign( $alignment: $default-boxAlign ) {
+        $alignment : unquote($alignment);
+        @if $ie-support {
+            // IE10 will use flex- instead of box-
+            // http://bit.ly/SUM20b
+            -ms-flex-align: $alignment;
+        }
+        @include experimental(boxAlign, $alignment, $ms: false);
+    }
+
+    // Default box flex
+    $default-boxFlex: 0 !default;
+
+    // mixin which takes an int argument for box flex. Apply this to the children inside the box.
+    //
+    // For example: "div.displayBox > div.child-box" would get the box flex mixin.
+    @mixin boxFlex( $flex: $default-boxFlex ) {
+        @if $ie-support {
+            // IE10 will use flex- instead of box-
+            // http://bit.ly/SUM20b
+            -ms-flex: $flex;
+        }
+        @include experimental(boxFlex, $flex, $ms: false);
+    }
+
+    // Default flex group
+    $default-boxFlexGroup: 1 !default;
+
+    // mixin which takes an int argument for flexible grouping
+    @mixin boxFlexGroup( $group: $default-boxFlexGroup ) {
+        @if $ie-support {
+            // IE10 will use -ms-flex-order instead of boxFlexGroup
+            // http://bit.ly/SUM20b
+            -ms-flex-order: $group;
+        }
+        @include experimental(boxFlexGroup, $group, $ms: false);
+    }
+
+    // default for ordinal group
+    $default-boxOrdinalGroup: 1 !default;
+
+    // mixin which takes an int argument for ordinal grouping and rearranging the order
+    @mixin boxOrdinalGroup( $group: $default-ordinal-flex-group ) {
+        @include experimental(boxOrdinalGroup, $group, $ms: false);
+    }
+
+    // default for box lines
+    $default-boxLines: single !default;
+
+    // mixin for box lines [ single | multiple ]
+    @mixin boxLines( $lines: $default-boxLines ) {
+        $lines: unquote($lines);
+        @if $ie-support {
+            // IE10 uses -ms-flex-wrap to determine whether
+            // the boxes flow onto the next line
+            // http://bit.ly/SUM20b
+            $wrapDir: if($default-boxDirection == reverse, wrap-reverse, wrap);
+            -ms-flex-wrap: if($lines == single, none, $wrapDir);
+        }
+        @include experimental(boxLines, $lines, $ms: false);
+    }
+
+    // default for box pack
+    $default-boxPack: start !default;
+
+    // mixin for box pack [ start | end | center | justify ]
+    @mixin boxPack( $pack: $default-boxPack ) {
+        $pack: unquote($pack);
+        @if $ie-support {
+            // IE10 will use -ms-flex-pack instead of boxPack
+            // http://bit.ly/SUM20b
+            -ms-flex-pack: $pack;
+        }
+        @include experimental(boxPack, $pack, $ms: false);
+    }

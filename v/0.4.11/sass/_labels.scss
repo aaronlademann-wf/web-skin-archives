@@ -1,0 +1,95 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _labels.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_badges.scss"
+
+//----------------------------------------------------
+
+
+// Base classes
+.label {
+    padding: $labelPadding;
+    cursor: default;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: $labelColor;
+    background-color: $grayLight;
+    font-family: $fontFamilyBase;
+    font-size: .8em;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: .27em;
+    // label ui text is not selectable
+    @include disableUserSelect;
+
+    // Empty label collapse
+    &:empty { display: none; }
+
+    .icon {
+        &:before,
+        &:after { top: 0; }
+    }
+}
+
+.hitarea .label {
+    cursor: pointer;
+}
+// Hover state, but only for links
+.label.hitarea {
+    #{$linkHoverFocus} {
+        cursor: pointer;
+        text-decoration: none;
+        color: $labelColorHover;
+        background-color: darken($grayLight, 10%);
+    }
+}
+
+// "Status" variation -
+// Uses a non-reversed txt color, has a different bd color than the bg color, and is all-caps
+.label-status {
+    text-transform: initial;
+    color: $wf_gray_lt2;
+    background-color: $wf_gray_lt6;
+    border: 1px solid $wf_gray_lt2;
+}
+
+
+//
+// Colors
+//
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but .hitarea class)
+//
+
+// Danger (red)
+.label-error { background-color: $state_error; }
+.label-error.hitarea {
+    #{$linkHoverFocus} {
+        background-color: darken($state_error, 10%);
+    }
+}
+// Warnings (orange)
+.label-warning { background-color: $state_warning; }
+.label-warning.hitarea {
+    #{$linkHoverFocus} {
+        background-color: darken($state_warning, 10%);
+    }
+}
+// Success (green)
+.label-success { background-color: $state_success; }
+.label-success.hitarea {
+    #{$linkHoverFocus} {
+        background-color: darken($state_success, 10%);
+    }
+}
+// Alternate
+.label-alt { background-color: $state_alt; }
+.label-alt.hitarea {
+    #{$linkHoverFocus} {
+        background-color: darken($state_alt, 10%);
+    }
+}

@@ -1,0 +1,96 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _constants/_support_non-ie.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_constants/_support.scss"
+    //+ "_constants/_support_ie.scss"
+    //+ "_constants/_support_ie-lt9.scss"
+
+    // deprecated vars remain here:
+    //+ "../_deprecated/_constants/_support.scss"
+
+    // These vars are set to produce a stylesheet
+    // that is NOT BUILT FOR INTERNET EXPLORER
+
+    //  NOTE:
+    //  These constants should be declared in a
+    //  local _support.scss partial within each
+    //  product stylesheet as well so that compiled
+    //  results are specific to their target based
+    //  on solution/team support levels.
+
+    //  NOTE: Any var suffixed with !global is a global variable inherited from compass.
+
+//----------------------------------------------------
+
+
+//
+// APP FEATURE / BROWSER SUPPORT
+//
+// KEEP CERTAIN STYLES OUT OF THE
+// COMPILED RESULT UNLESS THEY ARE NECESSARY
+//
+
+    //
+    // FEATURES
+    //
+
+
+    //
+    // BROWSERS
+    //
+
+        //
+        // full list of browsers():
+        //
+        // android
+        // safari, ios-safari
+        // chrome, android-chrome
+        // firefox, android-firefox
+        // ie, ie-mobile
+        // opera, opera-mini, opera-mobile
+        // blackberry
+        //
+        $supported-browsers: reject(browsers(), opera, opera-mini, opera-mobile, blackberry, ie, ie-mobile) !global !default;
+        $browser-minimum-versions: (
+            "chrome":  if(list-has($supported-browsers, chrome),  "16",   9999),
+            "firefox": if(list-has($supported-browsers, firefox), "4",    9999),
+            "ie":      if(list-has($supported-browsers, ie),      "9",    9999),
+            "safari":  if(list-has($supported-browsers, safari),  "5.1",  9999),
+            "opera":   if(list-has($supported-browsers, opera),   "10.5", 9999)
+        ) !global !default;
+
+
+    //
+    // OS
+    //
+        $supported-os: osx, win, android, ios !default;
+        $os-minimum-versions: (
+            "osx":     if(list-has($supported-os, osx),     "1",   9999),
+            "win":     if(list-has($supported-os, win),     "1",   9999),
+            "ios":     if(list-has($supported-os, ios),     "5.0", 9999),
+            "android": if(list-has($supported-os, android), "3.0", 9999)
+        ) !default;
+
+
+//====================================================================//
+//                                                                    //
+//+---------------- DO NOT EDIT BELOW THIS LINE ---------------------+//
+//                                                                    //
+//====================================================================//
+
+//
+// Colon Variable
+//
+// DO NOT DELETE THIS
+//
+    $cl: ":" !default;
+    $cl2: #{$cl}#{$cl} !default;
+
+
+//
+// DEPRECATED VARS (to maintain backwards-compatibility)
+//
+    @import "../_deprecated/_constants/_support.scss";

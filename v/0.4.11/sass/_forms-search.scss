@@ -1,0 +1,13 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _forms-search.scss
+//+  PARENT:   _forms.scss
+
+//----------------------------------------------------
+
+//
+// "Clear Search" input groups
+//
+.search-box {
+    @include clearSearchBtn($global: true);
+}

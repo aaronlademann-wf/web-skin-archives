@@ -1,0 +1,194 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _buttons.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_button-groups.scss"
+
+//----------------------------------------------------
+
+
+//
+// Base styles
+//
+    .btn {
+        @include btnScaffolding($global: true);
+    } // END .btn
+
+
+//
+// Button Sizes
+//
+    // Large
+    .btn-lg {
+        @include btnSize(lg, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge, $btnIconMarginLarge, $global: true);
+    }
+
+    // Small
+    .btn-sm {
+        @include btnSize(sm, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall, $btnIconMarginSmall, $global: true);
+    }
+
+    // Xsmall
+    .btn-xs {
+        @include btnSize(xs, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall, $btnIconMarginXsmall, $global: true);
+    }
+
+
+//
+// Callout Buttons
+//
+    .btn.btn-callout {
+        @include btnCallout;
+    }
+
+
+//
+// Vertical button
+//
+// (icons stacked above small text - used in Ribbon subnavs)
+//
+    .btn-vertical {
+        // so we can position carets without shifting vertical alignment of icon/text
+        position: relative;
+        text-align: center;
+
+        .icon {
+            display: block;
+            padding: 0 !important;
+            margin: 0 auto !important;
+        }
+
+        .caret {
+            display: block;
+            // use absolute positioning so dropdown vertical buttons
+            // have the same vertical alignment as their non-dropdown
+            // neighbor buttons.
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            margin: 0 0 0 -#{$caretWidth} !important;
+        }
+
+        small {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+
+//
+// Block button
+//
+    .btn-block {
+        display: block;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+
+        // Vertically space out multiple block buttons
+        + .btn-block { margin-top: $spacingBase;  }
+    }
+
+    // Specificity overrides
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+        &.btn-block { width: 100%; }
+    }
+
+
+//
+// Alternate buttons (state-specific)
+//
+    $n: 1 !global;
+    @each $state in $states {
+        // TODO: remove this  @if once we implement #664
+        @if $state != default {
+            .btn-#{$state} {
+                @include btnVariant($state);
+            }
+        }
+        $n: $n + 1 !global;
+    }
+
+
+//
+// Invisible / Link buttons
+//
+
+    // TODO: .btn-vanilla will not be necessary once #664 is implemented since the "vanilla" style will be the use of .btn with no variant specified.
+    // Vanilla and Link Buttons share the fact
+    // that there is no "button" appearance
+    .btn-link,
+    .btn-vanilla {
+        // remove all button characteristics
+        top: 0 !important; // no "punchable" effect here
+        outline: 0 !important;
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+
+        // be specific enough about :focus only styles
+        // to over-rule the border declarations used
+        // to prevent text-input focus appearance on
+        // input[type="button"]
+        &:focus {
+            border-color: transparent !important;
+            background-color: transparent !important;
+        }
+
+        &[disabled],
+        &.disabled {
+            text-decoration: none !important;
+            color: $linkColorDisabled !important;
+            border-color: transparent !important;
+            outline: 0 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            // caret should always match text color
+            .caret {
+                text-decoration: none !important;
+                border-top-color: $linkColorDisabled !important;
+                border-bottom-color: $linkColorDisabled !important;
+                // add a little extra contrast for browsers that are capable
+                @include opacity($caretAlpha, !important);
+            }
+        }
+    } // END .btn-link / .btn-vanilla
+
+    // Make a button look and behave like a link
+    .btn-link {
+        font-family: $fontFamilyBase;
+        font-weight: normal !important;
+        color: $linkColor;
+        text-shadow: $linkTextShadow;
+        // caret should always match/accent text color
+        .caret {
+            border-top-color: $linkColor;
+            border-bottom-color: $linkColor;
+            // add a little extra contrast for browsers that are capable
+            @include opacity($caretAlpha);
+        }
+
+        //
+        // Hover and Focus States
+        //
+        #{$linkHoverFocus} {
+            text-decoration: underline;
+            color: $linkColorHover;
+            // caret should always match text color
+            .caret {
+                text-decoration: none;
+                border-top-color: $linkColor;
+                border-bottom-color: $linkColor;
+                @include opacity(1);
+            }
+        }
+        #{$linkPressed} {
+            color: $linkColorPressed;
+        }
+    } // END .btn-link

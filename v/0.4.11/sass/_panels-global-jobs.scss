@@ -1,0 +1,240 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _panels-global-jobs.scss
+//+  PARENT:   wdesk.scss
+
+//----------------------------------------------------
+
+//
+// Global status bar
+//
+.body-footer {
+    position: fixed;
+    // needs to have a z-index so that is remains above any body-wrapper type elements
+    // that likely sit just above it.
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: $panelCnHeadingHeight; // height of collapsed jobs panel
+    height: auto;
+}
+
+.global-jobs-panel {
+    position: absolute;
+    top: auto;
+    bottom: 0; // panel should "collapse" upward
+
+    // mobile-first-defaults
+    left: $jobPanelRtOffset;
+    right: $jobPanelRtOffset;
+    width: auto;
+
+    @include box-shadow($menuVShadowUp); // beef up the shadow
+
+    @media screen and (min-width: $screenTablet) {
+        width: $jobPanelWidth;
+        right: $jobPanelRtOffset;
+        left: auto;
+    }
+
+
+    //
+    // PANEL HEADINGS
+    //
+        .panel-heading {
+            // Reverse the caret direction
+            // since this collapses upward
+            .caret {
+                border-top-width: 0;
+                border-bottom-width: $caretWidth;
+                border-bottom-style: solid;
+                // panel headings are reverse contrast
+                border-bottom-color: $jobPanelTitleColor;
+            }
+            &[data-toggle].open {
+                .caret {
+                    border-bottom-width: 0;
+                    border-top-width: $caretWidth;
+                    border-top-style: solid;
+                    // panel headings are reverse contrast
+                    border-top-color: $jobPanelTitleColor;
+                }
+            }
+
+            // line up the progress spinner / icons with the title
+            .progress-spinner,
+            .icon {
+                position: absolute;
+                top: $jobPanelHeadingIconVOffset;
+                left: $jobItemPadding; // line up with job item icon
+
+                + .title-text {
+                    margin-left: $jobPanelHeadingIconSize + $jobItemPadding; // line up with job itme name
+                }
+            }
+
+            // line up the caret / close button
+            .panel-actions {
+                .caret {
+                    right: $jobPanelHeadingCloseBtnWidth + $jobPanelHeadingIconVOffset;
+                }
+                .close {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: $jobPanelHeadingCloseBtnWidth;
+                    height: $panelCnHeadingHeight;
+                    padding-bottom: 4px; // vertical align adjustment because of funky &times;
+                    color: $jobPanelTitleColor;
+                    text-shadow: 0 1px 0 rgba($black, .2);
+                    @include opacity($caretAlpha);
+
+                    #{$hover} {
+                        @include opacity(1);
+                    }
+                }
+            }
+        }
+
+
+    //
+    // PANEL TITLE STATE VARIANTS
+    //
+        .panel-heading .panel-title {
+            font-weight: normal;
+            // all the panel headings in the global jobs panel are reverse-contrast
+            color: $jobPanelTitleColor !important;
+        }
+        .panel-default .panel-heading {
+            background-color: $jobPanelHeadingBg;
+
+            &,
+            + .panel-collapse > .jobs-list {
+                border-color: $jobPanelHeadingBg;
+            }
+
+            #{$hover} {
+                background-color: darken($jobPanelHeadingBg, $panelHeadingToggleHoverDarken);
+                border-color: darken($jobPanelHeadingBg, $panelHeadingToggleHoverDarken);
+            }
+        }
+        .panel-warning {
+            border-color: $jobPanelHeadingBgWarning;
+
+            .panel-heading {
+                background-color: $jobPanelHeadingBgWarning;
+
+                &,
+                + .panel-collapse > .jobs-list {
+                    border-color: $jobPanelHeadingBgWarning;
+                }
+
+                #{$hover} {
+                    background-color: darken($jobPanelHeadingBgWarning, $panelHeadingToggleHoverDarken);
+                    border-color: darken($jobPanelHeadingBgWarning, $panelHeadingToggleHoverDarken);
+                }
+            }
+        }
+        .panel-success {
+            border-color: $jobPanelHeadingBgSuccess;
+
+            .panel-heading {
+                background-color: $jobPanelHeadingBgSuccess;
+
+                &,
+                + .panel-collapse > .jobs-list {
+                    border-color: $jobPanelHeadingBgSuccess;
+                }
+
+                #{$hover} {
+                    background-color: darken($jobPanelHeadingBgSuccess, $panelHeadingToggleHoverDarken);
+                    border-color: darken($jobPanelHeadingBgSuccess, $panelHeadingToggleHoverDarken);
+                }
+            }
+        }
+
+
+    //
+    // JOB LIST ITEMS
+    //
+        .jobs-list {
+            table-layout: fixed;
+
+            .item-col {
+                padding: 0 $panelCnBodyPadding;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                border-color: $panelBg;
+            }
+            .item-icon {
+                width: $baseIconSize + ($jobItemPadding * 2);
+                // establish min-height for row via fixed height here
+                height: $jobItemHeight;
+            }
+            .item-name {
+                padding-left: 0; // keep it closer to the icon
+            }
+
+            // depending on status of the job (pending/error/success)
+            // show the correct icon glyph within .item-icon
+            .job-item {
+                // by default, show the pending icon and hide all others
+                .icon { display: none; }
+                .item-icon-pending { display: inline-block; }
+
+                // show icons based on different states
+                &.job-done {
+                    .item-icon-pending { display: none; }
+                }
+                &.job-error {
+                    .item-icon-error {
+                        display: inline-block;
+                        color: $state_error;
+                    }
+                }
+                &.job-success {
+                    .item-icon-success {
+                        display: inline-block;
+                        color: $state_success;
+                    }
+                }
+
+                // show progress bar / action buttons based on different states
+                .item-progress {
+                    width: $jobItemProgressBarWidth + ($jobItemPadding * 2);
+
+                    .progress {
+                        margin: 0;
+                    }
+                    .btn {
+                        display: none;
+                        float: right;
+                    }
+                }
+                &.job-done {
+                    .item-progress .progress { display: none; }
+
+                    &.job-error .item-progress {
+                        .item-btn-error { display: block; }
+                    }
+                    &.job-success .item-progress {
+                        .item-btn-success { display: block; }
+                    }
+                }
+
+                // when a selectable job item is hovered -
+                // add an extra bit of "indication" that it can be clicked
+                // NOTE: this style assumes that the action button is a .btn-link
+                #{$hover} {
+                    .btn-link {
+                        // mimic the hover effect of the button when its parent row is hovered
+                        text-decoration: underline;
+                        color: $linkColorHover;
+                    }
+                }
+            }
+        }
+
+} // END .global-jobs-panel

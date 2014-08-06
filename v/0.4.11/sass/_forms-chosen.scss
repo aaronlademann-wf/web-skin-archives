@@ -1,0 +1,476 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _forms-chosen.scss
+//+  PARENT:   _forms.scss
+
+    // variables:
+    $searchChoiceCloseWidth: $btnHeightSmall; // its a square
+    $choiceSpacing: ceil((($inputHeightBase - ($inputBdWidth * 2)) - $btnHeightSmall) / 2);
+    $choiceSpacing: if($choiceSpacing == 0, 1px, $choiceSpacing);
+    $caretBtnWidth: (nth($paddingBase, 2) * 2) + $caretWidth;
+    $searchChoiceSizeOffset: 2;
+
+//----------------------------------------------------
+
+[class^="col-"] {
+
+    // if the grid span IS the container
+    &.chosen-container { padding: 0; }
+
+    // if the grid span is wrapped around the container
+    > .chosen-container,
+    > .chosen-container > .chosen-drop {
+        width: 100% !important; // allow the wrapping span to determine the width
+    }
+}
+
+
+//
+// Base
+//
+// by default, we will convert any select.chosen element
+// so lets make it invisible while the script runs
+// prevents FOUC
+//
+select.chosen {
+    visibility: hidden;
+    width: 100%; // without this - the script will not size the input appropriately
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    @include opacity(0);
+}
+
+// should mimic .dropdown
+.chosen-container {
+    position: relative;
+    display: block;
+    padding: 0;
+    font-family: $fontFamilyBase;
+    background-color: transparent;
+    border: 0 none;
+    border-radius: 0;
+    @include box-shadow(none);
+    @include disableUserSelect;
+
+    // zero out any inherited margin
+    ul, ol { margin: 0; }
+    // should mimic .dropdown-menu
+    .chosen-drop {
+        z-index: $zindexPopover;
+        max-width: inherit;
+        // let the chosen plugin do its auto-sizing thang
+        min-width: inherit;
+        margin-left: 0;
+    }
+    a { cursor: pointer; }
+}
+
+// multi selects can "grow" in height
+.chosen-container-multi {
+    min-height: $inputHeightBase;
+    height: auto;
+}
+
+// Global search-choice-close styles
+// should mimic .close
+.search-choice-close {
+    @include closeScaffolding;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: $searchChoiceCloseWidth;
+    height: 100%;
+    font-size: $closeBtnFontSize;
+    line-height: $btnTextHeightSmall + ($searchChoiceSizeOffset * 2) !important;
+    color: inherit;
+}
+
+
+//
+// Chosen Single
+//
+.chosen-container-single {
+    // override inline static width applied by plugin since this should behave like a button
+    width: auto !important;
+    .btn {
+        // override of standard inline block from btnScaffolding
+        display: block;
+        width: 100% !important;
+        // match native select text-align
+        text-align: left;
+
+        // text
+        span {
+            @include textOverflow;
+            display: block;
+            margin-right: $caretBtnWidth; // make room for the caret
+            color: $wf_gray;
+        }
+        .caret {
+            margin-top: 0;
+            position: absolute;
+            top: $caretTopOffsetBase;
+            right: $btnPadX;
+        }
+    }
+
+    // size variations
+    &.input-lg .btn {
+        @include btnSize(lg, $paddingLargeVertical, $paddingLargeHorizontal, $fontSizeLarge, $lineHeightLarge, $borderRadiusLarge);
+        .caret {
+            margin-top: 0;
+            top: $caretTopOffsetLarge;
+        }
+    }
+    &.input-sm .btn {
+        @include btnSize(sm, $paddingSmallVertical, $paddingSmallHorizontal, $fontSizeSmall, $lineHeightSmall, $borderRadiusSmall);
+        .caret {
+            margin-top: 0;
+            top: $caretTopOffsetSmall;
+        }
+    }
+    &.input-xs .btn {
+        @include btnSize(xs, $paddingXsmallVertical, $paddingXsmallHorizontal, $fontSizeXsmall, $lineHeightXsmall, $borderRadiusXsmall);
+        .caret {
+            margin-top: 0;
+            top: $caretTopOffsetXsmall;
+        }
+    }
+
+    // search input at the top of the dropdown menus
+    .chosen-search {
+        $menuLinkPad: nth($menuVLinkPadding, 1);
+        $srchPadTop: (nth($menuVPadding, 1) - $menuLinkPad);
+        $srchPadBot: ($menuLinkPad + nth($menuVPadding, 1));
+        position: relative;
+        z-index: 1010;
+        margin: 0;
+        padding: $srchPadTop $spacingBase $srchPadBot $spacingBase;
+        white-space: nowrap;
+        input {
+            @include box-sizing(border-box);
+            margin: 1px 0;
+            padding-top: 0;
+            padding-right: $baseIconSize + 4px; // should be based on icon size
+            padding-bottom: 0;
+            outline: 0;
+        }
+
+        // search icon PUA declaration via @extend
+        // placed within
+        //+ "_icons_pua-components.scss"
+        &:before {
+            position: absolute;
+            top: 3px;
+            right: 2px;
+            display: block;
+            width: $inputHeightSmall;
+            height: $inputHeightSmall;
+            color: $grayLighter;
+            font-family: $mainIconsFont;
+            font-size: $baseIconSize;
+            font-style: normal;
+            line-height: $inputHeightSmall;
+        }
+    }
+}
+
+.chosen-container-single-nosearch .chosen-search { display: none; }
+
+
+//
+// Chosen Multi
+//
+.chosen-container-multi {
+    .chosen-choices {
+        // should mimic a text input
+        @extend %form-control;
+
+        position: relative;
+        // subtle differences between this and a standard <input>
+        overflow: hidden;
+        height: auto !important;
+        @include ltie8 {
+            *height: 1%;
+        }
+        margin-bottom: 0;
+        // since we're nesting a button in here...
+        // remove the padding to keep the total height at standard input height
+        // use !important overrule .ua-ie specifics from inputScaffolding
+        padding: 0 !important;
+        cursor: text;
+
+        li {
+            float: left;
+            clear: none; // override form styling
+            list-style: none;
+        }
+        // search field at the top of .chosen-drop
+        .search-field {
+            margin: 0 0 0 nth($inputPadding, 2);
+            padding: 0;
+            white-space: nowrap;
+
+            &,
+            input {
+                height: $inputHeightBase - ($inputBdWidth * 2);
+                min-height: $inputHeightBase - ($inputBdWidth * 2);
+            }
+            // this mimics a placeholder
+            input {
+                display: inline-block;
+                @include ie7-inline-block;
+                margin: 0;
+                padding: 0;
+                color: $inputColorPlaceholder;
+                border: 0 none;
+                outline: 0;
+                background-color: transparent;
+                border-radius: 0;
+                @include box-shadow(none);
+            }
+            .default { color: $inputColorPlaceholder; }
+        }
+
+        // "pills" that appear in the .chosen-choices field
+        // inherits .btn-sm styling
+        .btn {
+            position: relative;
+            // override of standard inline block from btnScaffolding
+            display: block;
+            // override inline static width applied by plugin since this should behave like a button
+            width: auto !important;
+            margin-top: $choiceSpacing;
+            margin-right: 0;
+            margin-left: $choiceSpacing;
+            padding-right: $searchChoiceCloseWidth + $choiceSpacing;
+            padding-bottom: $paddingSmallVertical - $choiceSpacing;
+            cursor: default;
+            // since we're not using gradients... put the radius back on
+            border-radius: $inputBdRadius - 1; // make room for close button
+            box-shadow: none; // no "depth" since this is nested within an input
+            @if $ie-support and $min-ie-supported < 9 {
+                // MSIE 8 doesn't support `box-shadow`
+                border-bottom-width: $btnBdWidth;
+            }
+
+
+            @if $ie-support {
+                line-height: $lineHeightBase;
+            }
+
+            #{$linkPressed} {
+                top: 0; // no "depth" shift since this is nested within an input
+            }
+        }
+
+        // should mimic a disabled pill
+        .search-choice.search-choice-disabled {
+            @include btnDisabledDefault;
+        }
+    }
+
+    // Size variations
+    &.input-xs .chosen-choices {
+        @extend %input-xs;
+
+        // subtle differences between this and a standard <input>
+        height: auto !important;
+        @include ltie8 {
+            *height: 1%;
+        }
+
+        // placeholder within it
+        .search-field {
+            margin-left: nth($inputPaddingXsmall, 2);
+
+            &,
+            input {
+                height: $inputHeightXsmall - ($inputBdWidth * 2);
+                min-height: $inputHeightXsmall - ($inputBdWidth * 2);
+                font-size: $fontSizeXsmall;
+            }
+        }
+
+        // btn within it (.search-choice)
+        .btn {
+            @extend %btn-xs;
+            padding-right: $searchChoiceCloseWidth + $choiceSpacing;
+            padding-bottom: $paddingXsmallVertical - $choiceSpacing;
+
+            .search-choice-close {
+                line-height: $btnTextHeightXsmall !important;
+            }
+        }
+    }
+    &.input-sm .chosen-choices {
+        @extend %input-sm;
+
+        // subtle differences between this and a standard <input>
+        height: auto !important;
+        @include ltie8 {
+            *height: 1%;
+        }
+
+        // placeholder within it
+        .search-field {
+            margin-left: nth($inputPaddingSmall, 2);
+
+            &,
+            input {
+                height: $inputHeightSmall - ($inputBdWidth * 2);
+                min-height: $inputHeightSmall - ($inputBdWidth * 2);
+                font-size: $fontSizeSmall;
+            }
+        }
+
+        // btn within it (.search-choice)
+        .btn {
+            @extend %btn-sm;
+            padding-right: $searchChoiceCloseWidth + $choiceSpacing;
+            padding-bottom: $paddingSmallVertical - $choiceSpacing;
+
+            .search-choice-close {
+                line-height: $btnTextHeightSmall !important;
+            }
+        }
+    }
+    &.input-lg .chosen-choices {
+        @extend %input-lg;
+
+        // subtle differences between this and a standard <input>
+        height: auto !important;
+        @include ltie8 {
+            *height: 1%;
+        }
+
+        // placeholder within it
+        .search-field {
+            margin-left: nth($inputPaddingLarge, 2);
+
+            &,
+            input {
+                height: $inputHeightLarge - ($inputBdWidth * 2);
+                min-height: $inputHeightLarge - ($inputBdWidth * 2);
+                font-size: $fontSizeLarge;
+            }
+        }
+
+        // btn within it (.search-choice)
+        .btn {
+            @extend %btn-lg;
+            padding-right: $searchChoiceCloseWidth + $choiceSpacing;
+
+            .search-choice-close {
+                line-height: $btnTextHeightLarge + 12 !important;
+            }
+        }
+    }
+}
+
+
+//
+// Chosen Container
+//
+.chosen-container {
+    // this is like a .nav-list below the search field within the .dropdown-menu (.chosen-drop)
+    .chosen-results {
+        position: relative;
+        clear: both;
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 240px; // TODO this should probably match a max-height var for dropdowns too
+        margin: 0;
+        padding: 0;
+
+        // equivalent to a .dropdown-menu > li > .hitarea
+        li {
+            @extend %dropdown-menu-link;
+
+            display: none;
+            max-width: inherit;
+            text-indent: 0;
+            padding-left: nth($menuVLinkPadding, 2);
+            @include disableUserSelect;
+
+            // highlighted portion of a result
+            em {
+                @extend %text-highlighted;
+
+                color: darken($menuVLinkColor, 25);
+                font-family: inherit !important; // override form em default
+                font-style: normal !important;
+            }
+
+            // Hover State
+            //
+            // should match .dropdown-menu > li > .hitarea:hover
+            //
+            &.highlighted {
+                @extend %vertical-nav-link-hover;
+                // don't show the highlighted portion of a search result while hovering
+                em {
+                    background: transparent !important;
+                    font-weight: bold !important;
+                }
+            }
+
+        }
+        .no-results {
+            display: list-item;
+            background: $wf_gray_lt6;
+            font-style: italic;
+        }
+        // like a dropdown header
+        .group-result {
+            @extend %dropdown-header;
+
+            em {
+                color: darken($dropdownHeaderColor, 25);
+            }
+        }
+        .group-option { padding-left: $menuVLinkPaddingHorizontal * 2; }
+        .active-result {
+            display: list-item;
+            cursor: pointer;
+        }
+    }
+}
+
+.chosen-container-multi {
+    .chosen-results {
+        margin:  0;
+        padding: 0;
+    }
+    .chosen-drop {
+        .result-selected {
+            // don't show it in the dropdown once its been selected
+            display: none;
+        }
+    }
+}
+
+.chosen-container-active {
+    // chosen input is focused
+    .chosen-choices {
+        @include inputFocusDefault($inputBdColorFocus);
+    }
+}
+
+
+//
+// Chosen Disabled
+//
+.chosen-disabled {
+    cursor: not-allowed;
+    .chosen-single {
+        @include btnDisabledDefault;
+    }
+    .search-choice-close {
+        cursor: default;
+    }
+}

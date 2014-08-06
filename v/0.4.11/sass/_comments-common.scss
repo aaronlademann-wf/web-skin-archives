@@ -1,0 +1,305 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _comments-common.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+    //+ "_popovers-notes-comments.scss"
+    //+ "_panels-notes-comments.scss"
+
+//----------------------------------------------------
+
+//
+// BASE COMMENTS ELEM RESETS
+//
+    .comments {
+        form {
+            margin: 0;
+            padding: 0;
+        }
+        .nav-pills {
+            > li {
+                margin-right: $spacingBase;
+                &:last-child {
+                    margin-right: 0 !important;
+                }
+            }
+            &.nav-justified.halve {
+                > li {
+                    @include box-sizing(content-box);
+                    &:first-child {
+                        margin-right: $navJustifiedHalvedMargin / 2;
+                        padding-right: $navJustifiedHalvedMargin / 2;
+                        box-shadow: 1px 0 0 0 rgba($black, .2);
+                    }
+                }
+            }
+        }
+    }
+
+
+//
+// BASE COMMENTS COMPONENT MIXINS
+//
+// We're using mixins instead of declaring actual CSS classes here because declaring
+// common class styles here, and then the specific popover/panel styles again
+// just results in more selectors. By using mixins to store the shared styles,
+// we can reuse the styles without duplicating the selectors.
+//
+    @mixin comment-header_navbar {
+        height: auto;
+        border-width: 0 0 $navbarBdWidth 0;
+        @include border-bottom-radius(0);
+
+        //
+        // keep comment thread actions btn/menu above the thread
+        // overlay so they are still clickable when thread is "closed"
+        //
+        .dropdown {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: $zindexDropdown + 1;
+        }
+    }
+
+    @mixin comment-title {
+        display: inline-block;
+        @include ie7-inline-block;
+        // because of the overflow: hidden, we ned this to ensure that drop-case chars are not clipped
+        min-height: $panelThreadTitleMinHeight;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: default;
+    }
+
+    @mixin comment-title-icon {
+        margin-right: 4px;
+    }
+
+    @mixin comment-meta {
+        font-family: $fontFamilyBase;
+        font-size: $fontSizeSmall;
+        line-height: inherit;
+
+        .text-sm {
+            // the text is too small using percentage
+            font-size: $fontSizeSmall;
+        }
+
+        .comment-timestamp {
+            position: absolute;
+            right: 0;
+            display: block;
+            font-style: italic;
+            color: zestyCrayonColor(gray, lighter);
+            text-align: right;
+            cursor: default;
+        }
+    }
+
+    @mixin comment-textarea {
+        //
+        // COMMENT TEXTAREAS
+        //
+        // textareas in comments must be absolute so that
+        // the placeholder shim works correctly.
+        // We need width/height 100% since sizing using
+        // top/left/right/bottom doesn't work in IE 9
+        //
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        margin-bottom: 0 !important;
+        resize: none;
+
+        //
+        // A comment that cannot be edited
+        // also present in default saved comment state
+        //
+        &[readonly] {
+            // saved comments have readonly attributes on the textarea
+            position: static;
+            width: 100%;
+            height: 100%;
+
+            // smaller text with a tad more white space makes things easier to read
+            padding: ($dialogContentPadding / 2) $dialogContentPadding;
+            font-size: $fontSizeMedium;
+            line-height: $lineHeightSmall;
+            color: zestyCrayonColor(gray, darker);
+
+            // no bg, border, shadow, etc... (mimic .input-vanilla)
+            background-color: transparent !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+
+            cursor: default !important;
+
+            //
+            // if the textarea is empty, don't show it when its not being edited
+            // this prevents the placeholders from displaying.
+            //
+            &:empty { display: none; }
+        }
+    }
+
+    @mixin comment-body {
+        position: relative;
+        height: auto;
+        max-height: $defaultCommentTextareaHeight;
+        min-height: $defaultCommentTextareaHeight / 2;
+        overflow: hidden;
+        cursor: pointer;
+
+        .comment-editing & {
+            height: 100%;
+            max-height: 100%;
+            min-height: $defaultCommentTextareaHeight;
+        }
+    }
+
+    @mixin comment-modal-confirmations($bdRadius, $contentPad, $headerHeight, $innerElem: ".comment", $innerPad: 0, $isOuterElem: false) {
+        $innerPad: if($innerPad >= $contentPad, $innerPad, 0);
+        $footerPad: if($contentPad > 0, $contentPad, $innerPad);
+
+        //
+        // when this mixin is called - put a relative position style
+        // on whatever elem the include is nested within
+        // unless its the outermost element (like .popover)
+        //
+        @if not $isOuterElem {
+            position: relative;
+        }
+
+        .modal.contained {
+            top: -($headerHeight + $dialogPadding);
+            right: -($contentPad + $dialogPadding);
+            bottom: -($contentPad + $dialogPadding);
+            left: -($contentPad + $dialogPadding);
+            border-radius: $bdRadius;
+
+            .modal-body,
+            .modal-header {
+                // these get vertically centered by wdesk-modal.js
+                position: absolute;
+                top: auto;
+                right: 0;
+                bottom: $modalFooterHeight - $footerPad;
+                left: 0;
+                text-align: center;
+            }
+
+            .modal-footer {
+
+                // this gets horizontally centered by wdesk-modals.js
+                top: auto;
+                right: $footerPad;
+                bottom: $footerPad;
+                left: $footerPad;
+                width: auto;
+            }
+        }
+
+        //
+        // for panel comments, thread deletion confirmation
+        // modals have the same container / parent container
+        //
+        &.modal-open.modal-container,
+        .modal-open.modal-container {
+            .modal.contained {
+                // for some reason when container/parent container
+                // are the same elem, the width of the panel-group bd
+                // needs to be accounted for when positioning
+                right: -($contentPad + $dialogPadding);
+                left:  -($contentPad + $dialogPadding);
+            }
+        }
+
+        //
+        // individual thread comment deletion confirmation
+        // must be absolute pos so it doesn't fill up the entire popover
+        //
+        #{$innerElem} {
+            // if its inside a comment... don't overlap adjacent comments
+            .modal {
+                top: 0;
+                bottom: 0;
+                @if $innerPad > 0 {
+                    right: -($innerPad + $dialogPadding);
+                    left: -($innerPad + $dialogPadding);
+                }
+            }
+            //
+            // if its the first comment in a thread
+            // we need to cover up the extended title navbar area as well.
+            //
+            &:first-of-type .modal {
+                top: -($headerHeight + $dialogPadding);
+                @include border-bottom-radius(0);
+            }
+            //
+            // if its the last comment in a thread
+            // we need to cover up the bottom edge of the popover
+            //
+            &:last-of-type .modal,
+            &.comment-last + .comment-editing .modal,
+            &.comment-last .modal {
+                bottom: -($contentPad + $dialogPadding);
+                @include border-top-radius(0);
+            }
+            //
+            // if its the only comment in a thread...
+            // use fixed positioning to simplify the alignment
+            //
+            &:only-of-type .modal {
+                top: -($headerHeight + $dialogPadding);
+                bottom: -($contentPad + $dialogPadding);
+                border-radius: $bdRadius;
+            }
+        }
+
+        //
+        // modal backdrops are transparent no matter what within comments
+        // because the modal elem itself has the darker "backdrop" appearance
+        //
+        .modal-backdrop {
+            background-color: transparent;
+            @include opacity(0);
+            @include transition(none);
+        }
+    }
+
+
+//
+// BASE COMMENTS COMPONENT GLOBAL STYLES
+//
+// at the moment - there are not enough styles needed for
+// the panel/popover variants of comments that these mixins
+// need to be included separately in those SCSS partials,
+// so we'll do global includes here.
+//
+    .comments textarea {
+        @include comment-textarea;
+    }
+    .comment-body {
+        @include comment-body;
+    }
+    .thread-overlay {
+        position: absolute; // fixed position breaks in MSIE
+        display: none;
+
+        .thread-status {
+            position: absolute;
+            right: $dialogContentPadding;
+            bottom: $dialogContentPadding / 2;
+            font-style: italic;
+            color: $black;
+            text-align: right;
+            cursor: default;
+        }
+    }

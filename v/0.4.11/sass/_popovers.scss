@@ -1,0 +1,151 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _popovers.scss
+//+  PARENT:   wdesk.scss
+
+    // parent partial:
+    //+ "_dialogs.scss"
+
+    // related partials:
+    //+ "_popovers-notes-comments.scss"
+    //+ "_tooltip.scss"
+    //+ "_tooltip-navs.scss"
+
+//----------------------------------------------------
+
+
+.popover {
+    z-index: $zindexPopover;
+
+    // wraps around .title and .content
+    .inner {
+        min-width: $popoverMinWidth;
+        max-width: $popoverMaxWidth;
+    }
+
+    // stuff inside of .inner
+    // in certain situations, we want to add links in the header of a popover
+    // reset the stuff from default navbar patterns we don't want here
+    .navbar {
+        border: 0 none;
+        border-radius: 0;
+        background: transparent;
+        padding: 0;
+    }
+
+    .title {
+        margin: $popoverTitleMargin;
+        padding-bottom: $popoverTitlePadding;
+        border-bottom: $popoverTitleBdWidth solid $popoverTitleBdColor;
+        background-color: $popoverTitleBg;
+        font-size: $popoverTitleFontSize;
+        line-height: $dialogHeaderLineHeight;
+        @if $dialogBdRadius > 0 {
+            @include border-top-radius($dialogBdRadius - $dialogBdWidth);
+        }
+
+        &, * {
+            @include disableUserSelect;
+        }
+
+        &:empty { display: none; }
+
+        .icon {
+            margin-right: $popoverTitlePadding;
+            &:before,
+            &:after {
+                top: $iconPseudoShiftY / 2;
+            }
+        }
+    }
+
+    // in certain situations, we want to add links in the header of a popover
+    .navbar {
+        position: relative;
+        height: auto;
+        padding: 0;
+        line-height: $dialogHeaderLineHeight;
+        @if $dialogBdRadius > 0 {
+            @include border-top-radius($dialogBdRadius);
+        }
+        // what is typically the actual .title elem
+        // when in a navbar - its just any other <h3>
+        h3 {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            font-size: $popoverTitleFontSize;
+            line-height: 1;
+        }
+
+        // dropdown toggles within popover navbars (e.g. comment thread options dd)
+        .dropdown-toggle {
+            position: absolute; // need this so we can keep it above .dropdown-menu z-index
+            right: 0;
+            z-index: $zindexDropdown + 1;
+            // since there is only a .caret elem in here... its not very wide.
+            height: $caretOnlyBtnWidthXsmall;
+            line-height: $caretOnlyBtnWidthXsmall;
+            margin-top: round(($dialogHeaderMinHeight - $caretOnlyBtnWidthXsmall) / 2);
+
+            #{$linkHoverFocus} {
+                background-color: darken($tooltipBgGray, 10) !important;
+            }
+        }
+        .dropdown {
+            height: $btnHeightXsmall;
+
+            &.open {
+                .dropdown-toggle {
+                    border-color: $menuVBdColor !important;
+                    border-bottom-color: $menuVLinkBg !important;
+                    @include border-bottom-radius(0);
+                    &,
+                    #{$linkHoverFocus} {
+                        background-color: $menuVLinkBg !important;
+                    }
+                }
+                .dropdown-menu {
+                    @include border-top-right-radius(0);
+                    // want the menu to sit flush with our dropdown toggle
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    .content {
+        padding: $dialogContentPadding;
+        line-height: 1;
+        &.flush { padding: 0; }
+
+        p { line-height: $lineHeightBase; }
+    }
+
+    //
+    // Arrows
+    //
+    //   .arrow        => outer (border color)
+    //   .arrow:after  => inner (bg color)
+    //
+    //   .arrow:before => shadow
+    //
+
+    //
+    // LARGE ARROWS
+    // most of the styling for these
+    // is done in _dialogs.scss
+    //
+    @each $direction in $arrowDirections {
+        &.#{$direction} {
+            @include dialogArrow("large", $direction);
+        }
+    }
+} // END .popover
+
+// "global help" popover menu that is spawned from the ? icon in the global navbar
+.global-help-menu {
+    .inner {
+        min-width: 100px;
+    }
+}

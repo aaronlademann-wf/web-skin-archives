@@ -1,0 +1,59 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _deprecated/_constants/_support.scss
+//+  PARENT:   ../_constants/_support.scss
+
+//   NOTE: DO NOT USE THESE!!! They were deprecated in `0.5.0` will be removed no later than `0.6.0`
+
+//----------------------------------------------------
+
+    //
+    // BROWSERS
+    //
+        // Piece of crap
+        $ie-support:            if(list-has($supported-browsers, ie), true, false) !default;
+        $min-ie-supported:      if($ie-support, to_int(map-get($browser-minimum-versions, ie)), 9999) !default;
+        $ie6-support:           if($min-ie-supported < 7,  true, false) !default;
+        $ie7-support:           if($min-ie-supported < 8,  true, false) !default;
+            $ie7-icon-support:  if($ie7-support, true, false) !default;
+        $ie8-support:           if($min-ie-supported < 9,  true, false) !default;
+        $ie9-support:           if($min-ie-supported < 10, true, false) !default;
+            $filter-gradient-support: if($ie9-support, true, false) !global !default; // IE9 gradients
+
+        // Firefox
+        $mozilla-support:       if(list-has($supported-browsers, firefox), true, false) !default;
+        $min-mozilla-supported: if($mozilla-support, to_int(map-get($browser-minimum-versions, firefox)), 9999) !default;
+
+        // Opera
+        $opera-support:         if(list-has($supported-browsers, opera), true, false) !default;
+        $min-opera-supported:   if($opera-support, to_int(map-get($browser-minimum-versions, opera)), 9999) !default;
+
+        // Chrome / Safari / Webkit
+        $chrome-support:        if(list-has($supported-browsers, chrome), true, false) !default;
+        $min-chrome-supported:  if($chrome-support, to_int(map-get($browser-minimum-versions, chrome)), 9999) !default;
+
+        // Safari
+        $safari-support:        if(list-has($supported-browsers, safari), true, false) !default;
+        $min-safari-supported:  if($safari-support, to_int(map-get($browser-minimum-versions, safari)), 9999) !default;
+
+        // Misc
+        $owg-support:           false !default;
+            $support-for-original-webkit-gradients: false !global !default;
+        $khtml-support:         false !default;
+        $webkit-support:        true !default;
+
+
+    //
+    // OS
+    //
+        $macosx-support:        if(list-has($supported-os, osx), true, false) !default;
+        $min-macosx-supported:  if($macosx-support, to_int(map-get($os-minimum-versions, osx)), 9999) !default;
+
+        $win-support:           if(list-has($supported-os, win), true, false) !default;
+        $min-win-supported:     if($win-support, to_int(map-get($os-minimum-versions, win)), 9999) !default;
+
+        $ios-support:           if(list-has($supported-os, ios), true, false) !default;
+        $min-ios-supported:     if($ios-support, to_int(map-get($os-minimum-versions, ios)), 9999) !default;
+
+        $droid-support:         if(list-has($supported-os, android), true, false) !default;
+        $min-droid-supported:   if($droid-support, to_int(map-get($os-minimum-versions, android)), 9999) !default;

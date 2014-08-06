@@ -1,0 +1,26 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-header">
+        <h4 class="modal-title text-center">
+            Delete Private Commment?
+        </h4>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-actions modal-footer">
+        <div class="nav-tooltip">
+            <ul class="nav nav-pills nav-justified halve">
+                <li>
+                    <button type="button" data-cancel class="hitarea" data-dismiss="modal">
+                        Cancel
+                    </button>
+                </li>
+                <li>
+                    <button type="button" data-affirm {%if include.showConfModal%}id="delete-btn-auto"{%endif%} class="hitarea delete">
+                        Delete
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

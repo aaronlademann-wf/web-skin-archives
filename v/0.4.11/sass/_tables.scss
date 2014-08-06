@@ -1,0 +1,362 @@
+//----------------------------------------------------
+
+//+  PARTIAL:  _tables.scss
+//+  PARENT:   wdesk.scss
+
+    // related partials:
+
+//----------------------------------------------------
+
+
+table {
+    max-width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    background-color: $tableBg;
+}
+
+
+//
+// BASELINE STYLES
+//
+.table {
+    width: 100%;
+    margin-bottom: $lineHeightBasePx;
+    color: $tableCellColor;
+    border-left: 0;
+    font-family: $tableCellFont;
+    font-weight: normal;
+
+    // Nesting
+    .table {
+        margin-bottom: 0;
+        background-color: $tableBg;
+    }
+
+    // Address double-border issues
+    // involving multiple tbody / adjacent thead/tbody,
+    // and first thead, etc... situations
+    thead:first-of-type,
+    thead + tbody {
+        tr:first-child {
+            td,
+            th { border-top: 0; }
+        }
+    }
+    tbody + tbody { border-top: ($tableBdWidth * 2) solid $tableBdColor; }
+
+    // prevent double border
+    &.has-fixed-header {
+        border-top: 0 none;
+        tr:first-child {
+            td,
+            th {
+                border-top: 0 none !important;
+            }
+        }
+    }
+
+    // Cells
+    td,
+    th {
+        @include transition(#{$tableTransitionProperties} #{$tableTransitionSpeed} linear);
+        padding: $tableCellPad;
+        vertical-align: middle;
+        border-top: $tableBdWidth solid $tableBdColor;
+        line-height: $lineHeightBase;
+        text-align: left;
+
+        // checkboxes / radios / labels nested within cells
+        input[type="checkbox"],
+        input[type="radio"],
+        .checkbox,
+        .radio,
+        .label {
+            margin: 0;
+        }
+
+        // make sure nested labels share the same baseline as the rest of the copy in the cell
+        .label {
+            vertical-align: baseline;
+        }
+    }
+
+    // Heading Cells (thead and tbody)
+    th {
+        padding: gibsonPadOffset($tableCellPad);
+        font-family: $headingsFontFace;
+        font-weight: bold;
+        color: $tableHeaderCellColor;
+        small {
+            font-family: $sansFontBaseFallback;
+            font-weight: normal;
+        }
+    }
+
+    // Heading Cells (thead only)
+    thead {
+        th {
+            padding: gibsonPadOffset($tableHeaderCellPad);
+            color: $tableTheadColor;
+            text-transform: uppercase;
+            vertical-align: bottom;
+            border-top-width: 0; // required for MSIE 8 since there is no support for :first-of-type
+            border-bottom: $tableBdWidth solid $tableTheadBdColor;
+        }
+    }
+
+    // make elems within tables that can be clicked appear that way
+    .clickable { cursor: pointer; }
+
+} // END .table (BASELINE STYLES)
+
+
+//
+// CONDENSED TABLE W/ HALF PADDING
+//
+.table-condensed {
+    td { padding: $tableCellPadCnd; }
+    th { padding: gibsonPadOffset($tableCellPadCnd); }
+
+    thead {
+        td,
+        th { padding: gibsonPadOffset($tableHeaderCellPadCnd); }
+    }
+}
+
+
+//
+// BORDERED VARIATION
+//
+.table-bordered {
+    border: $tableBdWidth solid $tableBdColor;
+    border-left: 0;
+
+    td,
+    th {
+        border-left: $tableBdWidth solid $tableBdColor;
+        &.empty {
+            border-left-color: transparent;
+        }
+    }
+
+    // headers on bordered tables need a bg color, otherwise they just look ridonc
+    thead {
+        td,
+        th {
+            color: $tableBorderedTheadColor;
+            background-color: $tableBorderedTheadBg;
+        }
+    }
+
+    // no horizontal row borders on the inner rows
+    &.table-bordered-vertical {
+        tbody {
+            td,
+            th {
+                border-top: 0 none;
+            }
+        }
+    }
+}
+
+//
+// ZEBRA-STRIPING
+//
+.table-striped {
+    tbody {
+        > tr {
+            &:nth-child(odd) {
+                td,
+                th { background-color: $tableBgAccent; }
+            }
+            td,
+            th {
+                border-top-width: $tableStripedRowBdWidth;
+                @include ltie8 {
+                    // since striping is not supported in MSIE7 and below... re-instate the border
+                    *border-top-width: $tableBdWidth
+                }
+            }
+        }
+    }
+}
+
+
+//
+// HOVER EFFECT
+//
+// Placed here since it has to come after the potential zebra striping
+//
+.table-hover {
+    tbody {
+        > tr#{$hoverInline} {
+            td,
+            th {
+                @include hoveredTableRowCell;
+            }
+        }
+    }
+}
+
+
+//
+// SELECTABLE
+//
+.table-selectable {
+
+    tbody {
+        > tr {
+            @include selectableTableRow;
+        }
+    }
+
+    // often times, clickable / selectable rows will have a column
+    // just to house a checkbox to indicate selection...
+    .cbox {
+        width: emtopx($cboxWidth) + ($tableCellPadding * 2);
+        text-align: center;
+    }
+}
+
+// ALLOW INDIVIDUAL ROWS TO BE SELECTABLE
+.table tbody > tr.row-selectable {
+    @include selectableTableRow;
+}
+
+
+//
+// SORTABLE
+//
+.table-sortable {
+
+    // headers only
+    thead th {
+        cursor: pointer;
+        @include disableUserSelect;
+
+        //
+        // caret positioning / coloring
+        //
+        .caret {
+            margin-top: $caretTopMarginBase;
+            margin-right: nth($tableCellPad, 2);
+            margin-left: nth($tableCellPad, 2);
+            border-top-color: $tableSortCaretColor;
+            @include opacity($tableSortCaretAlpha);
+            @include transition(opacity $tableTransitionSpeed linear);
+        }
+
+        &.sorted,
+        #{$hover} {
+            color: $tableSortTheadColorHover;
+            .caret {
+                border-top-color: $tableSortCaretColorHover;
+                @include opacity($tableSortCaretAlphaHover);
+            }
+        }
+
+        // .caret points downward (descending) by default
+        // so we only need a modifier class to make it face upward (ascending)
+        &.ascending {
+            .caret {
+                @include caret('up', $tableSortCaretColor);
+            }
+            #{$hover} {
+                .caret {
+                    border-bottom-color: $tableSortCaretColorHover;
+                }
+            }
+
+            &.sorted {
+                .caret {
+                    border-bottom-color: $tableSortCaretColorSorted;
+                }
+            }
+        }
+
+        // remove hover visual patterns for unsortable columns
+        &.unsortable {
+            cursor: default;
+            .caret { display: none !important; }
+
+            &.sorted,
+            #{$hover} {
+                color: $tableTheadColor;
+            }
+        }
+    }
+
+    &.table-condensed {
+        thead th {
+            .caret {
+                margin-top: round(($tableHeaderCellHeightCnd - $tableHeaderCellHeightCndInner + $tableHeaderCellPadOffsetCnd) / 2) + $caretHeight;
+                margin-right: $tableCellPadCnd;
+                margin-left: $tableCellPadCnd;
+            }
+        }
+    }
+
+    &.table-bordered {
+        thead th {
+            .caret {
+                float: right;
+            }
+        }
+    }
+}
+
+
+//
+// TABLE CELL SIZING
+//
+
+// Reset default table behavior
+table {
+    col[class^="col-"] {
+        display: table-column;
+    }
+    td[class^="col-"],
+    th[class^="col-"] {
+        display: table-cell;
+        float: none;
+    }
+}
+
+
+//
+// TABLE BACKGROUNDS
+//
+// Exact selectors below required to override .table-striped / .clickable / .selected
+//
+
+.table tbody tr {
+    $n: 1 !global;
+    @each $state in $states {
+        &.#{$state} {
+            > td,
+            > th {
+                background-color: nth($state_bgs, $n);
+                border-top-color: mix(nth($state_bds, $n), $tableBdColor, 30%);
+            }
+            #{$hover} {
+                > td,
+                > th { background-color: darken(nth($state_bgs, $n), 5%) !important; }
+            }
+        }
+
+        $n: $n + 1 !global;
+    }
+}
+
+
+//
+// Responsive tables
+//
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// will display normally.
+//
+@media (max-width: $screenTablet) {
+    @include responsiveTables;
+}
