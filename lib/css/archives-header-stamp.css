@@ -1,0 +1,24 @@
+.brand-link:after {
+    content:  "ARCHIVES";
+
+    display: block;
+    position: absolute;
+    top: 34px;
+    right: 0;
+    padding: 2px;
+    width: 70px;
+    height: 18px;
+    transform: rotate(-16deg);
+
+    font-size: 12px;
+    letter-spacing: .1ex;
+    line-height: 18px;
+    text-align: center;
+    color: #999;
+    text-shadow: none;
+
+    background-color: white;
+    border: 1px dashed #777;
+    box-shadow: 0 0 0 1px white, 1px 1px 1px 0 rgba(0,0,0,.4);
+    border-radius: 3px;
+}
