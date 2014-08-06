@@ -16,5 +16,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/aaronlademann-wf/web-skin-archives.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-sed": "~0.1.1"
   }
 }
