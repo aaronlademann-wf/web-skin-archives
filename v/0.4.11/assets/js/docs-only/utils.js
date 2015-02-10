@@ -2,51 +2,53 @@
     JavaScript utility functions used for Web Skin documentation
 */
 
-$.getQueryVariable = function(variable) {
-    if (window.location.search) {
-        var query = window.location.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            if (decodeURIComponent(pair[0]) == variable) {
-                return decodeURIComponent(pair[1]);
+!function ($) { $(function() {
+    $.getQueryVariable = function(variable) {
+        if (window.location.search) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
             }
-        }
-    } else {
-        if (window.history.state) {
+        } else if (window.history.state) {
             var queries = window.history.state;
             for (var query in queries) {
                 if (query == variable) {
                     return decodeURIComponent(queries[query]).toString();
                 }
             }
+        } else {
+            return null;
         }
+        // console.log('Query variable %s not found', variable);
     }
-    // console.log('Query variable %s not found', variable);
-}
 
-$.fn.serializeObject = function () {
+    $.fn.serializeObject = function () {
 
-    var o = {};
+        var o = {};
 
-    if (typeof _ != 'function') {
-        throw new Error('$.fn.serializeObject requires lodash.underscore.js');
-    } else {
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name]) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
+        if (typeof _ != 'function') {
+            throw new Error('$.fn.serializeObject requires lodash.underscore.js');
+        } else {
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
                 }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-    }
+            });
+        }
 
-    return o;
-};
+        return o;
+    };
+});}(jQuery);
 
 var compareObjects = function (obj1, obj2, _Q) {
     _Q = (_Q == undefined)? new Array : _Q;

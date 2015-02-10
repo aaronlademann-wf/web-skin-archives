@@ -1,0 +1,35 @@
+/*!
+ * -------------------------------------
+ * Web Skin Peripheral CSS for Collapsible Tree Navigation
+ * ---
+ * Requires
+ *   web-skin Core CSS
+ *   web-skin Plugin JS
+ * ---
+ * Copyright 2014 Workiva
+ * -------------------------------------
+ */
+
+
+// ----------------------------------------------------
+//   WEB SKIN MODULES CAN USE THIS
+// ----------------------------------------------------
+    $use-web-skin-img-dir: true !global;
+
+
+// ----------------------------------------------------
+//   Web Skin Core API
+// ----------------------------------------------------
+    @import 'core/api';
+
+
+// ----------------------------------------------------
+//   Tree List Navigation Atoms
+// ----------------------------------------------------
+    @import 'peripherals/list-group-tree/atoms/list-group-tree-config';
+
+
+// ----------------------------------------------------
+//   Tree List Navigation Components
+// ----------------------------------------------------
+    @import 'peripherals/list-group-tree/list-group-tree-base';

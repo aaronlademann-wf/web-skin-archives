@@ -1,0 +1,34 @@
+/*!
+ * -------------------------------------
+ * Web Skin Peripheral CSS for Dropdown Submenus
+ * ---
+ * Requires
+ *   web-skin Core CSS
+ * ---
+ * Copyright 2015 Workiva
+ * -------------------------------------
+ */
+
+
+// ----------------------------------------------------
+//   WEB SKIN MODULES CAN USE THIS
+// ----------------------------------------------------
+    $use-web-skin-img-dir: true !global;
+
+
+// ----------------------------------------------------
+//   Web Skin Core API
+// ----------------------------------------------------
+    @import 'core/api';
+
+
+// ----------------------------------------------------
+//   Dropdown Submenu Atoms
+// ----------------------------------------------------
+    @import 'peripherals/dropdown-submenu/atoms/dropdown-submenu-config';
+
+
+// ----------------------------------------------------
+//   Dropdown Submenu Components
+// ----------------------------------------------------
+    @import 'peripherals/dropdown-submenu/dropdown-submenu-base';

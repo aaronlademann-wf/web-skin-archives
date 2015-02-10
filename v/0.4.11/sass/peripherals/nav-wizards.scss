@@ -1,0 +1,37 @@
+/*!
+ * -------------------------------------
+ * Web Skin Peripheral CSS for Wizard Navigation
+ * ---
+ * Requires
+ *   web-skin Core CSS
+ *   web-skin Plugin JS
+ * ---
+ * Copyright 2014 Workiva
+ * -------------------------------------
+ */
+
+
+// ----------------------------------------------------
+//   WEB SKIN MODULES CAN USE THIS
+// ----------------------------------------------------
+    $use-web-skin-img-dir: true !global;
+
+
+// ----------------------------------------------------
+//   Web Skin Core API
+// ----------------------------------------------------
+    @import 'core/api';
+
+
+// ----------------------------------------------------
+//   Wizard Navigation Atoms
+// ----------------------------------------------------
+    @import 'peripherals/nav-wizards/atoms/nav-wizards-config';
+    @import 'peripherals/nav-wizards/atoms/nav-wizards-helpers';
+
+
+// ----------------------------------------------------
+//   Wizard Navigation Components
+// ----------------------------------------------------
+    @import 'peripherals/nav-wizards/nav-wizard-base';
+    @import 'peripherals/nav-wizards/navbar-wizard';

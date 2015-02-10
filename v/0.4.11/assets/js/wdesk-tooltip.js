@@ -505,7 +505,7 @@ function($, _) {
         }
 
         this.disableKeyboardNavigation();
-        if (/(click|manual)/.test(o.trigger)) {
+        if (/click/.test(o.trigger)) {
             this.$element.focus();
         }
 

@@ -242,17 +242,21 @@ function($) {
                 return;
             }
 
-            // Collapse all currently expanded siblings
-            if (this.ancestorCollapses.length) {
+            // Collapse all currently expanded siblings IF parent option is set
+            if (this.ancestorCollapses.length && o.parent) {
                 var parentCollapse = this.ancestorCollapses[0];
                 // Iterate through the parent's descendants to find siblings
                 var descendantCollapse, descendantParentCollapse;
                 for (var i=0, len=parentCollapse.shownDescendantCollapses.length; i<len; i++) {
                     descendantCollapse = parentCollapse.shownDescendantCollapses[i];
-                    descendantParentCollapse = descendantCollapse.ancestorCollapses[0];
-                    // Check to see if the descendant is a direct child of the parent, and thus, a sibling
-                    if (descendantParentCollapse === parentCollapse) {
-                        descendantCollapse.hide();
+                    // allow for an undefined descendantCollapse.ancestorCollapses array,
+                    // as the loop counter can get fouled in MSIE8
+                    if (descendantCollapse && descendantCollapse.ancestorCollapses && descendantCollapse.ancestorCollapses[0]) {
+                        descendantParentCollapse = descendantCollapse.ancestorCollapses[0];
+                        // Check to see if the descendant is a direct child of the parent, and thus, a sibling
+                        if (descendantParentCollapse === parentCollapse) {
+                            descendantCollapse.hide();
+                        }
                     }
                 }
             }
@@ -302,9 +306,9 @@ function($) {
                     .removeClass('collapsing')
                     .addClass('collapse in')
                     .attr({
-                        'tabindex': '0',
                         'aria-hidden': false
                     })
+                    .removeAttr('tabindex')
                     [dimension]('auto');
 
                 that.transitioning = 0;
@@ -448,7 +452,7 @@ function($) {
             var $collapseParent = this.$element.closest('[role=tablist], [role=tree]');
 
             if ($collapseParent.length) {
-                if (!/(32|37|38|39|40)/.test(key)) {
+                if (!/(13|32|37|38|39|40)/.test(key)) {
                     return;
                 }
 
@@ -463,7 +467,7 @@ function($) {
                 index = $items.index($(document.activeElement));
                 $currentItem = $items.eq(index);
 
-                if (key == 32) {
+                if (key == 32 || key == 13) {
                     if ($currentItem.is('.disabled', ':disabled')) {
                         return;
                     }

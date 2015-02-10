@@ -1,0 +1,40 @@
+/*!
+ * -------------------------------------
+ * Web Skin Peripheral CSS for Comments Components
+ * ---
+ * Requires
+ *   web-skin Core CSS
+ *   web-skin Plugin JS
+ * ---
+ * Copyright 2014 Workiva
+ * -------------------------------------
+ */
+
+
+// ----------------------------------------------------
+//   WEB SKIN MODULES CAN USE THIS
+// ----------------------------------------------------
+    $use-web-skin-img-dir: true !global;
+
+
+// ----------------------------------------------------
+//   Web Skin Core API
+// ----------------------------------------------------
+    @import 'core/api';
+
+
+// ----------------------------------------------------
+//   Comment Atoms
+// ----------------------------------------------------
+    @import 'peripherals/comments/atoms/comments-config';
+    @import 'peripherals/comments/atoms/comments-panel-config';
+    @import 'peripherals/comments/atoms/comments-popover-config';
+    @import 'peripherals/comments/atoms/comments-helpers';
+
+
+// ----------------------------------------------------
+//   Comment Components
+// ----------------------------------------------------
+    @import 'peripherals/comments/comments-panels';
+    @import 'peripherals/comments/comments-popovers';
+    @import 'peripherals/comments/comments-xy-annotations';

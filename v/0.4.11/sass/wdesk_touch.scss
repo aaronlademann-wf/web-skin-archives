@@ -1,78 +1,36 @@
 /*!
- * Wdesk's Web Skin for Touch UI
- *
- * Copyright 2014 WebFilings, LLC
- *
+ * -------------------------------------
+ * Web Skin Core CSS for Touch UI
+ * ---
+ * MSIE Support: 10+
+ * Touch UI Support: true
+ * ---
+ * Copyright 2014 Workiva
+ * -------------------------------------
  */
-$includeNormalizeStyles: true;
-$gibsonWebfontSupport: true;
 
-// Core constants
-// NOTE: This compiled result is built for touch-only UI
-@import "_constants/_support_touch.scss";
-@import "_constants/_wdesk-manifest.scss";
 
-// Font Face Embedding
-@import "_fonts.scss";
+// ----------------------------------------------------
+//   Localized Support
+// ----------------------------------------------------
+    @import "core/api/config/support/touch";
 
-// Print
-@import "_print.scss";
 
-// Core CSS
-@import "_foundation.scss";
-@import "_scaffolding.scss";
-@import "_type.scss";
-@import "_code.scss";
-@import "_grid.scss";
-@import "_tables.scss";
-@import "_forms.scss";
-@import "_buttons.scss";
+// ----------------------------------------------------
+//   Core Module
+// ----------------------------------------------------
+    @import "module-core";
 
-// Components: common
-@import "_component-animations.scss";
-@import "_brand-marks.scss";
-@import "_icons.scss";
-@import "_dropdowns.scss";
-@import "_wells.scss";
-@import "_close.scss";
-@import "_comments-common.scss";
 
-// Components: Nav
-@import "_navs.scss";
-@import "_navbar.scss";
-@import "_button-groups.scss";
-@import "_breadcrumbs.scss";
-@import "_pagination.scss";
-@import "_pager.scss";
-@import "_page-indicators.scss";
-
-// Components: Dialogs
-@import "_dialogs.scss";
-@import "_modals.scss";
-@import "_tooltip.scss";
-@import "_tooltip-navs.scss";
-@import "_popovers.scss";
-@import "_popovers-notes-comments.scss";
-@import "_alerts.scss";
-@import "_datepicker.scss";
-
-// Components: Misc
-@import "_list-group.scss";
-@import "_panels.scss";
-@import "_panels-notes-comments.scss";
-@import "_panels-global-jobs.scss";
-@import "_thumbnails.scss";
-@import "_media.scss";
-@import "_labels.scss";
-@import "_badges.scss";
-@import "_progress-bars.scss";
-@import "_progress-app-loading.scss";
-@import "_progress-spinners.scss";
-@import "_jumbotron.scss";
-@import "_carousel.scss";
-
-// Responsive utilities
-@import "_responsive.scss";
-
-// Utility classes
-@import "_utilities.scss"; // Has to be last to override when necessary
+// ----------------------------------------------------
+//   Browser Support Check
+// ----------------------------------------------------
+    @if not $ie-support {
+        @error "$touch-only should be true for wdesk_touch.scss.";
+    }
+    @if not $ie-support {
+        @error "MSIE should be supported for wdesk_touch.scss.";
+    }
+    @if $min-ie-supported < 10 {
+        @error "MSIE 9 and below should not be supported for wdesk_touch.scss.";
+    }

@@ -1,61 +1,63 @@
 /**
- * Web Skin Documentation JS v0.4.11
+ * Web Skin Documentation JS v0.4.24
  *
  * Do not ever include this in your client application
  * These scripts are only used in the documentation.
  *
- * Copyright 2014 Workiva - formerly WebFilings <https://github.com/WebFilings>
+ * Copyright 2015 Workiva - formerly WebFilings <https://github.com/Workiva>
  *
  */
 /*
     JavaScript utility functions used for Web Skin documentation
 */
 
-$.getQueryVariable = function(variable) {
-    if (window.location.search) {
-        var query = window.location.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            if (decodeURIComponent(pair[0]) == variable) {
-                return decodeURIComponent(pair[1]);
+!function ($) { $(function() {
+    $.getQueryVariable = function(variable) {
+        if (window.location.search) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
             }
-        }
-    } else {
-        if (window.history.state) {
+        } else if (window.history.state) {
             var queries = window.history.state;
             for (var query in queries) {
                 if (query == variable) {
                     return decodeURIComponent(queries[query]).toString();
                 }
             }
+        } else {
+            return null;
         }
+        // console.log('Query variable %s not found', variable);
     }
-    // console.log('Query variable %s not found', variable);
-}
 
-$.fn.serializeObject = function () {
+    $.fn.serializeObject = function () {
 
-    var o = {};
+        var o = {};
 
-    if (typeof _ != 'function') {
-        throw new Error('$.fn.serializeObject requires lodash.underscore.js');
-    } else {
-        var a = this.serializeArray();
-        $.each(a, function() {
-            if (o[this.name]) {
-                if (!o[this.name].push) {
-                    o[this.name] = [o[this.name]];
+        if (typeof _ != 'function') {
+            throw new Error('$.fn.serializeObject requires lodash.underscore.js');
+        } else {
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
                 }
-                o[this.name].push(this.value || '');
-            } else {
-                o[this.name] = this.value || '';
-            }
-        });
-    }
+            });
+        }
 
-    return o;
-};
+        return o;
+    };
+});}(jQuery);
 
 var compareObjects = function (obj1, obj2, _Q) {
     _Q = (_Q == undefined)? new Array : _Q;
@@ -2563,6 +2565,7 @@ var scrollHereOffset = 0;
     var $datepickerSection = $('#datepicker-section');
     var $helpersSection = $('#helper-classes-section');
     var $colorPaletteSection = $('#color-palette-section');
+    var $extendingSassSection = $('#extending-with-sass-section');
     var $inputmaskSection = $('#inputmask-section');
 
     var queryStringAdded = false;
@@ -2711,6 +2714,28 @@ var scrollHereOffset = 0;
                 console.log('ERROR: function scrollHere(' + href + ', ' + offset + '): No elem with id = ' + target + ' found.');
             }
         }
+
+        function selectAllNodeText($elems) {
+            return $elems.each(function() {
+                $(this).on('click', function(event) {
+                    var range,
+                        sel,
+                        node = event.target;
+
+                    range = document.createRange();
+                    range.selectNodeContents(node);
+
+                    sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                });
+            });
+        }
+
+        // data-api for selectAllNodeText
+        $(document).on('click.wdesk.selectAllNodeText', '[data-select-node-text-on-click]', function(event) {
+            selectAllNodeText($(event.target));
+        });
     // -------------------------
 
     //----------------------------------------------
@@ -2778,14 +2803,39 @@ var scrollHereOffset = 0;
             };
 
             var _setStoredItem = function(key, value) {
+                var gaScriptAsyncDelay = 1000;
+                var gaScriptAsyncDelayMsg = 'Google Analytics async still has not completed after a ' + gaScriptAsyncDelay + 'ms delay... no docs options tracked.';
+
                 // Update GA custom dimensions/metrics
                 if(key !== optsStored) {
-                    _trackStoredOption(key, value);
+                    // try to fix async timing issues on pages
+                    // that don't take long to load content (like landing page)
+                    if (typeof ga !== 'undefined') {
+                        _trackStoredOption(key, value);
+                    } else {
+                        setTimeout(function() {
+                            if (typeof ga !== 'undefined') {
+                                _trackStoredOption(key, value);
+                            } else {
+                                console.log(gaScriptAsyncDelayMsg);
+                            }
+                        }, gaScriptAsyncDelay);
+                    }
                 }
 
                 // Send GA event ONLY if something has changed
                 if(value !== _getStoredItem(key)) {
-                    _trackStoredOptionEvent(key, value);
+                    if (typeof ga !== 'undefined') {
+                        _trackStoredOptionEvent(key, value);
+                    } else {
+                        setTimeout(function() {
+                            if (typeof ga !== 'undefined') {
+                                _trackStoredOptionEvent(key, value);
+                            } else {
+                                console.log(gaScriptAsyncDelayMsg);
+                            }
+                        }, gaScriptAsyncDelay);
+                    }
                 }
 
                 $.localStorage.setItem(key, value);
@@ -3257,17 +3307,6 @@ var scrollHereOffset = 0;
             // HOOK UP LONG-LIVING CLICK EVENTS
             // -------------------------
                 $document
-                    // Initialize hitarea focus control (Don't keep focus on any elem that was just clicked)
-                    .on('click', '.btn, .hitarea', function (e) {
-                        var $el = e && $(e.target);
-
-                        // if it is a toggle, focus must remain on the element in
-                        // order for keyboard navigation / accessibility to work.
-                        var isToggle = $el.data('toggle');
-                        if (!isToggle) {
-                            $el && $el.blur();
-                        }
-                    })
                     // prevent submission of forms in docs examples
                     .on('click', '.wdesk-docs-example [type=submit]', function (e) {
                         e.preventDefault();
@@ -3896,22 +3935,85 @@ var scrollHereOffset = 0;
 
             // } // END if($tableSection)
 
-            if($colorPaletteSection.length > 0) {
-                // var $swatchCells = $colorPaletteSection.find('.table-responsive .scss-output');
-                // var pseudoStyle, swatchHex;
+            function makePseudoContentSelectable($elems, pseudoElemSelector) {
+                pseudoElemSelector = pseudoElemSelector || ':before';
 
-                // // copy the pseudo content to the cell itself so the user can copy it
-                // $swatchCells.click(function(e) {
-                //     try {
-                //         pseudoStyle = getComputedStyle($(this)[0], ':before');
-                //         if(typeof pseudoStyle == 'object') {
-                //             swatchHex = pseudoStyle.content.replace(/["']/g, "");
-                //             $(this).html(swatchHex);
-                //         }
-                //     } catch(err) {
-                //         // browser doesn't support getComputedStyle()
-                //     }
-                // });
+                var pseudoStyle,
+                    swatchHex,
+                    computedStyleSupport = true;
+
+                $elems.each(function() {
+                    try {
+                        pseudoStyle = window.getComputedStyle($(this)[0], pseudoElemSelector);
+                    } catch(err) {
+                        // browser doesn't support getComputedStyle()
+                        computedStyleSupport = false;
+                    }
+
+                    // if browser supports computed styles
+                    // copy the CSS :before content value into a data attribute
+                    // on each individual cell
+                    if (computedStyleSupport) {
+                        swatchHex = pseudoStyle.getPropertyValue('content').replace(/["']/g, '');
+                        $(this).attr('data-pseudo-content', swatchHex);
+                    }
+                });
+
+                // if browser supports computed styles
+                if (computedStyleSupport) {
+                    // Repaint the DOM repaint all at once
+                    $elems
+                        .addClass('js-content-replaced')
+                        .attr('title', 'click to select the elem value')
+                        .html(function() {
+                            return $(this).attr('data-pseudo-content') + '\n<div class="clearfix"></div>\n' + $(this).html();
+                        });
+
+                    // Wire up click to select all text
+                    selectAllNodeText($elems);
+                }
+            }
+
+            function colorReferenceInfo(flexConstant, sassApiVar) {
+                return  '<table class="table table-bordered">\n' +
+                        '    <tbody>\n' +
+                        '        <tr>\n' +
+                        '           <th>FLEX:</th>\n' +
+                        '           <td data-select-node-text-on-click><code>' + flexConstant + '</code></td>\n' +
+                        '        </tr>\n' +
+                        '        <tr>\n' +
+                        '           <th>SCSS:</th>\n' +
+                        '           <td data-select-node-text-on-click><code>' + sassApiVar + '</code></td>\n' +
+                        '        </tr>\n' +
+                        '    </tbody>\n' +
+                        '</table>\n';
+            }
+
+            if ($extendingSassSection.length > 0) {
+                makePseudoContentSelectable($extendingSassSection.find('.swatch.scss-output'), ':before');
+            }
+
+            if ($colorPaletteSection.length > 0) {
+                var $colorCells = $colorPaletteSection.find('td.scss-output');
+                makePseudoContentSelectable($colorCells, ':before');
+
+                // show the flex constant / sass api var in a tooltip on hover
+                $colorCells.each(function() {
+                    var flexConstant = $(this).attr('data-flex-constant');
+                    var sassApiVar = $(this).attr('data-sass-api-var');
+                    var cellValue = $(this).attr('data-pseudo-content');
+
+                    $(this).find('> .icon-info-sign')
+                        .popover({
+                            container: 'body',
+                            html: true,
+                            title: function() {
+                                return 'Using <code>' + cellValue  + '</code> in Wdesk apps';
+                            },
+                            content: colorReferenceInfo(flexConstant, sassApiVar),
+                            template: '<div role="tooltip" class="popover popover-tip"><div class="arrow" aria-hidden="true"></div><div class="inner"><h3 class="title"></h3><div class="content"></div></div></div>'
+                        });
+                });
             }
 
             //----------------------------------------------
@@ -4010,6 +4112,43 @@ var scrollHereOffset = 0;
             //----------------------------------------------
             //+ PANEL NOTES / COMMENTS DEMOS
             //----------------------------------------------
+
+            // bind cancel/affirm behavior to modals and their comments
+            function cancelPanelComment($modal) {
+                var $confModal = $modal;
+                var $thread = $confModal.closest('.panel-comments-thread');
+                var $comment = $confModal.closest('.comment');
+                var $textarea = $comment.find('textarea');
+                var initialTextareaVal = $textarea.val();
+                var $footer = $comment.find('.comment-footer');
+
+                // remove the value and exit the editing task
+                $textarea
+                    .css('height', '60px')
+                    .val(initialTextareaVal)
+                    .trigger('change') // update flextext
+                    .prop('readonly', true)
+                    .blur();
+
+                if($comment.is('.comment-reply')) {
+                    // if it was a reply - hide it
+                    $comment.removeClass('show');
+                    $textarea
+                        .prop('readonly', false)
+                        .val(null);
+
+                    $textarea.closest('.flex-text-wrap').find('span').html('');
+                }
+
+                if($comment.is('.comment-new')) {
+                    $thread.remove();
+                } else {
+                    $thread.removeClass('comment-editing');
+                    $comment.removeClass('comment-editing');
+                    $footer.addClass('hide');
+                }
+            }
+
             if($panelSection.length > 0) {
 
                 var $panelCommentThreads = $('.panel-comments-thread');
@@ -4189,52 +4328,50 @@ var scrollHereOffset = 0;
                         $footer.removeClass('hide');
                     });
 
-                // bind cancel/affirm behavior to modals and their comments
+                var refocusComment = false;
                 $panelComments.find('.modal')
-                    .on('shown.wdesk.modal', function () {
+                    .on('show.wdesk.modal', function(event) {
                         var $confModal = $(this);
-                        var $thread = $confModal.closest('.panel-comments-thread');
                         var $comment = $confModal.closest('.comment');
                         var $textarea = $comment.find('textarea');
-                        var initialTextareaVal = $textarea.val();
-                        var $footer = $comment.find('.comment-footer');
-                        var $confCancelBtn;
-                        var $confAffirmBtn;
 
-                        $confCancelBtn = $(this).find('[data-cancel]');
-                        $confAffirmBtn = $(this).find('[data-affirm]');
+                        if ($textarea.val() === '') {
+                            // it is an empty comment,
+                            // prevent confirmation modal from opening
+                            event.preventDefault();
+
+                            // and proceed with the logic as though
+                            // the confirmation modal already appeared
+                            // to immediately exit from the editing
+                            // since the comment/reply was empty
+                            cancelPanelComment($confModal);
+                        }
+                    })
+                    .on('shown.wdesk.modal', function(event) {
+                        var $confModal = $(this);
+                        var $comment = $confModal.closest('.comment');
+                        var $textarea = $comment.find('textarea');
+                        var $confCancelBtn = $confModal.find('[data-cancel]');
+                        var $confAffirmBtn = $confModal.find('[data-affirm]');
 
                         $confCancelBtn.click(function () {
                             // leave the value as is, and return the user to their editing task
-                            $textarea.focus();
+                            refocusComment = true;
                         });
                         $confAffirmBtn.click(function () {
-                            // remove the value and exit the editing task
-                            $textarea
-                                .css('height', '60px')
-                                .val(initialTextareaVal)
-                                .trigger('change') // update flextext
-                                .prop('readonly', true)
-                                .blur();
-
-                            if($comment.is('.comment-reply')) {
-                                // if it was a reply - hide it
-                                $comment.removeClass('show');
-                                $textarea
-                                    .prop('readonly', false)
-                                    .val(null);
-
-                                $textarea.closest('.flex-text-wrap').find('span').html('');
-                            }
-
-                            if($comment.is('.comment-new')) {
-                                $thread.remove();
-                            } else {
-                                $thread.removeClass('comment-editing');
-                                $comment.removeClass('comment-editing');
-                                $footer.addClass('hide');
-                            }
+                            refocusComment = false;
+                            cancelPanelComment($confModal);
                         });
+                    })
+                    .on('hidden.wdesk.modal', function(event) {
+                        var $confModal = $(this);
+                        var $comment = $confModal.closest('.comment');
+                        var $textarea = $comment.find('textarea');
+
+                        if (refocusComment) {
+                            // leave the value as is, and return the user to their editing task
+                            $textarea.focus();
+                        }
                     });
 
 

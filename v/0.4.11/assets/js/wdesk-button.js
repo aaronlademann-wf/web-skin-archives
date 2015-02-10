@@ -33,9 +33,6 @@ function($) {
     if (typeof $.client === 'undefined') {
         throw new Error('wdesk-button.js requires Web Skin\'s libs.js');
     }
-    if (typeof Modernizr === 'undefined') {
-        throw new Error('wdesk-button.js requires Web Skin\'s custom version of Modernizr');
-    }
 
     Button.DEFAULTS = {
         activeClass: 'active',
@@ -146,15 +143,17 @@ function($) {
         function check($element) {
             $element
                 .prop('checked', true)
-                .addClass(toggleProp)
-                .attr('checked', true);
+                .addClass(toggleProp);
         }
 
         function uncheck($element) {
             $element
                 .prop('checked', false)
-                .removeClass(toggleProp)
-                .removeAttr(toggleProp);
+                .removeClass(toggleProp);
+
+            if (isLtMSIE9 || $.unitTest) {
+                $element.removeAttr('checked');
+            }
         }
 
         function _toggleProp() {
@@ -255,8 +254,8 @@ function($) {
 
     var old = $.fn.button;
     var _client = $.client;
-    var isLtMSIE9 = _client.browser === 'IE' && parseInt(_client.version) < 9;
-    var isTouch = Modernizr.touch;
+    var isLtMSIE9 = (_client.browser === 'IE' && parseInt(_client.version) < 9) || $.mockMSIE8;
+    var isTouch = $.unitTest ? $.mockTouch : 'ontouchstart' in document.documentElement;
 
     $.fn.button = function (option) {
         return this.each(function () {
@@ -362,43 +361,58 @@ function($) {
     //   `:checked` psuedo-selector
     //
     var cboxShimEventNamespace  = '.wdesk.checked.data-api';
-    var cboxSelectors           = '.checkbox-switch, .checkbox, .checkbox-inline, .radio, .radio-inline';
+    var radioSelectors          = '.radio, .radio-inline';
+    var cboxSelectors           = '.checkbox-switch, .checkbox, .checkbox-inline';
+    var radioAndCboxSelectors   = radioSelectors + ', ' + cboxSelectors;
+    var cboxInputs              = '.checkbox input, .checkbox-inline input';
     var cboxEvent               = isTouch ? 'mouseenter' : 'click';
 
-    if (isTouch || isLtMSIE9 || $.unitTest === true) {
-        $(document).on(cboxEvent + cboxShimEventNamespace, cboxSelectors, function (event) {
+    if (isTouch || isLtMSIE9 || $.unitTest) {
+        $(document).on(cboxEvent + cboxShimEventNamespace, radioAndCboxSelectors, function (event) {
             var $target = $(this);
+            var triggerChange = false;
 
             if($target) {
-                $target.data('clicked', false);
                 event.stopPropagation();
 
                 if(!$target.is('input')) {
+                    triggerChange = true;
                     $target = $target.find('input');
-                    $target
-                        .data('clicked', true)
-                        .trigger('change');
+
+                    $target.data('clicked', true);
+                } else {
+                    $target.data('clicked', false);
                 }
 
                 $target
                     .data('prop', 'checked')
                     .button('toggleProp')
                     .focus();
+
+                if (triggerChange) {
+                    $target.trigger('change');
+                }
             }
         });
 
         // SHIM Indeterminate State Styling
-        $(document).on('change' + cboxShimEventNamespace, '.checkbox input, .checkbox-inline input', function (event) {
+        $(document).on('change' + cboxShimEventNamespace, cboxInputs, function (event) {
             var $this = $(this);
             var data = $this.data();
 
-            if($this.prop('indeterminate') === true) {
+            if ($this.prop('indeterminate') === true) {
                 $this.addClass('indeterminate');
             } else {
                 if(!data.clicked) {
                     $this.trigger('click');
                 }
                 $this.removeClass('indeterminate');
+            }
+
+            if ($this.prop('checked')) {
+                $this.addClass('checked');
+            } else {
+                $this.removeClass('checked');
             }
 
             $this.focus();

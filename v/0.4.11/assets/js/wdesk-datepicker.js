@@ -84,15 +84,25 @@ function ($) {
         this.element = $(element);
         this.isShown = false;
         this.isInline = false;
-        this.isInput = this.element.is('input');
+        this.isInput = this.element.is('.form-control');
         this.component = this.element.is('.date') ? this.element.find('.input-group-addon, .btn') : false;
-        this.hasInput = this.component && this.element.find('input').length;
-        this.focusElem = this.isInput ? this.element : (this.hasInput ? this.element.find('input') : false);
-        if(this.component && this.component.length === 0) {
+        this.hasInput = this.component && this.element.find('.form-control').length;
+        this.focusElem = this.isInput ? this.element : (this.hasInput ? this.element.find('.form-control') : (this.component ? this.component : this.element));
+
+        if (!this.focusElem[0]) {
+            this.focusElem = this.element;
+        }
+        if (this.component && this.component.length === 0) {
             this.component = false;
         }
 
         this.picker = $(DPGlobal.template);
+
+        this.isDateRange = this.element.is('input-daterange');
+        this.$rangeContainer = this.element.is('.input-daterange') ? this.element : this.element.closest('.input-daterange');
+        this.isDateRange = this.$rangeContainer.length > 0;
+        this.this_dateRange = this.isDateRange && this.$rangeContainer.data('wdesk.datepicker');
+
         this._buildEvents();
         this._attachEvents();
 
@@ -284,7 +294,9 @@ function ($) {
                     }]
                 ];
             } else if(this.component && this.hasInput) { // component: input + button
-                var $input = this.element.find('input');
+                var $input = this.element.find('.form-control');
+                var $addon = this.element.find('.input-group-addon');
+
                 this._events = [
                     // For components that are not readonly, allow keyboard nav
                     [$input, {
@@ -292,13 +304,17 @@ function ($) {
                         keyup:   $.proxy(function () { this.update() }, this),
                         keydown: $.proxy(this.keydown, this)
                     }],
-                    [this.component, {
-                        focus:   $.proxy(function () { this.show(this.component) }, this),
-                        click:   $.proxy(function () { this.show(this.component) }, this)
+                    [$addon, {
+                        click:   $.proxy(function () { $input.focus() }, this)
                     }]
                 ];
-            } else if(this.element.is('div')) {  // inline datepicker
+            } else if(this.element.is('[data-provide="datepicker-inline"]')) {  // inline datepicker
                 this.isInline = true;
+                this._events = [
+                    [this.picker, {
+                        click: $.proxy(this.click, this)
+                    }]
+                ];
             } else {
                 this._events = [
                     [this.element, {
@@ -308,27 +324,43 @@ function ($) {
                 ];
             }
 
-            this._secondaryEvents = [
-                [this.picker, {
-                    click: $.proxy(this.click, this)
-                }],
-                [$(window), {
-                    resize: $.proxy(this.place, this)
-                }],
-                [$(document), {
-                    'mousedown touchstart': $.proxy(function (e) {
-                        // Clicked outside the datepicker, hide it
-                        if(!(
-                            this.element.is(e.target) ||
-                            this.element.find(e.target).length ||
-                            this.picker.is(e.target) ||
-                            this.picker.find(e.target).length
-                        )) {
-                            this.hide('exit');
-                        }
-                    }, this)
-                }]
-            ];
+            if (!this.isInline) {
+                this._secondaryEvents = [
+                    [this.picker, {
+                        click: $.proxy(this.click, this)
+                    }],
+                    [$(window), {
+                        resize: $.proxy(this.place, this)
+                    }],
+                    [$(document), {
+                        'click': $.proxy(function (e) {
+                            var $target = $(e.target);
+                            var isAnotherDatepickerInput = $target.data('wdesk.datepicker') && $target.is('.form-control');
+                            // Clicked outside the datepicker, hide it
+                            if(!(
+                                this.element.is(e.target) ||
+                                this.element.find(e.target).length ||
+                                this.picker.is(e.target) ||
+                                this.picker.find(e.target).length
+                            )) {
+                                if (isAnotherDatepickerInput) {
+                                    var $prevDp = $(document.body).data('previousDatepicker');
+
+                                    if ($prevDp) {
+                                        if (this.isDateRange && $prevDp.isDateRange) {
+                                            $prevDp.hide('mutex_range');
+                                        } else {
+                                            $prevDp.hide('mutex');
+                                        }
+                                    }
+                                } else {
+                                    this.hide('exit');
+                                }
+                            }
+                        }, this)
+                    }]
+                ];
+            }
         },
 
         _attachEvents: function () {
@@ -367,57 +399,209 @@ function ($) {
             this.element.trigger(namespacedEvent);
         },
 
+        setDateRangeDom: function() {
+            this.$rangeContainer = this.element.is('.input-daterange') ? this.element : this.element.closest('.input-daterange');
+            this.isDateRange = this.$rangeContainer.length > 0;
+            this.this_dateRange = this.isDateRange && this.$rangeContainer.data('wdesk.datepicker');
+        },
+
+        isStartDateOfRange: function() {
+            this.setDateRangeDom();
+
+            if (this.isDateRange && this.this_dateRange && this.focusElem.is($(this.this_dateRange.inputs[0]))) {
+                // console.log('isStartDateOfRange', this);
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        isEndDateOfRange: function() {
+            this.setDateRangeDom();
+
+            if (this.isDateRange && this.this_dateRange && this.focusElem.is($(this.this_dateRange.inputs[1]))) {
+                // console.log('isEndDateOfRange', this);
+                return true;
+            } else {
+                return false;
+            }
+        },
+
+        enableBodyScroll: function() {
+            if (!this.isShown || !this.picker.is(':visible')) {
+                $(document.body).removeClass('modal-open');
+            }
+        },
+
+        disableBodyScroll: function() {
+            if (this.isShown || this.picker.is(':visible')) {
+                $(document.body).addClass('modal-open');
+            }
+        },
+
         show: function (relatedTarget) {
             if(this.isShown) {
+                // console.log('show return early');
+                this.disableBodyScroll();
                 return;
             }
-            this.isShown = true;
+
             if(!this.isInline) {
                 this.picker.appendTo('body');
-                $(document.body).addClass('modal-open'); // disabled scrolling
+                this.disableBodyScroll();
 
-                // add focus class to input to shore up the difference in
-                // interaction between focusing the actual input and
-                // triggering the picker with another portion of the component
-                this.focusElem = this.element && (this.element.is('input') ? this.element : this.element.find('input'));
-                this.focusElem.addClass('focus');
+                if (this.component || (!this.isInput && (this.focusElem === this.element))) {
+                    if (this.focusElem[0] !== document.activeElement) {
+                        this.refocus(true); // actually focus the input if it wasn't already
+                        return; // the refocus will trigger show again, so return here to prevent show event from triggering twice
+                    }
+                }
             }
+
             this.picker.addClass('in');
+            this.isShown = true;
             this.height = this.component ? this.component.outerHeight() : this.element.outerHeight();
             this.place();
             this._attachSecondaryEvents();
+            this._registerMutex();
             this._trigger('show');
         },
 
         focusNext: function ($rangeContainer, this_dateRange) {
-            var $firstInput = $(this_dateRange.inputs[0]);
-            var $secondInput = $(this_dateRange.inputs[1]);
-            // its a range, and they either tabbed or hit return to close...
-            // so if the first date was just chosen, and the second date is still blank... focus it automatically
-            if(!$secondInput.val()) {
-                $secondInput.focus();
+            var secondInput = this_dateRange.inputs[1];
+
+            // its a range, and they picked a date for startDate
+            // so if the second date is still blank... focus it
+            // automagically to make it easier for the user to
+            // pick two dates in-succession
+            if(!$(secondInput).val()) {
+                // console.log('focusNext', this.isShown);
+                $(secondInput).focus();
             }
         },
 
-        hide: function (method) {
-            if(!this.isShown || this.isInline || !this.picker.is(':visible')) {
-                return;
-            }
-            this.isShown = false;
+        focusPrev: function ($rangeContainer, this_dateRange) {
+            var firstInput = this_dateRange.inputs[0];
 
-            method = method || null;
-            $(document.body).removeClass('modal-open'); // re-enable scrolling
-            this.focusElem && this.focusElem.removeClass('focus');
+            $(firstInput).focus();
+        },
 
-            var $rangeContainer = this.element.is('.input-daterange') ? this.element : this.element.closest('.input-daterange');
-            var isDateRange = $rangeContainer.length > 0;
-            var this_dateRange = $rangeContainer.data('wdesk.datepicker');
-            if((method && method !== 'exit') && isDateRange) {
-                var wasFirstInput = this.focusElem.is($(this_dateRange.inputs[0]));
-                if(wasFirstInput) {
-                    this.focusNext($rangeContainer, this_dateRange);
+        refocus: function(shown) {
+            if (!this.isInline) {
+                // re-focus the elem that triggered the datepicker
+                // without re-opening the datepicker
+                this.focusElem &&
+                this.focusElem
+                    .data('refocused', true)
+                    .focus();
+
+                this.isShown = shown;
+
+                if (this.isShown) {
+                    this.disableBodyScroll();
+                } else {
+                    this.enableBodyScroll();
                 }
             }
+        },
+
+        dateRangePickerHide: function(method, event) {
+            event = event || null;
+
+            var preventTabDefault = true;
+            var $dateRangeStart = $(this.this_dateRange.inputs[0]);
+            var $dateRangeEnd = $(this.this_dateRange.inputs[1]);
+
+            if (this.isStartDateOfRange()) {
+                // ----------------------------------------------------
+                //   START DATE HAS FOCUS
+                // ----------------------------------------------------
+                if (method !== 'tab_shift') {
+                    //
+                    // shift + tab means focus previous item - not the next one
+                    // so only execute this logic if that is not the case
+                    //
+                    if (!$dateRangeEnd.val()) {
+                        // end date value is empty... auto-focus it
+                        this.focusNext(this.$rangeContainer, this.this_dateRange);
+                        $dateRangeStart.data('refocused', false);
+                    } else {
+                        if (method !== 'tab') {
+                            this.refocus(this.isShown);
+                        } else {
+                            //
+                            // the endDate has a value, but the user
+                            // pressed the tab key, so we should focus
+                            // that field even though they did not select
+                            // a new date.
+                            //
+                            preventTabDefault = false;
+                            $dateRangeStart.data('refocused', false);
+                            $dateRangeEnd.data('refocused', false);
+                        }
+                    }
+                } else {
+                    //
+                    // shift + tab means we should not prevent default
+                    // so that the natural tab order in the layout is preserved
+                    //
+                    preventTabDefault = false;
+                }
+            } else {
+                // ----------------------------------------------------
+                //   END DATE HAS FOCUS
+                // ----------------------------------------------------
+                if (method === 'tab_shift') {
+                    //
+                    // shift + tab means focus previous item - not the next one
+                    // in this case, that means focus the startDate input
+                    //
+                    this.focusPrev(this.$rangeContainer, this.this_dateRange);
+                    $dateRangeEnd.data('refocused', false);
+                } else if (method === 'tab') {
+                    //
+                    // do not prevent default so that tab order in layout
+                    // is preserved regardless of datepicker responsibilities
+                    //
+                    preventTabDefault = false;
+                    $dateRangeStart.data('refocused', false);
+                    $dateRangeEnd.data('refocused', false);
+                } else {
+                    //
+                    // as long as method is not tab, simply refocus the endDate
+                    // if it was a tab - we should not refocus so that the natural
+                    // tab order in the layout is preserved
+                    //
+                    if (method !== 'mutex_range') {
+                        this.refocus(this.isShown);
+                    } else {
+                        //
+                        // the endDate was focused, and the startDate was clicked
+                        // so do not re-focus the endDate
+                        //
+                    }
+                }
+            }
+
+            if (preventTabDefault) {
+                $dateRangeStart.data('refocused', false);
+                $dateRangeEnd.data('refocused', false);
+                event && event.preventDefault();
+            }
+        },
+
+        hide: function (method, event) {
+            // console.log('hide', method, this.isShown);
+            event = event || null;
+            this.enableBodyScroll();
+            this.isDateRange = this.isStartDateOfRange() || this.isEndDateOfRange();
+            var shouldRefocus = true;
+
+            if(!this.isShown || this.isInline) {
+                return;
+            }
+
+            method = method || null;
 
             this.picker
                 .removeClass('in')
@@ -427,14 +611,24 @@ function ($) {
             this.viewMode = this.o.startView;
             this.showMode();
 
-            if(this.o.forceParse &&
-                (
-                    this.isInput && this.element.val() ||
-                    this.hasInput && this.element.find('input').val()
-                )
-            ) {
+            if(this.valueShouldBeSetOnHide()) {
                 this.setValue();
             }
+
+            if (method !== 'exit') {
+                if (this.isDateRange) {
+                    this.dateRangePickerHide(method, event);
+                    shouldRefocus = false;
+                }
+            }
+
+            if (method === 'mutex') {
+                shouldRefocus = false;
+            }
+
+            shouldRefocus && this.refocus(false);
+
+            this.isShown = false;
             this._trigger('hide');
         },
 
@@ -450,6 +644,20 @@ function ($) {
             if(!this.isInput) {
                 this.element.removeData('date');
             }
+        },
+
+        _registerMutex: function() {
+            var $docBody = $(document.body);
+            var currentDp = $docBody.data('currentDatepicker');
+            var previousDp = false;
+
+            // console.log(this);
+
+            if (currentDp) {
+                previousDp = $docBody.data('previousDatepicker', currentDp);
+            }
+
+            $docBody.data('currentDatepicker', this);
         },
 
         _utc_to_local: function (utc) {
@@ -485,12 +693,17 @@ function ($) {
             this.setValue();
         },
 
+        valueShouldBeSetOnHide: function() {
+            var inputHasValue = this.isInput && this.element.val() || this.hasInput && this.element.find('.form-control').val();
+            return this.o.forceParse && inputHasValue;
+        },
+
         setValue: function () {
             var formatted = this.getFormattedDate();
             if(!this.isInput) {
                 if(this.component) {
                     this.element
-                        .find('input')
+                        .find('.form-control')
                             .val(formatted).change();
                 }
             } else {
@@ -619,7 +832,7 @@ function ($) {
                 }
                 fromArgs = true;
             } else {
-                date = this.isInput ? this.element.val() : this.element.data('date') || this.element.find('input').val();
+                date = this.isInput ? this.element.val() : this.element.data('date') || this.element.find('.form-control').val();
                 this.element.removeData('date');
             }
 
@@ -658,14 +871,14 @@ function ($) {
             var dowCnt = this.o.weekStart,
             html = '<tr>';
             if(this.o.calendarWeeks) {
-                var cell = '<th class="cw">&nbsp;</th>';
+                var cell = '<th scope="col" class="cw">&nbsp;</th>';
                 html += cell;
                 this.picker
                     .find('.datepicker-days thead tr:first-child')
                         .prepend(cell);
             }
             while (dowCnt < this.o.weekStart + 7) {
-                html += '<th class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
+                html += '<th scope="col" class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
             }
             html += '</tr>';
             this.picker
@@ -737,7 +950,12 @@ function ($) {
                 startMonth = this.o.startDate !== -Infinity ? this.o.startDate.getUTCMonth() : -Infinity,
                 endYear = this.o.endDate !== Infinity ? this.o.endDate.getUTCFullYear() : Infinity,
                 endMonth = this.o.endDate !== Infinity ? this.o.endDate.getUTCMonth() : Infinity,
-                tooltip;
+                tooltip,
+                isActive,
+                isDisabled,
+                isOld,
+                isNew;
+
             this.picker
                 .find('.datepicker-days thead th.datepicker-switch')
                     .text(dates[this.o.language].months[month]+' '+year);
@@ -803,11 +1021,17 @@ function ($) {
                     }
                 }
 
-                clsName = $.unique(clsName);
-                html.push('<td class="'+clsName.join(' ')+'"' + (tooltip ? ' title="'+tooltip+'"' : '') + '>'+prevMonth.getUTCDate() + '</td>');
-                if(prevMonth.getUTCDay() == this.o.weekEnd) {
+                clsName = $.unique(clsName).join(' ');
+                var dayIsDisabled = clsName.lastIndexOf('disabled') > -1;
+                var dayIsActive = clsName.lastIndexOf('active') > -1;
+                var dayAttrs = (dayIsDisabled ? ' aria-disabled="true"' : '') + (dayIsActive ? ' aria-selected="true"' : '');
+
+                html.push('<td class="'+clsName+'"' + dayAttrs + (tooltip ? ' title="'+tooltip+'"' : '') + '>'+prevMonth.getUTCDate() + '</td>');
+
+                if (prevMonth.getUTCDay() == this.o.weekEnd) {
                     html.push('</tr>');
                 }
+
                 prevMonth.setUTCDate(prevMonth.getUTCDate()+1);
             }
             this.picker
@@ -822,18 +1046,49 @@ function ($) {
                         .find('th:eq(1)')
                             .text(year)
                             .end()
-                        .find('span').removeClass('active');
-            if(currentYear && currentYear == year) {
-                months.eq(this.date && this.date.getUTCMonth()).addClass('active');
+                        .find('span')
+                            .removeClass('active')
+                            .attr('aria-selected', 'false');
+
+            if (currentYear && currentYear == year) {
+                months.eq(this.date && this.date.getUTCMonth())
+                    .addClass('active')
+                    .attr('aria-selected', 'true');
+            } else {
+                months.eq(this.date && this.date.getUTCMonth())
+                    .removeClass('active')
+                    .attr('aria-selected', 'false');
             }
-            if(year < startYear || year > endYear) {
-                months.addClass('disabled');
+
+
+            if (year < startYear || year > endYear) {
+                months
+                    .addClass('disabled')
+                    .attr('aria-disabled', 'true');
+            } else {
+                months
+                    .removeClass('disabled')
+                    .attr('aria-disabled', 'false');
             }
-            if(year == startYear) {
-                months.slice(0, startMonth).addClass('disabled');
+
+            if (year == startYear) {
+                months.slice(0, startMonth)
+                    .addClass('disabled')
+                    .attr('aria-disabled', 'true');
+            } else {
+                months.slice(0, startMonth)
+                    .removeClass('disabled')
+                    .attr('aria-disabled', 'false');
             }
-            if(year == endYear) {
-                months.slice(endMonth+1).addClass('disabled');
+
+            if (year == endYear) {
+                months.slice(endMonth+1)
+                    .addClass('disabled')
+                    .attr('aria-disabled', 'true');
+            } else {
+                months.slice(endMonth+1)
+                    .removeClass('disabled')
+                    .attr('aria-disabled', 'false');
             }
 
             html = '';
@@ -846,8 +1101,18 @@ function ($) {
                             .end()
                         .find('td');
             year -= 1;
+
+            var tempClass;
+            var tempAttrs;
             for (var i = -1; i < 11; i++) {
-                html += '<span class="year'+(i == -1 ? ' old' : i == 10 ? ' new' : '')+(currentYear == year ? ' active' : '')+(year < startYear || year > endYear ? ' disabled' : '')+'">'+year+'</span>';
+                isActive = currentYear == year;
+                isDisabled = year < startYear || year > endYear;
+                isOld = i == -1;
+                isNew = i == 10;
+                tempClass = 'year' + (isOld ? ' old' : isNew ? ' new' : '') + (isActive ? ' active' : '') + (isDisabled ? ' disabled' : '');
+                tempAttrs = (isActive ? ' aria-selected="true"' : '') + (isDisabled ? ' aria-disabled="true' : '');
+
+                html += '<span class="' + tempClass + '"' + tempAttrs + '>' + year + '</span>';
                 year += 1;
             }
             yearCont.html(html);
@@ -902,6 +1167,7 @@ function ($) {
             if(target.length == 1) {
                 switch(target[0].nodeName.toLowerCase()) {
                 case 'th':
+                    e.stopImmediatePropagation();
                     switch(target[0].className) {
 
                     case 'datepicker-switch':
@@ -942,7 +1208,7 @@ function ($) {
                         if(this.isInput) {
                             element = this.element;
                         } else if(this.component) {
-                            element = this.element.find('input');
+                            element = this.element.find('.form-control');
                         }
 
                         if(element) {
@@ -958,6 +1224,7 @@ function ($) {
                     break;
 
                 case 'span':
+                    e.stopImmediatePropagation();
                     if(!target.is('.disabled')) {
                         this.viewDate.setUTCDate(1);
                         if(target.is('.month')) {
@@ -985,6 +1252,7 @@ function ($) {
                     break;
 
                 case 'td':
+                    e.stopImmediatePropagation();
                     if(target.is('.day') && !target.is('.disabled')) {
                         day = parseInt(target.text(), 10) || 1;
                         year = this.viewDate.getUTCFullYear();
@@ -1025,7 +1293,7 @@ function ($) {
             if(this.isInput) {
                 element = this.element;
             } else if(this.component) {
-                element = this.element.find('input');
+                element = this.element.find('.form-control');
             }
 
             if(element) {
@@ -1180,8 +1448,11 @@ function ($) {
                 e.preventDefault();
                 break;
             case 9: // tab
-                this.hide('tab');
-                e.preventDefault();
+                if (e.shiftKey) {
+                    this.hide('tab_shift', e);
+                } else {
+                    this.hide('tab', e);
+                }
                 break;
             }
             if(dateChanged) {
@@ -1190,7 +1461,7 @@ function ($) {
                 if(this.isInput) {
                     element = this.element;
                 } else if(this.component) {
-                    element = this.element.find('input');
+                    element = this.element.find('.form-control');
                 }
                 if(element) {
                     element.change();
@@ -1279,6 +1550,7 @@ function ($) {
         var args = Array.apply(null, arguments);
         args.shift();
         var internal_return;
+
         this.each(function () {
             var $this = $(this),
                 data = $this.data('wdesk.datepicker'),
@@ -1292,7 +1564,7 @@ function ($) {
                     opts = $.extend({}, defaults, locopts, elopts, options);
                 if($this.is('.input-daterange') || opts.inputs) {
                     var ropts = {
-                        inputs: opts.inputs || $this.find('input').toArray()
+                        inputs: opts.inputs || $this.find('.form-control').toArray()
                     };
                     $this.data('wdesk.datepicker', (data = new DateRangePicker(this, $.extend(opts, ropts))));
                 } else {
@@ -1552,21 +1824,21 @@ function ($) {
             '<div class="inner">'+
                 '<div class="content">'+
                     '<div class="datepicker-days">'+
-                        '<table class="table table-bordered table-condensed">'+
+                        '<table class="table table-condensed">'+
                             DPGlobal.headTemplate+
                             '<tbody></tbody>'+
                             DPGlobal.footTemplate+
                         '</table>'+
                     '</div>'+
                     '<div class="datepicker-months">'+
-                        '<table class="table table-bordered table-condensed">'+
+                        '<table class="table table-condensed">'+
                             DPGlobal.headTemplate+
                             DPGlobal.contTemplate+
                             DPGlobal.footTemplate+
                         '</table>'+
                     '</div>'+
                     '<div class="datepicker-years">'+
-                        '<table class="table table-bordered table-condensed">'+
+                        '<table class="table table-condensed">'+
                             DPGlobal.headTemplate+
                             DPGlobal.contTemplate+
                             DPGlobal.footTemplate+
@@ -1593,14 +1865,54 @@ function ($) {
 
     $(document).on('focus.wdesk.datepicker.data-api click.wdesk.datepicker.data-api', '[data-provide="datepicker"]', function (e) {
         var $this = $(this);
-        if($this.data('wdesk.datepicker')) {
+        var $input = $this.is('.form-control') ? $this : $this.find('.form-control');
+        var $inputs, inputRangeData, _tempInput;
+
+        //
+        // Check to see if it is a date range picker
+        // and if it is, set $input equal to the one
+        // that was actually clicked so we know which
+        // picker to open
+        //
+        if ($input.length > 1 && $input.data('wdesk.datepicker')) {
+            inputRangeData = $($input.context).data('wdesk.datepicker');
+            $inputs = $(inputRangeData.inputs);
+            // determine which one of the inputs was clicked
+            _tempInput = $inputs.filter(e.target);
+
+            if (_tempInput.length === 1) {
+                $input = _tempInput;
+            }
+        }
+
+        if ($input.data('refocused') && e.type == 'click') {
+            // console.log('refocused click');
+            $input.data('refocused', false);
+
+            //
+            // Check to see if the input is where the datepicker instance is stored
+            // if not, it is most likely a "component" (input + button), so use the
+            // base [data-provide] selector bound to the document events
+            //
+            if ($input.data('provide') == 'datepicker') {
+                $input.datepicker('show');
+            } else {
+                $this.datepicker('show');
+            }
+        }
+
+        if ($input.data('wdesk.datepicker') ||
+            ($input.data('refocused') && (e.type == 'focusin' || e.type == 'focus'))) {
             return;
         }
-        e && e.preventDefault();
 
         // component click requires us to explicitly show it
-        $this.datepicker('show');
+        if (!this.isInput) {
+            e && e.preventDefault();
+            $this.datepicker('show');
+        }
     });
+
     $(function () {
         $('[data-provide="datepicker-inline"]').datepicker();
     });

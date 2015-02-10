@@ -1,0 +1,37 @@
+/*!
+ * -------------------------------------
+ * Web Skin Peripheral CSS for Global Jobs Panel
+ * ---
+ * Requires
+ *   web-skin Core CSS
+ *   web-skin Plugin JS
+ * ---
+ * Copyright 2014 Workiva
+ * -------------------------------------
+ */
+
+
+// ----------------------------------------------------
+//   WEB SKIN MODULES CAN USE THIS
+// ----------------------------------------------------
+    $use-web-skin-img-dir: true !global;
+
+
+// ----------------------------------------------------
+//   Web Skin Core API
+// ----------------------------------------------------
+    @import 'core/api';
+
+
+// ----------------------------------------------------
+//   Global Jobs Panel Atoms
+// ----------------------------------------------------
+    @import 'peripherals/panels-global-jobs/atoms/panels-global-jobs-config';
+
+
+// ----------------------------------------------------
+//   Global Jobs Panel Components
+// ----------------------------------------------------
+    @import 'peripherals/panels-global-jobs/body-footer';
+    @import 'peripherals/panels-global-jobs/global-jobs-panel';
+    @import 'peripherals/panels-global-jobs/global-jobs-list';

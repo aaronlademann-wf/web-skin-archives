@@ -25,7 +25,7 @@ function($) {
     var toggle   = '[data-toggle="dropdown"]';
 
     var Dropdown = function (element, options) {
-        this.isTouch = Modernizr ? (Modernizr.touch || Modernizr.mstouch) : 'ontouchstart' in document.documentElement;
+        this.isTouch = 'ontouchstart' in document.documentElement;
         this.options  = null;
         this.$element = null;
         this.$menu    = null;
@@ -54,7 +54,7 @@ function($) {
             this.$element = $(element);
             this.$parent = getParent(this.$element);
             this.$menu = $('.dropdown-menu', this.$parent);
-            this.parentWidth = this.$parent.outerWidth();
+            this.parentWidth = getParentWidth(this.$parent);
             this.options = this.getOptions(options);
 
             // ensure that the triggering element has a unique ID so it can be associated
@@ -111,6 +111,16 @@ function($) {
             }
         }
 
+      , isNestedFormInput: function(e) {
+            var isFormInputNestedWithinDropdown = false;
+
+            if ($(e.target).closest('.dropdown-menu').length > 0) {
+                isFormInputNestedWithinDropdown = true;
+            }
+
+            return isFormInputNestedWithinDropdown;
+        }
+
       , show: function (e) {
             var that = this,
                 relatedTarget = { relatedTarget: this };
@@ -118,7 +128,7 @@ function($) {
             // make sure the width of the triggering elem
             // does not exceed the width of the dropdown-menu itself
             if(this.options.autoWidth) {
-                this.$menu.css('min-width', this.parentWidth + 10);
+                this.$menu.css('min-width', getParentWidth(this.$parent) + 10);
             }
 
             this.$parent.trigger(e = $.Event('show.wdesk.dropdown', relatedTarget));
@@ -126,9 +136,19 @@ function($) {
             // set up some event listeners so that clicking outside
             // the dropdown menu triggers a toggle()
             if(this.options.persistent === false) {
-                $(document).on('click.wdesk.dropdown.data-api', function (e) {
-                    that.toggle(e);
-                });
+                $(document)
+                    .on('click.wdesk.dropdown.data-api', function (e) {
+                        that.toggle(e);
+                    })
+                    .on('click.wdesk.dropdown.data-api', 'form', function (e) {
+                        if (!that.isNestedFormInput(e)) {
+                            e.stopPropagation();
+
+                            that.toggle(e);
+
+                            $(e.target).focus();
+                        }
+                    });
             }
             if(this.isTouch && !this.$parent.closest('.navbar-nav').length) {
                 // if mobile we we use a backdrop because click events don't delegate
@@ -292,6 +312,15 @@ function($) {
         }
     };
 
+    function getParentWidth($parent) {
+        var parentWidth = 0;
+        if ($parent) {
+            parentWidth = $parent.outerWidth();
+        }
+
+        return parentWidth;
+    }
+
     function getParent ($this) {
         var selector = $this.attr('data-target')
           , $parent;
@@ -325,10 +354,23 @@ function($) {
         }
     }
 
+    function isNestedFormInput(e) {
+        var _isNestedFormInput = false;
+        var $elem = $(e.target);
+
+        if ($elem.closest('.dropdown-menu').length > 0) {
+            if ($elem.is('input') || $elem.is('textarea')) {
+                _isNestedFormInput = true;
+            }
+        }
+
+        return _isNestedFormInput;
+    }
+
     function swallowClickPropagation(e) {
         if (e) {
             // if it was a right click, or a form input within a dropdown menu has gained focus
-            if (e.button === 2 || $(document.activeElement).is(':input')) {
+            if (e.button === 2 || isNestedFormInput(e)) {
                 e.stopImmediatePropagation();
             }
 
@@ -374,7 +416,7 @@ function($) {
 
     $(document)
         .on('click.wdesk.dropdown.data-api', '.dropdown form', function (e) { swallowClickPropagation(e); })
-        .on('click.dropdown-menu', function (e) { swallowClickPropagation(e); });
+        .on('click.wdesk.dropdown-menu', function (e) { swallowClickPropagation(e); });
 
     $(toggle, document).dropdown();
 
