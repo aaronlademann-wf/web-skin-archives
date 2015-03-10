@@ -1,0 +1,11 @@
+/*
+ * Wdesk's web-skin v0.4.25 Beta Icons
+ *
+ * DEPENDENCIES: 
+ *   wdesk.css / wdesk_ie-lt9.css
+ *
+ * Copyright 2015 Workiva - formerly WebFilings <https://github.com/Workiva>
+ *
+ */
+
+@keyframes rotate-counter-clockwise{to{-ms-transform:rotate(-360deg);transform:rotate(-360deg)}}@keyframes rotate-clockwise{to{-ms-transform:rotate(360deg);transform:rotate(360deg)}}.icon-file-dt-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e602, str_index(\e602, \e)2, 5);')}.icon-file-dt-beta:before{content:"\e602"}.icon-file-dc-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e603, str_index(\e603, \e)2, 5);')}.icon-file-dc-beta:before{content:"\e603"}.icon-twfr-workspaces{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e674, str_index(\e674, \e)2, 5);')}.icon-twfr-workspaces:before{content:"\e674"}.icon-twfr-file-dt-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e604, str_index(\e604, \e)2, 5);')}.icon-twfr-file-dt-beta:before{content:"\e604"}.icon-twfr-file-dc-frozen-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e605, str_index(\e605, \e)2, 5);')}.icon-twfr-file-dc-frozen-beta:before{content:"\e605"}.icon-twfr-file-dc-draft-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e606, str_index(\e606, \e)2, 5);')}.icon-twfr-file-dc-draft-beta:before{content:"\e606"}.icon-twfr-file-dc-beta{*zoom:expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e607, str_index(\e607, \e)2, 5);')}.icon-twfr-file-dc-beta:before{content:"\e607"}.icon-two-color.icon-twfr-file-dc-frozen-beta:before{color:#42ad48}.icon-two-color.icon-twfr-file-dc-frozen-beta:after{color:#595959;content:"\e633"}.icon-two-color.icon-twfr-file-dc-draft-beta:before{color:#42ad48}.icon-two-color.icon-twfr-file-dc-draft-beta:after{color:#595959;content:"\e634"}.icon-color[class*=file-dc-beta]:before,.icon-color[class*=file-dt-beta]:before{color:#42ad48!important}

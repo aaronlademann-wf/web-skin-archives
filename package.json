@@ -1,7 +1,7 @@
 {
   "name": "web-skin-archives",
-  "version": "0.0.1",
-  "author": "Workiva - formerly WebFilings <https://github.com/WebFilings>",
+  "version": "1.0.0",
+  "author": "Workiva <https://github.com/Workiva>",
   "contributors": [
     {
       "name": "Aaron Lademann",
@@ -10,7 +10,7 @@
     },
     {
       "name": "Web Skin Style Guide Team",
-      "url": "https://github.com/WebFilings/web-skin/contributors"
+      "url": "https://github.com/Workiva/web-skin/contributors"
     }
   ],
   "repository": {

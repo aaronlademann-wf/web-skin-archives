@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,
+                               initial-scale=1.0,
+                               maximum-scale=1.0,
+                               target-densityDpi=device-dpi">
+<meta name="description" content="Web Skin Style Guide Documentation">
+<meta name="author" content="Aaron Lademann">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<title>
+    
+        Browser Upgrade Screen Example &middot; Web Skin Style Guide
+    
+</title>
+
+<!--
+    STYLES
+-->
+<!--[if !IE]> -->
+<link href="../../assets/css/wdesk.css?0.4.25" rel="stylesheet" title="standard">
+<link href="../../assets/css/wdesk_ie.css?0.4.25" rel="alternate stylesheet" title="ie">
+<!-- <![endif]-->
+<!--[if gte IE 9]>
+<link href="../../assets/css/wdesk_ie.css?0.4.25" rel="stylesheet">
+<![endif]-->
+<!--[if lte IE 8]>
+<link href="../../assets/css/wdesk_ie-lt9.css?0.4.25" rel="stylesheet">
+<![endif]-->
+
+
+
+<link href="../../assets/css/wdesk_browser-upgrade.css?0.4.25" rel="stylesheet">
+
+
+
+<!--
+    SCRIPTS
+-->
+<script src="../../assets/js/core/wf-js-vendor/dist/wf-vendor.min.js?0.4.25"></script>
+<!--[if lte IE 9]>
+<script src="../../assets/js/core/libs_ie.min.js?0.4.25"></script>
+<![endif]-->
+<!--[if !IE]> -->
+<script src="../../assets/js/core/libs.min.js?0.4.25"></script>
+<!-- <![endif]-->
+<script async src="../../assets/js/docs-only/holder.js?0.4.25"></script>
+<script async src="../../assets/js/docs-only/web-skin-ga-tracker.js?0.4.25"></script>
+
+
+<!--
+    IMAGE LINKS
+    (FAVICONS / APP ICONS / SPLASH SCREENS, ETC)
+-->
+
+<!--
+    Google TV
+-->
+<link rel="icon" type="image/png" href="../../assets/ico/favicon-196x196.png?0.4.25" sizes="196x196">
+
+<!--
+    Modern Browser Bookmark "Favicons"
+-->
+<link rel="icon" type="image/png" href="../../assets/ico/favicon-160x160.png?0.4.25" sizes="160x160">
+<link rel="icon" type="image/png" href="../../assets/ico/favicon-96x96.png?0.4.25" sizes="96x96">
+<link rel="icon" type="image/png" href="../../assets/ico/favicon-16x16.png?0.4.25" sizes="16x16">
+<link rel="icon" type="image/png" href="../../assets/ico/favicon-32x32.png?0.4.25" sizes="32x32">
+
+<!--
+    Standard Browser Bookmark "Favicon"
+-->
+<link rel="shortcut icon" type="image/x-icon" href="../../assets/ico/favicon.ico?0.4.25">
+
+<!--
+    App Icons (Android / iOS)
+-->
+<!-- For iPad w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="152x152" href="../../assets/ico/apple-touch-icon-152.png?0.4.25">
+<!-- For iPad w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="144x144" href="../../assets/ico/apple-touch-icon-144.png?0.4.25">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="120x120" href="../../assets/ico/apple-touch-icon-120.png?0.4.25">
+<!-- For iPhone w/ high-resolution Retina display on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="114x114" href="../../assets/ico/apple-touch-icon-114.png?0.4.25">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≥ 7: -->
+<link rel="apple-touch-icon" sizes="76x76"   href="../../assets/ico/apple-touch-icon-76.png?0.4.25">
+<!-- For the iPad mini & the first/second-generation iPad on iOS ≤ 6: -->
+<link rel="apple-touch-icon" sizes="72x72"   href="../../assets/ico/apple-touch-icon-72.png?0.4.25">
+<!-- For non-Retina iPhone, iPod Touch, & Android 2.1+ devices: -->
+<link rel="apple-touch-icon" href="../../assets/ico/apple-touch-icon-57.png?0.4.25">
+
+<!--
+    Win8 tiles
+-->
+<meta name="msapplication-TileImage" content="../../assets/ico/mstile-144x144.png?0.4.25">
+<meta name="msapplication-TileColor" content="#66CC00">
+<meta name="application-name"        content="Web Skin">
+
+<!--
+    IE11 tiles
+-->
+<meta name="msapplication-square70x70logo"   content="../../assets/ico/mstile-70x70.png?0.4.25">
+<meta name="msapplication-square150x150logo" content="../../assets/ico/mstile-150x150.png?0.4.25">
+<meta name="msapplication-square310x310logo" content="../../assets/ico/mstile-310x310.png?0.4.25">
+<meta name="msapplication-wide310x150logo"   content="../../assets/ico/mstile-310x150.png?0.4.25">
+
+    <!-- Place anything custom after this. -->
+</head>
+<body class="page-browser-upgrade-screen">
+
+    <div class="container browser-upgrade-container">
+    <div class="row browser-upgrade-masthead">
+        <h1 class="col-sm-12 browser-upgrade-heading text-center">Upgrade Your Browser &amp; Get to Work Faster</h1>
+        <p class="lead text-center">You are using a browser version that Wdesk {{ app.name }} does not support.</p>
+
+        <div class="browser-upgrade-benefits">
+            <p class="lead text-center">Newer browsers provide better security, improved speed, and give you access to the latest and greatest that Wdesk has to offer.</p>
+        </div>
+
+        <p class="lead text-center">We recommend upgrading to one of these supported browsers:</p>
+    </div>
+    <div class="row list-group list-group-bordered browser-list">
+        <div class="col-sm-3 list-group-item first-group-item browsers-best">
+            <h2 class="browser-group-heading">Recommended</h2>
+            <a class="browser-link chrome" href="https://www.google.com/intl/en/chrome/browser/" target="_blank">
+                <span class="browser-logo"><span class="sr-only">Google Chrome Logo</span></span>
+                <h3 class="browser-name">
+                    Chrome
+                </h3>
+                <span class="browser-fine-print is-empty">&nbsp;</span>
+            </a>
+        </div>
+        <div class="col-sm-6 list-group-item browsers-better">
+            <h2 class="browser-group-heading is-empty">&nbsp;</h2>
+            <a class="browser-link safari halved" href="http://support.apple.com/kb/DL1531" target="_blank">
+                <span class="browser-logo"><span class="sr-only">Apple Safari Logo</span></span>
+                <h3 class="browser-name">
+                    Safari
+                </h3>
+                <span class="browser-fine-print is-empty">&nbsp;</span>
+            </a>
+            <a class="browser-link firefox halved" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">
+                <span class="browser-logo"><span class="sr-only">Mozilla Firefox Logo</span></span>
+                <h3 class="browser-name">
+                    Firefox
+                </h3>
+                <span class="browser-fine-print is-empty">&nbsp;</span>
+            </a>
+        </div>
+        <div class="col-sm-3 list-group-item last-group-item browsers-good">
+            <h2 class="browser-group-heading is-empty">&nbsp;</h2>
+            <a class="browser-link msie" href="http://windows.microsoft.com/en-us/internet-explorer/download-ie" target="_blank">
+                <span class="browser-logo"><span class="sr-only">Microsoft Internet Explorer Logo</span></span>
+                <h3 class="browser-name">
+                    <span class="hidden-xs hidden-sm">Internet Explorer 11</span>
+                    <span class="hidden-md hidden-lg"><abbr title="Microsoft Internet Explorer">MSIE</abbr> 11</span>
+                </h3>
+                <span class="browser-fine-print">minimum version: IE8</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+This directory is here to mimic `bigsky/docs` - where individual projects store their sphinx documentation, and where `_themes` can be defined.

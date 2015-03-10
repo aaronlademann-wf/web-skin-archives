@@ -1,6 +1,6 @@
 {
   "name": "web-skin-archives",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     },
     {
       "name": "Web Skin Style Guide Team",
-      "homepage": "https://github.com/WebFilings/web-skin/contributors"
+      "homepage": "https://github.com/Workiva/web-skin/contributors"
     }
   ]
 }
