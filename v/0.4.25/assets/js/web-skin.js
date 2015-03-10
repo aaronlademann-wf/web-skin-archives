@@ -1,5 +1,5 @@
 /**
- * Wdesk's web-skin.js v0.4.24 by Aaron Lademann and Workiva - formerly WebFilings <https://github.com/Workiva>
+ * Wdesk's web-skin.js v0.4.25 by Aaron Lademann and Workiva - formerly WebFilings <https://github.com/Workiva>
  *
  * Copyright 2015 Workiva - formerly WebFilings <https://github.com/Workiva>
  */

@@ -1,5 +1,5 @@
 /**
- * JS Dependencies Lib for web-skin.js v0.4.24
+ * JS Dependencies Lib for web-skin.js v0.4.25
  *
  * Include this script in your app alongside web-skin.js
  *

@@ -21,49 +21,49 @@
 
 /* line 24, ../../../../sass/peripherals/icons-beta.scss */
 .icon-file-dt-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe602;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e602, str_index(\e602, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-file-dt-beta:before {
     content: "\e602"; }
 
 /* line 27, ../../../../sass/peripherals/icons-beta.scss */
 .icon-file-dc-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe603;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e603, str_index(\e603, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-file-dc-beta:before {
     content: "\e603"; }
 
 /* line 32, ../../../../sass/peripherals/icons-beta.scss */
 .icon-twfr-workspaces {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe674;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e674, str_index(\e674, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-twfr-workspaces:before {
     content: "\e674"; }
 
 /* line 35, ../../../../sass/peripherals/icons-beta.scss */
 .icon-twfr-file-dt-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe604;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e604, str_index(\e604, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-twfr-file-dt-beta:before {
     content: "\e604"; }
 
 /* line 38, ../../../../sass/peripherals/icons-beta.scss */
 .icon-twfr-file-dc-frozen-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe605;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e605, str_index(\e605, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-twfr-file-dc-frozen-beta:before {
     content: "\e605"; }
 
 /* line 41, ../../../../sass/peripherals/icons-beta.scss */
 .icon-twfr-file-dc-draft-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe606;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e606, str_index(\e606, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-twfr-file-dc-draft-beta:before {
     content: "\e606"; }
 
 /* line 44, ../../../../sass/peripherals/icons-beta.scss */
 .icon-twfr-file-dc-beta {
-  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe607;'); }
+  *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xestr_extract(\e607, str_index(\e607, \e)2, 5);'); }
   /* line 29, ../../../../sass/_constants/_icon-reference.scss */
   .icon-twfr-file-dc-beta:before {
     content: "\e607"; }

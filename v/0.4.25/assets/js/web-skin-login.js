@@ -1,5 +1,5 @@
 /**
- * Web Skin v0.4.24 Plugin JS for the Wdesk Login Screen
+ * Web Skin v0.4.25 Plugin JS for the Wdesk Login Screen
  *
  * Copyright 2015 Workiva - formerly WebFilings <https://github.com/Workiva>
  *

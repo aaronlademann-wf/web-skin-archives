@@ -512,9 +512,6 @@ optgroup {
   background-clip: padding-box;
   box-sizing: content-box;
   box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.11); }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie10 .dropdown-menu {
-    overflow-x: hidden; }
 
 /* line 153, ../../../sass/_constants/_component-reference.scss */
 .dropdown-menu li {
@@ -557,9 +554,6 @@ optgroup {
   user-select: none;
   -ms-tap-highlight-color: rgba(0, 0, 0, 0);
   tap-highlight-color: rgba(0, 0, 0, 0); }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie10 .chosen-container .chosen-results li, .chosen-container .chosen-results .ua-lt-ie10 li, .ua-lt-ie10 .dropdown-menu > li > .hitarea {
-    width: auto; }
   /* line 192, ../../../sass/_constants/_component-reference.scss */
   .chosen-container .chosen-results li *, .dropdown-menu > li > .hitarea * {
     text-indent: 0; }
@@ -2709,46 +2703,6 @@ select:not([multiple]).form-control {
     .radio-pretty.radio input.focus + label:before, .radio-pretty.radio-inline input:focus + label:before,
     .radio-pretty.radio-inline input.focus + label:before {
       border-color: #46b5f9; }
-    /* line 154, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio input:checked + label:before,
-    .ua-lt-ie9 .radio-pretty.radio input:indeterminate + label:before, .ua-lt-ie9 .radio-pretty.radio-inline input:checked + label:before,
-    .ua-lt-ie9 .radio-pretty.radio-inline input:indeterminate + label:before {
-      border-color: #e3e3e3; }
-    /* line 157, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio input:checked + label:after,
-    .ua-lt-ie9 .radio-pretty.radio input:indeterminate + label:after, .ua-lt-ie9 .radio-pretty.radio-inline input:checked + label:after,
-    .ua-lt-ie9 .radio-pretty.radio-inline input:indeterminate + label:after {
-      visibility: hidden; }
-    /* line 167, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio input.checked:focus + label:before, .ua-lt-ie9 .radio-pretty.radio input.checked.focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio input[checked]:focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio input[checked].focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio input.indeterminate:focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio input.indeterminate.focus + label:before, .ua-lt-ie9 .radio-pretty.radio-inline input.checked:focus + label:before, .ua-lt-ie9 .radio-pretty.radio-inline input.checked.focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio-inline input[checked]:focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio-inline input[checked].focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio-inline input.indeterminate:focus + label:before,
-    .ua-lt-ie9 .radio-pretty.radio-inline input.indeterminate.focus + label:before {
-      border-color: #46b5f9; }
-    /* line 171, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio input.checked + label:after,
-    .ua-lt-ie9 .radio-pretty.radio input[checked] + label:after,
-    .ua-lt-ie9 .radio-pretty.radio input.indeterminate + label:after, .ua-lt-ie9 .radio-pretty.radio-inline input.checked + label:after,
-    .ua-lt-ie9 .radio-pretty.radio-inline input[checked] + label:after,
-    .ua-lt-ie9 .radio-pretty.radio-inline input.indeterminate + label:after {
-      visibility: visible; }
-    /* line 179, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio label:hover:before, .ua-lt-ie9 .radio-pretty.radio-inline label:hover:before {
-      border-color: #46b5f9; }
-    /* line 182, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio label:hover:after, .ua-lt-ie9 .radio-pretty.radio-inline label:hover:after {
-      visibility: hidden; }
-    /* line 189, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio label:hover:active:before, .ua-lt-ie9 .radio-pretty.radio-inline label:hover:active:before {
-      border-color: #46b5f9; }
-    /* line 192, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .radio-pretty.radio label:hover:active:after, .ua-lt-ie9 .radio-pretty.radio-inline label:hover:active:after {
-      visibility: visible; }
     /* line 201, ../../../sass/_forms-cbox-radio.scss */
     .radio-pretty.radio.disabled, .radio-pretty.radio-inline.disabled {
       cursor: not-allowed; }
@@ -2868,46 +2822,6 @@ select:not([multiple]).form-control {
     .checkbox-pretty.checkbox input.focus + label:before, .checkbox-pretty.checkbox-inline input:focus + label:before,
     .checkbox-pretty.checkbox-inline input.focus + label:before {
       border-color: #46b5f9; }
-    /* line 154, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox input:checked + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input:indeterminate + label:before, .ua-lt-ie9 .checkbox-pretty.checkbox-inline input:checked + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input:indeterminate + label:before {
-      border-color: #e3e3e3; }
-    /* line 157, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox input:checked + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input:indeterminate + label:after, .ua-lt-ie9 .checkbox-pretty.checkbox-inline input:checked + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input:indeterminate + label:after {
-      visibility: hidden; }
-    /* line 167, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox input.checked:focus + label:before, .ua-lt-ie9 .checkbox-pretty.checkbox input.checked.focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input[checked]:focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input[checked].focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input.indeterminate:focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input.indeterminate.focus + label:before, .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.checked:focus + label:before, .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.checked.focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input[checked]:focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input[checked].focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.indeterminate:focus + label:before,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.indeterminate.focus + label:before {
-      border-color: #46b5f9; }
-    /* line 171, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox input.checked + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input[checked] + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox input.indeterminate + label:after, .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.checked + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input[checked] + label:after,
-    .ua-lt-ie9 .checkbox-pretty.checkbox-inline input.indeterminate + label:after {
-      visibility: visible; }
-    /* line 179, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox label:hover:before, .ua-lt-ie9 .checkbox-pretty.checkbox-inline label:hover:before {
-      border-color: #46b5f9; }
-    /* line 182, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox label:hover:after, .ua-lt-ie9 .checkbox-pretty.checkbox-inline label:hover:after {
-      visibility: hidden; }
-    /* line 189, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox label:hover:active:before, .ua-lt-ie9 .checkbox-pretty.checkbox-inline label:hover:active:before {
-      border-color: #46b5f9; }
-    /* line 192, ../../../sass/_forms-cbox-radio.scss */
-    .ua-lt-ie9 .checkbox-pretty.checkbox label:hover:active:after, .ua-lt-ie9 .checkbox-pretty.checkbox-inline label:hover:active:after {
-      visibility: visible; }
     /* line 201, ../../../sass/_forms-cbox-radio.scss */
     .checkbox-pretty.checkbox.disabled, .checkbox-pretty.checkbox-inline.disabled {
       cursor: not-allowed; }
@@ -3503,13 +3417,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
   /* line 66, ../../../sass/_forms-switches.scss */
   .checkbox-switch input[type="checkbox"]:checked + label:before {
     content: "on"; }
-  /* line 75, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch input[type="checkbox"]:checked + label:before {
-    content: "off"; }
-  /* line 79, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch input[type="checkbox"].checked + label:before,
-  .ua-lt-ie9 .checkbox-switch input[type="checkbox"][checked] + label:before {
-    content: "on"; }
 
 @media screen {
   /* line 90, ../../../sass/_forms-switches.scss */
@@ -3591,33 +3498,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       .checkbox-switch input[type="checkbox"]:focus + label {
         outline: 0;
         border-color: #46b5f9; }
-    /* line 193, ../../../sass/_forms-switches.scss */
-    .ua-lt-ie9 .checkbox-switch input[type="checkbox"]:checked + label {
-      background-color: #666666;
-      border-color: #666666; }
-      /* line 29, ../../../sass/_forms-switches.scss */
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"]:checked + label:before {
-        right: 12px;
-        left: auto; }
-      /* line 34, ../../../sass/_forms-switches.scss */
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"]:checked + label:after {
-        right: auto;
-        left: 0; }
-    /* line 197, ../../../sass/_forms-switches.scss */
-    .ua-lt-ie9 .checkbox-switch input[type="checkbox"].checked + label,
-    .ua-lt-ie9 .checkbox-switch input[type="checkbox"][checked] + label {
-      background-color: #66cc00;
-      border-color: #66cc00; }
-      /* line 13, ../../../sass/_forms-switches.scss */
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"].checked + label:before,
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"][checked] + label:before {
-        right: auto;
-        left: 12px; }
-      /* line 19, ../../../sass/_forms-switches.scss */
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"].checked + label:after,
-      .ua-lt-ie9 .checkbox-switch input[type="checkbox"][checked] + label:after {
-        right: 0;
-        left: auto; }
 
   /* line 2082, ../../../sass/_constants/_mixins.scss */
   .checkbox-switch.checkbox-switch-sm,
@@ -3630,18 +3510,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
     width: 20px; }
   /* line 2104, ../../../sass/_constants/_mixins.scss */
   .checkbox-switch.checkbox-switch-sm input[type=checkbox]:checked + label:before {
-    left: 8px; }
-  /* line 2115, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type=checkbox]:checked + label:before {
-    right: 8px;
-    left: auto; }
-  /* line 2120, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type=checkbox][checked] + label:before {
-    right: auto;
-    left: 8px; }
-  /* line 2125, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type=checkbox].checked + label:before {
-    right: auto;
     left: 8px; }
   /* line 217, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-sm,
@@ -3665,15 +3533,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
   /* line 245, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-sm input[type="checkbox"]:checked + label:before {
     left: 8px; }
-  /* line 252, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type="checkbox"]:checked + label:before {
-    right: 8px;
-    left: auto; }
-  /* line 257, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type="checkbox"].checked + label:before,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-sm input[type="checkbox"][checked] + label:before {
-    right: auto;
-    left: 8px; }
   /* line 2082, ../../../sass/_constants/_mixins.scss */
   .checkbox-switch.checkbox-switch-xs,
   .checkbox-switch.checkbox-switch-xs label,
@@ -3685,18 +3544,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
     width: 19px; }
   /* line 2104, ../../../sass/_constants/_mixins.scss */
   .checkbox-switch.checkbox-switch-xs input[type=checkbox]:checked + label:before {
-    left: 6px; }
-  /* line 2115, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type=checkbox]:checked + label:before {
-    right: 6px;
-    left: auto; }
-  /* line 2120, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type=checkbox][checked] + label:before {
-    right: auto;
-    left: 6px; }
-  /* line 2125, ../../../sass/_constants/_mixins.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type=checkbox].checked + label:before {
-    right: auto;
     left: 6px; }
   /* line 269, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-xs,
@@ -3720,91 +3567,28 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
   /* line 297, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-xs input[type="checkbox"]:checked + label:before {
     left: 6px; }
-  /* line 304, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type="checkbox"]:checked + label:before {
-    right: 6px;
-    left: auto; }
-  /* line 309, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type="checkbox"].checked + label:before,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-xs input[type="checkbox"][checked] + label:before {
-    right: auto;
-    left: 6px; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-default input[type="checkbox"]:checked + label {
-    background-color: #f7f7f7;
-    border-color: #f7f7f7; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-default input[type="checkbox"]:checked + label {
-    background-color: #f7f7f7;
-    border-color: #f7f7f7; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-default input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-default input[type="checkbox"][checked] + label {
     background-color: #f7f7f7;
     border-color: #f7f7f7; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-primary input[type="checkbox"]:checked + label {
     background-color: #66cc00;
     border-color: #66cc00; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-primary input[type="checkbox"]:checked + label {
-    background-color: #66cc00;
-    border-color: #66cc00; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-primary input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-primary input[type="checkbox"][checked] + label {
-    background-color: #66cc00;
-    border-color: #66cc00; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-alt input[type="checkbox"]:checked + label {
-    background-color: #0094ff;
-    border-color: #0094ff; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-alt input[type="checkbox"]:checked + label {
-    background-color: #0094ff;
-    border-color: #0094ff; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-alt input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-alt input[type="checkbox"][checked] + label {
     background-color: #0094ff;
     border-color: #0094ff; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-success input[type="checkbox"]:checked + label {
     background-color: #66cc00;
     border-color: #66cc00; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-success input[type="checkbox"]:checked + label {
-    background-color: #66cc00;
-    border-color: #66cc00; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-success input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-success input[type="checkbox"][checked] + label {
-    background-color: #66cc00;
-    border-color: #66cc00; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-warning input[type="checkbox"]:checked + label {
     background-color: #fbad17;
     border-color: #fbad17; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-warning input[type="checkbox"]:checked + label {
-    background-color: #fbad17;
-    border-color: #fbad17; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-warning input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-warning input[type="checkbox"][checked] + label {
-    background-color: #fbad17;
-    border-color: #fbad17; }
   /* line 326, ../../../sass/_forms-switches.scss */
   .checkbox-switch.checkbox-switch-error input[type="checkbox"]:checked + label {
-    background-color: #ee2724;
-    border-color: #ee2724; }
-  /* line 334, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-error input[type="checkbox"]:checked + label {
-    background-color: #ee2724;
-    border-color: #ee2724; }
-  /* line 339, ../../../sass/_forms-switches.scss */
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-error input[type="checkbox"].checked + label,
-  .ua-lt-ie9 .checkbox-switch.checkbox-switch-error input[type="checkbox"][checked] + label {
     background-color: #ee2724;
     border-color: #ee2724; } }
 /* line 18, ../../../sass/_forms-chosen.scss */
@@ -3880,9 +3664,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       background-color: transparent;
       border: 0 none;
       box-shadow: none; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie9 .chosen-container .form-control.chosen-choices .search-field .form-control {
-        line-height: 34px; }
     /* line 126, ../../../sass/_forms-chosen.scss */
     .chosen-container .form-control.chosen-choices .btn.search-choice {
       position: relative;
@@ -3914,10 +3695,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=45)" !important;
       opacity: 0.45 !important;
       box-shadow: none !important; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie9 .chosen-container .form-control.chosen-choices .btn.search-choice.search-choice-disabled {
-        border-bottom-width: 1px;
-        margin-bottom: 0; }
       /* line 1560, ../../../sass/_constants/_mixins.scss */
       .chosen-container .form-control.chosen-choices .btn.search-choice.search-choice-disabled:hover:active {
         top: 0; }
@@ -3948,9 +3725,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       height: 44px;
       min-height: 44px;
       font-size: 18px; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie9 .chosen-container.input-lg .form-control.chosen-choices .search-field .form-control {
-        line-height: 46px; }
     /* line 204, ../../../sass/_forms-chosen.scss */
     .chosen-container.input-lg .form-control.chosen-choices .btn.search-choice {
       padding: 6px 12px;
@@ -3988,9 +3762,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       height: 28px;
       min-height: 28px;
       font-size: 12px; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie9 .chosen-container.input-sm .form-control.chosen-choices .search-field .form-control {
-        line-height: 30px; }
     /* line 255, ../../../sass/_forms-chosen.scss */
     .chosen-container.input-sm .form-control.chosen-choices .btn.search-choice {
       margin-top: 3px;
@@ -4020,9 +3791,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
       height: 22px;
       min-height: 22px;
       font-size: 12px; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie9 .chosen-container.input-xs .form-control.chosen-choices .search-field .form-control {
-        line-height: 24px; }
     /* line 297, ../../../sass/_forms-chosen.scss */
     .chosen-container.input-xs .form-control.chosen-choices .btn.search-choice {
       padding-top: 1px;
@@ -4205,10 +3973,6 @@ form:not([class*="ng-"]) .form-control:focus:invalid, form:not([class*="ng-"]) .
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=45)" !important;
     opacity: 0.45 !important;
     box-shadow: none !important; }
-    /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-    .ua-lt-ie9 .chosen-disabled .chosen-single {
-      border-bottom-width: 1px;
-      margin-bottom: 0; }
     /* line 1560, ../../../sass/_constants/_mixins.scss */
     .chosen-disabled .chosen-single:hover:active {
       top: 0; }
@@ -4399,10 +4163,6 @@ select.chosen {
   user-select: none;
   -ms-tap-highlight-color: rgba(0, 0, 0, 0);
   tap-highlight-color: rgba(0, 0, 0, 0); }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie9 .btn {
-    border-bottom-width: 2px;
-    margin-bottom: -1px; }
   /* line 1618, ../../../sass/_constants/_mixins.scss */
   .btn .caret {
     margin-top: 8px;
@@ -4455,10 +4215,6 @@ select.chosen {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=45)" !important;
     opacity: 0.45 !important;
     box-shadow: none !important; }
-    /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-    .ua-lt-ie9 .btn.disabled, .ua-lt-ie9 .btn[disabled] {
-      border-bottom-width: 1px;
-      margin-bottom: 0; }
     /* line 1560, ../../../sass/_constants/_mixins.scss */
     .btn.disabled:hover:active, .btn[disabled]:hover:active {
       top: 0; }
@@ -5105,7 +4861,7 @@ input[type="button"].btn-block {
   .w-symbol .visible-retina {
     width: 64px;
     height: 64px;
-    background-image: url('../img/brand/w-symbol_color_retina.png?1397758445');
+    background-image: url('../img/brand/w-symbol_color_retina.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5114,7 +4870,7 @@ input[type="button"].btn-block {
   .w-symbol .hidden-retina {
     width: 64px;
     height: 64px;
-    background-image: url('../img/brand/w-symbol_color.png?1397758445');
+    background-image: url('../img/brand/w-symbol_color.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5142,7 +4898,7 @@ input[type="button"].btn-block {
   .wf-logo .visible-retina {
     width: 220px;
     height: 73px;
-    background-image: url('../img/brand/wf-logo_color_retina.png?1406645640');
+    background-image: url('../img/brand/wf-logo_color_retina.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5151,7 +4907,7 @@ input[type="button"].btn-block {
   .wf-logo .hidden-retina {
     width: 220px;
     height: 73px;
-    background-image: url('../img/brand/wf-logo_color.png?1406645640');
+    background-image: url('../img/brand/wf-logo_color.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5179,7 +4935,7 @@ input[type="button"].btn-block {
   .wdesk-logo .visible-retina, .navbar-brand .brand-link .brand-logo .visible-retina {
     width: 82px;
     height: 24px;
-    background-image: url('../img/brand/wdesk-logo_color_retina.png?1397758445');
+    background-image: url('../img/brand/wdesk-logo_color_retina.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5188,7 +4944,7 @@ input[type="button"].btn-block {
   .wdesk-logo .hidden-retina, .navbar-brand .brand-link .brand-logo .hidden-retina {
     width: 82px;
     height: 24px;
-    background-image: url('../img/brand/wdesk-logo_color.png?1397758445');
+    background-image: url('../img/brand/wdesk-logo_color.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5218,7 +4974,7 @@ input[type="button"].btn-block {
   .wdesk-logo-lg .visible-retina {
     width: 278px;
     height: 83px;
-    background-image: url('../img/brand/wdesk-logo-lg_color_retina.png?1397862860');
+    background-image: url('../img/brand/wdesk-logo-lg_color_retina.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5227,7 +4983,7 @@ input[type="button"].btn-block {
   .wdesk-logo-lg .hidden-retina {
     width: 278px;
     height: 83px;
-    background-image: url('../img/brand/wdesk-logo-lg_color.png?1397862860');
+    background-image: url('../img/brand/wdesk-logo-lg_color.png?1426019395');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
@@ -5418,6 +5174,26 @@ input[type="button"].btn-block {
 .icon-error:before,
 .icon-error:after {
   color: #c41e1b; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-blackline-review:before {
+  content: "\e676"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-blackline:before {
+  content: "\e679"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-format:before {
+  content: "\e67f"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-review:before {
+  content: "\e680"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-task-link:before {
+  content: "\e699"; }
 
 /* line 29, ../../../sass/_constants/_icon-reference.scss */
 .icon-demote:before {
@@ -6021,6 +5797,10 @@ input[type="search"]:before {
   content: "\e688"; }
 
 /* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-comment-reply:before {
+  content: "\e69a"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
 .icon-comment-checkmark:before {
   content: "\e689"; }
 
@@ -6089,6 +5869,58 @@ input[type="search"]:before {
 /* line 29, ../../../sass/_constants/_icon-reference.scss */
 .icon-github:before {
   content: "\e6a1"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-move-up:before {
+  content: "\e69b"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-move-down:before {
+  content: "\e69e"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-demote:before {
+  content: "\e69f"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-promote:before {
+  content: "\e6a2"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-discard-changes:before {
+  content: "\e6a5"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-file-recent:before {
+  content: "\e6ae"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-formula-sum:before {
+  content: "\e6af"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-history:before {
+  content: "\e6b3"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-permissions:before {
+  content: "\e6b4"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-cog:before {
+  content: "\e6b5"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-tab-add:before {
+  content: "\e6b6"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-task-check:before {
+  content: "\e6b7"; }
+
+/* line 29, ../../../sass/_constants/_icon-reference.scss */
+.icon-twfr-task-create:before {
+  content: "\e6bf"; }
 
 /* line 29, ../../../sass/_constants/_icon-reference.scss */
 .icon-twfr-insert:before {
@@ -6210,213 +6042,261 @@ input[type="search"]:before {
 /* line 37, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon:before, .icon-two-color.icon:after {
   padding: 0; }
-/* line 42, ../../../sass/_icons_colors.scss */
+/* line 41, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-blackline-review:after {
+  color: #0094ff !important;
+  content: "\e636"; }
+/* line 45, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-blackline:after {
+  color: #b2b2b2 !important;
+  content: "\e637"; }
+/* line 49, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-review:after {
+  color: #0094ff !important;
+  content: "\e638"; }
+/* line 53, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-task-link:after {
+  color: #0094ff !important;
+  content: "\e639"; }
+/* line 57, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-demote:after {
   color: #0094ff !important;
   content: "\e600"; }
-/* line 46, ../../../sass/_icons_colors.scss */
+/* line 61, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-promote:after {
   color: #0094ff !important;
   content: "\e603"; }
-/* line 50, ../../../sass/_icons_colors.scss */
+/* line 65, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-copy:after {
   color: #0094ff !important;
   content: "\e607"; }
-/* line 54, ../../../sass/_icons_colors.scss */
+/* line 69, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-rename:after {
   color: #fbad17 !important;
   content: "\e62b"; }
-/* line 58, ../../../sass/_icons_colors.scss */
+/* line 73, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-clipboard:after {
   color: #0094ff !important;
   content: "\e62c"; }
-/* line 62, ../../../sass/_icons_colors.scss */
+/* line 77, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-blacklines-next:after {
   color: #b2b2b2 !important;
   content: "\e628"; }
-/* line 66, ../../../sass/_icons_colors.scss */
+/* line 81, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-blacklines-prev:after {
   color: #b2b2b2 !important;
   content: "\e629"; }
-/* line 70, ../../../sass/_icons_colors.scss */
+/* line 85, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-remove:after {
   color: #fbad17 !important;
   content: "\e61f"; }
-/* line 74, ../../../sass/_icons_colors.scss */
+/* line 89, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-promote:after {
   color: #0094ff !important;
   content: "\e618"; }
-/* line 78, ../../../sass/_icons_colors.scss */
+/* line 93, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-move-up:after {
   color: #0094ff !important;
   content: "\e619"; }
-/* line 82, ../../../sass/_icons_colors.scss */
+/* line 97, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-move-down:after {
   color: #0094ff !important;
   content: "\e61a"; }
-/* line 86, ../../../sass/_icons_colors.scss */
+/* line 101, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-demote:after {
   color: #0094ff !important;
   content: "\e61b"; }
-/* line 90, ../../../sass/_icons_colors.scss */
+/* line 105, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-add-before:after {
   color: #66cc00 !important;
   content: "\e61c"; }
-/* line 94, ../../../sass/_icons_colors.scss */
+/* line 109, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-docpart-add-after:after {
   color: #66cc00 !important;
   content: "\e61d"; }
-/* line 98, ../../../sass/_icons_colors.scss */
+/* line 113, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-comment-reply:after {
+  color: #0094ff !important;
+  content: "\e63a"; }
+/* line 117, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-upload-support:after {
   color: #66cc00 !important;
   content: "\e605"; }
-/* line 102, ../../../sass/_icons_colors.scss */
+/* line 121, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-filter:after {
   color: #0094ff !important;
   content: "\e004"; }
-/* line 106, ../../../sass/_icons_colors.scss */
+/* line 125, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-alt:after {
   color: #0094ff !important;
   content: "\e005"; }
-/* line 110, ../../../sass/_icons_colors.scss */
+/* line 129, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-add:after {
   color: #66cc00 !important;
   content: "\e006"; }
-/* line 114, ../../../sass/_icons_colors.scss */
+/* line 133, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-spellcheck:after {
   color: #66cc00 !important;
   content: "\e007"; }
-/* line 118, ../../../sass/_icons_colors.scss */
+/* line 137, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-link-source:after {
   color: #0094ff !important;
   content: "\e008"; }
-/* line 122, ../../../sass/_icons_colors.scss */
+/* line 141, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-link-remove:after {
   color: #fbad17 !important;
   content: "\e009"; }
-/* line 126, ../../../sass/_icons_colors.scss */
+/* line 145, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-link-format:after {
   color: #0094ff !important;
   content: "\e00a"; }
-/* line 130, ../../../sass/_icons_colors.scss */
+/* line 149, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-link-create:after {
   color: #66cc00 !important;
   content: "\e00b"; }
-/* line 134, ../../../sass/_icons_colors.scss */
+/* line 153, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-view-print-area:after {
   color: #0094ff !important;
   content: "\e00d"; }
-/* line 138, ../../../sass/_icons_colors.scss */
+/* line 157, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-file-trash:after {
   color: #fbad17 !important;
   content: "\e00e"; }
-/* line 142, ../../../sass/_icons_colors.scss */
+/* line 161, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-view-trash:after {
   color: #0094ff !important;
   content: "\e00f"; }
-/* line 146, ../../../sass/_icons_colors.scss */
+/* line 165, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-page-break:after {
   color: #0094ff !important;
   content: "\e016"; }
-/* line 150, ../../../sass/_icons_colors.scss */
+/* line 169, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-table-insert-column:after {
   color: #66cc00 !important;
   content: "\e017"; }
-/* line 154, ../../../sass/_icons_colors.scss */
+/* line 173, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-table-insert-row:after {
   color: #66cc00 !important;
   content: "\e018"; }
-/* line 158, ../../../sass/_icons_colors.scss */
+/* line 177, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-update-available:after {
   color: #0094ff !important;
   content: "\27f2"; }
-/* line 162, ../../../sass/_icons_colors.scss */
+/* line 181, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-downloaded:after {
   color: #66cc00 !important;
   content: "\e019"; }
-/* line 166, ../../../sass/_icons_colors.scss */
+/* line 185, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-highlighter:after {
   color: #fbad17 !important;
   content: "\e01a"; }
-/* line 172, ../../../sass/_icons_colors.scss */
+/* line 189, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-move-up:after {
+  color: #0094ff !important;
+  content: "\e63b"; }
+/* line 193, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-move-down:after {
+  color: #0094ff !important;
+  content: "\e63c"; }
+/* line 197, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-demote:after {
+  color: #0094ff !important;
+  content: "\e63d"; }
+/* line 201, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-promote:after {
+  color: #0094ff !important;
+  content: "\e63e"; }
+/* line 205, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-discard-changes:after {
+  color: #fbad17 !important;
+  content: "\e63f"; }
+/* line 209, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-permissions:after {
+  color: #0094ff !important;
+  content: "\e640"; }
+/* line 213, ../../../sass/_icons_colors.scss */
+.icon-two-color.icon-twfr-task-create:after {
+  color: #0094ff !important;
+  content: "\e641"; }
+/* line 219, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-off-device-droid:before {
   color: #cbcbcb !important; }
-/* line 175, ../../../sass/_icons_colors.scss */
+/* line 222, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-off-device-droid:after {
   color: #b2b2b2 !important;
   content: "\e617"; }
-/* line 180, ../../../sass/_icons_colors.scss */
+/* line 227, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-folder-add:after {
   color: #66cc00 !important;
   content: "\e621"; }
-/* line 184, ../../../sass/_icons_colors.scss */
+/* line 231, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-move:after {
   color: #0094ff !important;
   content: "\e622"; }
-/* line 188, ../../../sass/_icons_colors.scss */
+/* line 235, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-rename:after {
   color: #fbad17 !important;
   content: "\e623"; }
-/* line 192, ../../../sass/_icons_colors.scss */
+/* line 239, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-table-cells-delete:after {
   color: #fbad17 !important;
   content: "\e60b"; }
-/* line 196, ../../../sass/_icons_colors.scss */
+/* line 243, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-table-cells-add:after {
   color: #66cc00 !important;
   content: "\e60c"; }
-/* line 200, ../../../sass/_icons_colors.scss */
+/* line 247, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-trash-restore:after {
   color: #66cc00 !important;
   content: "\e627"; }
-/* line 204, ../../../sass/_icons_colors.scss */
+/* line 251, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-insert:after {
   color: #66cc00 !important;
   content: "\e635"; }
-/* line 208, ../../../sass/_icons_colors.scss */
+/* line 255, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-link-format:after {
   color: #0094ff !important;
   content: "\e62d"; }
-/* line 212, ../../../sass/_icons_colors.scss */
+/* line 259, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-link-remove:after {
   color: #fbad17 !important;
   content: "\e62e"; }
-/* line 216, ../../../sass/_icons_colors.scss */
+/* line 263, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-link-add:after {
   color: #66cc00 !important;
   content: "\e631"; }
-/* line 220, ../../../sass/_icons_colors.scss */
+/* line 267, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-twfr-source-make:after {
   color: #0094ff !important;
   content: "\e62f"; }
-/* line 227, ../../../sass/_icons_colors.scss */
+/* line 274, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-table-remove-column:after {
   color: #fbad17 !important;
   content: "\e017"; }
-/* line 231, ../../../sass/_icons_colors.scss */
+/* line 278, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-table-remove-row:after {
   color: #fbad17 !important;
   content: "\e018"; }
-/* line 236, ../../../sass/_icons_colors.scss */
+/* line 283, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-private-note:before {
   color: white !important;
   content: "\e01b";
   font-family: "Wdesk_Icons_Color"; }
-/* line 241, ../../../sass/_icons_colors.scss */
+/* line 288, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment-private-note:after {
   color: #fbad17 !important;
   font-family: "Wdesk_Icons";
   content: "\e684"; }
-/* line 248, ../../../sass/_icons_colors.scss */
+/* line 295, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment:before {
   color: white !important; }
-/* line 252, ../../../sass/_icons_colors.scss */
+/* line 299, ../../../sass/_icons_colors.scss */
 .icon-two-color.icon-comment:after {
   color: #fbad17 !important;
   font-family: "Wdesk_Icons";
   content: "\e68b"; }
 
-/* line 266, ../../../sass/_icons_colors.scss */
+/* line 313, ../../../sass/_icons_colors.scss */
 [class*="icon-support"]:after {
   color: white !important;
   font-family: "Wdesk_Icons_Color";
@@ -7969,9 +7849,6 @@ input[type="search"]:before {
       padding-top: 0;
       padding-bottom: 0;
       text-indent: 8px; }
-      /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-      .ua-lt-ie10 .popover .content > .nav-list > li > .hitarea {
-        width: auto; }
       /* line 192, ../../../sass/_constants/_component-reference.scss */
       .popover .content > .nav-list > li > .hitarea * {
         text-indent: 0; }
@@ -10056,7 +9933,7 @@ input.overflowed {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  background: url('../img/invisible.gif?1397862860') repeat; }
+  background: url('../img/invisible.gif?1426019395') repeat; }
   /* line 52, ../../../sass/_modals.scss */
   .modal.slide .modal-dialog {
     -ms-transform: translate3d(0, -25%, 0);
@@ -10212,9 +10089,6 @@ input.overflowed {
   /* line 150, ../../../sass/_constants/_mixins.scss */
   .modal-actions:after {
     clear: both; }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie9 .modal-actions {
-    min-height: 0%; }
   /* line 218, ../../../sass/_modals.scss */
   .modal-actions:before {
     position: absolute;
@@ -10379,9 +10253,6 @@ input.overflowed {
   .modal-sm .modal-actions:after, .modal-sm .modal-actions:before {
     right: 16px;
     left: 16px; }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie9 .modal-sm .modal-actions {
-    min-height: 0%; }
 
 /* line 492, ../../../sass/_modals.scss */
 .modal-loading {
@@ -11110,36 +10981,12 @@ input.overflowed {
 /* line 2104, ../../../sass/_constants/_mixins.scss */
 .popover-comment .checkbox-switch-xs input[type=checkbox]:checked + label:before {
   left: 6px; }
-/* line 2115, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox]:checked + label:before {
-  right: 6px;
-  left: auto; }
-/* line 2120, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox][checked] + label:before {
-  right: auto;
-  left: 6px; }
-/* line 2125, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox].checked + label:before {
-  right: auto;
-  left: 6px; }
 /* line 2137, ../../../sass/_constants/_mixins.scss */
 .popover-comment .checkbox-switch-xs label:before {
   content: attr("data-unchecked-text");
   content: "private"; }
 /* line 2144, ../../../sass/_constants/_mixins.scss */
 .popover-comment .checkbox-switch-xs input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2153, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "private"; }
-/* line 2158, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox][checked] + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2163, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .popover-comment .checkbox-switch-xs input[type=checkbox].checked + label:before {
   content: attr("data-unchecked-text");
   content: "shared"; }
 
@@ -11296,9 +11143,6 @@ input.overflowed {
   background-color: #fafafa;
   border: 1px solid #d7d7d7;
   border-radius: 4px; }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie10 .alert {
-    min-height: 0%; }
   /* line 44, ../../../sass/_alerts.scss */
   .alert > p,
   .alert > ul {
@@ -11329,13 +11173,6 @@ input.overflowed {
   right: 0;
   width: 44px;
   height: 52px; }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie10 .alert .close {
-    position: relative;
-    top: 0;
-    right: -16px;
-    margin-top: -16px;
-    margin-bottom: -16px; }
   /* line 100, ../../../sass/_alerts.scss */
   .alert .close + .alert-heading,
   .alert .close + p,
@@ -11422,10 +11259,6 @@ input.overflowed {
     padding: 16px 16px 2px;
     font-size: 20px;
     line-height: 14px; }
-    /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-    .ua-lt-ie10 .alert-block .close {
-      margin-top: 0;
-      margin-bottom: 0; }
   /* line 190, ../../../sass/_alerts.scss */
   .alert-block .alert-footer {
     min-height: 32px;
@@ -12162,7 +11995,7 @@ input.overflowed {
       z-index: 1000;
       height: 26px;
       cursor: pointer;
-      background: url('../img/invisible.gif?1397862860') repeat; }
+      background: url('../img/invisible.gif?1426019395') repeat; }
     /* line 106, ../../../sass/_panels-notes-comments.scss */
     .panel-comment .comment-header.navbar .thread-actions {
       position: absolute;
@@ -12900,7 +12733,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   background-size: 40px 40px; }
   /* line 107, ../../../sass/_progress-bars.scss */
   .no-cssanimations .progress.indeterminate .progress-bar {
-    background: url('../img/animated/wdesk-barberpole_default.gif?1400286992') left top repeat-x !important;
+    background: url('../img/animated/wdesk-barberpole_default.gif?1426019395') left top repeat-x !important;
     background-size: 48px 22px !important;
     -ms-animation: none;
     animation: none; }
@@ -12915,7 +12748,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); }
     /* line 130, ../../../sass/_progress-bars.scss */
     .no-cssanimations .progress.indeterminate .progress-bar-alt {
-      background-image: url('../img/animated/wdesk-barberpole_alt.gif?1400286992') !important; }
+      background-image: url('../img/animated/wdesk-barberpole_alt.gif?1426019395') !important; }
 
 /* line 124, ../../../sass/_progress-bars.scss */
 .progress-bar-success {
@@ -12927,7 +12760,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); }
     /* line 130, ../../../sass/_progress-bars.scss */
     .no-cssanimations .progress.indeterminate .progress-bar-success {
-      background-image: url('../img/animated/wdesk-barberpole_success.gif?1400286992') !important; }
+      background-image: url('../img/animated/wdesk-barberpole_success.gif?1426019395') !important; }
 
 /* line 124, ../../../sass/_progress-bars.scss */
 .progress-bar-warning {
@@ -12939,7 +12772,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); }
     /* line 130, ../../../sass/_progress-bars.scss */
     .no-cssanimations .progress.indeterminate .progress-bar-warning {
-      background-image: url('../img/animated/wdesk-barberpole_warning.gif?1400286992') !important; }
+      background-image: url('../img/animated/wdesk-barberpole_warning.gif?1426019395') !important; }
 
 /* line 124, ../../../sass/_progress-bars.scss */
 .progress-bar-error {
@@ -12951,7 +12784,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); }
     /* line 130, ../../../sass/_progress-bars.scss */
     .no-cssanimations .progress.indeterminate .progress-bar-error {
-      background-image: url('../img/animated/wdesk-barberpole_error.gif?1423606537') !important; }
+      background-image: url('../img/animated/wdesk-barberpole_error.gif?1426019395') !important; }
 
 /* line 25, ../../../sass/_progress-app-loading.scss */
 .app-loading-content,
@@ -13029,7 +12862,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
 .no-cssanimations .progress-spinner {
   border: 0 none !important;
   background-color: transparent;
-  background-image: url('../img/animated/spinner.gif?1400286992');
+  background-image: url('../img/animated/spinner.gif?1426019395');
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100%;
@@ -13037,7 +12870,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   opacity: 0.75 ; }
   /* line 128, ../../../sass/_progress-spinners.scss */
   .no-cssanimations .progress-spinner.progress-spinner-inverse {
-    background-image: url('../img/animated/spinner-inverse.gif?1400286992'); }
+    background-image: url('../img/animated/spinner-inverse.gif?1426019395'); }
 
 /* line 138, ../../../sass/_progress-spinners.scss */
 .progress-spinner.progress-spinner-inverse {
@@ -13051,10 +12884,10 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   border-width: 1px; }
   /* line 166, ../../../sass/_progress-spinners.scss */
   .no-cssanimations .progress-spinner.progress-spinner-sm {
-    background-image: url('../img/animated/spinner-sm.gif?1400286992'); }
+    background-image: url('../img/animated/spinner-sm.gif?1426019395'); }
     /* line 171, ../../../sass/_progress-spinners.scss */
     .no-cssanimations .progress-spinner.progress-spinner-sm.progress-spinner-inverse {
-      background-image: url('../img/animated/spinner-inverse-sm.gif?1400286992'); }
+      background-image: url('../img/animated/spinner-inverse-sm.gif?1426019395'); }
   /* line 178, ../../../sass/_progress-spinners.scss */
   .progress-spinner.progress-spinner-sm + .progress-label {
     font-size: 12px;
@@ -13071,10 +12904,10 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   border-width: 2px; }
   /* line 166, ../../../sass/_progress-spinners.scss */
   .no-cssanimations .progress-spinner.progress-spinner-md {
-    background-image: url('../img/animated/spinner-md.gif?1400286992'); }
+    background-image: url('../img/animated/spinner-md.gif?1426019395'); }
     /* line 171, ../../../sass/_progress-spinners.scss */
     .no-cssanimations .progress-spinner.progress-spinner-md.progress-spinner-inverse {
-      background-image: url('../img/animated/spinner-inverse-md.gif?1400286992'); }
+      background-image: url('../img/animated/spinner-inverse-md.gif?1426019395'); }
   /* line 178, ../../../sass/_progress-spinners.scss */
   .progress-spinner.progress-spinner-md + .progress-label {
     font-size: 12px;
@@ -13105,10 +12938,10 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   border-width: 3px; }
   /* line 166, ../../../sass/_progress-spinners.scss */
   .no-cssanimations .progress-spinner.progress-spinner-huge {
-    background-image: url('../img/animated/spinner-huge.gif?1423606537'); }
+    background-image: url('../img/animated/spinner-huge.gif?1426019395'); }
     /* line 171, ../../../sass/_progress-spinners.scss */
     .no-cssanimations .progress-spinner.progress-spinner-huge.progress-spinner-inverse {
-      background-image: url('../img/animated/spinner-inverse-huge.gif?1423606537'); }
+      background-image: url('../img/animated/spinner-inverse-huge.gif?1426019395'); }
   /* line 178, ../../../sass/_progress-spinners.scss */
   .progress-spinner.progress-spinner-huge + .progress-label {
     font-size: 14px;
@@ -13125,10 +12958,10 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   border-width: 5px; }
   /* line 166, ../../../sass/_progress-spinners.scss */
   .no-cssanimations .progress-spinner.progress-spinner-gigantic {
-    background-image: url('../img/animated/spinner-gigantic.gif?1423606537'); }
+    background-image: url('../img/animated/spinner-gigantic.gif?1426019395'); }
     /* line 171, ../../../sass/_progress-spinners.scss */
     .no-cssanimations .progress-spinner.progress-spinner-gigantic.progress-spinner-inverse {
-      background-image: url('../img/animated/spinner-inverse-gigantic.gif?1423606537'); }
+      background-image: url('../img/animated/spinner-inverse-gigantic.gif?1426019395'); }
   /* line 178, ../../../sass/_progress-spinners.scss */
   .progress-spinner.progress-spinner-gigantic + .progress-label {
     font-size: 18px;
@@ -13143,24 +12976,18 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   top: 0;
   width: 16px;
   height: 16px;
-  background-image: url('../img/animated/icon-downloading.svg?1378309330');
+  background-image: url('../img/animated/icon-downloading.svg?1426019395');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 16px; }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie10 .icon-downloading {
-    top: 0; }
   /* line 236, ../../../sass/_progress-spinners.scss */
   .ua-safari .icon-downloading, .no-smil .icon-downloading, .os-ios .icon-downloading {
-    background-image: url('../img/animated/icon-downloading.gif?1378309330'); }
+    background-image: url('../img/animated/icon-downloading.gif?1426019395'); }
   /* line 241, ../../../sass/_progress-spinners.scss */
   .icon-downloading:after {
     content: "\e019";
     color: #fbad17 !important;
     top: 0 !important; }
-    /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-    .ua-lt-ie10 .icon-downloading:after {
-      top: 0 !important; }
 
 /* line 266, ../../../sass/_progress-spinners.scss */
 .icon-downloading.icon-sm {
@@ -13175,7 +13002,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   background-size: 24px; }
   /* line 275, ../../../sass/_progress-spinners.scss */
   .ua-safari .icon-downloading.icon-md, .no-smil .icon-downloading.icon-md, .os-ios .icon-downloading.icon-md {
-    background-image: url('../img/animated/icon-downloading-md.gif?1396370484'); }
+    background-image: url('../img/animated/icon-downloading-md.gif?1426019395'); }
 
 /* line 266, ../../../sass/_progress-spinners.scss */
 .icon-downloading.icon-lg {
@@ -13184,7 +13011,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   background-size: 32px; }
   /* line 275, ../../../sass/_progress-spinners.scss */
   .ua-safari .icon-downloading.icon-lg, .no-smil .icon-downloading.icon-lg, .os-ios .icon-downloading.icon-lg {
-    background-image: url('../img/animated/icon-downloading-lg.gif?1396370484'); }
+    background-image: url('../img/animated/icon-downloading-lg.gif?1426019395'); }
 
 /* line 266, ../../../sass/_progress-spinners.scss */
 .icon-downloading.icon-huge {
@@ -13193,7 +13020,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   background-size: 48px; }
   /* line 275, ../../../sass/_progress-spinners.scss */
   .ua-safari .icon-downloading.icon-huge, .no-smil .icon-downloading.icon-huge, .os-ios .icon-downloading.icon-huge {
-    background-image: url('../img/animated/icon-downloading-huge.gif?1423606537'); }
+    background-image: url('../img/animated/icon-downloading-huge.gif?1426019395'); }
 
 /* line 266, ../../../sass/_progress-spinners.scss */
 .icon-downloading.icon-gigantic {
@@ -13202,7 +13029,7 @@ a.thumbnail.active, a.thumbnail:hover, a.thumbnail:focus,
   background-size: 96px; }
   /* line 275, ../../../sass/_progress-spinners.scss */
   .ua-safari .icon-downloading.icon-gigantic, .no-smil .icon-downloading.icon-gigantic, .os-ios .icon-downloading.icon-gigantic {
-    background-image: url('../img/animated/icon-downloading-gigantic.gif?1423606537'); }
+    background-image: url('../img/animated/icon-downloading-gigantic.gif?1426019395'); }
 
 /* line 9, ../../../sass/_jumbotron.scss */
 .jumbotron {

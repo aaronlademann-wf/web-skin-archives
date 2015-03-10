@@ -1,5 +1,5 @@
 /**
- * Web Skin Documentation JS v0.4.24
+ * Web Skin Documentation JS v0.4.25
  *
  * Do not ever include this in your client application
  * These scripts are only used in the documentation.

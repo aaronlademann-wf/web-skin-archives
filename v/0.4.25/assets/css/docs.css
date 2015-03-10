@@ -650,7 +650,7 @@ body > .sr-only-focusable {
       height: 24px;
       position: relative;
       top: 13px;
-      background-image: url('../img/brand/wdesk-logo_white_retina.png?1397758445');
+      background-image: url('../img/brand/wdesk-logo_white_retina.png?1426019395');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center top;
@@ -661,7 +661,7 @@ body > .sr-only-focusable {
       height: 24px;
       position: relative;
       top: 13px;
-      background-image: url('../img/brand/wdesk-logo_white.png?1397758445');
+      background-image: url('../img/brand/wdesk-logo_white.png?1426019395');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center top;
@@ -2767,36 +2767,12 @@ body > .sr-only-focusable {
 /* line 2104, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox]:checked + label:before {
   left: 12px; }
-/* line 2115, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox]:checked + label:before {
-  right: 12px;
-  left: auto; }
-/* line 2120, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox][checked] + label:before {
-  right: auto;
-  left: 12px; }
-/* line 2125, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox].checked + label:before {
-  right: auto;
-  left: 12px; }
 /* line 2137, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch label:before {
   content: attr("data-unchecked-text");
   content: "private"; }
 /* line 2144, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2153, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "private"; }
-/* line 2158, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox][checked] + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2163, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch input[type=checkbox].checked + label:before {
   content: attr("data-unchecked-text");
   content: "shared"; }
 /* line 2082, ../../../sass/_constants/_mixins.scss */
@@ -2810,36 +2786,12 @@ body > .sr-only-focusable {
 /* line 2104, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox]:checked + label:before {
   left: 6px; }
-/* line 2115, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox]:checked + label:before {
-  right: 6px;
-  left: auto; }
-/* line 2120, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox][checked] + label:before {
-  right: auto;
-  left: 6px; }
-/* line 2125, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox].checked + label:before {
-  right: auto;
-  left: 6px; }
 /* line 2137, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs label:before {
   content: attr("data-unchecked-text");
   content: "private"; }
 /* line 2144, ../../../sass/_constants/_mixins.scss */
 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2153, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox]:checked + label:before {
-  content: attr("data-unchecked-text");
-  content: "private"; }
-/* line 2158, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox][checked] + label:before {
-  content: attr("data-unchecked-text");
-  content: "shared"; }
-/* line 2163, ../../../sass/_constants/_mixins.scss */
-.ua-lt-ie9 .wdesk-checkbox-switch-example-custom .checkbox-switch.my-custom-switch-xs input[type=checkbox].checked + label:before {
   content: attr("data-unchecked-text");
   content: "shared"; }
 
@@ -4186,14 +4138,6 @@ iframe {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 20%;
     box-shadow: 0 0 11px 3px rgba(0, 0, 0, 0.2); }
-  /* line 116, ../../../sass/_constants/_ua-media/_browsers.scss */
-  .ua-lt-ie9 .nav-pills-bar-docs-search-container {
-    border-bottom: 1px solid #e3e3e3; }
-    /* line 111, ../../../sass/docs.scss */
-    .ua-lt-ie9 .nav-pills-bar-docs-search-container:after {
-      display: none;
-      box-shadow: none;
-      border-radius: 0; }
   /* line 4, ../../../sass/_docs-only/_docs-search-filter-bar.scss */
   .nav-pills-bar-docs-search-container .search-results-container[data-ready="false"] {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)" ;
