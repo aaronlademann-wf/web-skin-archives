@@ -1,5 +1,5 @@
 /**
- * Web Skin Documentation JS v0.4.25
+ * Web Skin Documentation JS v0.4.26
  *
  * Do not ever include this in your client application
  * These scripts are only used in the documentation.
@@ -2676,6 +2676,10 @@ var scrollHereOffset = 0;
         }
 
         function scrollHere(href, offset, ev) {
+            if (!href) {
+                return;
+            }
+
             var userTriggeredScroll = offset ? true : false;
             offset = offset || scrollHereOffset;
 

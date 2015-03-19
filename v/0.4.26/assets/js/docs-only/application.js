@@ -162,6 +162,10 @@ var scrollHereOffset = 0;
         }
 
         function scrollHere(href, offset, ev) {
+            if (!href) {
+                return;
+            }
+
             var userTriggeredScroll = offset ? true : false;
             offset = offset || scrollHereOffset;
 

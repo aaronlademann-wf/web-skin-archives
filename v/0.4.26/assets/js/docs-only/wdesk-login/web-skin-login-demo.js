@@ -1,5 +1,5 @@
 /**
- * Web Skin Documentation JS v0.4.25 for the Wdesk Login Screen DEMO
+ * Web Skin Documentation JS v0.4.26 for the Wdesk Login Screen DEMO
  *
  * Do not ever include this in your client application
  * These scripts are only used in the login screen demo in the documentation.
