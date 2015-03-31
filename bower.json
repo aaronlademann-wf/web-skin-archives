@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/aaronlademann-wf/web-skin-archives.git"
+    "url": "git://github.com/Workiva/web-skin-archives.git"
   },
   "main": [
     "./v/0.4.27/assets/js/core/libs.js",
