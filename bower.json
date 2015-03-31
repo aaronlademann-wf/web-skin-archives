@@ -7,9 +7,9 @@
     "url": "git://github.com/aaronlademann-wf/web-skin-archives.git"
   },
   "main": [
-    "./dist/js/core/libs.js",
-    "./dist/js/web-skin.js",
-    "./dist/css/wdesk.css"
+    "./v/0.4.27/assets/js/core/libs.js",
+    "./v/0.4.27/assets/js/web-skin.js",
+    "./v/0.4.27/assets/css/wdesk.css"
   ],
   "authors": [
     {
