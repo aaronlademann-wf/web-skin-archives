@@ -1,0 +1,9 @@
+language: javascript
+
+project: node
+
+install:
+  - npm install
+
+script:
+  - ./node_modules/.bin/grunt default
